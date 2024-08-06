@@ -1,6 +1,9 @@
 import { render, screen } from "@testing-library/react";
+import { axe, toHaveNoViolations } from "jest-axe";
 import Icon from "./Icon";
 import { FaDownload } from "react-icons/fa";
+
+expect.extend(toHaveNoViolations);
 
 describe("Icon Component", () => {
   describe("React Icons", () => {
@@ -14,10 +17,6 @@ describe("Icon Component", () => {
 
       // Retrieve the parent wrapper element by test ID
       const iconWrapper = screen.getByTestId("icon-wrapper");
-
-      // Log computed styles for debugging
-      console.log(window.getComputedStyle(iconWrapper));
-      console.log(typeof iconWrapper);
 
       // Check if the wrapper is an instance of HTMLSpanElement
       expect(iconWrapper).toBeInstanceOf(HTMLSpanElement);
@@ -117,6 +116,14 @@ describe("Icon Component", () => {
 
       consoleError.mockRestore(); // Restore original console.error implementation
     });
+
+    test("accessible icons using react-icons pass axe", async () => {
+      const { container } = render(
+        <Icon icon={<FaDownload />} ariaLabel="Download" />,
+      );
+
+      expect(await axe(container)).toHaveNoViolations();
+    });
   });
 
   describe("SVG Icons", () => {
@@ -145,7 +152,6 @@ describe("Icon Component", () => {
 
       const spanElement = screen.getByTestId("icon-wrapper"); // Ensure this selects the correct span element
       screen.debug(); // Debug output for inspection
-      console.log(spanElement);
 
       expect(spanElement).toBeInTheDocument();
 
@@ -232,6 +238,18 @@ describe("Icon Component", () => {
       expect(titleElement).toBeInTheDocument();
       // Ensure the SVG element has the aria-labelledby attribute pointing to the title
       expect(svgElement).toHaveAttribute("aria-labelledby", "svg-title");
+    });
+
+    test("accessible custom svg icons pass axe", async () => {
+      render(
+        <Icon type="svg" ariaLabel="Download">
+          {svgIcon}
+        </Icon>,
+      );
+
+      const iconElement = screen.getByTestId("svg-icon");
+
+      expect(await axe(iconElement)).toHaveNoViolations();
     });
   });
 });
