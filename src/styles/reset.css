@@ -1,4 +1,6 @@
 /* Reset styling for cross-browser consistency */
+@import "normalize.css";
+
 *,
 *::before,
 *::after {
