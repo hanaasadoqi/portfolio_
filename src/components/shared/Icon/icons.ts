@@ -15,7 +15,7 @@ import { FaHashnode } from "react-icons/fa6";
 import { IoMdLink } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-export const icons = {
+const icons = {
   github: FaGithub,
   linkedIn: FaLinkedin,
   dev: FaDev,
@@ -31,3 +31,5 @@ export const icons = {
   sun: FaSun,
   hamburger: GiHamburgerMenu,
 };
+
+export { icons as IconLibrary };
