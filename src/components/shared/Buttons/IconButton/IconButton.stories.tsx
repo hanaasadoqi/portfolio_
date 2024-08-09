@@ -1,6 +1,5 @@
-import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import IconButton, { IconButtonProps } from "./IconButton";
+import IconButton from "./IconButton";
 import {
   FaChevronCircleDown,
   FaDownload,
@@ -9,7 +8,7 @@ import {
 } from "react-icons/fa";
 
 const meta: Meta<typeof IconButton> = {
-  title: "Components/IconButton",
+  title: "Components/Buttons/IconButton",
   component: IconButton,
   parameters: {
     layout: "centered",

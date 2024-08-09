@@ -2,7 +2,7 @@ import React from "react";
 import { IconContext } from "react-icons";
 import clsx from "clsx";
 import { IconLibrary } from "./icons";
-import { ButtonSize } from "../BaseButton/BaseButton";
+import { ButtonSize } from "../Buttons";
 
 export type IconType = "svg" | "react-icons";
 

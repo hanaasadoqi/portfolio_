@@ -1,5 +1,5 @@
 import React from "react";
-import IconButton, { IconButtonProps } from "../IconButton/IconButton";
+import { IconButton, IconButtonProps } from "../IconButton";
 import clsx from "clsx";
 
 export type FabPosition =

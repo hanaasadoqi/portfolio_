@@ -13,7 +13,7 @@ const Template: StoryObj<typeof FloatingActionButton> = {
 
 // Define meta information
 const meta: Meta<typeof FloatingActionButton> = {
-  title: "Components/FloatingActionButton",
+  title: "Components/Buttons/FloatingActionButton",
   component: FloatingActionButton,
   parameters: {
     layout: "fullscreen",

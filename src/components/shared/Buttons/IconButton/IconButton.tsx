@@ -1,9 +1,6 @@
 import React from "react";
-import BaseButton, {
-  BaseButtonProps,
-  ButtonSize,
-} from "../BaseButton/BaseButton";
-import Icon from "../Icon/Icon";
+import { BaseButton, BaseButtonProps, ButtonSize } from "../BaseButton";
+import Icon from "../../Icon/Icon";
 import { Tooltip } from "react-tooltip";
 import clsx from "clsx";
 

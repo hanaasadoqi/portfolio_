@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import IconButton, { iconButtonSizes } from "./IconButton";
-import Icon from "../Icon/Icon";
-import { Tooltip } from "react-tooltip";
+import Icon from "../../Icon/Icon";
 import { FaChevronCircleDown } from "react-icons/fa";
 import { ButtonSize } from "../BaseButton/BaseButton";
 
