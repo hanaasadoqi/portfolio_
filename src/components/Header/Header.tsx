@@ -1,44 +1,85 @@
 import React from "react";
-import Link from "next/link";
+import {
+  ButtonGroup,
+  IconButton,
+  IconButtonProps,
+  LinkButton,
+  NavMenu,
+} from "../shared";
+import { FaCog, FaHome, FaLink } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
+
+const navLinks = [
+  {
+    href: "#about",
+    label: "About",
+    ariaLabel: "About Me Section",
+  },
+  {
+    href: "#skills",
+    label: "Skills",
+    ariaLabel: "Technical Skills Section",
+  },
+  {
+    href: "#work",
+    label: "Experience",
+    ariaLabel: "Work Experience Section",
+  },
+  {
+    href: "#projects",
+    label: "Projects",
+    ariaLabel: "Personal Projects Section",
+  },
+  {
+    href: "#writing",
+    label: "Writing",
+    ariaLabel: "Articles/Blogs Section",
+  },
+  {
+    href: "#education",
+    label: "Education",
+    ariaLabel: "Education Section",
+  },
+  {
+    href: "#contact",
+    label: "Contact",
+    ariaLabel: "Contact Me Section",
+  },
+];
 
 const Header: React.FC = () => {
+  const iconButtonProps: Partial<IconButtonProps> = {
+    variant: "text",
+    size: "xs",
+    className: "transition-all duration-300 ease border-none",
+    iconClassName: "p-2",
+    iconOnly: true,
+  };
+
   return (
-    <header className="absolute left-0 flex w-full items-center justify-between border-b p-4 drop-shadow-md">
-      <div id="logo-container">Logo</div>
-      <nav role="navigation">
-        <ul className="inline-flex space-x-12">
-          <li className="rounded p-1 hover:outline hover:outline-offset-2 hover:outline-blue-300">
-            <Link href="#about-me">About</Link>
-          </li>
-          <li className="rounded p-1 hover:outline hover:outline-offset-2 hover:outline-blue-300">
-            <Link href="#featured">Featured</Link>
-          </li>
-          <li className="rounded p-1 hover:outline hover:outline-offset-2 hover:outline-blue-300">
-            <Link href="#skills">Skills</Link>
-          </li>
-          <li className="rounded p-1 hover:outline hover:outline-offset-2 hover:outline-blue-300">
-            <Link href="#experience">Experience</Link>
-          </li>
-          <li className="roundel p-1 hover:outline hover:outline-offset-2 hover:outline-blue-300">
-            <Link href="#projects">Projects</Link>
-          </li>
-          <li className="roundel p-1 hover:outline hover:outline-offset-2 hover:outline-blue-300">
-            <Link href="#writing">Writing</Link>
-          </li>
-          <li className="roundel p-1 hover:outline hover:outline-offset-2 hover:outline-blue-300">
-            <Link href="#education">Education</Link>
-          </li>
-          <li className="roundel p-1 hover:outline hover:outline-offset-2 hover:outline-blue-300">
-            <Link href="#contact-me">Contact</Link>
-          </li>
-        </ul>
-      </nav>
+    <header className="absolute left-0 right-0 flex items-center justify-between space-x-4 border-b p-3 drop-shadow-md md:space-x-8 lg:space-x-12">
+      <div id="logo-container">
+        <LinkButton icon={<FaHome />} href="/" iconOnly size="xl" />
+      </div>
+      <NavMenu
+        links={navLinks}
+        className="ease hidden w-full flex-1 flex-nowrap items-center justify-evenly p-1 transition-transform duration-300 lg:flex"
+      />
       <div id="nav-icon-menu">
-        <ul className="inline-flex space-x-4">
-          <li>Contact</li>
-          <li>Settings</li>
-          <li>Dark Mode</li>
-        </ul>
+        <ButtonGroup spacing="md" border divider>
+          <IconButton icon={<FaLink />} {...iconButtonProps}>
+            {"Let's Connect"}
+          </IconButton>
+          <IconButton icon={<FaCog />} {...iconButtonProps}>
+            Settings
+          </IconButton>
+          <IconButton
+            icon={<GiHamburgerMenu />}
+            variant="text"
+            iconOnly
+            className="ease flex transition-all duration-300 lg:hidden"
+          />
+        </ButtonGroup>
       </div>
     </header>
   );
