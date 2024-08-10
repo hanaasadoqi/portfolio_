@@ -1,3 +1,4 @@
 export * from "./Icon";
 export * from "./Buttons";
 export * from "./ButtonGroup";
+export * from "./NavMenu";
