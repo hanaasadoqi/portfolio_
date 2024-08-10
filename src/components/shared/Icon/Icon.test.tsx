@@ -46,7 +46,6 @@ describe("Icon Component", () => {
 
       const iconElement = screen.getByTestId("icon");
       expect(iconElement.parentElement).toHaveClass("custom-class");
-      expect(iconElement).toHaveStyle({ color: "red" });
     });
 
     it("adjusts size based on container", () => {
@@ -231,7 +230,7 @@ describe("Icon Component", () => {
 
       const error = renderIcon();
 
-      // expect(error).toBeInstanceOf(Error);
+      expect(error).toBeInstanceOf(Error);
       expect((error as Error).message).toBe(
         "Icon component requires children when type is svg",
       );

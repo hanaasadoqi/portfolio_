@@ -7,17 +7,17 @@ exports[`Icon Component React Icons renders icon with custom styles and classNam
     class="icon-wrapper inline-block custom-class"
     data-testid="icon-wrapper"
     role="img"
-    style="width: 20px; height: 20px;"
+    style="width: 28px; height: 28px;"
   >
     <svg
       data-testid="icon"
       fill="currentColor"
-      height="20px"
+      height="28px"
       stroke="currentColor"
       stroke-width="0"
       style="color: red; fill: currentColor;"
       viewBox="0 0 512 512"
-      width="20px"
+      width="28px"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

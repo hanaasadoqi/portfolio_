@@ -41,11 +41,11 @@ const Icon: React.FC<IconProps> = ({
   }
 
   const iconSizes: Record<ButtonSize, string> = {
-    xs: "12px",
-    sm: "16px",
-    md: "20px",
-    lg: "24px",
-    xl: "32px",
+    xs: "20px",
+    sm: "24px",
+    md: "28px",
+    lg: "32px",
+    xl: "36px",
     full: "auto",
   };
 
