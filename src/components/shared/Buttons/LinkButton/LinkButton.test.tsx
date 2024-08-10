@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import LinkButton, { LinkButtonVariant } from "./LinkButton";
 import { colorStyles, outerStyles, sizeStyles } from "../BaseButton";
 import { axe, toHaveNoViolations } from "jest-axe";
@@ -24,24 +24,29 @@ describe("LinkButton", () => {
 
   const variants: LinkButtonVariant[] = ["text", "ghost", "link"];
   variants.forEach((variant) => {
-    it(`applies correct styles for variant "${variant}"`, () => {
+    it(`applies correct styles for variant "${variant}"`, async () => {
       const { container } = render(
         <LinkButton variant={variant}>Styled Link Buttons</LinkButton>,
       );
-      const linkButton = container.firstChild;
-      expect(linkButton).toHaveClass(outerStyles[variant]);
-      expect(linkButton).toHaveClass(colorStyles[variant]);
+
+      const linkButton = container.querySelector("a");
+      await waitFor(() => {
+        expect(linkButton).toHaveClass(outerStyles[variant]);
+        expect(linkButton).toHaveClass(colorStyles[variant]);
+      });
     });
   });
 
   const sizes: ("xs" | "sm" | "md" | "lg")[] = ["xs", "sm", "md", "lg"];
   sizes.forEach((size) => {
-    it(`applies correct size styles for size "${size}"`, () => {
+    it(`applies correct size styles for size "${size}"`, async () => {
       const { container } = render(
         <LinkButton size={size}>Sized Button</LinkButton>,
       );
       const linkButton = container.firstChild;
-      expect(linkButton).toHaveClass(sizeStyles[size]);
+      await waitFor(() => {
+        expect(linkButton).toHaveClass(sizeStyles[size]);
+      });
     });
   });
 
@@ -97,12 +102,14 @@ describe("LinkButton", () => {
     expect(linkButton).not.toHaveTextContent("Icon Only Button");
   });
 
-  it("calls onClick handler when clicked", () => {
+  it("calls onClick handler when clicked", async () => {
     const onClick = jest.fn();
     render(<LinkButton onClick={onClick}>Clickable Button</LinkButton>);
-    const linkButton = screen.getByRole("link");
-    fireEvent.click(linkButton);
-    expect(onClick).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      const linkButton = screen.getByRole("link");
+      fireEvent.click(linkButton);
+      expect(onClick).toHaveBeenCalledTimes(1);
+    });
   });
 
   it("sets target attribute correctly", () => {
@@ -123,7 +130,7 @@ describe("LinkButton", () => {
     it("should have no accessibility violations with default props", async () => {
       const { container } = render(<LinkButton>Default</LinkButton>);
 
-      await act(async () => {
+      await waitFor(async () => {
         expect(await axe(container)).toHaveNoViolations();
       });
     });

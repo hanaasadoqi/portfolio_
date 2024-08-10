@@ -21,7 +21,7 @@ export interface LinkButtonProps
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   target?: "_blank" | "_top" | "_parent" | "_self";
   variant?: LinkButtonVariant;
-  size?: "xs" | "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg" | "xl" | "full";
   ariaCurrent?: boolean;
   icon?: React.ReactElement | React.ReactElement<SVGSVGElement>;
 }
@@ -49,7 +49,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({
   const linkText = useMemo(() => textStyles[size], [size]);
 
   const linkStyles = clsx(
-    "group focus:outline-none whitespace-nowrap select-none inline-flex items-center",
+    "group focus:outline-none whitespace-nowrap select-none inline-flex items-center justify-center",
     linkSize,
     linkColor,
     linkOuter,

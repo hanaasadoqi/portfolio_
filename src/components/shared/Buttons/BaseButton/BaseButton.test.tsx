@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import BaseButton from "./BaseButton";
+import BaseButton, { sizeStyles } from "./BaseButton";
 
 describe("BaseButton", () => {
   describe("Default attributes", () => {
@@ -138,7 +138,7 @@ describe("BaseButton", () => {
   describe("Styling", () => {
     test("should apply size styles based on size prop", () => {
       const { rerender } = render(<BaseButton size="lg">Click me</BaseButton>);
-      expect(screen.getByRole("button")).toHaveClass("py-1.5 px-4 gap-3");
+      expect(screen.getByRole("button")).toHaveClass(sizeStyles["lg"]);
 
       rerender(<BaseButton size="xs">Click me</BaseButton>);
       expect(screen.getByRole("button")).toHaveClass("py-0.5 px-1 gap-1");

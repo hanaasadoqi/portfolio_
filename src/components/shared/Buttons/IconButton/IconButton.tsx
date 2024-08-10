@@ -28,11 +28,11 @@ export interface IconButtonProps extends BaseButtonProps {
 }
 
 export const iconButtonSizes: Record<ButtonSize, string> = {
-  xs: "p-1",
-  sm: "p-2",
-  md: "p-3",
-  lg: "p-4",
-  xl: "p-5",
+  xs: "p-0.5",
+  sm: "p-1",
+  md: "p-1.5",
+  lg: "p-2",
+  xl: "p-2.5",
   full: "w-full h-full",
 };
 

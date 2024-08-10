@@ -42,10 +42,10 @@ export interface BaseButtonProps
 
 export const sizeStyles: Record<ButtonSize, string> = {
   xs: "py-0.5 px-1 gap-1",
-  sm: "py-0.75 px-2 gap-2",
-  md: "py-1 px-3 gap-2.5",
-  lg: "py-1.5 px-4 gap-3",
-  xl: "py-2 px-6 gap-3",
+  sm: "py-0.5 px-1 gap-1 md:py-0.75 md:px-2 md:gap-2",
+  md: "py-0.75 px-2 gap-2 md:py-1 md:px-3 md:gap-2.5",
+  lg: "py-1 px-3 gap-2.5 md:py-1.5 md:px-4 md:gap-3",
+  xl: "py-1.5 px-4 gap-3 md:py-2 md:px-6 md:gap-3",
   full: "w-full",
 };
 
@@ -72,17 +72,17 @@ export const outerStyles: Record<ButtonVariant, string> = {
     "shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-offset-2 border-2 border-gray-600",
   ghost:
     "shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-offset-2 border-2 border-transparent",
-  link: "shadow-none border-none",
-  text: "shadow-none border-none hover:shadow-md active:shadow-inner",
+  link: "shadow-none",
+  text: "shadow-none hover:shadow-md active:shadow-inner",
   fab: "shadow-md border-1 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-200 hover:shadow-lg active:shadow-inner",
 };
 
 export const textStyles: Record<ButtonSize, string> = {
-  xs: "text-sm font-light tracking-normal",
-  sm: "text-base font-normal tracking-wide",
-  md: "text-base font-medium tracking-wide",
-  lg: "text-md font-medium tracking-widest",
-  xl: "text-lg font-medium tracking-widest",
+  xs: "text-xs md:text-sm font-light tracking-normal",
+  sm: "text-sm md:text-base md:font-normal md:tracking-wide",
+  md: "text-base font-normal md:font-medium md:tracking-wide",
+  lg: "text-base md:text-md font-medium md:tracking-widest",
+  xl: "text-md md:text-lg font-medium md:tracking-widest",
   full: "text-lg font-medium tracking-widest",
 };
 
@@ -133,7 +133,7 @@ const BaseButton: React.FC<BaseButtonProps> = React.memo(
         "opacity-70 cursor-wait": loading,
       },
       !iconOnly && buttonSize,
-      !custom && buttonColor,
+      buttonColor,
       buttonOuter,
       buttonText,
       className,
