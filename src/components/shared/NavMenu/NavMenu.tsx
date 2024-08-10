@@ -5,7 +5,8 @@ import {
   ButtonSize,
   LinkButton,
   LinkButtonProps,
-} from "..";
+} from "../../shared";
+import clsx from "clsx";
 
 export const navItems = [
   {
@@ -42,6 +43,7 @@ export interface NavItemProps extends Omit<LinkButtonProps, "children"> {
   label: string;
   href?: string;
   children?: React.ReactNode;
+  className?: string;
 }
 
 export const NavItem: React.FC<NavItemProps> = ({
@@ -49,6 +51,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   ariaLabel,
   href,
   children,
+  className,
   onClick,
   size,
   ...rest
@@ -64,7 +67,8 @@ export const NavItem: React.FC<NavItemProps> = ({
       ariaLabel={ariaLabel || label}
       href={href}
       onClick={onClick}
-      size={size}
+      className={clsx("flex items-center justify-center", className)}
+      size="lg"
       {...rest}
     >
       {children || label}
@@ -73,14 +77,21 @@ export const NavItem: React.FC<NavItemProps> = ({
 };
 
 interface NavMenuProps extends Omit<ButtonGroupProps, "children"> {
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   size?: "xs" | "sm" | "md" | "lg";
   links: NavItemProps[];
 }
 
-const NavMenu: React.FC<NavMenuProps> = ({ links, size, ...rest }) => {
+const NavMenu: React.FC<NavMenuProps> = ({
+  links,
+  size,
+  onClick,
+  className,
+  ...rest
+}) => {
   return (
-    <nav>
-      <ButtonGroup {...rest}>
+    <nav className={className}>
+      <ButtonGroup border divider {...rest}>
         {links.map((item) => (
           <NavItem
             key={item.href}
@@ -93,6 +104,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ links, size, ...rest }) => {
             iconOnly={item.iconOnly}
             ariaCurrent
             size={size}
+            onClick={onClick}
           />
         ))}
       </ButtonGroup>

@@ -5,6 +5,7 @@ exports[`NavItem snapshot test for NavItem 1`] = `
   <a
     aria-disabled="false"
     aria-label="About"
+    class="flex items-center justify-center"
     href="#about"
   >
     About
@@ -23,6 +24,7 @@ exports[`NavMenu Snapshot test for NavMenu 1`] = `
         aria-current="page"
         aria-disabled="false"
         aria-label="About"
+        class="flex items-center justify-center"
         href="#about"
       >
         About
@@ -31,6 +33,7 @@ exports[`NavMenu Snapshot test for NavMenu 1`] = `
         aria-current="page"
         aria-disabled="false"
         aria-label="Contact"
+        class="flex items-center justify-center"
         href="#contact"
       >
         Contact
