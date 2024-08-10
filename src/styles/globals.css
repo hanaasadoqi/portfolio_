@@ -3,3 +3,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .icon-wrapper {
+    @apply h-4 w-4 md:h-6 md:w-6 lg:h-8 lg:w-8;
+  }
+}

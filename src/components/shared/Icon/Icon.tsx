@@ -124,7 +124,7 @@ const Icon: React.FC<IconProps> = ({
                 "aria-labelledby": ariaLabel ? "svg-title" : undefined,
                 "data-testid": loading ? "spinner" : "svg-icon",
                 className: clsx(
-                  "user-select-none pointer-events-none",
+                  "select-none pointer-events-auto",
                   child.props.className,
                 ),
                 children: (
