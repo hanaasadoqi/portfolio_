@@ -1,34 +1,17 @@
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import LinkButton, { LinkButtonVariant } from "./LinkButton";
-import { Icon } from "../../Icon";
 import { colorStyles, outerStyles, sizeStyles } from "../BaseButton";
-import Link from "next/link";
 import { axe, toHaveNoViolations } from "jest-axe";
 
 expect.extend(toHaveNoViolations);
 
-const MockLink: React.FC<{
-  href?: string;
-  children: React.ReactNode;
-  [key: string]: any;
-}> = ({ children, href, ...props }) => {
-  return (
-    <a href={href} {...props}>
-      {children}
-    </a>
-  );
-};
-
-MockLink.displayName = "MockLink";
-
-jest.mock("next/link", () => MockLink);
-
 describe("LinkButton", () => {
-  test("Next.js Link component renders an anchor tag", () => {
-    const { container } = render(<Link href="#">Test Link</Link>);
-    const anchorTag = container.querySelector("a");
-    expect(anchorTag).toBeInTheDocument();
-    expect(anchorTag).toHaveAttribute("href", "#");
+  beforeEach(() => {
+    jest.mock("next/link", () => require("@/mocks/next/link"));
+  });
+
+  afterEach(() => {
+    jest.resetModules(); // Reset module registry to ensure clean slate for each test
   });
 
   it("renders with default props", () => {
