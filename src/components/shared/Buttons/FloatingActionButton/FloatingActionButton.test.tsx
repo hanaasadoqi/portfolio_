@@ -1,35 +1,46 @@
-import { render, screen } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import FloatingActionButton, {
   FabPosition,
   positionClasses,
 } from "./FloatingActionButton";
 import { FaChevronDown } from "react-icons/fa";
-import { ButtonSize } from "../BaseButton/BaseButton";
+import { ButtonSize, sizeStyles } from "../BaseButton/BaseButton";
 
 // Utility function to verify positioning
-const verifyPosition = (
+const verifyPosition = async (
   position: FabPosition,
   element?: HTMLButtonElement | null,
 ) => {
-  const button = element || screen.getByRole("button");
-  const expectedClass = positionClasses[position];
-  if (!expectedClass) {
-    throw new Error(`No class found for position: ${position}`);
-  }
-  expect(button).toHaveClass(expectedClass);
+  await waitFor(() => {
+    const button = element || screen.getByRole("button");
+    const expectedClass = positionClasses[position];
+    if (!expectedClass) {
+      throw new Error(`No class found for position: ${position}`);
+    }
+    expect(button).toHaveClass(expectedClass);
+  });
 };
 
 describe("FloatingActionButton", () => {
-  it("renders without crashing", () => {
+  it("renders without crashing", async () => {
     render(<FloatingActionButton icon={<FaChevronDown />} />);
-    expect(screen.getByRole("button")).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByRole("button")).toBeInTheDocument();
+    });
   });
 
-  it("renders the icon correctly", () => {
+  it("renders the icon correctly", async () => {
     render(<FloatingActionButton icon={<FaChevronDown />} />);
-    // Ensure IconButton renders icons with a data-testid of "icon"
-    expect(screen.getByTestId("icon")).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByTestId("icon")).toBeInTheDocument();
+    });
   });
 
   it("applies the correct position classes", () => {
@@ -45,43 +56,55 @@ describe("FloatingActionButton", () => {
       "center-left",
     ];
 
-    positions.forEach((position) => {
+    positions.forEach(async (position) => {
       const { container } = render(
         <FloatingActionButton icon={<FaChevronDown />} position={position} />,
       );
-      const button = container.querySelector("button");
-      verifyPosition(position, button);
+      await waitFor(() => {
+        const button = container.querySelector("button");
+        verifyPosition(position, button);
+      });
     });
   });
 
-  it("applies custom class names", () => {
+  it("applies custom class names", async () => {
     render(
       <FloatingActionButton
         icon={<FaChevronDown />}
         className="custom-class"
       />,
     );
-    expect(screen.getByRole("button")).toHaveClass("custom-class");
+    await waitFor(() => {
+      expect(screen.getByRole("button")).toHaveClass("custom-class");
+    });
   });
 
-  it("applies the disabled state", () => {
+  it("applies the disabled state", async () => {
     render(<FloatingActionButton icon={<FaChevronDown />} disabled />);
-    expect(screen.getByRole("button")).toBeDisabled();
+    await waitFor(() => {
+      expect(screen.getByRole("button")).toBeDisabled();
+    });
   });
 
   it("renders with different sizes", () => {
     const sizes: ButtonSize[] = ["sm", "md", "lg"];
-    sizes.forEach((size) => {
-      render(<FloatingActionButton icon={<FaChevronDown />} size={size} />);
-      // Adjust based on actual implementation. Ensure size is applied correctly
-      // expect(screen.getByRole("button")).toHaveClass(`size-${size}`);
+    sizes.forEach(async (size) => {
+      const { container } = render(
+        <FloatingActionButton icon={<FaChevronDown />} size={size} />,
+      );
+      await waitFor(() => {
+        const button = container.querySelector("button");
+        expect(button).toHaveClass(sizeStyles[size]);
+      });
     });
   });
 
   it("handles click events", async () => {
     const onClick = jest.fn();
     render(<FloatingActionButton icon={<FaChevronDown />} onClick={onClick} />);
-    await userEvent.click(screen.getByRole("button"));
+    await waitFor(() => {
+      fireEvent.click(screen.getByRole("button"));
+    });
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 });

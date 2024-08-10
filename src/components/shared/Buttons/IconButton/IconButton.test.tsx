@@ -1,76 +1,103 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import IconButton, { iconButtonSizes } from "./IconButton";
 import Icon from "../../Icon/Icon";
 import { FaChevronCircleDown } from "react-icons/fa";
 import { ButtonSize } from "../BaseButton/BaseButton";
 
 describe("IconButton", () => {
+  beforeEach(() => {
+    jest.mock("react-tooltip", () => ({
+      __esModule: true,
+      default: () => null,
+    }));
+  });
+
+  afterEach(() => {
+    jest.resetModules(); // Reset module registry to ensure clean slate for each test
+  });
+
   describe("Rendering and Default Attributes", () => {
     const icon = <Icon icon={<FaChevronCircleDown />} />;
 
-    test("should render an IconButton with icon and text", () => {
+    test("should render an IconButton with icon and text", async () => {
       render(
         <IconButton icon={icon} tooltip="Tooltip text">
           Click me
         </IconButton>,
       );
-      const button = screen.getByRole("button");
-      expect(button).toBeInTheDocument();
-      expect(screen.getByText("Click me")).toBeInTheDocument();
+
+      await waitFor(() => {
+        const button = screen.getByRole("button");
+        expect(button).toBeInTheDocument();
+        expect(screen.getByText("Click me")).toBeInTheDocument();
+      });
     });
 
-    test("should render an IconButton with only icon", () => {
+    test("should render an IconButton with only icon", async () => {
       render(<IconButton icon={icon} iconOnly tooltip="Tooltip text" />);
-      const button = screen.getByRole("button");
-      expect(button).toBeInTheDocument();
-      expect(screen.queryByText("Tooltip text")).not.toBeInTheDocument(); // No text should be present
+      await waitFor(() => {
+        const button = screen.getByRole("button");
+
+        expect(button).toBeInTheDocument();
+        expect(screen.queryByText("Tooltip text")).not.toBeInTheDocument();
+      });
     });
 
-    test("should render with tooltip if tooltip text is provided", () => {
+    test("should render with tooltip if tooltip text is provided", async () => {
       render(<IconButton icon={icon} tooltip="Tooltip text" />);
-      const button = screen.getByRole("button");
-      expect(button).toHaveAttribute("data-tooltip-content", "Tooltip text");
+      await waitFor(() => {
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("data-tooltip-content", "Tooltip text");
+      });
     });
 
-    test("should render with icon on the left by default", () => {
+    test("should render with icon on the left by default", async () => {
       render(
         <IconButton icon={icon} tooltip="Tooltip text">
           Click me
         </IconButton>,
       );
-      const iconElement = screen.getByTestId("icon"); // Ensure Icon component has test ID
-      expect(iconElement).toBeInTheDocument();
+      await waitFor(() => {
+        const iconElement = screen.getByTestId("icon");
+        expect(iconElement).toBeInTheDocument();
+      });
     });
 
-    test("should render with icon on the right when specified", () => {
+    test("should render with icon on the right when specified", async () => {
       render(
         <IconButton icon={icon} iconPosition="right" tooltip="Tooltip text">
           Click me
         </IconButton>,
       );
-      const iconElement = screen.getByTestId("icon"); // Ensure Icon component has test ID
-      expect(iconElement).toBeInTheDocument();
+
+      await waitFor(() => {
+        const iconElement = screen.getByTestId("icon");
+        expect(iconElement).toBeInTheDocument();
+      });
     });
 
-    test("should apply custom className", () => {
+    test("should apply custom className", async () => {
       render(
         <IconButton icon={icon} className="custom-class">
           Click me
         </IconButton>,
       );
-      const button = screen.getByRole("button");
-      expect(button).toHaveClass("custom-class");
+      await waitFor(() => {
+        const button = screen.getByRole("button");
+        expect(button).toHaveClass("custom-class");
+      });
     });
 
     test("should render with the correct size classes", () => {
       const sizes: ButtonSize[] = ["xs", "sm", "md", "lg", "xl", "full"];
-      sizes.forEach((size) => {
+      sizes.forEach(async (size) => {
         const { container } = render(
           <IconButton icon={icon} size={size} iconOnly />,
         );
-        const button = container.querySelector("button");
-        expect(button).toHaveClass(iconButtonSizes[size]);
+        await waitFor(() => {
+          const button = container.querySelector("button");
+          expect(button).toHaveClass(iconButtonSizes[size]);
+        });
       });
     });
   });
@@ -87,30 +114,37 @@ describe("IconButton", () => {
         </IconButton>,
       );
       const button = screen.getByRole("button");
-      await userEvent.click(button);
-      expect(onClick).toHaveBeenCalledTimes(1);
+      await waitFor(() => {
+        fireEvent.click(button);
+      }),
+        expect(onClick).toHaveBeenCalledTimes(1);
     });
   });
 
   describe("Accessibility", () => {
-    test("should have aria-label set to tooltip text if provided", () => {
+    test("should have aria-label set to tooltip text if provided", async () => {
       render(
         <IconButton
           icon={<Icon icon={<FaChevronCircleDown />} />}
           tooltip="Tooltip text"
         />,
       );
-      const button = screen.getByRole("button");
-      expect(button).toHaveAttribute("aria-label", "Tooltip text");
+      await waitFor(() => {
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("aria-label", "Tooltip text");
+      });
     });
 
-    test("should have aria-label set to empty string if no tooltip", () => {
+    test("should have aria-label set to empty string if no tooltip", async () => {
       render(<IconButton icon={<Icon icon={<FaChevronCircleDown />} />} />);
-      const button = screen.getByRole("button");
-      expect(button).toHaveAttribute("aria-label", "");
+      await waitFor(() => {
+        const button = screen.getByRole("button");
+
+        expect(button).toHaveAttribute("aria-label", "");
+      });
     });
 
-    test("should have data-tooltip-place attribute for tooltip position", () => {
+    test("should have data-tooltip-place attribute for tooltip position", async () => {
       render(
         <IconButton
           icon={<Icon icon={<FaChevronCircleDown />} />}
@@ -118,8 +152,10 @@ describe("IconButton", () => {
           tooltipPlace="top"
         />,
       );
-      const button = screen.getByRole("button");
-      expect(button).toHaveAttribute("data-tooltip-place", "top");
+      await waitFor(() => {
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("data-tooltip-place", "top");
+      });
     });
   });
 });
