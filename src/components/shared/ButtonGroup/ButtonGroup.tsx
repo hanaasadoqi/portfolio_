@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-interface ButtonGroupProps {
+export interface ButtonGroupProps {
   border?: boolean; // Whether to display a border
   orientation?: "horizontal" | "vertical"; // Layout direction
   spacing?: "sm" | "md" | "lg" | "xl"; // Tailwind spacing class
@@ -33,7 +33,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({
     },
   };
   const groupClass = clsx(
-    "inline-flex rounded-md",
+    "inline-flex items-center rounded-md",
     {
       "flex-col": orientation === "vertical",
       "flex-row": orientation === "horizontal",
@@ -46,9 +46,9 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({
   const ariaAttributes = ariaLabel ? { "aria-label": ariaLabel } : {};
 
   return (
-    <div role="group" className={groupClass} {...ariaAttributes}>
+    <ul role="group" className={groupClass} {...ariaAttributes}>
       {children}
-    </div>
+    </ul>
   );
 };
 
