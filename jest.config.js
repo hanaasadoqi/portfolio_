@@ -9,7 +9,9 @@ module.exports = {
   moduleNameMapper: {
     "\\.module\\.css$": "identity-obj-proxy",
     "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js",
+    "^@/components/(.*)$": "<rootDir>/src/components/$1",
+    "^@/mocks/(.*)$": "<rootDir>/__mocks__/$1",
   },
-  testMatch: ["**/src/components/shared/**/*.test.tsx"],
+  testMatch: ["**/src/components/**/*.test.tsx"],
   testPathIgnorePatterns: ["./node_modules/", "./next/", "./examples/"],
 };
