@@ -4,8 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
 @layer base {
   .icon-wrapper {
-    @apply h-4 w-4 md:h-6 md:w-6 lg:h-8 lg:w-8;
+    @apply h-10 w-10 md:h-8 md:w-8 lg:h-6 lg:w-6;
   }
 }

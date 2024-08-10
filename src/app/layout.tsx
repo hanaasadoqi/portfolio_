@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={clsx("relative", inter.className)}>{children}</body>
+      <body className={`relative ${inter.className}`}>{children}</body>
     </html>
   );
 }
