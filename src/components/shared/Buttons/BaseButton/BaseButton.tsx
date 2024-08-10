@@ -40,7 +40,7 @@ export interface BaseButtonProps
   [dataAtr: `data-${string}`]: any;
 }
 
-const sizeStyles: Record<ButtonSize, string> = {
+export const sizeStyles: Record<ButtonSize, string> = {
   xs: "py-0.5 px-1 gap-1",
   sm: "py-0.75 px-2 gap-2",
   md: "py-1 px-3 gap-2.5",
@@ -49,7 +49,7 @@ const sizeStyles: Record<ButtonSize, string> = {
   full: "w-full",
 };
 
-const colorStyles: Record<ButtonVariant, string> = {
+export const colorStyles: Record<ButtonVariant, string> = {
   primary:
     "rounded-md bg-gray-600 text-white border-gray-600 hover:bg-gray-500 hover:border-gray-700 focus-visible:ring-gray-700 active:bg-gray-800",
   secondary:
@@ -63,7 +63,7 @@ const colorStyles: Record<ButtonVariant, string> = {
   fab: "bg-gray-200 border-gray-100 hover:bg-gray-100 focus-visible:bg-gray-300 active:bg-gray-200",
 };
 
-const outerStyles: Record<ButtonVariant, string> = {
+export const outerStyles: Record<ButtonVariant, string> = {
   primary:
     "shadow-md hover:shadow-lg focus-visible:ring-2 focus-visible:ring-offset-2 border-2 border-gray-600",
   secondary:
@@ -75,6 +75,15 @@ const outerStyles: Record<ButtonVariant, string> = {
   link: "shadow-none border-none",
   text: "shadow-none border-none hover:shadow-md active:shadow-inner",
   fab: "shadow-md border-1 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-200 hover:shadow-lg active:shadow-inner",
+};
+
+export const textStyles: Record<ButtonSize, string> = {
+  xs: "text-sm font-light tracking-normal",
+  sm: "text-base font-normal tracking-wide",
+  md: "text-base font-medium tracking-wide",
+  lg: "text-md font-medium tracking-widest",
+  xl: "text-lg font-medium tracking-widest",
+  full: "text-lg font-medium tracking-widest",
 };
 
 const BaseButton: React.FC<BaseButtonProps> = React.memo(
@@ -101,36 +110,7 @@ const BaseButton: React.FC<BaseButtonProps> = React.memo(
     const buttonSize = useMemo(() => sizeStyles[size], [size]);
     const buttonColor = useMemo(() => colorStyles[variant], [variant]);
     const buttonOuter = useMemo(() => outerStyles[variant], [variant]);
-
-    const effectsStyles = useMemo(
-      () => ({
-        "opacity-70 cursor-wait": loading,
-        "opacity-50 cursor-not-allowed": disabled,
-      }),
-      [loading, disabled],
-    );
-
-    const animationStyles = useMemo(
-      () => "transition-colors duration-300 ease",
-      [],
-    );
-
-    const textStyles = useMemo(
-      () =>
-        clsx(
-          "antialiased",
-          variant === "link" && "hover:underline hover:underline-offset-2",
-          {
-            "text-sm font-light tracking-normal": size === "xs",
-            "text-base font-normal tracking-wide": size === "sm",
-            "text-base font-medium tracking-wider": size === "md",
-            "text-md font-medium tracking-widest": size === "lg",
-            "text-lg font-medium tracking-widest":
-              size === "xl" || size === "full",
-          },
-        ),
-      [variant, size],
-    );
+    const buttonText = useMemo(() => textStyles[size], [size]);
 
     const handleKeyPress = useCallback<
       React.KeyboardEventHandler<HTMLButtonElement>
@@ -146,13 +126,16 @@ const BaseButton: React.FC<BaseButtonProps> = React.memo(
     );
 
     const buttonStyles = clsx(
-      "focus:outline-none border inline-flex items-center justify-center whitespace-nowrap select-none",
+      "focus:outline-none border inline-flex items-center justify-center whitespace-nowrap select-none transition-colors duration-300 ease",
+      {
+        "hover:underline hover:underline-offset-2": variant === "link",
+        "opacity-50 cursor-not-allowed": disabled,
+        "opacity-70 cursor-wait": loading,
+      },
       !iconOnly && buttonSize,
       !custom && buttonColor,
       buttonOuter,
-      animationStyles,
-      !custom && textStyles,
-      !custom && effectsStyles,
+      buttonText,
       className,
     );
 
