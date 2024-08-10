@@ -7,48 +7,70 @@ export interface ButtonGroupProps {
   spacing?: "sm" | "md" | "lg" | "xl"; // Tailwind spacing class
   ariaLabel?: string; // ARIA label for accessibility
   className?: string; // Additional custom class names
-  children: React.ReactNode; // Buttons or other children elements
+  children?: React.ReactNode; // Buttons or other children elements
+  divider?: boolean;
 }
 
 const ButtonGroup: React.FC<ButtonGroupProps> = ({
-  border = true,
+  border = false,
   spacing = "md",
   orientation = "horizontal",
   ariaLabel,
-  className,
+  className = "",
   children,
+  divider = false,
 }) => {
-  const spacingStyles = {
+  const spacingClasses = {
     horizontal: {
       sm: "space-x-1",
       md: "space-x-2",
-      lg: "space-x-4",
-      xl: "space-x-6",
+      lg: "space-x-3",
+      xl: "space-x-4",
     },
     vertical: {
       sm: "space-y-1",
       md: "space-y-2",
-      lg: "space-y-4",
-      xl: "space-y-6",
+      lg: "space-y-3",
+      xl: "space-y-4",
     },
   };
+
+  const dividerStyles = {
+    horizontal: "w-full border-r border-gray-200 last:border-transparent",
+    vertical: "border-b border-gray-200 last:border-transparent",
+  };
+
   const groupClass = clsx(
-    "inline-flex items-center rounded-md",
+    "w-full h-full inline-flex justify-around items-center p-2 rounded-md overflow-hidden transition-all duration-300 ease",
     {
       "flex-col": orientation === "vertical",
       "flex-row": orientation === "horizontal",
-      "border-2 border-gray-200 p-1": border,
+      "border-2 border-gray-200": border,
     },
-    spacingStyles[orientation][spacing],
+    spacingClasses[orientation][spacing],
     className,
   );
 
+  const dividerClass = divider ? dividerStyles[orientation] : "";
+
   const ariaAttributes = ariaLabel ? { "aria-label": ariaLabel } : {};
 
+  const childrenWithDividers = React.Children.map(children, (child, index) => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child as React.ReactElement, {
+        className: clsx(
+          dividerClass,
+          (child as React.ReactElement<{ className?: string }>).props.className,
+        ),
+      });
+    }
+    return child;
+  });
+
   return (
-    <ul role="group" className={groupClass} {...ariaAttributes}>
-      {children}
-    </ul>
+    <div role="group" className={groupClass} {...ariaAttributes}>
+      {childrenWithDividers}
+    </div>
   );
 };
 
