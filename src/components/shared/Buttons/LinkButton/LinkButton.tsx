@@ -12,7 +12,7 @@ import clsx from "clsx";
 
 export type LinkButtonVariant = "text" | "ghost" | "link";
 
-interface LinkButtonProps
+export interface LinkButtonProps
   extends Omit<
     IconButtonProps,
     "type" | "role" | "onClick" | "size" | "variant" | "icon"
@@ -56,8 +56,8 @@ const LinkButton: React.FC<LinkButtonProps> = ({
     linkText,
     "transition-colors transition-shadow duration-300 ease",
     {
-      "opacity-50 cursor-not-allowed": disabled || !href,
-      "hover:underline hover:underline-offset-2": variant === "link",
+      "hover:underline hover:underline-offset-2":
+        variant === "link" && !disabled,
     },
     className,
   );
@@ -66,7 +66,9 @@ const LinkButton: React.FC<LinkButtonProps> = ({
     <Link
       href={href}
       onClick={onClick}
-      className={linkStyles}
+      className={
+        disabled || !href ? "cursor-not-allowed opacity-50" : linkStyles
+      }
       target={target}
       role="link"
       aria-label={ariaLabel}
