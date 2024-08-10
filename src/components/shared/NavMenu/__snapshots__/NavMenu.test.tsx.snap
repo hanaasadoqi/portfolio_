@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavItem snapshot test for NavItem 1`] = `
+<DocumentFragment>
+  <a
+    aria-disabled="false"
+    aria-label="About"
+    href="#about"
+  >
+    About
+  </a>
+</DocumentFragment>
+`;
+
+exports[`NavMenu Snapshot test for NavMenu 1`] = `
+<DocumentFragment>
+  <nav>
+    <div
+      class="inline-flex space-x-2"
+      role="group"
+    >
+      <a
+        aria-current="page"
+        aria-disabled="false"
+        aria-label="About"
+        href="#about"
+      >
+        About
+      </a>
+      <a
+        aria-current="page"
+        aria-disabled="false"
+        aria-label="Contact"
+        href="#contact"
+      >
+        Contact
+      </a>
+    </div>
+  </nav>
+</DocumentFragment>
+`;
