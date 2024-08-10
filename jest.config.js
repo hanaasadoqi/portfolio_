@@ -14,4 +14,5 @@ module.exports = {
   },
   testMatch: ["**/src/components/**/*.test.tsx"],
   testPathIgnorePatterns: ["./node_modules/", "./next/", "./examples/"],
+  transformIgnorePatterns: ["/node_modules/(?!sinon)"],
 };
