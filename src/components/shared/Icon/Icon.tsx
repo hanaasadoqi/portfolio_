@@ -35,6 +35,11 @@ const Icon: React.FC<IconProps> = ({
 }) => {
   const validTypes: IconType[] = ["svg", "react-icons"];
 
+  if (!validTypes.includes(type)) {
+    console.warn(`Invalid type "${type}" provided to Icon component.`);
+    throw new Error(`Invalid type "${type}" provided to Icon component`);
+  }
+
   const iconSizes: Record<ButtonSize, string> = {
     xs: "12px",
     sm: "16px",
@@ -43,11 +48,6 @@ const Icon: React.FC<IconProps> = ({
     xl: "32px",
     full: "auto",
   };
-
-  if (!validTypes.includes(type)) {
-    console.warn(`Invalid type "${type}" provided to Icon component.`);
-    return null;
-  }
 
   const sharedProps = {
     "aria-hidden": ariaHidden,
@@ -68,11 +68,11 @@ const Icon: React.FC<IconProps> = ({
   };
 
   const renderReactIcon = () => {
+    const message =
+      "Icon component requires an icon prop when type is react-icons";
     if (!icon && !loading) {
-      console.error(
-        "Icon component requires an icon prop when type is react-icons",
-      );
-      return null;
+      console.error(message);
+      throw new Error(message);
     }
 
     const IconComponent = loading ? (
@@ -106,8 +106,9 @@ const Icon: React.FC<IconProps> = ({
 
   const renderSVGIcon = () => {
     if (!children) {
-      console.error("Icon component requires children when type is svg");
-      return null;
+      const message = "Icon component requires children when type is svg";
+      console.error(message);
+      throw new Error(message);
     }
 
     return (

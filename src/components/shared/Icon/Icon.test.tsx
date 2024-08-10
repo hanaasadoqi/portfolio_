@@ -1,8 +1,7 @@
 import { render, screen, cleanup } from "@testing-library/react";
-import renderer from "react-test-renderer";
 import { axe, toHaveNoViolations } from "jest-axe";
 import Icon from "./Icon";
-import { FaDownload, FaSpinner } from "react-icons/fa";
+import { FaDownload } from "react-icons/fa";
 
 expect.extend(toHaveNoViolations);
 
@@ -97,29 +96,29 @@ describe("Icon Component", () => {
       expect(iconElement).not.toHaveAttribute("aria-hidden");
     });
 
-    // it("throws an error when icon is not provided and does not render anything", () => {
-    //   const consoleError = jest
-    //     .spyOn(console, "error")
-    //     .mockImplementation(() => {});
+    it("throws an error when icon is not provided and does not render anything", () => {
+      const consoleError = jest
+        .spyOn(console, "error")
+        .mockImplementation(() => {});
 
-    //   const renderIcon = () => {
-    //     try {
-    //       render(<Icon type="react-icons" />);
-    //     } catch (error) {
-    //       return error;
-    //     }
-    //   };
+      const renderIcon = () => {
+        try {
+          render(<Icon type="react-icons" />);
+        } catch (error) {
+          return error;
+        }
+      };
 
-    //   const error = renderIcon();
+      const error = renderIcon();
 
-    //   // expect(error).toBeInstanceOf(Error);
-    //   expect((error as Error).message).toBe(
-    //     "Icon component requires an icon prop when type is react-icons",
-    //   );
-    //   expect(consoleError).toHaveBeenCalled();
+      expect(error).toBeInstanceOf(Error);
+      expect((error as Error).message).toBe(
+        "Icon component requires an icon prop when type is react-icons",
+      );
+      expect(consoleError).toHaveBeenCalled();
 
-    //   consoleError.mockRestore();
-    // });
+      consoleError.mockRestore();
+    });
 
     test("accessible icons using react-icons pass axe", async () => {
       const { container } = render(
@@ -217,29 +216,29 @@ describe("Icon Component", () => {
       expect(titleElement).toHaveAttribute("id", "svg-title");
     });
 
-    // it("throws an error when children is not provided and does not render anything", () => {
-    //   const consoleError = jest
-    //     .spyOn(console, "error")
-    //     .mockImplementation(() => {});
+    it("throws an error when children is not provided and does not render anything", () => {
+      const consoleError = jest
+        .spyOn(console, "error")
+        .mockImplementation(() => {});
 
-    //   const renderIcon = () => {
-    //     try {
-    //       render(<Icon type="svg" />);
-    //     } catch (error) {
-    //       return error;
-    //     }
-    //   };
+      const renderIcon = () => {
+        try {
+          render(<Icon type="svg" />);
+        } catch (error) {
+          return error;
+        }
+      };
 
-    //   const error = renderIcon();
+      const error = renderIcon();
 
-    //   // expect(error).toBeInstanceOf(Error);
-    //   expect((error as Error).message).toBe(
-    //     "Icon component requires children when type is svg",
-    //   );
-    //   expect(consoleError).toHaveBeenCalled();
+      // expect(error).toBeInstanceOf(Error);
+      expect((error as Error).message).toBe(
+        "Icon component requires children when type is svg",
+      );
+      expect(consoleError).toHaveBeenCalled();
 
-    //   consoleError.mockRestore();
-    // });
+      consoleError.mockRestore();
+    });
 
     test("accessible SVG icons pass axe", async () => {
       const { container } = render(
