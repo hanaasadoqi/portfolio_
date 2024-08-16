@@ -1,9 +1,12 @@
-import { hostname } from "os";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{}],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "localhost:3000",
+      },
+    ],
   },
 };
 
