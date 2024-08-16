@@ -18,7 +18,7 @@ export const navItems = [
     label: "Skills",
   },
   {
-    href: "#work",
+    href: "#experience",
     label: "Experience",
   },
   {
@@ -69,6 +69,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       onClick={onClick}
       className={clsx("flex items-center justify-center", className)}
       size="lg"
+      scroll={true}
       {...rest}
     >
       {children || label}
@@ -98,7 +99,10 @@ const NavMenu: React.FC<NavMenuProps> = ({
             label={item.label}
             href={item.href}
             ariaLabel={item.ariaLabel}
-            className={item.className}
+            className={clsx(
+              "z-50 rounded-md active:bg-primary",
+              item.className,
+            )}
             disabled={item.disabled}
             icon={item.icon}
             iconOnly={item.iconOnly}

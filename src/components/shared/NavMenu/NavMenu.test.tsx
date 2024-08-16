@@ -249,6 +249,78 @@ describe("NavMenu", () => {
     });
   });
 });
+/**
+ * Test suite for the NavItem component.
+ */
+
+describe("NavItem", () => {
+  /**
+   * Test to check if the NavItem renders with the correct label.
+   */
+  test("renders with correct label", () => {
+    render(<NavItem href="#about" label="About" />);
+    expect(screen.getByText("About")).toBeInTheDocument();
+  });
+
+  /**
+   * Test to ensure an error is thrown if the href prop is missing.
+   */
+  test("throws error if href is missing", () => {
+    const spy = jest.spyOn(console, "error").mockImplementation(() => {});
+
+    expect(() => render(<NavItem label="About" />)).toThrow();
+
+    spy.mockRestore();
+  });
+
+  /**
+   * Test to check if a custom aria-label is applied correctly.
+   */
+  test("applies custom aria-label", () => {
+    render(<NavItem href="#about" label="About" ariaLabel="Custom Label" />);
+    const link = screen.getByText("About");
+    expect(link).toHaveAttribute("aria-label", "Custom Label");
+  });
+
+  /**
+   * Test to ensure the NavItem can render custom children.
+   */
+  test("renders with custom children", () => {
+    render(
+      <NavItem href="#about" label="About">
+        <span>Custom Content</span>
+      </NavItem>,
+    );
+    expect(screen.getByText("Custom Content")).toBeInTheDocument();
+  });
+
+  /**
+   * Test to check if an icon is rendered when provided.
+   */
+  test("renders with icon if provided", () => {
+    render(<NavItem href="#about" label="About" icon={<FaHamburger />} />);
+  });
+
+  /**
+   * Snapshot test for the NavItem component.
+   */
+  test("snapshot test for NavItem", () => {
+    const { asFragment } = render(<NavItem href="#about" label="About" />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  /**
+   * Test to ensure NavItem triggers event handlers correctly.
+   */
+  test("NavItem triggers event handlers correctly", async () => {
+    const handleClick = jest.fn();
+    render(<NavItem href="#about" label="About" onClick={handleClick} />);
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("About"));
+      expect(handleClick).toHaveBeenCalled();
+    });
+  });
+});
 
 describe("NavItem", () => {
   test("renders with correct label", () => {

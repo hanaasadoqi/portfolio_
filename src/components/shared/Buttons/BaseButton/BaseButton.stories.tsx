@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import BaseButton from "./BaseButton";
+import BaseButton, { BaseButtonProps } from "./BaseButton";
 
 const meta: Meta<typeof BaseButton> = {
   title: "Components/Buttons/BaseButton",
@@ -79,7 +79,7 @@ export const LargeButton: Story = {
 };
 
 export const FullWidthButton: Story = {
-  render: (args) => (
+  render: (args: BaseButtonProps) => (
     <div className="w-64">
       <BaseButton {...args} />
     </div>

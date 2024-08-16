@@ -24,6 +24,7 @@ export interface LinkButtonProps
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "full";
   ariaCurrent?: boolean;
   icon?: React.ReactElement | React.ReactElement<SVGSVGElement>;
+  scroll?: boolean;
 }
 
 const LinkButton: React.FC<LinkButtonProps> = ({
@@ -39,6 +40,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({
   variant = "text",
   icon,
   iconOnly = false,
+  scroll = false,
 }) => {
   const linkSize = useMemo(
     () => (iconOnly ? iconButtonSizes[size] : sizeStyles[size]),
@@ -74,6 +76,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({
       aria-label={ariaLabel}
       aria-disabled={disabled || !href}
       aria-current={ariaCurrent ? "page" : undefined}
+      scroll={scroll}
     >
       {icon && <Icon icon={icon} size={size} className={className} />}
       {!iconOnly && children}

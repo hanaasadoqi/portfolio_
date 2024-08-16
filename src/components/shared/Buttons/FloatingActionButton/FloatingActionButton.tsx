@@ -24,7 +24,7 @@ export const positionClasses: Record<FabPosition, string> = {
   "center-left": "top-1/2 left-4 transform -translate-y-1/2",
 };
 
-interface FloatingActionButtonProps extends IconButtonProps {
+export interface FloatingActionButtonProps extends IconButtonProps {
   position?: FabPosition;
 }
 

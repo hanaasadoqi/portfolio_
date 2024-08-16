@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import FloatingActionButton from "./FloatingActionButton";
+import FloatingActionButton, {
+  FloatingActionButtonProps,
+} from "./FloatingActionButton";
 import { FaChevronDown, FaPlus, FaEdit } from "react-icons/fa";
 
 // Define a template for the FloatingActionButton stories
 const Template: StoryObj<typeof FloatingActionButton> = {
-  render: (args) => (
+  render: (args: FloatingActionButtonProps) => (
     <div className="relative h-[50vh] w-screen">
       <FloatingActionButton {...args} />
     </div>
