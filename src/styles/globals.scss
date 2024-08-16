@@ -21,10 +21,6 @@ body {
 }
 
 @layer base {
-  .icon-wrapper {
-    @apply h-10 w-10 md:h-8 md:w-8 lg:h-6 lg:w-6;
-  }
-
   :root {
     --primary: "#f1f5f9";
     --primary-50: "#f8fafc";

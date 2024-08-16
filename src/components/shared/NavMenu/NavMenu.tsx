@@ -2,7 +2,6 @@ import React from "react";
 import {
   ButtonGroup,
   ButtonGroupProps,
-  ButtonSize,
   LinkButton,
   LinkButtonProps,
 } from "../../shared";
@@ -64,15 +63,15 @@ export const NavItem: React.FC<NavItemProps> = ({
 
   return (
     <LinkButton
-      ariaLabel={ariaLabel || label}
+      ariaLabel={ariaLabel ?? label}
       href={href}
       onClick={onClick}
       className={clsx("flex items-center justify-center", className)}
-      size="lg"
+      size="md"
       scroll={true}
       {...rest}
     >
-      {children || label}
+      {children ?? label}
     </LinkButton>
   );
 };
