@@ -1,0 +1,76 @@
+[
+  {
+    "company": "Stitch Fix",
+    "role": "Software Engineer II",
+    "location": "New York, NY",
+    "dates": "Jan 2022 - Jan 2023",
+    "logo": "",
+    "description": [
+      "Enhanced and maintained an internal web application for the Merchandising team using full-stack Ruby on Rails, JavaScript, and React.",
+      "Collaborated cross-departmentally with Merch, IT, and Product teams to resolve complex data issues.",
+      "Developed and implemented features based on user feedback, significantly reducing the Merch team’s workload by over 300 hours monthly.",
+      "Contributed to redesigning and rebuilding the internal web application, focusing on scalable and maintainable solutions.",
+      "Authored and maintained comprehensive technical documentation."
+    ]
+  },
+  {
+    "company": "Pandora Music",
+    "role": "Apprentice Software Engineer",
+    "location": "New York, NY",
+    "dates": "Apr 2021 - Nov 2021",
+    "logo": "",
+    "description": [
+      "Led the development of the web application’s social sharing features, collaborating effectively across product, design, and platform teams.",
+      "Contributed to key projects using React, TypeScript, and GraphQL.",
+      "Handled tasks such as unit/integration testing, refactoring, and code reviews to ensure high-quality code and functionality.",
+      "Participated in Agile Scrum processes, contributing insights during stand-ups and sprint meetings."
+    ]
+  },
+  {
+    "company": "Flatiron School",
+    "role": "Online Cohort Lead",
+    "location": "New York, NY",
+    "dates": "Aug 2020 - Jan 2022",
+    "logo": "",
+    "description": [
+      "Delivered interactive live lectures on full-stack web development, covering JavaScript, React, Redux, Ruby on Rails, SQL, and other web technologies.",
+      "Conducted weekly one-on-one mentoring sessions, offering personalized guidance and feedback to students.",
+      "Successfully guided over 40 students in developing personal projects from ideation to deployment."
+    ]
+  },
+  {
+    "company": "WeWork",
+    "role": "Software Engineering Coach",
+    "location": "Atlanta, Georgia",
+    "dates": "Apr 2019 - Apr 2020",
+    "logo": "",
+    "description": [
+      "Provided one-on-one coaching and feedback on technical concepts, coding best practices, and troubleshooting techniques.",
+      "Delivered classroom lectures on OO Relationships, React, Redux, Ruby on Rails, and other web technologies.",
+      "Conducted code reviews and feedback sessions, helping students refine their coding style."
+    ]
+  },
+  {
+    "company": "Benvenuti Public Relations",
+    "role": "Associate Publicist",
+    "location": "New York, NY",
+    "dates": "October 2017 - August 2018",
+    "logo": "",
+    "description": [
+      "Actively engaged in new business development process: source leads, create and deliver presentations, edit proposals, follow up and close deals.",
+      "Created content and managed social media presence on a variety of platforms for clients.",
+      "Consistently developed relationships with top-tier local, national, and international media contacts for pitches."
+    ]
+  },
+  {
+    "company": "Ventrop Engineering Consulting Group, PLLC",
+    "role": "Mechanical Engineering Intern",
+    "location": "New York, NY",
+    "dates": "May 2012 - August 2015",
+    "logo": "",
+    "description": [
+      "Designed and drafted plumbing, electrical, sprinkler, mechanical and fire alarm engineering plans.",
+      "Collaborated with architectural firms in order to ensure that all components worked together seamlessly."
+    ]
+  }
+]

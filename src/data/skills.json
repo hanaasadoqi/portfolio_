@@ -1,0 +1,191 @@
+[
+  {
+    "name": "JavaScript",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix", "Pandora Music"],
+    "projects": ["Transl8", "Lit", "Lit Rides"],
+    "tags": ["Frontend", "Backend", "Full-Stack", "Programming Language", "ES6+"],
+    "icon": "SiJavascript",
+    "documentation": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+  },
+  {
+    "name": "React",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix", "Pandora Music"],
+    "projects": ["Transl8", "Lit"],
+    "tags": ["Frontend", "JavaScript Framework", "UI Library"],
+    "icon": "FaReact",
+    "documentation": "https://reactjs.org/docs/getting-started.html"
+  },
+  {
+    "name": "TypeScript",
+    "startYear": 2021,
+    "experience": ["Pandora Music"],
+    "projects": ["Synapcity", "Algorithm Visualizer"],
+    "tags": ["Programming Language", "JavaScript", "Typed Language"],
+    "icon": "SiTypescript",
+    "documentation": "https://www.typescriptlang.org/docs/"
+  },
+  {
+    "name": "Redux",
+    "startYear": 2018,
+    "experience": ["Flatiron School"],
+    "projects": ["Lit"],
+    "tags": ["State Management", "JavaScript", "React"],
+    "icon": "SiRedux",
+    "documentation": "https://redux.js.org/introduction/getting-started"
+  },
+  {
+    "name": "Ruby on Rails",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix"],
+    "projects": ["Transl8", "Lit", "Lit Rides"],
+    "tags": ["Backend", "Web Framework", "Ruby"],
+    "icon": "SiRubyonrails",
+    "documentation": "https://guides.rubyonrails.org/"
+  },
+  {
+    "name": "Next.js",
+    "startYear": 2022,
+    "experience": ["Personal Projects"],
+    "projects": ["Synapcity"],
+    "tags": ["Frontend", "React Framework", "SSR", "SSG"],
+    "icon": "SiNextdotjs",
+    "documentation": "https://nextjs.org/docs"
+  },
+  {
+    "name": "Node.js",
+    "startYear": 2021,
+    "experience": ["Personal Projects"],
+    "projects": ["Code Library"],
+    "tags": ["Backend", "JavaScript Runtime"],
+    "icon": "FaNodeJs",
+    "documentation": "https://nodejs.org/en/docs/"
+  },
+  {
+    "name": "Express.js",
+    "startYear": 2021,
+    "experience": ["Personal Projects"],
+    "projects": ["Code Library"],
+    "tags": ["Backend", "Web Framework", "Node.js"],
+    "icon": "SiExpress",
+    "documentation": "https://expressjs.com/en/starter/installing.html"
+  },
+  {
+    "name": "SQL",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix"],
+    "projects": ["Lit Rides"],
+    "tags": ["Database", "Relational Database", "SQL"],
+    "icon": "SiPostgresql",
+    "documentation": "https://www.postgresql.org/docs/"
+  },
+  {
+    "name": "MySQL",
+    "startYear": 2018,
+    "experience": ["Personal Projects"],
+    "projects": ["Code Library"],
+    "tags": ["Database", "Relational Database", "SQL"],
+    "icon": "SiMysql",
+    "documentation": "https://dev.mysql.com/doc/"
+  },
+  {
+    "name": "PostgreSQL",
+    "startYear": 2018,
+    "experience": ["Personal Projects"],
+    "projects": ["Lit Rides"],
+    "tags": ["Database", "Relational Database", "SQL"],
+    "icon": "SiPostgresql",
+    "documentation": "https://www.postgresql.org/docs/"
+  },
+  {
+    "name": "GraphQL",
+    "startYear": 2021,
+    "experience": ["Pandora Music"],
+    "projects": ["Synapcity"],
+    "tags": ["API", "Backend", "Query Language"],
+    "icon": "SiGraphql",
+    "documentation": "https://graphql.org/learn/"
+  },
+  {
+    "name": "HTML/CSS",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix"],
+    "projects": ["Transl8", "Lit"],
+    "tags": ["Frontend", "Markup Language", "Styling"],
+    "icon": "FaHtml5",
+    "documentation": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+  },
+  {
+    "name": "Tailwind CSS",
+    "startYear": 2022,
+    "experience": ["Personal Projects"],
+    "projects": ["Synapcity"],
+    "tags": ["Frontend", "CSS Framework", "Utility-First"],
+    "icon": "SiTailwindcss",
+    "documentation": "https://tailwindcss.com/docs"
+  },
+  {
+    "name": "RESTful APIs",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix", "Pandora Music"],
+    "projects": ["Code Library", "Transl8"],
+    "tags": ["API", "Backend", "Web Services"],
+    "icon": "FaServer",
+    "documentation": "https://restfulapi.net/"
+  },
+  {
+    "name": "Agile/Scrum",
+    "startYear": 2019,
+    "experience": ["Stitch Fix", "Pandora Music"],
+    "projects": [],
+    "tags": ["Project Management", "Team Collaboration", "Agile Methodology"],
+    "icon": "FaClipboardCheck",
+    "documentation": "https://www.scrum.org/resources/what-is-scrum"
+  },
+  {
+    "name": "Git",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix", "Pandora Music"],
+    "projects": ["Transl8", "Lit", "Synapcity"],
+    "tags": ["Version Control", "Collaboration", "Source Control"],
+    "icon": "FaGitAlt",
+    "documentation": "https://git-scm.com/doc"
+  },
+  {
+    "name": "Webpack",
+    "startYear": 2019,
+    "experience": ["Personal Projects"],
+    "projects": [],
+    "tags": ["Frontend", "Module Bundler", "JavaScript"],
+    "icon": "SiWebpack",
+    "documentation": "https://webpack.js.org/concepts/"
+  },
+  {
+    "name": "Docker",
+    "startYear": 2020,
+    "experience": ["Personal Projects"],
+    "projects": [],
+    "tags": ["DevOps", "Containerization", "CI/CD"],
+    "icon": "FaDocker",
+    "documentation": "https://docs.docker.com/get-started/"
+  },
+  {
+    "name": "TDD/BDD",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix"],
+    "projects": ["Synapcity"],
+    "tags": ["Testing", "Best Practices", "Development Methodology"],
+    "icon": "SiJest",
+    "documentation": "https://en.wikipedia.org/wiki/Behavior-driven_development"
+  },
+  {
+    "name": "Jest",
+    "startYear": 2018,
+    "experience": ["Stitch Fix"],
+    "projects": ["Synapcity"],
+    "tags": ["Testing", "JavaScript", "Unit Testing"],
+    "icon": "SiJest",
+    "documentation": "https://jestjs.io/docs/getting-started"
+  }
+]
