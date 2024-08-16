@@ -55,10 +55,6 @@ const Icon: React.FC<IconProps> = ({
     role,
     "data-testid": "icon-wrapper",
     className: clsx("icon-wrapper inline-block", className),
-    style: {
-      width: size ? iconSizes[size] : "auto",
-      height: size ? iconSizes[size] : "auto",
-    },
   };
 
   const iconStyle = {

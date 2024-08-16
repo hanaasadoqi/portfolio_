@@ -22,7 +22,9 @@ describe("DropdownMenu", () => {
     const button = screen.getByText("Menu");
     fireEvent.click(button);
 
-    expect(await screen.findByText("Option 1")).toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.getByText("Option 1")).toBeInTheDocument(),
+    );
   });
 
   it("calls onClick handler and closes menu on item click", async () => {

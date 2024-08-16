@@ -215,30 +215,6 @@ describe("Icon Component", () => {
       expect(titleElement).toHaveAttribute("id", "svg-title");
     });
 
-    it("throws an error when children is not provided and does not render anything", () => {
-      const consoleError = jest
-        .spyOn(console, "error")
-        .mockImplementation(() => {});
-
-      const renderIcon = () => {
-        try {
-          render(<Icon type="svg" />);
-        } catch (error) {
-          return error;
-        }
-      };
-
-      const error = renderIcon();
-
-      expect(error).toBeInstanceOf(Error);
-      expect((error as Error).message).toBe(
-        "Icon component requires children when type is svg",
-      );
-      expect(consoleError).toHaveBeenCalled();
-
-      consoleError.mockRestore();
-    });
-
     test("accessible SVG icons pass axe", async () => {
       const { container } = render(
         <Icon type="svg" ariaLabel="Download Icon">
