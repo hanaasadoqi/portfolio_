@@ -57,13 +57,22 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="absolute left-0 right-0 flex items-center justify-between space-x-4 border-b p-3 drop-shadow-md md:space-x-8 lg:space-x-12">
+    <header
+      id="nav"
+      className="fixed left-0 right-0 flex items-center justify-between space-x-4 border-b bg-white/25 p-3 bg-blend-lighten drop-shadow-md backdrop-blur-3xl md:space-x-8 lg:space-x-12"
+    >
       <div id="logo-container">
-        <LinkButton icon={<FaHome />} href="/" iconOnly size="xl" />
+        <LinkButton
+          icon={<FaHome />}
+          href="/#hero"
+          scroll={true}
+          iconOnly
+          size="xl"
+        />
       </div>
       <NavMenu
         links={navLinks}
-        className="ease hidden w-full flex-1 flex-nowrap items-center justify-evenly p-1 transition-transform duration-300 lg:flex"
+        className="ease relative hidden w-full flex-1 flex-nowrap items-center justify-evenly p-1 backdrop-blur-sm transition-transform duration-300 lg:flex"
       />
       <div id="nav-icon-menu">
         <ButtonGroup spacing="md" border divider>
