@@ -1,4 +1,6 @@
-import React, { useMemo, useCallback } from "react";
+"use client";
+
+import React, { useMemo, useCallback, useEffect } from "react";
 import clsx from "clsx";
 
 export type ButtonType = "button" | "reset" | "submit";
@@ -14,7 +16,7 @@ export type ButtonVariant =
 export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl" | "full";
 
 export interface BaseButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends React.HTMLAttributes<HTMLButtonElement> {
   type?: ButtonType;
   role?: ButtonRole;
   tabIndex?: number;
@@ -148,6 +150,15 @@ const BaseButton: React.FC<BaseButtonProps> = React.memo(
       "aria-haspopup": ariaHasPopup,
     };
 
+    useEffect(() => {
+      console.log(
+        "Primary color:",
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--primary",
+        ),
+      );
+    }, []);
+
     return (
       <button
         type={type}
@@ -158,6 +169,7 @@ const BaseButton: React.FC<BaseButtonProps> = React.memo(
         {...rest}
         onKeyDown={handleKeyPress}
         onClick={onClick}
+        data-id="skills"
       >
         {loading ? "Loading..." : children}
       </button>
