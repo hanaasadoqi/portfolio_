@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useMemo } from "react";
 import { IconContext } from "react-icons";
 import clsx from "clsx";
 import { IconLibrary } from "./icons";
@@ -33,46 +35,50 @@ const Icon: React.FC<IconProps> = ({
   role = "img",
   loading = false,
 }) => {
-  const validTypes: IconType[] = ["svg", "react-icons"];
+  const iconSizes = useMemo(
+    () => ({
+      xs: "20px",
+      sm: "24px",
+      md: "28px",
+      lg: "32px",
+      xl: "36px",
+      full: "100%",
+    }),
+    [],
+  );
+
+  const validTypes: IconType[] = useMemo(() => ["svg", "react-icons"], []);
 
   if (!validTypes.includes(type)) {
     console.warn(`Invalid type "${type}" provided to Icon component.`);
     throw new Error(`Invalid type "${type}" provided to Icon component`);
   }
 
-  const iconSizes: Record<ButtonSize, string> = {
-    xs: "20px",
-    sm: "24px",
-    md: "28px",
-    lg: "32px",
-    xl: "36px",
-    full: "auto",
-  };
+  const computedSize = useMemo(
+    () => (size ? iconSizes[size] : "auto"),
+    [size, iconSizes],
+  );
 
   const sharedProps = {
     "aria-hidden": ariaHidden,
     "aria-label": ariaLabel,
     role,
     "data-testid": "icon-wrapper",
-    className: clsx("icon-wrapper inline-block", className),
+    className: clsx("icon-wrapper flex items-center justify-center", className),
   };
 
-  const iconStyle = {
-    color: "currentColor",
-    fill: "currentColor",
-    ...style,
-  };
+  const iconStyle = useMemo(
+    () => ({
+      color: "currentColor",
+      fill: "currentColor",
+      ...style,
+    }),
+    [style],
+  );
 
   const renderReactIcon = () => {
-    const message =
-      "Icon component requires an icon prop when type is react-icons";
-    if (!icon && !loading) {
-      console.error(message);
-      throw new Error(message);
-    }
-
     const IconComponent = loading ? (
-      <IconLibrary.loading
+      <IconLibrary.Loading
         className="animate-spin transition-transform duration-500"
         data-testid="spinner"
       />
@@ -89,7 +95,7 @@ const Icon: React.FC<IconProps> = ({
         <IconContext.Provider
           value={{
             style: iconStyle,
-            size: size ? iconSizes[size] : "auto",
+            size: computedSize,
           }}
         >
           {React.cloneElement(IconComponent as React.ReactElement, {
@@ -114,8 +120,8 @@ const Icon: React.FC<IconProps> = ({
             ? React.cloneElement(child as React.ReactElement, {
                 style: {
                   ...iconStyle,
-                  width: size ? iconSizes[size] : "auto",
-                  height: size ? iconSizes[size] : "auto",
+                  width: computedSize,
+                  height: computedSize,
                 },
                 tabIndex: -1,
                 "aria-labelledby": ariaLabel ? "svg-title" : undefined,
@@ -137,14 +143,7 @@ const Icon: React.FC<IconProps> = ({
     );
   };
 
-  if (type === "react-icons") {
-    return renderReactIcon();
-  } else if (type === "svg") {
-    return renderSVGIcon();
-  } else {
-    console.error("Invalid type provided");
-    return null;
-  }
+  return type === "react-icons" ? renderReactIcon() : renderSVGIcon();
 };
 
 export default Icon;
