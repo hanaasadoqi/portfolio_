@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react";
-import "../src/styles/globals.css";
+import "../src/styles/globals.scss";
 
 const preview: Preview = {
   parameters: {
@@ -10,7 +10,7 @@ const preview: Preview = {
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
 export default preview;
