@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowJs": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -10,5 +10,5 @@
     "sourceMap": true,
     "target": "es5"
   },
-  "include": [ "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx" ]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
 }
