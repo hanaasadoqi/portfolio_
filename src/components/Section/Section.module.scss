@@ -1,31 +1,31 @@
 @tailwind utilities;
 
 ._component {
-  @apply min-h-screen w-screen bg-gradient-to-b from-primary to-secondary px-6 py-12;
+  @apply w-screen px-6 py-12;
   @apply flex flex-col items-center justify-center;
-  @apply text-center text-primary95;
+  // @apply text--9050 text-center;
 }
 
 .title {
-  @apply mb-6 text-4xl font-bold text-primary95;
+  // @apply text-primary-950;
 }
 
 .subtitle {
-  @apply mb-4 text-2xl font-semibold text-primary80;
+  // @apply text-primary-800 mb-4 text-2xl font-semibold;
 }
 
 .description {
-  @apply mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-gray-700;
+  // @apply mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-gray-700;
 }
 
 .button {
-  @apply bg-gradient-to-r from-primary80 to-secondary80;
-  @apply text-2xl font-semibold -tracking-wider text-white;
+  @apply from-primary-800 to-secondary-800 bg-gradient-to-r;
+  // @apply text-2xl font-semibold -tracking-wider text-white;
   @apply rounded-full px-3 py-2;
   @apply transition-colors duration-300 ease-linear;
 
   &:hover {
-    @apply from-secondary80 to-primary80;
+    @apply from-secondary-800 to-primary-800;
     @apply scale-105;
   }
 }
