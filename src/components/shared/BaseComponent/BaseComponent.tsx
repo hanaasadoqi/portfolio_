@@ -5,58 +5,97 @@ import React, {
   ForwardedRef,
   forwardRef,
   HTMLProps,
-} from "react";
-import clsx from "clsx";
-import PropTypes from "prop-types";
-import { BaseComponentProps } from "./BaseComponent.styles";
+  useId,
+} from 'react'
+import clsx from 'clsx'
+import {
+  BaseComponentProps,
+  ComponentSize,
+  ComponentVariant,
+} from './BaseComponent.types'
+import {
+  sizeStyles,
+  colorStyles,
+  outerStyles,
+  roundedStyles,
+  disabledStyles,
+} from './baseStyles'
 
-// Default component implementation with ref forwarding
+const voidElements = [
+  'input',
+  'img',
+  'textarea',
+  'br',
+  'hr',
+  'meta',
+  'link',
+  'source',
+  'track',
+  'embed',
+  'area',
+  'base',
+  'col',
+  'param',
+  'wbr',
+]
+
 const BaseComponent = forwardRef(
-  <T extends ElementType = "div">(
+  <T extends ElementType = 'div'>(
     {
-      as: Component = "div" as T,
+      as: Component = 'div' as T,
       children,
       className,
-      variant = "primary", // Default variant
-      aria,
+      variant = 'primary',
+      size = 'md',
+      rounded = 'md',
+      disabled = false,
+      ariaProps = {},
       data,
       ...rest
     }: ComponentProps<T> & BaseComponentProps<T>,
-    ref: ForwardedRef<Element>,
+    ref: ForwardedRef<Element>
   ) => {
-    // Combine class names, including variant-based ones if applicable
-    const combinedClassName = clsx(className, {
-      "variant-primary": variant === "primary",
-      "variant-secondary": variant === "secondary",
-      "variant-tertiary": variant === "tertiary",
-    });
+    const id = useId()
 
-    // Pass all props except `aria` and `data` to the component
-    return (
-      <Component
-        ref={ref}
-        {...aria}
-        {...data}
-        className={combinedClassName}
-        {...(rest as DetailedHTMLProps<HTMLProps<T>, T>)}
-      >
-        {children}
-      </Component>
-    );
-  },
-);
+    const isVoidElement = voidElements.includes(Component as string)
 
-// Explicitly set display name for better debugging
-BaseComponent.displayName = "BaseComponent";
+    const combinedClassName = clsx(
+      className,
+      sizeStyles[size as ComponentSize],
+      roundedStyles[rounded as keyof typeof roundedStyles],
+      {
+        [outerStyles[variant as ComponentVariant]]: !disabled,
+        [colorStyles[variant as ComponentVariant]]: !disabled,
+        [disabledStyles]: disabled, // Ensures disabled styles take precedence
+      }
+    )
 
-// PropTypes for runtime validation
-BaseComponent.propTypes = {
-  as: PropTypes.elementType,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  variant: PropTypes.oneOf(["primary", "secondary", "tertiary"]),
-  aria: PropTypes.object,
-  data: PropTypes.object,
-};
+    if (!children) {
+      return React.createElement(
+        Component,
+        {
+          ref,
+          className: clsx(className),
+          ...rest,
+        },
+        !isVoidElement ? children : undefined // Only pass children if it's not a void element
+      )
+    } else {
+      return (
+        <Component
+          ref={ref}
+          id={id}
+          {...ariaProps}
+          {...data}
+          className={combinedClassName}
+          aria-disabled={disabled}
+          {...(rest as DetailedHTMLProps<HTMLProps<T>, T>)}
+        >
+          {!isVoidElement && children}
+        </Component>
+      )
+    }
+  }
+)
 
-export default BaseComponent;
+export default BaseComponent
