@@ -1,118 +1,56 @@
-import React from "react";
+import React from 'react'
+import clsx from 'clsx'
 import {
   ButtonGroup,
   ButtonGroupProps,
   LinkButton,
   LinkButtonProps,
-} from "../../shared";
-import clsx from "clsx";
+} from '../../shared'
 
-export const navItems = [
-  {
-    href: "#about",
-    label: "About",
-  },
-  {
-    href: "#skills",
-    label: "Skills",
-  },
-  {
-    href: "#experience",
-    label: "Experience",
-  },
-  {
-    href: "#projects",
-    label: "Projects",
-  },
-  {
-    href: "#writing",
-    label: "Writing",
-  },
-  {
-    href: "#education",
-    label: "Education",
-  },
-  {
-    href: "#contact",
-    label: "Contact",
-  },
-];
-
-export interface NavItemProps extends Omit<LinkButtonProps, "children"> {
-  label: string;
-  href?: string;
-  children?: React.ReactNode;
-  className?: string;
+export interface NavItemProps extends Omit<LinkButtonProps, 'children'> {
+  label: string
+  href: string
+  className?: string
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
 }
 
 export const NavItem: React.FC<NavItemProps> = ({
   label,
-  ariaLabel,
   href,
-  children,
   className,
-  onClick,
   size,
   ...rest
 }) => {
-  if (!href) {
-    const message = "NavItem requires an 'href' prop.";
-    console.error(message);
-    throw new Error(message);
-  }
-
   return (
     <LinkButton
-      ariaLabel={ariaLabel ?? label}
       href={href}
-      onClick={onClick}
-      className={clsx("flex items-center justify-center", className)}
-      size="md"
-      scroll={true}
+      className={clsx('transition-all duration-300', className)}
       {...rest}
     >
-      {children ?? label}
+      {label}
     </LinkButton>
-  );
-};
+  )
+}
 
-interface NavMenuProps extends Omit<ButtonGroupProps, "children"> {
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
-  size?: "xs" | "sm" | "md" | "lg";
-  links: NavItemProps[];
+interface NavMenuProps extends Omit<ButtonGroupProps, 'children'> {
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
+  links: NavItemProps[]
+  className?: string
 }
 
 const NavMenu: React.FC<NavMenuProps> = ({
   links,
-  size,
-  onClick,
   className,
+  size,
   ...rest
 }) => {
   return (
-    <nav className={className}>
-      <ButtonGroup border divider {...rest}>
-        {links.map((item) => (
-          <NavItem
-            key={item.href}
-            label={item.label}
-            href={item.href}
-            ariaLabel={item.ariaLabel}
-            className={clsx(
-              "z-50 rounded-md active:bg-primary",
-              item.className,
-            )}
-            disabled={item.disabled}
-            icon={item.icon}
-            iconOnly={item.iconOnly}
-            ariaCurrent
-            size={size}
-            onClick={onClick}
-          />
-        ))}
-      </ButtonGroup>
+    <nav className={clsx('flex space-x-4', className)} {...rest}>
+      {links.map(link => (
+        <NavItem key={link.href} {...link} />
+      ))}
     </nav>
-  );
-};
+  )
+}
 
-export default NavMenu;
+export default NavMenu
