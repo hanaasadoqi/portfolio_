@@ -1,17 +1,16 @@
-{
-  "items": [
+[
     {
-      "id": "1",
+      "id": 1,
       "title": "Bowie",
       "description": "The final placeholder image for your custom content.",
       "type": "image",
       "src": "/images/about/bowie.png",
       "alt": "Bowie",
-      "rows": 4,
+      "rows": 3,
       "columns": 3
     },
     {
-      "id": "2",
+      "id": 2,
       "title": "Shantaram",
       "description": "Yet another placeholder image for your custom content.",
       "type": "image",
@@ -22,47 +21,47 @@
     },
 
     {
-      "id": "3",
+      "id": 3,
       "title": "Penn State",
       "description": "An image of the Penn State campus, a place of academic excellence.",
       "type": "image",
       "src": "/images/about/pennstate.png",
       "alt": "Penn State",
-      "rows": 2,
-      "columns": 2
+      "rows": 3,
+      "columns": 3
     },
     {
-      "id": "4",
+      "id": 4,
       "title": "Playing Pool",
       "description": "An image of someone playing pool, capturing the moment of a perfect shot.",
       "type": "image",
       "src": "/images/about/pool.png",
       "alt": "Playing pool",
-      "rows": 2,
-      "columns": 3
+      "rows": 3,
+      "columns": 4
     },
     {
-      "id": "5",
+      "id": 5,
       "title": "Boys Over Flowers",
       "description": "A placeholder image for your custom content.",
       "type": "image",
       "src": "/images/about/boys_over_flowers.webp",
       "alt": "Boys Over Flowers",
-      "rows": 2,
+      "rows": 3,
       "columns": 3
     },
     {
-      "id": "6",
+      "id": 6,
       "title": "David Bowie",
       "description": "An image of David Bowie, a legendary musician and cultural icon.",
       "type": "image",
       "src": "/images/about/david_bowie.webp",
       "alt": "David Bowie",
-      "rows": 2,
-      "columns": 2
+      "rows": 3,
+      "columns": 3
     },
     {
-      "id": "7",
+      "id": 7,
       "title": "Morocco Village",
       "description": "A scenic video of a village in Morocco, showing beautiful landscapes.",
       "type": "video",
@@ -72,7 +71,7 @@
       "columns": 2
     },
     {
-      "id": "8",
+      "id": 8,
       "title": "Marrakech",
       "description": "Another placeholder image for your custom content.",
       "type": "image",
@@ -82,24 +81,53 @@
       "columns": 3
     },
     {
-      "id": "9",
+      "id": 9,
       "title": "Chess",
       "description": "Another placeholder image for your custom content.",
       "type": "image",
       "src": "/images/about/chess.png",
       "alt": "Marrakech Medina",
       "rows": 2,
-      "columns": 2
+      "columns": 3
     },
     {
-      "id": "10",
+      "id": 10,
       "title": "Brooklyn Bridge",
       "description": "An image of the Brooklyn Bridge, a historic landmark in New York City.",
       "type": "image",
       "src": "/images/about/brooklyn_bridge.png",
       "alt": "Brooklyn Bridge",
+      "rows": 3,
+      "columns": 4
+    },
+    {
+      "id": 11,
+      "title": "Mechanical Engineering",
+      "description": "Working on electrical plans for a building in my mechanical engineering days.",
+      "type": "image",
+      "src": "/images/about/mechanical_plans.png",
+      "alt": "Electrical plans",
       "rows": 2,
+      "columns": 2
+    },
+    {
+      "id": 12,
+      "title": "Darth Vader",
+      "description": "Working on electrical plans for a building in my mechanical engineering days.",
+      "type": "image",
+      "src": "/images/about/darth_vader.png",
+      "alt": "Darth Vader",
+      "rows": 3,
       "columns": 3
+    },
+    {
+      "id": 13,
+      "title": "Eragon",
+      "description": "Working on electrical plans for a building in my mechanical engineering days.",
+      "type": "image",
+      "src": "/images/about/eragon.png",
+      "alt": "Eragon",
+      "rows": 3,
+      "columns": 2
     }
   ]
-}

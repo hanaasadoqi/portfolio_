@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "name": "JavaScript",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix", "Pandora Muc"],
+    "projects": ["Transl8", "Lit", "Lit Rides"],
+    "tags": ["Frontend", "Backend", "Full-Stack", "Programming Language", "ES6+"],
+    "icon": "Javascript",
+    "documentation": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+  },
+  {
+    "id": 2,
+    "name": "React",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix", "Pandora Muc"],
+    "projects": ["Transl8", "Lit"],
+    "tags": ["Frontend", "JavaScript Framework", "UI Library"],
+    "icon": "React",
+    "documentation": "https://reactjs.org/docs/getting-started.html"
+  },
+  {
+    "id": 3,
+    "name": "TypeScript",
+    "startYear": 2021,
+    "experience": ["Pandora Muc"],
+    "projects": ["Synapcity", "Algorithm Visualizer"],
+    "tags": ["Programming Language", "JavaScript", "Typed Language"],
+    "icon": "Typescript",
+    "documentation": "https://www.typescriptlang.org/docs/"
+  },
+  {
+    "id": 4,
+    "name": "Redux",
+    "startYear": 2018,
+    "experience": ["Flatiron School"],
+    "projects": ["Lit"],
+    "tags": ["State Management", "JavaScript", "React"],
+    "icon": "Redux",
+    "documentation": "https://redux.js.org/introduction/getting-started"
+  },
+  {
+    "id": 5,
+    "name": "Ruby on Rails",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix"],
+    "projects": ["Transl8", "Lit", "Lit Rides"],
+    "tags": ["Backend", "Web Framework", "Ruby"],
+    "icon": "Rubyonrails",
+    "documentation": "https://guides.rubyonrails.org/"
+  },
+  {
+    "id": 6,
+    "name": "Next.js",
+    "startYear": 2022,
+    "experience": ["Personal Projects"],
+    "projects": ["Synapcity"],
+    "tags": ["Frontend", "React Framework", "SSR", "SSG"],
+    "icon": "NextJs",
+    "documentation": "https://nextjs.org/docs"
+  },
+  {
+    "id": 7,
+    "name": "Node.js",
+    "startYear": 2021,
+    "experience": ["Personal Projects"],
+    "projects": ["Code Library"],
+    "tags": ["Backend", "JavaScript Runtime"],
+    "icon": "NodeJs",
+    "documentation": "https://nodejs.org/en/docs/"
+  },
+  {
+    "id": 8,
+    "name": "Express.js",
+    "startYear": 2021,
+    "experience": ["Personal Projects"],
+    "projects": ["Code Library"],
+    "tags": ["Backend", "Web Framework", "Node.js"],
+    "icon": "Express",
+    "documentation": "https://expressjs.com/en/starter/installing.html"
+  },
+  {   
+    "id": 9,
+    "name": "SQL",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix"],
+    "projects": ["Lit Rides"],
+    "tags": ["Database", "Relational Database", "SQL"],
+    "icon": "Postgresql",
+    "documentation": "https://www.postgresql.org/docs/"
+  },
+  {
+    "id": 10,
+    "name": "MySQL",
+    "startYear": 2018,
+    "experience": ["Personal Projects"],
+    "projects": ["Code Library"],
+    "tags": ["Database", "Relational Database", "SQL"],
+    "icon": "Mysql",
+    "documentation": "https://dev.mysql.com/doc/"
+  },
+  {
+    "id": 11,
+    "name": "PostgreSQL",
+    "startYear": 2018,
+    "experience": ["Personal Projects"],
+    "projects": ["Lit Rides"],
+    "tags": ["Database", "Relational Database", "SQL"],
+    "icon": "Postgresql",
+    "documentation": "https://www.postgresql.org/docs/"
+  },
+  {
+    "id": 12,
+    "name": "GraphQL",
+    "startYear": 2021,
+    "experience": ["Pandora Muc"],
+    "projects": ["Synapcity"],
+    "tags": ["API", "Backend", "Query Language"],
+    "icon": "Graphql",
+    "documentation": "https://graphql.org/learn/"
+  },
+  {
+    "id": 13,
+    "name": "HTML/CSS",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix"],
+    "projects": ["Transl8", "Lit"],
+    "tags": ["Frontend", "Markup Language", "Styling"],
+    "icon": "Html5",
+    "documentation": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+  },
+  {
+    "id": 14,
+    "name": "Tailwind CSS",
+    "startYear": 2022,
+    "experience": ["Personal Projects"],
+    "projects": ["Synapcity"],
+    "tags": ["Frontend", "CSS Framework", "Utility-First"],
+    "icon": "Tailwindcss",
+    "documentation": "https://tailwindcss.com/docs"
+  },
+  {
+    "id": 15,
+    "name": "RESTful APIs",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix", "Pandora Muc"],
+    "projects": ["Code Library", "Transl8"],
+    "tags": ["API", "Backend", "Web Services"],
+    "icon": "Server",
+    "documentation": "https://restfulapi.net/"
+  },
+  {
+    "id": 15,
+    "name": "Agile/Scrum",
+    "startYear": 2019,
+    "experience": ["Stitch Fix", "Pandora Muc"],
+    "projects": [],
+    "tags": ["Project Management", "Team Collaboration", "Agile Methodology"],
+    "icon": "ClipboardCheck",
+    "documentation": "https://www.scrum.org/resources/what-is-scrum"
+  },
+  {
+    "id": 16,
+    "name": "Git",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix", "Pandora Muc"],
+    "projects": ["Transl8", "Lit", "Synapcity"],
+    "tags": ["Veron Control", "Collaboration", "Source Control"],
+    "icon": "GitAlt",
+    "documentation": "https://git-scm.com/doc"
+  },
+  {
+    "id": 17,
+    "name": "Webpack",
+    "startYear": 2019,
+    "experience": ["Personal Projects"],
+    "projects": [],
+    "tags": ["Frontend", "Module Bundler", "JavaScript"],
+    "icon": "Webpack",
+    "documentation": "https://webpack.js.org/concepts/"
+  },
+  {
+    "id": 18,
+    "name": "Docker",
+    "startYear": 2020,
+    "experience": ["Personal Projects"],
+    "projects": [],
+    "tags": ["DevOps", "Containerization", "CI/CD"],
+    "icon": "Docker",
+    "documentation": "https://docs.docker.com/get-started/"
+  },
+  {
+    "id": 19,
+    "name": "TDD/BDD",
+    "startYear": 2018,
+    "experience": ["Flatiron School", "Stitch Fix"],
+    "projects": ["Synapcity"],
+    "tags": ["Testing", "Best Practices", "Development Methodology"],
+    "icon": "Jest",
+    "documentation": "https://en.wikipedia.org/wiki/Behavior-driven_development"
+  },
+  {
+    "id": 20,
+    "name": "Jest",
+    "startYear": 2018,
+    "experience": ["Stitch Fix"],
+    "projects": ["Synapcity"],
+    "tags": ["Testing", "JavaScript", "Unit Testing"],
+    "icon": "Jest",
+    "documentation": "https://jestjs.io/docs/getting-started"
+  }
+]

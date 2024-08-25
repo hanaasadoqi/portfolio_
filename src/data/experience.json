@@ -1,10 +1,11 @@
 [
   {
+    "id": 1,
     "company": "Stitch Fix",
     "role": "Software Engineer II",
     "location": "New York, NY",
     "dates": "Jan 2022 - Jan 2023",
-    "logo": "",
+    "logo": "/logos/stitchfix.jpeg",
     "description": [
       "Enhanced and maintained an internal web application for the Merchandising team using full-stack Ruby on Rails, JavaScript, and React.",
       "Collaborated cross-departmentally with Merch, IT, and Product teams to resolve complex data issues.",
@@ -14,11 +15,12 @@
     ]
   },
   {
+    "id": 2,
     "company": "Pandora Music",
     "role": "Apprentice Software Engineer",
     "location": "New York, NY",
     "dates": "Apr 2021 - Nov 2021",
-    "logo": "",
+    "logo": "/logos/siriusxm.png",
     "description": [
       "Led the development of the web application’s social sharing features, collaborating effectively across product, design, and platform teams.",
       "Contributed to key projects using React, TypeScript, and GraphQL.",
@@ -27,11 +29,12 @@
     ]
   },
   {
+    "id": 3,
     "company": "Flatiron School",
     "role": "Online Cohort Lead",
     "location": "New York, NY",
     "dates": "Aug 2020 - Jan 2022",
-    "logo": "",
+    "logo": "/logos/flatiron.png",
     "description": [
       "Delivered interactive live lectures on full-stack web development, covering JavaScript, React, Redux, Ruby on Rails, SQL, and other web technologies.",
       "Conducted weekly one-on-one mentoring sessions, offering personalized guidance and feedback to students.",
@@ -39,11 +42,12 @@
     ]
   },
   {
+    "id": 4,
     "company": "WeWork",
     "role": "Software Engineering Coach",
     "location": "Atlanta, Georgia",
     "dates": "Apr 2019 - Apr 2020",
-    "logo": "",
+    "logo": "/logos/wework.png",
     "description": [
       "Provided one-on-one coaching and feedback on technical concepts, coding best practices, and troubleshooting techniques.",
       "Delivered classroom lectures on OO Relationships, React, Redux, Ruby on Rails, and other web technologies.",
@@ -51,11 +55,12 @@
     ]
   },
   {
+    "id": 5,
     "company": "Benvenuti Public Relations",
     "role": "Associate Publicist",
     "location": "New York, NY",
     "dates": "October 2017 - August 2018",
-    "logo": "",
+    "logo": "/logos/benvenuti.png",
     "description": [
       "Actively engaged in new business development process: source leads, create and deliver presentations, edit proposals, follow up and close deals.",
       "Created content and managed social media presence on a variety of platforms for clients.",
@@ -63,11 +68,12 @@
     ]
   },
   {
+    "id": 6,
     "company": "Ventrop Engineering Consulting Group, PLLC",
     "role": "Mechanical Engineering Intern",
     "location": "New York, NY",
     "dates": "May 2012 - August 2015",
-    "logo": "",
+    "logo": "/logos/ventrop.png",
     "description": [
       "Designed and drafted plumbing, electrical, sprinkler, mechanical and fire alarm engineering plans.",
       "Collaborated with architectural firms in order to ensure that all components worked together seamlessly."
