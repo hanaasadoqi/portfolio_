@@ -16,6 +16,7 @@ import {
   FaClipboardCheck,
   FaServer,
   FaHtml5,
+  FaSearch,
 } from "react-icons/fa";
 import { FaHashnode } from "react-icons/fa6";
 import { IoMdLink } from "react-icons/io";
@@ -33,7 +34,15 @@ import {
   SiMysql,
   SiJest,
   SiWebpack,
+  SiNodedotjs,
 } from "react-icons/si";
+
+import sirius from "/public/logos/siriusxm.svg";
+import flatiron from "/public/logos/flatiron-light.svg";
+// import stitchfix from "/public/logos/stitchfix.svg";
+import ventrop from "/public/logos/ventrop.svg";
+import benvenuti from "/public/logos/benvenuti.svg";
+import wework from "/public/logos/wework.svg";
 
 const icons = {
   Github: FaGithub,
@@ -61,13 +70,24 @@ const icons = {
   Tailwindcss: SiTailwindcss,
   GitAlt: FaGitAlt,
   Docker: FaDocker,
-  Nextdotjs: SiNextdotjs,
+  NextJs: SiNextdotjs,
+  NodeJs: SiNodedotjs,
   Express: SiExpress,
   Mysql: SiMysql,
   Jest: SiJest,
   Server: FaServer,
   ClipboardCheck: FaClipboardCheck,
   Webpack: SiWebpack,
+  search: FaSearch,
 };
 
-export { icons as IconLibrary };
+const logos = {
+  sirius,
+  ventrop,
+  flatiron,
+  // stitchfix,
+  benvenuti,
+  wework,
+};
+
+export { icons as IconLibrary, logos as LogoLibrary };

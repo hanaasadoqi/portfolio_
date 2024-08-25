@@ -4,10 +4,9 @@ exports[`Icon Component React Icons renders icon with custom styles and classNam
 <div>
   <span
     aria-hidden="false"
-    class="icon-wrapper inline-block custom-class"
+    class="icon-wrapper flex items-center justify-center custom-class"
     data-testid="icon-wrapper"
     role="img"
-    style="width: 28px; height: 28px;"
   >
     <svg
       data-testid="icon"
