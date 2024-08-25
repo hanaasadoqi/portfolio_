@@ -14,3 +14,7 @@ Object.defineProperty(window, "location", {
   value: mockLocation,
   writable: true,
 });
+
+jest.mock('/public/logos/siriusxm.svg', () => 'siriusxm.svg');
+jest.mock('/public/logos/flatiron-light.svg', () => 'flatiron-light.svg');
+jest.mock('/public/logos/ventrop.svg', () => 'ventrop.svg');
