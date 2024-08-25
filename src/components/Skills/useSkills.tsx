@@ -56,7 +56,7 @@ const useSkills = (initialData: SkillProps[]) => {
     }
 
     setFilteredSkills(filtered)
-  }, [])
+  }, [debouncedFilters, debouncedSearchQuery, debouncedSortOption, initialData])
 
   useEffect(() => {
     applyFiltersSortAndSearch()

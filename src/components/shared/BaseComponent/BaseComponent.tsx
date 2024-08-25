@@ -98,4 +98,5 @@ const BaseComponent = forwardRef(
   }
 )
 
+BaseComponent.displayName = 'BaseComponent'
 export default BaseComponent
