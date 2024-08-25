@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import Tag from './Tag'
+import Tag from '../shared/Tag'
 import Image from 'next/image'
 
 export interface WritingItemProps {
