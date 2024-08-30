@@ -5,14 +5,18 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import clsx from 'clsx'
 import dynamic from 'next/dynamic'
 import { AnimatePresence, motion } from 'framer-motion'
+import { ArrowButton } from './Timeline'
+import { useData } from '@/context/DataContext'
 
+// Dynamically import components for better performance
 const ExperienceCard = dynamic(() => import('./ExperienceCard'), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <p>Loading experience...</p>,
 })
 const Timeline = dynamic(() => import('./Timeline'), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <p>Loading timeline...</p>,
 })
 
+// Define interfaces for props and data types
 interface Experience {
   id: number
   company: string
@@ -23,11 +27,8 @@ interface Experience {
   description: string[]
 }
 
-interface CarouselProps {
-  experienceData: Experience[]
-}
-
-const Carousel: React.FC<CarouselProps> = ({ experienceData: experiences }) => {
+const Carousel: React.FC = () => {
+  const { workExperience: experiences } = useData()
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const prevSlide = useCallback(() => {
@@ -47,43 +48,33 @@ const Carousel: React.FC<CarouselProps> = ({ experienceData: experiences }) => {
   }, [])
 
   return (
-    <div className="relative flex w-full flex-col items-center justify-center">
-      <Timeline
-        experiences={experiences.map(({ logo, company }) => ({
-          logo,
-          company,
-        }))}
-        currentIndex={currentIndex}
-        goToSlide={goToSlide}
-      />
+    <section
+      id="experience"
+      data-id="experience"
+      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center"
+    >
+      <div className="relative flex h-full w-full flex-col items-center justify-center">
+        <div className="flex max-w-5xl flex-col items-center justify-center">
+          {/* Right Arrow Button */}
 
-      {/* Carousel */}
-      <div className="relative flex w-full items-center justify-center">
-        {/* Left Arrow */}
-        {currentIndex !== 0 && (
-          <button
+          <h3 className="w-full text-center text-2xl dark:text-primary-900 md:text-left md:text-3xl lg:text-4xl">
+            Experience
+          </h3>
+          {/* <div className="relative z-10"> */}
+          <ArrowButton
             onClick={prevSlide}
-            className={clsx(
-              'bg-primary-500 hover:bg-primary-400 active:bg-primary-600 absolute z-10 rounded-full p-3 text-white shadow-lg hover:bg-primary40',
-              'md:left-4',
-              'bottom-4 left-1/4 md:bottom-auto md:translate-y-[-50%]',
-              'transition-opacity duration-300 ease-in-out',
-              currentIndex === 0 ? 'opacity-0' : 'opacity-100'
-            )}
-            aria-label="Previous Experience"
-          >
-            <FaArrowLeft size={24} />
-          </button>
-        )}
-        <div className="flex w-full justify-center">
+            direction="left"
+            hidden={currentIndex === 0}
+            className="md:top-50 -bottom-16 -left-2 md:bottom-auto md:hidden"
+          />
           <AnimatePresence>
             {experiences.map((experience, index) => (
               <motion.div
-                key={index}
+                key={experience.id}
                 className={clsx(
-                  'p-12 transition-all duration-500 ease-in-out',
+                  'transition-all duration-500 ease-in-out',
                   index === currentIndex
-                    ? 'scale-100 transform opacity-100'
+                    ? 'scale-100 opacity-100'
                     : 'hidden opacity-0'
                 )}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -95,27 +86,26 @@ const Carousel: React.FC<CarouselProps> = ({ experienceData: experiences }) => {
               </motion.div>
             ))}
           </AnimatePresence>
-        </div>
-        {/* Right Arrow */}
-        {currentIndex !== experiences.length - 1 && (
-          <button
+          <ArrowButton
             onClick={nextSlide}
-            className={clsx(
-              'hover:bg-primary-400 active:bg-primary-600 bg-primary-500 absolute z-10 rounded-full p-3 text-white shadow-lg hover:bg-primary40',
-              'md:right-4',
-              'bottom-4 right-1/4 md:bottom-auto md:translate-y-[-50%]',
-              'transition-opacity duration-300 ease-in-out',
-              currentIndex === experiences.length - 1
-                ? 'opacity-0'
-                : 'opacity-100'
-            )}
-            aria-label="Next Experience"
-          >
-            <FaArrowRight size={24} />
-          </button>
-        )}
+            direction="right"
+            hidden={currentIndex === experiences.length - 1}
+            className="md:top-50 -bottom-16 -right-2 md:bottom-auto md:hidden"
+          />
+          {/* </div> */}
+        </div>
+        <Timeline
+          experiences={experiences.map(({ logo, company }) => ({
+            logo,
+            company,
+          }))}
+          currentIndex={currentIndex}
+          goToSlide={goToSlide}
+          prevSlide={prevSlide}
+          nextSlide={nextSlide}
+        />
       </div>
-    </div>
+    </section>
   )
 }
 

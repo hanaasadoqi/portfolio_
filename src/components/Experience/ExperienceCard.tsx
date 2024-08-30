@@ -13,6 +13,7 @@ interface ExperienceCardProps {
 }
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
+  id,
   company,
   role,
   location,
@@ -22,40 +23,39 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 }) => {
   return (
     <motion.div
-      className="dark:border-primary-800 border-primary-300 bg-primary-100 dark:bg-primary-700 mx-auto max-w-3xl rounded-lg border p-8 text-left shadow-lg"
+      id={`experience-${id}`}
+      className="mx-auto max-w-3xl rounded-lg border border-primary-300 bg-gradient-to-r from-primary-100 to-primary-200 p-8 text-left shadow-lg transition duration-300 ease-in-out hover:shadow-2xl dark:border-primary-800 dark:from-primary-900 dark:to-secondary-900 dark:text-white"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
       transition={{ duration: 0.5 }}
     >
       <div className="mb-6 flex items-center space-x-4">
-        <div className="bg-primary-200 dark:bg-primary-600 relative h-14 w-14 rounded-full">
+        <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-white shadow-md">
           {logo && (
             <Image
               src={logo}
               alt={`${company} logo`}
-              layout="fill"
-              objectFit="contain"
+              fill
               sizes="56px"
-              priority
-              className="shadow-primary-200 rounded-full bg-white shadow-md"
+              className="object-contain shadow-inner"
             />
           )}
         </div>
         <div>
-          <h3 className="text-primary-800 dark:text-primary-800 text-2xl font-bold">
+          <h3 className="mb-0 -space-y-1 text-base font-bold text-primary-800 dark:text-primary-100 md:text-lg lg:text-xl xl:text-2xl">
             {company}
           </h3>
-          <p className="text-secondary-800 dark:text-secondary-800 text-lg">
+          <p className="text-sm text-secondary-800 dark:text-secondary-300 md:text-base lg:text-lg">
             {role}
           </p>
         </div>
       </div>
-      <div className="text-primary-600 dark:text-primary-200 text-lg">
-        <p className="mb-4">
+      <div className="space-y-4 text-sm text-primary-600 dark:text-white md:text-base lg:text-lg">
+        <p>
           <strong>Location:</strong> {location}
         </p>
-        <p className="mb-4">
+        <p>
           <strong>Dates:</strong> {dates}
         </p>
         <ul className="list-disc space-y-2 pl-5">
@@ -66,7 +66,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
             >
-              {desc}
+              <span className="text-primary-800 dark:text-white">{desc}</span>
             </motion.li>
           ))}
         </ul>
