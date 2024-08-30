@@ -1,25 +1,31 @@
+'use client'
+
 import React from 'react'
 import EducationCard from './EducationCard'
+import { useData } from '@/context/DataContext'
 
-interface EducationItem {
-  school: string
-  degree: string
-  location: string
-  dates: string
-}
+const Education: React.FC = () => {
+  const { education: educationData } = useData()
 
-interface EducationProps {
-  educationData: EducationItem[]
-}
-const Education: React.FC<EducationProps> = ({ educationData: education }) => {
   return (
-    <div className="container mx-auto px-6">
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
-        {education.map((education, index) => (
-          <EducationCard key={index} {...education} />
-        ))}
+    <section
+      id="education"
+      data-id="education"
+      className="my-48 flex min-h-screen w-screen items-center justify-center"
+    >
+      <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-center">
+        <div className="w-full">
+          <h3 className="text-center text-2xl md:text-left md:text-3xl lg:text-4xl">
+            Education
+          </h3>
+        </div>
+        <div className="flex w-full flex-col justify-center space-y-8">
+          {educationData.map((item, index) => (
+            <EducationCard key={index} {...item} />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
 
