@@ -3,6 +3,7 @@ import { Poppins, Raleway, Merriweather } from 'next/font/google'
 import dynamic from 'next/dynamic'
 import clsx from 'clsx'
 import '../styles/globals.scss'
+import 'react-tooltip/dist/react-tooltip.css'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -30,6 +31,16 @@ export const metadata: Metadata = {
   description: 'Full-stack Web Developer',
 }
 
+const DarkModeProvider = dynamic(
+  () => import('../context/DarkModeContext').then(mod => mod.DarkModeProvider),
+  { ssr: false }
+)
+
+const DarkModeToggle = dynamic(
+  () => import('@/components/shared/DarkModeToggle/DarkModeToggle'),
+  { ssr: false }
+)
+
 const Header = dynamic(() => import('@/components/Header/Header'), {
   ssr: true,
 })
@@ -49,8 +60,11 @@ export default function RootLayout({
           merriweather.variable
         )}
       >
-        <Header />
-        {children}
+        <DarkModeProvider>
+          <Header />
+          {children}
+          <DarkModeToggle />
+        </DarkModeProvider>
       </body>
     </html>
   )
