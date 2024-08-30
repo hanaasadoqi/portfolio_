@@ -1,3 +1,437 @@
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+// @import './variables.scss';
+// @import './mixins.scss';
+
+// *,
+// *::before,
+// *::after {
+//   box-sizing: border-box;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// html {
+//   scroll-behavior: smooth;
+//   font-size: 16px; /* Base font size for easy rem calculations */
+//   line-height: 1.5; /* Improve readability */
+//   -webkit-font-smoothing: antialiased; /* Smoother font rendering */
+//   -moz-osx-font-smoothing: grayscale;
+//   transition:
+//     background-color 0.3s ease,
+//     color 0.3s ease; /* Smooth transition for background and text colors */
+// }
+
+// body {
+//   @apply font-raleway text-base antialiased;
+//   min-height: 100vh;
+//   overflow-x: hidden; /* Prevent horizontal scroll */
+//   background-color: var(--primary-100);
+//   color: var(--primary-900);
+//   font-feature-settings: 'liga' on; /* Enable ligatures */
+//   transition:
+//     background-color 0.3s ease,
+//     color 0.3s ease; /* Smooth transition for background and text colors */
+// }
+
+// /* Light Mode Color Variables */
+// @layer base {
+//   :root {
+//     --primary: #bfdbfe;
+//     --primary-50: #eff6ff;
+//     --primary-100: #dbeafe;
+//     --primary-200: #bfdbfe;
+//     --primary-300: #93c5fd;
+//     --primary-400: #60a5fa;
+//     --primary-500: #3b82f6;
+//     --primary-600: #2563eb;
+//     --primary-700: #1d4ed8;
+//     --primary-800: #1e40af;
+//     --primary-900: #1e3a8a;
+//     --primary-950: #172554;
+
+//     --secondary: #cbd5e1;
+//     --secondary-50: #f8fafc;
+//     --secondary-100: #f1f5f9;
+//     --secondary-200: #e2e8f0;
+//     --secondary-300: #cbd5e1;
+//     --secondary-400: #94a3b8;
+//     --secondary-500: #64748b;
+//     --secondary-600: #475569;
+//     --secondary-700: #334155;
+//     --secondary-800: #1e293b;
+//     --secondary-900: #0f172a;
+//     --secondary-950: #020617;
+//     --accent-pink: #ff007f;
+//     --accent-blue: #007bff;
+//     --accent-cyan: #00ffff;
+//     --accent-navy: #001f3f;
+//   }
+// }
+
+// /* Dark Mode Styles */
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --primary: #1e40af;
+
+//     --secondary: #1e293b;
+//   }
+
+//   body {
+//     @apply bg-primary-900 text-primary-100;
+//     background-color: var(--primary-900);
+//     color: var(--primary-100);
+//     transition:
+//       background-color 0.3s ease,
+//       color 0.3s ease; /* Smooth transition for background and text colors */
+//   }
+
+//   a {
+//     @apply text-primary-400 hover:text-primary-300;
+//     color: var(--primary-400);
+//     transition: color 0.3s ease; /* Smooth transition for text color */
+//   }
+
+//   p,
+//   h1,
+//   h2,
+//   h3,
+//   h4,
+//   h5,
+//   h6,
+//   li {
+//     color: var(--primary-100);
+//     transition: color 0.3s ease; /* Smooth transition for text color */
+//   }
+// }
+
+// /* SEO and Accessibility Enhancements */
+// // a {
+// //   color: var(--primary-600);
+// //   transition: color 0.3s ease; /* Smooth transition for link color */
+// //   // &:hover {
+// //   //   color: var(--primary-700);
+// //   // }
+// // }
+
+// // p {
+// //   margin-bottom: 1.5rem;
+// //   line-height: 1.7;
+// //   color: var(--primary-700);
+// // }
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   color: var(--primary-900);
+//   font-weight: 700;
+//   line-height: 1.25;
+//   margin-bottom: 1rem;
+//   transition: color 0.3s ease; /* Smooth transition for heading color */
+// }
+
+// img {
+//   max-width: 100%;
+//   height: auto;
+//   display: block;
+//   border-radius: 0.375rem; /* Small border radius for consistency */
+//   box-shadow: var(--shadow);
+//   transition: box-shadow 0.3s ease; /* Smooth transition for shadow effect */
+// }
+
+// /* Utility Classes for Better SEO and Readability */
+// .sr-only {
+//   position: absolute;
+//   width: 1px;
+//   height: 1px;
+//   padding: 0;
+//   margin: -1px;
+//   overflow: hidden;
+//   clip: rect(0, 0, 0, 0);
+//   border: 0;
+// }
+
+// /* Accessibility Focus Styles */
+// :focus {
+//   outline: 2px dashed var(--primary-400);
+//   outline-offset: 2px;
+// }
+
+// /* Custom Scrollbar Styles */
+// ::-webkit-scrollbar {
+//   width: 10px;
+// }
+
+// ::-webkit-scrollbar-track {
+//   background-color: var(--primary-600);
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background-color: var(--primary-300);
+//   border-radius: 1rem;
+//   transition: background-color 0.3s ease; /* Smooth transition for scrollbar color */
+// }
+
+// ::-webkit-scrollbar-thumb:hover {
+//   background-color: var(--primary-400);
+// }
+
+// body {
+//   @apply font-raleway text-base text-primary-900 antialiased dark:text-primary-100;
+// }
+
+// h1 {
+//   @apply font-sans text-5xl font-extrabold leading-tight text-primary-800 dark:text-primary-200;
+//   margin-bottom: 0.5rem;
+// }
+
+// h2 {
+//   @apply font-sans text-4xl font-bold leading-snug text-primary-800 dark:text-primary-200;
+//   margin-bottom: 0.5rem;
+// }
+
+// h3 {
+//   @apply font-sans text-3xl font-semibold leading-normal text-primary-800 dark:text-primary-200;
+//   margin-bottom: 0.5rem;
+// }
+
+// h4 {
+//   @apply font-sans text-2xl font-semibold leading-normal text-primary-800 dark:text-primary-200;
+//   margin-bottom: 0.5rem;
+// }
+
+// h5 {
+//   @apply font-sans text-xl font-medium leading-relaxed text-primary-700 dark:text-primary-300;
+//   margin-bottom: 0.5rem;
+// }
+
+// h6 {
+//   @apply font-sans text-lg font-medium leading-relaxed text-primary-700 dark:text-primary-300;
+//   margin-bottom: 0.5rem;
+// }
+
+// p {
+//   @apply font-raleway text-base font-normal leading-relaxed text-secondary-900 dark:text-primary-100;
+//   margin-bottom: 1rem;
+// }
+
+// a {
+//   @apply text-base font-medium leading-relaxed text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300;
+// }
+
+// blockquote {
+//   @apply border-l-4 border-primary-300 pl-4 font-serif text-xl font-medium italic leading-relaxed text-secondary-700;
+//   margin-bottom: 1rem;
+// }
+
+// code {
+//   @apply rounded bg-secondary-50 px-1 font-mono text-sm;
+// }
+
+// small {
+//   @apply text-sm font-normal leading-snug text-secondary-600;
+// }
+
+// ul,
+// li,
+// ol {
+//   @apply list-disc pl-5 font-raleway text-base leading-relaxed text-secondary-800;
+//   margin-bottom: 1rem;
+// }
+
+// li {
+//   @apply mb-2;
+// }
+
+// /* Responsive Typography Styles */
+// @screen sm {
+//   h1 {
+//     @apply text-4xl;
+//   }
+//   h2 {
+//     @apply text-3xl;
+//   }
+//   h3 {
+//     @apply text-2xl;
+//   }
+//   h4 {
+//     @apply text-xl;
+//   }
+//   h5 {
+//     @apply text-lg;
+//   }
+//   h6 {
+//     @apply text-base;
+//   }
+// }
+
+// @screen md {
+//   h1 {
+//     @apply text-5xl;
+//   }
+//   h2 {
+//     @apply text-4xl;
+//   }
+//   h3 {
+//     @apply text-3xl;
+//   }
+//   h4 {
+//     @apply text-2xl;
+//   }
+//   h5 {
+//     @apply text-xl;
+//   }
+//   h6 {
+//     @apply text-lg;
+//   }
+// }
+
+// @screen lg {
+//   h1 {
+//     @apply text-6xl;
+//   }
+//   h2 {
+//     @apply text-5xl;
+//   }
+//   h3 {
+//     @apply text-4xl;
+//   }
+//   h4 {
+//     @apply text-3xl;
+//   }
+//   h5 {
+//     @apply text-2xl;
+//   }
+//   h6 {
+//     @apply text-xl;
+//   }
+// }
+
+// @screen xl {
+//   h1 {
+//     @apply text-7xl;
+//   }
+//   h2 {
+//     @apply text-6xl;
+//   }
+//   h3 {
+//     @apply text-5xl;
+//   }
+//   h4 {
+//     @apply text-4xl;
+//   }
+//   h5 {
+//     @apply text-3xl;
+//   }
+//   h6 {
+//     @apply text-2xl;
+//   }
+// }
+
+// #hero {
+//   // @apply bg-hero-gradient dark:bg-hero-gradient-dark;
+
+//   padding-top: 5rem;
+// }
+
+// #about {
+//   // @apply bg-about-gradient dark:bg-about-gradient-dark;
+// }
+
+// #experience {
+//   // @apply bg-experience-gradient dark:bg-experience-gradient-dark;
+// }
+
+// #projects {
+//   // @apply bg-projects-gradient dark:bg-projects-gradient-dark;
+// }
+
+// #skills {
+//   // @apply bg-skills-gradient dark:bg-skills-gradient-dark;
+// }
+
+// #writing {
+//   // @apply bg-writing-gradient dark:bg-writing-gradient-dark;
+// }
+
+// #education {
+//   // @apply bg-education-gradient dark:bg-education-gradient-dark;
+// }
+// #contact {
+//   // @apply bg-contact-gradient dark:bg-contact-gradient-dark;
+// }
+
+// /* Add this to your global CSS file or Tailwind CSS configuration */
+// .scrollbar-hide::-webkit-scrollbar {
+//   display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+// }
+
+// .scrollbar-hide {
+//   -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+//   scrollbar-width: none; /* Hide scrollbar for Firefox */
+// }
+// .header {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   z-index: 50;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 1rem;
+//   background-color: rgba(255, 255, 255, 0.8); /* Updated */
+//   -webkit-backdrop-filter: blur(10px); /* Updated */
+//   backdrop-filter: blur(10px); /* Updated */
+//   transition: transform 0.3s ease-in-out;
+// }
+
+// .header-hidden {
+//   transform: translateY(-100%);
+// }
+
+// .header-visible {
+//   transform: translateY(0);
+// }
+
+// .active-section {
+//   background-color: var(--primary-500);
+//   color: white;
+//   transition: background-color 0.3s ease-in-out;
+// }
+// /* Custom Scrollbar Style */
+// ::-webkit-scrollbar {
+//   height: 4px; /* Initial height for horizontal scrollbar */
+//   width: 4px; /* Initial width for vertical scrollbar */
+//   background: transparent; /* Background of the scrollbar track */
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background-color: #888; /* Color of the scrollbar thumb */
+//   border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+//   transition:
+//     background-color 0.3s ease,
+//     height 0.3s ease,
+//     width 0.3s ease; /* Smooth transition for thumb properties */
+// }
+
+// ::-webkit-scrollbar-thumb:hover {
+//   background-color: #555; /* Darker color when hovered */
+//   height: 4px; /* Increased height when scrolling */
+//   width: 4px; /* Increased width when scrolling */
+// }
+
+// ::-webkit-scrollbar-track {
+//   background: transparent; /* Transparent track background */
+// }
+
+// /* Add this to your global CSS or component-specific CSS file */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,7 +439,87 @@
 @import './variables.scss';
 @import './mixins.scss';
 
-/* CSS Reset to normalize styles across browsers */
+#nav,
+#dark-mode-toggle-container {
+  z-index: 9999;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  transition:
+    background-color 0.3s ease,
+    height 0.3s ease,
+    width 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+  height: 4px;
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Add these styles to your global CSS or component-specific CSS file */
+
+.custom-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-arrow:hover {
+  background-color: #f0f0f0;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  display: none; /* Hide default arrow styles */
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #c4c4c4 #ffffff;
+}
+
+// .custom-scrollbar::-webkit-scrollbar {
+//   height: 4px;
+// }
+
+// .custom-scrollbar::-webkit-scrollbar-thumb {
+//   background-color: #c4c4c4;
+//   border-radius: 4px;
+// }
+
+// /* Ensure the slider container allows overflow */
+// .slider-container {
+//   overflow-x: auto; /* Allow horizontal scrolling */
+//   overflow-y: hidden; /* Hide vertical overflow if needed */
+//   white-space: nowrap; /* Prevent line breaks */
+// }
+
+// /* Customize scrollbar if needed */
+// .slider-container::-webkit-scrollbar {
+//   height: 8px; /* Height of the horizontal scrollbar */
+// }
+
+// .slider-container::-webkit-scrollbar-thumb {
+//   background-color: #c4c4c4; /* Scrollbar thumb color */
+//   border-radius: 4px; /* Scrollbar thumb roundness */
+// }
+
+/* Base Reset */
 *,
 *::before,
 *::after {
@@ -14,9 +528,10 @@
   padding: 0;
 }
 
+/* HTML and Body Styles */
 html {
   scroll-behavior: smooth;
-  font-size: 16px; /* Base font size for easy rem calculations */
+  font-size: 16px; /* Base font size for rem calculations */
   line-height: 1.5; /* Improve readability */
   -webkit-font-smoothing: antialiased; /* Smoother font rendering */
   -moz-osx-font-smoothing: grayscale;
@@ -65,30 +580,41 @@ body {
     --secondary-800: #1e293b;
     --secondary-900: #0f172a;
     --secondary-950: #020617;
+
+    --accent-pink: #ff007f;
+    --accent-blue: #007bff;
+    --accent-cyan: #00ffff;
+    --accent-navy: #090492;
+    --accent-yellow: #ffcc00;
   }
 }
 
-/* Dark Mode Styles */
+[data-theme='dark'] {
+  body {
+    @apply bg-primary-900 text-primary-50;
+  }
+}
+
+/* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: #1e40af;
-
-    --secondary: #1e293b;
+    --primary: #1e40af; /* Using existing color variables */
+    --secondary: #1e293b; /* Using existing color variables */
   }
 
-  body {
-    @apply bg-primary-900 text-primary-100;
-    background-color: var(--primary-900);
-    color: var(--primary-100);
-    transition:
-      background-color 0.3s ease,
-      color 0.3s ease; /* Smooth transition for background and text colors */
-  }
+  // body {
+  //   @apply bg-primary-900 text-primary-100;
+  //   background-color: var(--primary-900);
+  //   color: var(--primary-100);
+  //   transition:
+  //     background-color 0.3s ease,
+  //     color 0.3s ease;
+  // }
 
   a {
-    @apply text-primary-400 hover:text-primary-300;
-    color: var(--primary-400);
-    transition: color 0.3s ease; /* Smooth transition for text color */
+    // @apply text-primary-400 hover:text-primary-300;
+    // color: var(--primary-400);
+    transition: color 0.3s ease;
   }
 
   p,
@@ -100,148 +626,71 @@ body {
   h6,
   li {
     color: var(--primary-100);
-    transition: color 0.3s ease; /* Smooth transition for text color */
+    transition: color 0.3s ease;
   }
 }
 
-/* SEO and Accessibility Enhancements */
-a {
-  color: var(--primary-600);
-  transition: color 0.3s ease; /* Smooth transition for link color */
-  &:hover {
-    color: var(--primary-700);
-  }
-}
-
-p {
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-  color: var(--primary-700);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--primary-900);
-  font-weight: 700;
-  line-height: 1.25;
-  margin-bottom: 1rem;
-  transition: color 0.3s ease; /* Smooth transition for heading color */
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 0.375rem; /* Small border radius for consistency */
-  box-shadow: var(--shadow);
-  transition: box-shadow 0.3s ease; /* Smooth transition for shadow effect */
-}
-
-/* Utility Classes for Better SEO and Readability */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-/* Accessibility Focus Styles */
-:focus {
-  outline: 2px dashed var(--primary-400);
-  outline-offset: 2px;
-}
-
-#nav {
-  z-index: 9999;
-}
-
-/* Custom Scrollbar Styles */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: var(--primary-600);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--primary-300);
-  border-radius: 1rem;
-  transition: background-color 0.3s ease; /* Smooth transition for scrollbar color */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--primary-400);
-}
-
-body {
-  @apply font-raleway text-primary-900 text-base antialiased;
-}
-
+/* Typography Styles */
 h1 {
-  @apply text-primary-700 font-sans text-5xl font-extrabold leading-tight;
-  margin-bottom: 0.5rem;
+  @apply font-sans text-4xl font-bold leading-tight text-primary-800 dark:text-white;
+  margin-bottom: 2rem;
+  transition: color 0.3s ease;
 }
 
 h2 {
-  @apply text-primary-700 font-sans text-4xl font-bold leading-snug;
-  margin-bottom: 0.5rem;
+  @apply font-sans text-3xl font-semibold leading-snug text-primary-800 dark:text-primary-200;
+  margin-bottom: 1.75rem;
+  transition: color 0.3s ease;
 }
 
 h3 {
-  @apply text-primary-700 font-sans text-3xl font-semibold leading-normal;
-  margin-bottom: 0.5rem;
+  @apply font-sans text-2xl font-medium leading-normal text-primary-800 dark:text-primary-200;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
 }
 
 h4 {
-  @apply text-primary-800 font-sans text-2xl font-semibold leading-normal;
-  margin-bottom: 0.5rem;
+  @apply font-sans text-xl font-medium leading-normal text-gray-700 dark:text-gray-300;
+  margin-bottom: 1.25rem;
+  transition: color 0.3s ease;
 }
 
-h5 {
-  @apply text-primary-800 font-sans text-xl font-medium leading-relaxed;
-  margin-bottom: 0.5rem;
-}
-
+h5,
 h6 {
-  @apply text-primary-800 font-sans text-lg font-medium leading-relaxed;
-  margin-bottom: 0.5rem;
+  @apply font-sans text-lg font-medium leading-relaxed text-primary-700 dark:text-primary-300;
+  margin-bottom: 1rem;
 }
 
 p {
-  @apply font-raleway text-secondary-900 text-base font-normal leading-relaxed;
+  @apply font-raleway text-base font-normal leading-relaxed text-secondary-900 dark:text-primary-100;
   margin-bottom: 1rem;
 }
 
 a {
-  @apply text-primary-400 hover:text-primary-600 text-base font-medium leading-relaxed;
+  @apply text-base font-medium leading-relaxed text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300;
+  transition: color 0.3s ease;
 }
 
+/* Blockquote and Code Styles */
 blockquote {
-  @apply text-secondary-700 border-primary-300 border-l-4 pl-4 font-serif text-xl font-medium italic leading-relaxed;
+  @apply border-l-4 border-primary-300 pl-4 font-serif text-xl font-medium italic leading-relaxed text-secondary-700;
   margin-bottom: 1rem;
 }
 
 code {
-  @apply bg-secondary-50 rounded px-1 font-mono text-sm;
+  @apply rounded bg-secondary-50 px-1 font-mono text-sm;
 }
 
-small {
-  @apply text-secondary-600 text-sm font-normal leading-snug;
+@layer components {
+  .scrollbar-thumb-rounded {
+    @apply rounded-full; /* Apply full rounded corners */
+  }
 }
 
+/* List Styles */
 ul,
-li,
 ol {
-  @apply font-raleway text-secondary-800 list-disc pl-5 text-base leading-relaxed;
+  @apply pl-5 font-raleway text-base leading-relaxed text-secondary-800;
   margin-bottom: 1rem;
 }
 
@@ -251,6 +700,27 @@ li {
 
 /* Responsive Typography Styles */
 @screen sm {
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
+  h4 {
+    @apply text-lg;
+  }
+  h5 {
+    @apply text-base;
+  }
+  h6 {
+    @apply text-sm;
+  }
+}
+
+@screen md {
   h1 {
     @apply text-4xl;
   }
@@ -271,7 +741,7 @@ li {
   }
 }
 
-@screen md {
+@screen lg {
   h1 {
     @apply text-5xl;
   }
@@ -292,7 +762,7 @@ li {
   }
 }
 
-@screen lg {
+@screen xl {
   h1 {
     @apply text-6xl;
   }
@@ -313,61 +783,92 @@ li {
   }
 }
 
-@screen xl {
-  h1 {
-    @apply text-7xl;
-  }
-  h2 {
-    @apply text-6xl;
-  }
-  h3 {
-    @apply text-5xl;
-  }
-  h4 {
-    @apply text-4xl;
-  }
-  h5 {
-    @apply text-3xl;
-  }
-  h6 {
-    @apply text-2xl;
-  }
+/* Utility Classes */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
-#hero {
-  @apply bg-hero-gradient;
+:focus {
+  outline: 2px dashed var(--primary-400);
+  outline-offset: 2px;
 }
 
-#about {
-  @apply bg-about-gradient;
+/* Custom Scrollbar Styles */
+// ::-webkit-scrollbar {
+//   width: 10px;
+// }
+
+// ::-webkit-scrollbar-track {
+//   background-color: var(--primary-600);
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background-color: var(--primary-300);
+//   border-radius: 1rem;
+//   transition: background-color 0.3s ease;
+// }
+
+// ::-webkit-scrollbar-thumb:hover {
+// //   background-color: var(--primary-400);
+// // }
+
+// /* Accessibility Focus Styles */
+// :focus {
+//   outline: 2px dashed var(--primary-400);
+//   outline-offset: 2px;
+// }
+
+// .custom-scrollbar {
+//   @apply scrollbar-thin scrollbar-thumb-rounded;
+// }
+
+/* Header Visibility Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease-in-out;
 }
 
-#experience {
-  @apply bg-experience-gradient;
+.header-hidden {
+  transform: translateY(-100%);
 }
 
-#projects {
-  @apply bg-projects-gradient;
+.header-visible {
+  transform: translateY(0);
 }
 
-#skills {
-  @apply bg-skills-gradient;
+.active-section {
+  background-color: var(--primary-500);
+  color: white;
+  transition: background-color 0.3s ease-in-out;
 }
 
-#writing {
-  @apply bg-writing-gradient;
+/* Custom Arrow Styles */
+.custom-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-#contact {
-  @apply bg-contact-gradient;
-}
-
-/* Add this to your global CSS file or Tailwind CSS configuration */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
+.custom-arrow:hover {
+  background-color: #f0f0f0;
 }
