@@ -1,16 +1,15 @@
 'use client'
 
-import { SkillProps } from './Skills'
+import { Skill } from '../types/data'
 
 import { useState, useEffect, useCallback } from 'react'
 import useDebounce from './useDebounce'
 
-const useSkills = (initialData: SkillProps[]) => {
+const useSkills = (initialData: Skill[]) => {
   const [filters, setFilters] = useState<string[]>([])
   const [sortOption, setSortOption] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState<string>('')
-  const [filteredSkills, setFilteredSkills] =
-    useState<SkillProps[]>(initialData)
+  const [filteredSkills, setFilteredSkills] = useState<Skill[]>(initialData)
 
   const debouncedFilters = useDebounce(filters, 300)
   const debouncedSortOption = useDebounce(sortOption, 300)
@@ -56,7 +55,7 @@ const useSkills = (initialData: SkillProps[]) => {
     }
 
     setFilteredSkills(filtered)
-  }, [])
+  }, [debouncedFilters, debouncedSearchQuery, debouncedSortOption, initialData])
 
   useEffect(() => {
     applyFiltersSortAndSearch()

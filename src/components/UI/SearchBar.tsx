@@ -1,0 +1,35 @@
+import React, { useRef, useEffect } from 'react'
+import { useSkillsContext } from '@/context/SkillsContext'
+import clsx from 'clsx'
+
+const SearchBar: React.FC<{}> = React.memo(({}) => {
+  const { searchQuery, setSearchQuery } = useSkillsContext()
+  const searchBarRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    inputRef.current?.focus()
+  }, [])
+
+  return (
+    <div
+      ref={searchBarRef}
+      className="mb-4 flex w-full max-w-lg items-center justify-center"
+    >
+      <input
+        aria-label="Search skills"
+        ref={inputRef}
+        type="text"
+        value={searchQuery}
+        onChange={e => setSearchQuery(e.target.value)}
+        className={clsx(
+          'w-full rounded-md p-2 shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-primary-700 dark:text-white dark:placeholder-primary-400 dark:focus-within:bg-primary-300 dark:focus-within:placeholder-primary-700'
+        )}
+        placeholder="Search skills..."
+      />
+    </div>
+  )
+})
+
+SearchBar.displayName = 'SearchBar'
+export default SearchBar
