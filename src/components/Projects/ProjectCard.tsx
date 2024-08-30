@@ -1,92 +1,169 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import Image from 'next/image'
+import {
+  FaPlay,
+  FaServer,
+  FaLaptopCode,
+  FaBook,
+  FaBloggerB,
+} from 'react-icons/fa'
+import { Tooltip as ReactTooltip } from 'react-tooltip'
+import WritingCard from '../Writing/WritingCard'
+import { Article, Project, ProjectWithDetails } from '../../types/data'
 
-export interface ProjectCardProps {
-  id: number
-  title: string
-  description: string
-  imageUrl: string
-  backendRepoUrl: string
-  frontendRepoUrl: string
-  demoUrl: string
-  skills: string[]
-  publishedDate: string
-  status: string
-  tags: string[]
-}
-
-const ProjectCard: React.FC<ProjectCardProps> = ({
-  id,
+const ProjectCard: React.FC<ProjectWithDetails> = ({
   title,
   description,
-  imageUrl,
-  backendRepoUrl,
-  frontendRepoUrl,
+  image,
+  backendRepo,
+  frontendRepo,
+  codeRepo,
   demoUrl,
-  skills,
-  publishedDate,
+  videoDemo,
+  storybook,
+  articleDetails: articles = [],
+  skillDetails: skills = [],
+  launchDate,
   status,
   tags,
 }) => {
+  const [showBlogs, setShowBlogs] = useState(false)
+
   return (
-    <div className="mx-auto mb-8 flex h-full max-w-md flex-col justify-evenly rounded-lg bg-white p-6 shadow-lg">
-      <Image
-        src={imageUrl}
-        alt={`${title} thumbnail`}
-        width={192}
-        height={192}
-        className="mb-4 h-48 w-full rounded-lg object-cover"
-      />
-      <h3 className="mb-2 text-2xl font-bold">{title}</h3>
-      <p className="mb-4 text-gray-600">{description}</p>
-      <div className="mb-4 flex flex-wrap gap-2">
+    <div className="-z-10 flex h-full min-h-[500px] max-w-full flex-col justify-between rounded-lg bg-gradient-to-br from-primary-300 to-secondary-300 p-6 shadow-lg transition-shadow hover:shadow-xl dark:bg-gradient-to-br dark:from-secondary-800 dark:to-primary-800">
+      {/* Image Section */}
+      <div className="relative mb-4 h-48 w-full overflow-hidden rounded-lg">
+        <Image
+          src={image}
+          alt={`${title} thumbnail`}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
+        />
+      </div>
+
+      {/* Title */}
+      <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-primary-100">
+        {title}
+      </h3>
+
+      {/* Description */}
+      <p className="mb-4 line-clamp-3 text-sm text-gray-600 dark:text-primary-300">
+        {description}
+      </p>
+
+      {/* Skills */}
+      <div className="scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 mb-4 flex gap-2 overflow-x-auto whitespace-nowrap">
         {skills.map((skill, index) => (
           <span
             key={index}
-            className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-600"
+            className="whitespace-nowrap rounded-full bg-blue-100 px-2 py-1 text-xs text-blue-600 dark:bg-blue-900 dark:text-blue-300"
           >
-            {skill}
+            {skill.name}
           </span>
         ))}
       </div>
-      <div className="mb-4 flex items-center justify-between">
-        <span className="text-sm text-gray-500">{status}</span>
-        <span className="text-sm text-gray-500">
-          {new Date(publishedDate).toLocaleDateString()}
+
+      {/* Status and Date */}
+      <div className="mb-4 flex items-center justify-between text-sm font-medium text-gray-500 dark:text-primary-400">
+        <span>{status}</span>
+        <span>
+          {launchDate !== 'TBD'
+            ? // ? new Date(publishedDate).toLocaleDateString()
+              ''
+            : 'TBD'}
         </span>
       </div>
-      <div className="mb-4 flex flex-wrap gap-2">
+
+      {/* Tags */}
+      <div className="mb-4 flex gap-2 overflow-x-auto whitespace-nowrap">
         {tags.map((tag, index) => (
           <span
             key={index}
-            className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-600"
+            className="rounded-full bg-green-50 px-2 py-1 text-xs text-green-700 dark:bg-gray-600 dark:text-green-100"
           >
             {tag}
           </span>
         ))}
       </div>
-      <div className="flex flex-col items-center justify-center gap-2 md:flex-row md:gap-4">
-        <a
-          href={demoUrl}
-          className="whitespace-nowrap rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-        >
-          Live Demo
-        </a>
-        <a
-          href={backendRepoUrl}
-          className="whitespace-nowrap rounded-full bg-gray-300 px-4 py-2 text-gray-800 hover:bg-gray-400"
-        >
-          Backend
-        </a>
-        {frontendRepoUrl && (
+
+      {/* Action Buttons */}
+      <div className="mb-4 flex flex-row items-center justify-center gap-4 overflow-x-auto whitespace-nowrap">
+        {videoDemo && (
           <a
-            href={frontendRepoUrl}
-            className="whitespace-nowrap rounded-full bg-gray-300 px-4 py-2 text-gray-800 hover:bg-gray-400"
+            href={videoDemo}
+            data-tooltip-id="link-tooltip"
+            data-tooltip-content="Live Demo"
+            className="flex items-center justify-center rounded-full bg-gray-300 p-3 text-gray-800 transition-colors hover:bg-blue-700 hover:text-white dark:bg-gray-500 dark:hover:bg-blue-600"
+            aria-label={`${title} Live Demo`}
           >
-            Frontend
+            <FaPlay />
           </a>
         )}
+
+        {backendRepo && backendRepo !== 'N/A' && (
+          <a
+            href={backendRepo}
+            data-tooltip-id="link-tooltip"
+            data-tooltip-content="Backend Code"
+            className="flex items-center justify-center rounded-full bg-gray-300 p-3 text-gray-800 transition-colors hover:bg-blue-700 hover:text-white dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-blue-700"
+            aria-label={`${title} Backend Repository`}
+          >
+            <FaServer />
+          </a>
+        )}
+
+        {frontendRepo && frontendRepo !== 'N/A' && (
+          <a
+            href={frontendRepo}
+            data-tooltip-id="link-tooltip"
+            data-tooltip-content="Frontend Code"
+            className="hover:text-whitedark:bg-gray-600 flex items-center justify-center rounded-full bg-gray-300 p-3 text-gray-800 transition-colors hover:bg-blue-700 dark:text-gray-200 dark:hover:bg-blue-700"
+            aria-label={`${title} Frontend Repository`}
+          >
+            <FaLaptopCode />
+          </a>
+        )}
+
+        {storybook && (
+          <a
+            href={storybook}
+            data-tooltip-id="link-tooltip"
+            data-tooltip-content="Storybook"
+            className="text-gray-80 hover:text-whitedark:bg-gray-500 flex items-center justify-center rounded-full bg-gray-300 p-3 transition-colors hover:bg-indigo-700 dark:hover:bg-indigo-600"
+            aria-label={`${title} Storybook`}
+          >
+            <FaBook />
+          </a>
+        )}
+
+        {articles.length > 0 && (
+          <button
+            type="button"
+            data-tooltip-id="link-tooltip"
+            data-tooltip-content="Blogs"
+            aria-label="Show Associated Blogs"
+            onClick={() => setShowBlogs(!showBlogs)}
+            className="flex items-center justify-center rounded-full bg-gray-300 p-3 text-gray-800 transition-colors hover:bg-yellow-600 dark:bg-gray-400 dark:text-gray-900 dark:hover:bg-indigo-700"
+          >
+            <FaBloggerB />
+          </button>
+        )}
       </div>
+
+      {/* Expandable Blogs Section */}
+      {showBlogs && (
+        <div className="flex flex-col gap-4">
+          {articles.map(
+            blog => blog && <WritingCard key={blog.id} {...blog} />
+          )}
+        </div>
+      )}
+
+      <ReactTooltip id="link-tooltip" place="top" />
     </div>
   )
 }
