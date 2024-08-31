@@ -1,36 +1,34 @@
-"use client";
+'use client'
 
-import React, { useEffect, useRef, useState } from "react";
-import { IconButton } from "@/components";
-
+import React, { useEffect, useRef, useState } from 'react'
 export interface DropdownMenuItemProps {
-  label: string;
-  icon?: React.ReactElement | React.ReactElement<SVGSVGElement>;
-  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  label: string
+  icon?: React.ReactElement | React.ReactElement<SVGSVGElement>
+  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
 export interface DropdownMenuProps {
-  items: DropdownMenuItemProps[];
-  menuLabel: string;
+  items: DropdownMenuItemProps[]
+  menuLabel: string
 }
 
 const DropdownMenu: React.FC<DropdownMenuProps> = ({
   items,
-  menuLabel = "Open Menu",
+  menuLabel = 'Open Menu',
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
 
-  const toggleDropdown = () => setIsOpen((prev) => !prev);
+  const toggleDropdown = () => setIsOpen(prev => !prev)
 
   const handleItemClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
+    onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   ) => {
-    onClick(event);
-    setIsOpen(false);
-  };
+    onClick(event)
+    setIsOpen(false)
+  }
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -40,35 +38,35 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
         menuButtonRef.current &&
         !menuButtonRef.current.contains(event.target as Node)
       ) {
-        setIsOpen(false);
+        setIsOpen(false)
       }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   useEffect(() => {
     if (!isOpen && menuButtonRef.current) {
-      menuButtonRef.current.focus();
+      menuButtonRef.current.focus()
     }
-  }, [isOpen]);
+  }, [isOpen])
 
   useEffect(() => {
     if (isOpen && menuRef.current) {
-      menuRef.current.focus();
+      menuRef.current.focus()
     }
-  }, [isOpen]);
+  }, [isOpen])
 
   const ariaExpanded = {
-    "aria-expanded": isOpen,
-  };
+    'aria-expanded': isOpen,
+  }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      toggleDropdown();
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      toggleDropdown()
     }
-  };
+  }
 
   return (
     <div
@@ -99,7 +97,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
               <button
                 type="button"
                 key={index}
-                onClick={(event) => handleItemClick(event, item.onClick)}
+                onClick={event => handleItemClick(event, item.onClick)}
                 className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
                 role="menuitem"
                 tabIndex={0}
@@ -112,7 +110,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default DropdownMenu;
+export default DropdownMenu
