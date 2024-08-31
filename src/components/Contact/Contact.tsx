@@ -67,50 +67,63 @@ export default function Contact() {
   }
 
   return (
-    <div className="bg-primary-200 container h-full w-full max-w-3xl p-6">
-      <form onSubmit={handleSubmit} noValidate className="w-full space-y-8">
-        <FormInput
-          label="Name"
-          value={formData.name}
-          onChange={handleChange('name')}
-          errorMessage={errors.name}
-          showError={!!errors.name}
-          isRequired
-          placeholder="Enter your name"
-        />
-        <FormInput
-          label="Email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange('email')}
-          errorMessage={errors.email}
-          showError={!!errors.email}
-          isRequired
-          placeholder="Enter your email"
-        />
-        <FormInput
-          label="Subject"
-          value={formData.subject}
-          onChange={handleChange('subject')}
-          errorMessage={errors.subject}
-          showError={!!errors.subject}
-          isRequired
-          placeholder="Enter the subject"
-        />
-        <FormInput
-          as="textarea"
-          label="Message"
-          value={formData.message}
-          onChange={handleChange('message')}
-          errorMessage={errors.message}
-          showError={!!errors.message}
-          isRequired
-          placeholder="Enter your message"
-        />
-        <div className="mb-4 flex w-full items-center justify-end">
-          <BaseButton type="submit">Send Message</BaseButton>
-        </div>
-      </form>
-    </div>
+    <section
+      id="contact"
+      data-id="contact"
+      className="flex min-h-screen w-screen items-center justify-center"
+    >
+      <div className="container h-full w-full max-w-3xl bg-primary-200 p-8 dark:bg-primary-800">
+        <h3 className="text-center text-2xl text-primary-800 dark:text-primary-200 md:text-left md:text-3xl lg:text-4xl">
+          Contact Me
+        </h3>
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="w-full space-y-8 text-primary-800 dark:text-primary-200"
+        >
+          <FormInput
+            label="Name"
+            value={formData.name}
+            onChange={handleChange('name')}
+            errorMessage={errors.name}
+            showError={!!errors.name}
+            isRequired
+            placeholder="Enter your name"
+          />
+          <FormInput
+            label="Email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange('email')}
+            errorMessage={errors.email}
+            showError={!!errors.email}
+            isRequired
+            placeholder="Enter your email"
+          />
+          <FormInput
+            label="Subject"
+            value={formData.subject}
+            onChange={handleChange('subject')}
+            errorMessage={errors.subject}
+            showError={!!errors.subject}
+            isRequired
+            placeholder="Enter the subject"
+          />
+          <FormInput
+            as="textarea"
+            label="Message"
+            value={formData.message}
+            onChange={handleChange('message')}
+            errorMessage={errors.message}
+            showError={!!errors.message}
+            isRequired
+            placeholder="Enter your message"
+          />
+          <div className="mb-4 flex w-full items-center justify-end">
+            <BaseButton type="submit">Send Message</BaseButton>
+          </div>
+        </form>
+      </div>
+    </section>
   )
 }

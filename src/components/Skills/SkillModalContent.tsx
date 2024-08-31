@@ -1,9 +1,9 @@
 import React from 'react'
 import Icon from '../shared/Icon/Icon'
-import { IconLibrary } from '../shared'
-import { SkillProps } from './Skills'
+import { IconLibrary } from '../shared/Icon/icons'
+import { Skill } from '@/types/data'
 
-const SkillModalContent: React.FC<{ skill: SkillProps }> = ({ skill }) => {
+const SkillModalContent: React.FC<{ skill: Skill }> = ({ skill }) => {
   const IconComponent = IconLibrary[skill.icon as keyof typeof IconLibrary]
 
   return (

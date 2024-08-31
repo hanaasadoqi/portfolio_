@@ -2,6 +2,7 @@
   {
     "id": 1,
     "company": "Stitch Fix",
+    "website": "https://www.stitchfix.com/",
     "role": "Software Engineer II",
     "location": "New York, NY",
     "dates": "Jan 2022 - Jan 2023",
@@ -12,11 +13,13 @@
       "Developed and implemented features based on user feedback, significantly reducing the Merch team’s workload by over 300 hours monthly.",
       "Contributed to redesigning and rebuilding the internal web application, focusing on scalable and maintainable solutions.",
       "Authored and maintained comprehensive technical documentation."
-    ]
+    ],
+    "skills": [1, 2, 3, 5, 16]
   },
   {
     "id": 2,
     "company": "Pandora Music",
+    "website": "https://www.siriusxm.com/",
     "role": "Apprentice Software Engineer",
     "location": "New York, NY",
     "dates": "Apr 2021 - Nov 2021",
@@ -26,11 +29,13 @@
       "Contributed to key projects using React, TypeScript, and GraphQL.",
       "Handled tasks such as unit/integration testing, refactoring, and code reviews to ensure high-quality code and functionality.",
       "Participated in Agile Scrum processes, contributing insights during stand-ups and sprint meetings."
-    ]
+    ],
+    "skills": [1, 2, 3, 12, 16]
   },
   {
     "id": 3,
     "company": "Flatiron School",
+    "website": "https://www.flatironschool.com/",
     "role": "Online Cohort Lead",
     "location": "New York, NY",
     "dates": "Aug 2020 - Jan 2022",
@@ -38,12 +43,14 @@
     "description": [
       "Delivered interactive live lectures on full-stack web development, covering JavaScript, React, Redux, Ruby on Rails, SQL, and other web technologies.",
       "Conducted weekly one-on-one mentoring sessions, offering personalized guidance and feedback to students.",
-      "Successfully guided over 40 students in developing personal projects from ideation to deployment."
-    ]
+      "Successfully guided over 40 students in developing personal projects."
+    ],
+    "skills": [1, 2, 4, 5, 9, 13, 19]
   },
   {
     "id": 4,
     "company": "WeWork",
+    "website": "https://wework.com/",
     "role": "Software Engineering Coach",
     "location": "Atlanta, Georgia",
     "dates": "Apr 2019 - Apr 2020",
@@ -52,11 +59,14 @@
       "Provided one-on-one coaching and feedback on technical concepts, coding best practices, and troubleshooting techniques.",
       "Delivered classroom lectures on OO Relationships, React, Redux, Ruby on Rails, and other web technologies.",
       "Conducted code reviews and feedback sessions, helping students refine their coding style."
-    ]
+    ],
+    "skills": [1, 2, 4, 5, 13]
   },
   {
     "id": 5,
+    "url": "",
     "company": "Benvenuti Public Relations",
+    "website": "https://benvenutipr.com/",
     "role": "Associate Publicist",
     "location": "New York, NY",
     "dates": "October 2017 - August 2018",
@@ -65,11 +75,14 @@
       "Actively engaged in new business development process: source leads, create and deliver presentations, edit proposals, follow up and close deals.",
       "Created content and managed social media presence on a variety of platforms for clients.",
       "Consistently developed relationships with top-tier local, national, and international media contacts for pitches."
-    ]
+    ],
+    "skills": []
   },
   {
     "id": 6,
+    "url": "",
     "company": "Ventrop Engineering Consulting Group, PLLC",
+    "website": "https://ventropengineering.com/",
     "role": "Mechanical Engineering Intern",
     "location": "New York, NY",
     "dates": "May 2012 - August 2015",
@@ -77,6 +90,7 @@
     "description": [
       "Designed and drafted plumbing, electrical, sprinkler, mechanical and fire alarm engineering plans.",
       "Collaborated with architectural firms in order to ensure that all components worked together seamlessly."
-    ]
+    ],
+    "skills": []
   }
 ]

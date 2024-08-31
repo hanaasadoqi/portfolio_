@@ -13,6 +13,8 @@ export type ButtonVariant =
   | 'ghost'
   | 'link'
   | 'fab'
+  | 'icon'
+  | 'danger'
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
 
 export interface BaseButtonProps
@@ -48,42 +50,48 @@ export const sizeStyles: Record<ButtonSize, string> = {
   md: 'py-0.75 px-2 gap-2 md:py-1 md:px-3 md:gap-2.5',
   lg: 'py-1 px-3 gap-2.5 md:py-1.5 md:px-4 md:gap-3',
   xl: 'py-1.5 px-4 gap-3 md:py-2 md:px-6 md:gap-3',
-  full: 'w-full',
+  full: 'w-full h-full',
 }
 
 export const colorStyles: Record<ButtonVariant, string> = {
   primary:
-    'rounded-md bg-gray-600 text-white border-gray-600 hover:bg-gray-500 hover:border-gray-700 focus-visible:ring-gray-700 active:bg-gray-800',
+    'rounded-md bg-gray-200 dark:bg-gray-900 dark:text-primary-100 dark:hover:bg-primary-800 dark:hover:text-gray-900 hover:text-gray-800 border-primary-600 hover:bg-primary-300 hover:border-primary-700 focus-visible:ring-primary-700 active:bg-primary-400',
   secondary:
-    'rounded-md bg-gray-200 border-gray-200 text-gray-700 hover:bg-gray-300 hover:border-gray-300 focus-visible:ring-gray-100 active:bg-gray-400',
+    'rounded-md bg-gray-400 text-primary-700 hover:bg-primary-500 hover:border-primary-300 focus-visible:ring-primary-100 active:bg-primary-500',
   outline:
-    'rounded-md bg-transparent active:bg-gray-100 text-gray-600 border-gray-600 hover:bg-gray-600 hover:text-white hover:border-gray-700 focus-visible:bg-gray-600 focus-visible:text-white focus-visible:ring-gray-500 active:bg-gray-900',
+    'rounded-md bg-primary-600 active:bg-primary-100 text-secondary-300 dark:text-secondary-800 border-primary-600 hover:bg-primary-500 hover:text-white hover:border-primary-700 focus-visible:bg-primary-600 focus-visible:text-white focus-visible:ring-primary-500 active:bg-primary-900',
   ghost:
-    'rounded-md bg-transparent text-gray-600 border-2 border-transparent hover:bg-gray-100 hover:border-gray-700 hover:text-gray-700 hover:shadow-sm focus-visible:ring-gray-100 active:bg-gray-200',
-  link: 'bg-transparent text-blue-600 hover:text-blue-700 focus-visible:text-blue-800 active:text-blue-900',
-  text: 'rounded-sm bg-transparent text-gray-600 hover:bg-gray-200 hover:text-gray-700 focus-visible:bg-gray-200 focus-visible:text-gray-800 active:text-gray-900 active:bg-gray-300',
-  fab: 'bg-gray-200 border-gray-100 hover:bg-gray-100 focus-visible:bg-gray-300 active:bg-gray-200',
+    'rounded-md text-primary-500 border-transparent hover:bg-primary-100 hover:border-primary-700 hover:text-primary-700 hover:shadow-sm focus-visible:ring-primary-100 active:bg-primary-200',
+  link: 'text-blue-600 bg-transparent hover:text-blue-700 focus-visible:text-blue-800 active:text-blue-900',
+  text: 'rounded-sm bg-transparent text-primary-800 hover:bg-primary-200 hover:text-primary-700 focus-visible:bg-primary-200 focus-visible:text-primary-900 active:text-primary-900 active:bg-primary-300',
+  fab: 'bg-primary-200 border-primary-100 hover:bg-primary-100 focus-visible:bg-primary-300 active:bg-primary-200',
+  danger:
+    'rounded-md text-red-600 hover:bg-red-500 dark:hover:text-white hover:bg-red-500 active:bg-red-700 dark:hover:bg-red-500 dark:active:bg-red-600',
+  icon: 'text-primary-500 bg-transparent hover:text-primary-300 active:text-primary-600',
 }
 
 export const outerStyles: Record<ButtonVariant, string> = {
   primary:
-    'shadow-md hover:shadow-lg focus-visible:ring-2 focus-visible:ring-offset-2 border-2 border-gray-600',
+    'shadow-md hover:shadow-lg focus-visible:ring-2 focus-visible:ring-offset-2 border-2 border-primary-600',
   secondary:
-    'shadow-md hover:shadow-lg focus-visible:ring-2 focus-visible:ring-offset-2 border-2 border-gray-200',
+    'shadow-md hover:shadow-lg focus-visible:ring-2 focus-visible:ring-offset-2 border-2 border-primary-200',
   outline:
-    'shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-offset-2 border-2 border-gray-600',
+    'shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-offset-2 border-2 border-primary-600',
   ghost:
     'shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-offset-2 border-2 border-transparent',
   link: 'shadow-none',
   text: 'shadow-none hover:shadow-md active:shadow-inner',
-  fab: 'shadow-md border-1 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-200 hover:shadow-lg active:shadow-inner',
+  fab: 'shadow-md border-1 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-200 hover:shadow-lg active:shadow-inner',
+  danger:
+    'hover:shadow-lg  border-transparent focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-600 hover:shadow-lg active:shadow-inner',
+  icon: 'border-none',
 }
 
 export const textStyles: Record<ButtonSize, string> = {
   xs: 'text-xs md:text-sm font-light tracking-normal',
   sm: 'text-sm md:text-base md:font-normal md:tracking-wide',
   md: 'text-base font-normal md:font-medium md:tracking-wide',
-  lg: 'text-base md:text-md font-medium md:tracking-widest',
+  lg: 'text-base md:text-md font-bold md:tracking-widest',
   xl: 'text-md md:text-lg font-medium md:tracking-widest',
   full: 'text-lg font-medium tracking-widest',
 }

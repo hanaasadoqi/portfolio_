@@ -1,14 +1,20 @@
 [
   {
+    "id": 1,
     "school": "Flatiron School",
     "degree": "Software Engineering Immersive",
     "location": "Brooklyn, NY",
-    "dates": "September 2018 - January 2019"
+    "dates": "September 2018 - January 2019",
+    "url": "https://flatironschool.com/",
+    "skills": [1, 2, 3]
   },
   {
+    "id": 2,
     "school": "Pennsylvania State University",
     "degree": "Bachelors of Engineering - Mechanical Engineering",
     "location": "State College, PA",
-    "dates": "August 2011 - January 2017"
+    "dates": "August 2011 - January 2017",
+    "url": "https://www.psu.edu/",
+    "skills": [2, 4, 5]
   }
 ]

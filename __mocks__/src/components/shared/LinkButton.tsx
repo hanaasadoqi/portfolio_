@@ -1,27 +1,27 @@
-import React from "react";
-import { LinkButtonProps } from "@/components";
+import React from 'react'
+import { LinkButtonProps } from '@/components/shared'
 
 const LinkButton: React.FC<LinkButtonProps> = ({
-  href = "#",
+  href = '#',
   children,
   disabled = false,
-  ariaLabel = "Link Button",
+  ariaLabel = 'Link Button',
   ariaCurrent,
   className,
   onClick,
 }) => {
-  const currentAtt: "page" | undefined = ariaCurrent ? "page" : undefined;
+  const currentAtt: 'page' | undefined = ariaCurrent ? 'page' : undefined
 
   const ariaAttributes = {
-    "aria-label": ariaLabel,
-    "aria-disabled": disabled,
-    "aria-current": currentAtt,
-  };
+    'aria-label': ariaLabel,
+    'aria-disabled': disabled,
+    'aria-current': currentAtt,
+  }
   return (
     <a href={href} {...ariaAttributes} className={className} onClick={onClick}>
       {children}
     </a>
-  );
-};
+  )
+}
 
-export default LinkButton;
+export default LinkButton

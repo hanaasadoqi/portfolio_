@@ -39,17 +39,22 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'app-gradient-light':
+          'linear-gradient(to bottom, #cbd5e1, #bfdbfe, #a5b4fc, #f0abfc, #fbcfe8, #a5f3fc, #d8b4fe, #06b6de)',
+        'app-gradient-dark':
+          'linear-gradient(to bottom, #0f172a, #1e3a8a, #4338ca, #e879f9, #ec4899, #6d28d9, #0c4a6e, #0891b2)',
+        // Add other gradient definitions if needed...
 
         'hero-light': 'linear-gradient(to bottom, #f1f5f9, #bfdbfe)',
         'hero-dark': 'linear-gradient(to bottom, #0f172a, #1e3a8a)',
 
         'hero-gradient': 'linear-gradient(to bottom, #f1f5f9, #bfdbfe)',
-        'about-gradient': 'linear-gradient(to bottom, #bfdbfe, #93c5fd)',
-        'skills-gradient': 'linear-gradient(to bottom, #93c5fd, #d8b4fe)',
+        'about-gradient': 'linear-gradient(to bottom, #bfdbfe, #a5b4fc)',
+        'skills-gradient': 'linear-gradient(to bottom, #a5b4fc, #d8b4fe)',
         'experience-gradient': 'linear-gradient(to bottom, #d8b4fe, #fbcfe8)',
-        'projects-gradient': 'linear-gradient(to bottom, #fbcfe8, #f1f5f9)',
-        'writing-gradient': 'linear-gradient(to bottom, #f1f5f9, #bfdbfe)',
-        'education-gradient': 'linear-gradient(to bottom, #bfdbfe, #67e8f9)',
+        'projects-gradient': 'linear-gradient(to bottom, #fbcfe8, #a5f3fc)',
+        'writing-gradient': 'linear-gradient(to bottom, #a5f3fc, #d8b4fe)',
+        'education-gradient': 'linear-gradient(to bottom, #d8b4fe, #67e8f9)',
         'contact-gradient': 'linear-gradient(to bottom, #67e8f9, #06b6de)',
 
         'hero-gradient-dark': 'linear-gradient(to bottom, #0f172a, #1e3a8a)',
@@ -74,6 +79,47 @@ const config: Config = {
         sans: ['var(--font-poppins)', 'sans-serif'],
         serif: ['var(--font-merriweather)', 'serif'],
         raleway: ['var(--font-raleway)', 'sans-serif'],
+      },
+      keyframes: {
+        orbit: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        float: {
+          '0%': { transform: 'translateY(0)' },
+          '20%': { transform: 'translateY(-50px)' },
+          '30%': { transform: 'translateY(-100px)' },
+          '40%': { transform: 'translateY(-150px)' },
+          '50%': { transform: 'translateY(-200px)' },
+          '60%': { transform: 'translateY(-250px)' },
+          '70%': { transform: 'translateY(-300px)' },
+          '80%': { transform: 'translateY(-350px)' },
+          '90%': { transform: 'translateY(-400px)' },
+          '100%': { transform: 'translateY(-450px)' },
+        },
+        wave: {
+          '0%': { backgroundPosition: '0% 50%', backgroundSize: '100% 100%' },
+          '50%': {
+            backgroundPosition: '100% 50%',
+            backgroundSize: '100% 100%',
+          },
+          '100%': { backgroundPosition: '0% 50%', backgroundSize: '100% 100%' },
+        },
+        pulse: {
+          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(1.2)', opacity: '0.7' },
+        },
+      },
+      animation: {
+        'orbit-slow': 'orbit 10s linear infinite',
+        'orbit-fast': 'orbit 5s linear infinite',
+        'float-slow': 'float 10s linear infinite',
+        'float-fast': 'float 5s linear infinite',
+        'spin-slow': 'spin 10s linear infinite',
+        'spin-fast': 'spin 5s linear infinite',
+        wave: 'wave 5s linear infinite',
+        'pulse-slow': 'pulse 10s ease-in-out infinite',
+        'pulse-fast': 'pulse 5s ease-in-out infinite',
       },
     },
   },
