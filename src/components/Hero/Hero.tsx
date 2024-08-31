@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import dynamic from 'next/dynamic'
 import ProfileBadge from '@/components/Hero/ProfileBadge'
 import CallToAction from '@/components/Hero/CallToAction'
 
@@ -14,7 +13,7 @@ const Hero: React.FC = () => {
       <div className="flex flex-col items-center space-y-6 lg:items-start">
         <ProfileBadge />
 
-        <div className="flex flex-col space-y-4 md:space-y-12 md:space-y-8">
+        <div className="flex flex-col space-y-4 md:space-y-8 lg:space-y-12">
           <header className="text-center lg:text-left" id="hero-heading">
             <h1 className="mb-2 text-2xl font-bold text-primary-900 transition-all duration-300 dark:text-white md:text-3xl lg:text-4xl">
               {"Hi, I'm Hanaa Sadoqi"}

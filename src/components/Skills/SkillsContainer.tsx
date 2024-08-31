@@ -29,8 +29,6 @@ const DynamicFaRedo = dynamic(
 )
 
 const SkillsContainer: React.FC = () => {
-  console.log('SkillsContainer rendering...') // Debugging log
-
   const { filteredSkills: skills, resetFiltersAndSort } = useSkillsContext() // Access normalized data from context
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null) // State to track selected skill ID
   const [displayedSkillsCount, setDisplayedSkillsCount] = useState(8) // State for pagination
@@ -100,7 +98,7 @@ const SkillsContainer: React.FC = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="translate-transform grid w-full auto-rows-auto grid-cols-2 justify-items-stretch gap-1 text-white duration-300 ease-linear sm:grid-cols-3 md:grid-cols-4 md:gap-2 md:gap-6 xl:grid-cols-5">
+        <div className="translate-transform grid w-full auto-rows-auto grid-cols-2 justify-items-stretch gap-1 text-white duration-300 ease-linear sm:grid-cols-3 md:grid-cols-4 md:gap-2 lg:gap-6 xl:grid-cols-5">
           {Object.values(skills)
             .slice(0, displayedSkillsCount)
             .map(skill => (

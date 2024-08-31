@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import WritingCard from '../Writing/WritingCard'
-import { Article, Project, ProjectWithDetails } from '../../types/data'
+import { ProjectWithDetails } from '../../types/data'
 
 const ProjectCard: React.FC<ProjectWithDetails> = ({
   title,
@@ -59,7 +59,7 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
       <div className="scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 mb-4 flex gap-2 overflow-x-auto whitespace-nowrap">
         {skills.map((skill, index) => (
           <span
-            key={index}
+            key={`skill-${skill.name}-${index}`}
             className="whitespace-nowrap rounded-full bg-blue-100 px-2 py-1 text-xs text-blue-600 dark:bg-blue-900 dark:text-blue-300"
           >
             {skill.name}
@@ -82,7 +82,7 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
       <div className="mb-4 flex gap-2 overflow-x-auto whitespace-nowrap">
         {tags.map((tag, index) => (
           <span
-            key={index}
+            key={`${tag}-${index}`}
             className="rounded-full bg-green-50 px-2 py-1 text-xs text-green-700 dark:bg-gray-600 dark:text-green-100"
           >
             {tag}

@@ -79,7 +79,7 @@ const useStars = (id: string): ReactNode[] => {
     // Generate stars based on the updated numStars
     const generatedStars = Array.from({ length: starCount }).map((_, index) => (
       <Star
-        key={index}
+        key={`${starCount - index - 1})`}
         size={Math.random() * 5 + 1} // Random size between 2 and 5
         color={`var(--accent-${
           ['pink', 'blue', 'cyan', 'navy', 'yellow'][

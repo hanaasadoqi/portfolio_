@@ -32,12 +32,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node) &&
-        menuButtonRef.current &&
-        !menuButtonRef.current.contains(event.target as Node)
-      ) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsOpen(false)
       }
     }
@@ -96,7 +91,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
             {items.map((item, index) => (
               <button
                 type="button"
-                key={index}
+                key={`${item.label}-${index}`}
                 onClick={event => handleItemClick(event, item.onClick)}
                 className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
                 role="menuitem"
