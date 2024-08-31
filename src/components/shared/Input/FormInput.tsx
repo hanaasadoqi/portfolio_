@@ -30,7 +30,10 @@ const FormInput = forwardRef(
     return (
       <div className="rounded-md p-2">
         {label && (
-          <label htmlFor={inputId} className="text-primary-700 text-lg">
+          <label
+            htmlFor={inputId}
+            className="text-lg text-primary-700 dark:text-primary-300"
+          >
             {label} {isRequired && <span className="text-red-500">*</span>}
           </label>
         )}
@@ -42,7 +45,7 @@ const FormInput = forwardRef(
           }
           aria-invalid={showError}
           className={clsx(
-            'bg-primary-100 focus-within:bg-primary-50 my-2 w-full p-2',
+            'my-2 w-full bg-primary-100 p-2 focus-within:bg-primary-50',
             className
           )}
           {...rest}

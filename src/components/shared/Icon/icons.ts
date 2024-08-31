@@ -17,10 +17,11 @@ import {
   FaServer,
   FaHtml5,
   FaSearch,
-} from "react-icons/fa";
-import { FaHashnode } from "react-icons/fa6";
-import { IoMdLink } from "react-icons/io";
-import { GiHamburgerMenu } from "react-icons/gi";
+  FaExternalLinkAlt,
+} from 'react-icons/fa'
+import { FaHashnode } from 'react-icons/fa6'
+import { IoMdLink, IoMdClose } from 'react-icons/io'
+import { GiHamburgerMenu } from 'react-icons/gi'
 import {
   SiJavascript,
   SiTypescript,
@@ -35,14 +36,14 @@ import {
   SiJest,
   SiWebpack,
   SiNodedotjs,
-} from "react-icons/si";
-
-import sirius from "/public/logos/siriusxm.svg";
-import flatiron from "/public/logos/flatiron-light.svg";
+} from 'react-icons/si'
+import { FiExternalLink } from 'react-icons/fi'
+import sirius from '/public/logos/siriusxm.svg'
+import flatiron from '/public/logos/flatiron-light.svg'
 // import stitchfix from "/public/logos/stitchfix.svg";
-import ventrop from "/public/logos/ventrop.svg";
-import benvenuti from "/public/logos/benvenuti.svg";
-import wework from "/public/logos/wework.svg";
+import ventrop from '/public/logos/ventrop.svg'
+import benvenuti from '/public/logos/benvenuti.svg'
+import wework from '/public/logos/wework.svg'
 
 const icons = {
   Github: FaGithub,
@@ -79,7 +80,9 @@ const icons = {
   ClipboardCheck: FaClipboardCheck,
   Webpack: SiWebpack,
   search: FaSearch,
-};
+  externalLink: FaExternalLinkAlt,
+  close: IoMdClose,
+}
 
 const logos = {
   sirius,
@@ -88,6 +91,6 @@ const logos = {
   // stitchfix,
   benvenuti,
   wework,
-};
+}
 
-export { icons as IconLibrary, logos as LogoLibrary };
+export { icons as IconLibrary, logos as LogoLibrary }
