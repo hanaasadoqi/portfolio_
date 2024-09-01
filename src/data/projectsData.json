@@ -26,6 +26,7 @@
     "backendRepo": "https://github.com/hsadoqi/mod5_backend",
     "frontendRepo": "https://github.com/hsadoqi/mod5_frontend",
     "videoDemo": "https://www.youtube.com/watch?v=95DrDKhWZ9A",
+    "demoUrl": "https://litrides.netlify.com/",
     "launchDate": "2019-05-01",
     "status": "Completed",
     "tags": [
@@ -49,6 +50,7 @@
     "status": "Completed",
     "tags": [
       "Full-Stack",
+      "Backend",
       "Travel",
       "Ride Sharing",
       "Trip Planning",

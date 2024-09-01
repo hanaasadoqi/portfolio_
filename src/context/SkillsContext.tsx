@@ -1,11 +1,11 @@
 'use client'
 
 import React, { createContext, useState, useContext, ReactNode } from 'react'
-import { Skill } from '@/types/data'
+import { Skill, SkillWithDetails } from '@/types/data'
 import { useFilteredSkills } from '@/hooks/useFilteredSkills'
 
 interface SkillsContextProps {
-  filteredSkills: Skill[]
+  filteredSkills: SkillWithDetails[]
   filters: string[]
   sortOption: string | null
   searchQuery: string
@@ -18,7 +18,7 @@ interface SkillsContextProps {
 const SkillsContext = createContext<SkillsContextProps | undefined>(undefined)
 
 export const SkillsProvider: React.FC<{
-  initialData: Record<number, Skill>
+  initialData: Record<number, SkillWithDetails>
   children: ReactNode
 }> = ({ initialData, children }) => {
   const [filters, setFilters] = useState<string[]>([])

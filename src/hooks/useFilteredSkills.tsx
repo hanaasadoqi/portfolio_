@@ -1,61 +1,78 @@
-import { useState, useEffect, useCallback } from 'react'
-import { Skill } from '@/types/data'
+import { useState, useEffect } from 'react'
+import { Skill, SkillWithDetails } from '@/types/data'
+
+// Function to remove duplicates from an array
+function removeDuplicates<T extends { id: number }>(data: T[]): T[] {
+  const uniqueIds = new Set<number>()
+  return data.filter(item => {
+    if (uniqueIds.has(item.id)) {
+      console.log(`Duplicate found and removed: ${item.id}`) // Log duplicates
+      return false // Filter out duplicate
+    } else {
+      uniqueIds.add(item.id)
+      return true // Keep unique
+    }
+  })
+}
 
 export const useFilteredSkills = (
-  initialData: Record<number, Skill>,
+  initialData: Record<number, SkillWithDetails>,
   filters: string[],
   sortOption: string | null,
   searchQuery: string
 ) => {
-  const [filteredSkills, setFilteredSkills] = useState<Skill[]>(
-    Object.values(initialData)
-  )
+  const [filteredSkills, setFilteredSkills] = useState<SkillWithDetails[]>([])
 
-  const applyFiltersSortAndSearch = useCallback(() => {
-    let filtered = Object.values(initialData)
+  useEffect(() => {
+    console.log('Initial Data:', initialData) // Debug log
 
+    // Convert initial data to an array
+    let skills = Object.values(initialData)
+
+    // Remove duplicates from initial data
+    skills = removeDuplicates(skills)
+    console.log('After removing duplicates:', skills) // Debug log
+
+    // Apply search query filter
     if (searchQuery) {
-      filtered = filtered.filter(
+      const lowercasedQuery = searchQuery.toLowerCase()
+      skills = skills.filter(
         skill =>
-          skill.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          skill.tags.some(tag =>
-            tag.toLowerCase().includes(searchQuery.toLowerCase())
-          )
+          skill.name.toLowerCase().includes(lowercasedQuery) ||
+          skill.tags.some(tag => tag.toLowerCase().includes(lowercasedQuery))
       )
+      console.log('After search query filter:', skills) // Debug log
     }
 
+    // Apply tag filters
     if (filters.length > 0) {
-      filtered = filtered.filter(skill =>
-        filters.some((filter: string) => skill.tags.includes(filter))
+      skills = skills.filter(skill =>
+        filters.some(filter => skill.tags.includes(filter))
       )
+      console.log('After applying tag filters:', skills) // Debug log
     }
 
+    // Apply sorting
     if (sortOption) {
-      filtered = [...filtered].sort((a, b) => {
+      skills.sort((a, b) => {
         switch (sortOption) {
           case 'Experience':
             return (b.experience?.length || 0) - (a.experience?.length || 0)
           case 'Projects':
             return (b.projects?.length || 0) - (a.projects?.length || 0)
           case 'Years':
-            return (
-              new Date().getFullYear() -
-              (b.startYear || new Date().getFullYear()) -
-              (new Date().getFullYear() -
-                (a.startYear || new Date().getFullYear()))
-            )
+            return (b.startYear || 0) - (a.startYear || 0)
           default:
             return 0
         }
       })
+      console.log('After sorting:', skills) // Debug log
     }
 
-    setFilteredSkills(filtered)
-  }, [filters, sortOption, searchQuery, initialData])
+    setFilteredSkills(skills)
+  }, [initialData, filters, sortOption, searchQuery])
 
-  useEffect(() => {
-    applyFiltersSortAndSearch()
-  }, [applyFiltersSortAndSearch])
+  console.log('Final filtered skills:', filteredSkills) // Debug log
 
   return filteredSkills
 }
