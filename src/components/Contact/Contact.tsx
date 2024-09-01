@@ -70,7 +70,7 @@ export default function Contact() {
     <section
       id="contact"
       data-id="contact"
-      className="flex min-h-screen w-screen items-center justify-center"
+      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center py-24"
     >
       <div className="container h-full w-full max-w-3xl bg-primary-200 p-8 dark:bg-primary-800">
         <h3 className="text-center text-2xl text-primary-800 dark:text-primary-200 md:text-left md:text-3xl lg:text-4xl">

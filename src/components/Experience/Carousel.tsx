@@ -51,7 +51,7 @@ const Carousel: React.FC = () => {
     <section
       id="experience"
       data-id="experience"
-      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center"
+      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center py-24"
     >
       <div className="relative flex h-full w-full flex-col items-center justify-center">
         <div className="flex max-w-5xl flex-col items-center justify-center">

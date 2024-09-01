@@ -40,7 +40,7 @@ const CallToAction: React.FC = () => (
         ariaLabel="Download my resume"
         variant="link"
       >
-        Download My Resume
+        Download Resume
       </LinkButton>
 
       <div className="flex md:mt-0">
@@ -48,6 +48,8 @@ const CallToAction: React.FC = () => (
           href="https://www.linkedin.com/in/hanaasadoqi"
           ariaLabel="LinkedIn Profile"
           variant="icon"
+          tooltip="LinkedIn"
+          tooltipId="linkedin-tooltip"
           size="md"
         >
           <DynamicFaLinkedin size={32} />
@@ -56,6 +58,8 @@ const CallToAction: React.FC = () => (
           href="https://www.github.com/hsadoqi"
           ariaLabel="GitHub Profile"
           variant="icon"
+          tooltip="GitHub"
+          tooltipId="github-tooltip"
           size="md"
         >
           <DynamicFaGithub size={32} />
@@ -64,6 +68,8 @@ const CallToAction: React.FC = () => (
           href="https://www.twitter.com/hanaasadoqi"
           ariaLabel="Twitter Profile"
           variant="icon"
+          tooltip="Twitter"
+          tooltipId="twitter-tooltip"
           size="md"
         >
           <DynamicFaTwitter size={32} />

@@ -11,7 +11,7 @@ const Education: React.FC = () => {
     <section
       id="education"
       data-id="education"
-      className="my-48 flex min-h-screen w-screen items-center justify-center"
+      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center py-24"
     >
       <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-center">
         <div className="w-full">

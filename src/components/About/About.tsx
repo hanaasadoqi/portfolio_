@@ -17,17 +17,16 @@ const About: React.FC = () => {
     <section
       id="about"
       data-id="about"
-      className="my-48 flex min-h-screen w-screen items-center"
+      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center py-24"
     >
       <div className="relative mx-auto w-full text-left">
-        <div className="mb-8 space-y-2 px-12 text-center md:mb-12 md:text-left">
+        <div className="mb-4 space-y-2 px-4 text-center md:mb-8 md:px-12 md:text-left lg:mb-12">
           <h3>A Little About Me</h3>
-          <h5>
+          <h4>
             Snapshots of things that interest me, inspire me, or bring me joy.
-          </h5>
+          </h4>
         </div>
 
-        {/* Render scroll buttons based on scroll position */}
         <ScrollButton
           direction="left"
           onClick={() => handleScroll('left')}
@@ -41,7 +40,6 @@ const About: React.FC = () => {
           className={scrollButtonStyles}
         />
 
-        {/* Scrollable container for about items */}
         <div
           ref={scrollRef}
           className="scrollbar-hide snap-x snap-mandatory overflow-x-auto overflow-y-hidden whitespace-nowrap p-8 md:snap-none"

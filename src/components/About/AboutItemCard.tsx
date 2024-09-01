@@ -51,8 +51,8 @@ const AboutItemCard: React.FC<{ item: About; className?: string }> = ({
         </div>
         <figcaption className="absolute inset-0 h-full w-full rounded-xl bg-gradient-to-br from-purple-700 to-indigo-500 p-4 text-center text-white [backface-visibility:hidden] [transform:rotateY(180deg)]">
           <div className="flex h-full w-full items-center justify-center overflow-hidden whitespace-nowrap text-wrap text-white">
-            <div className="mx-4 px-4 text-center">
-              <h5 className="text-white">{item.title}</h5>
+            <div className="px-4 text-center">
+              <h6 className="text-white">{item.title}</h6>
               <p className="text-white">{item.description}</p>
             </div>
           </div>
