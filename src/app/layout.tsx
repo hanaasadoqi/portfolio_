@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   description: 'Full-stack Web Developer',
 }
 
+const TableOfContents = dynamic(() => import('@/components/TableOfContents'), {
+  ssr: false,
+})
 const DarkModeProvider = dynamic(
   () => import('../context/DarkModeContext').then(mod => mod.DarkModeProvider),
   { ssr: false }
@@ -61,7 +64,7 @@ export default function RootLayout({
         )}
       >
         <DarkModeProvider>
-          <Header />
+          <TableOfContents />
           {children}
           <DarkModeToggle />
         </DarkModeProvider>
