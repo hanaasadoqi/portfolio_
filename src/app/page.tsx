@@ -1,11 +1,12 @@
 import React from 'react'
 import { DataProvider } from '@/context/DataContext'
 import { SkillsProvider } from '@/context/SkillsContext'
+import { ArticlesProvider } from '@/context/ArticlesContext'
+import { ProjectProvider } from '@/context/ProjectContext'
 import dynamic from 'next/dynamic'
 import { NormalizedData } from '@/types/data'
 import { fetchAllData } from '@/utils/fetchAllData'
 
-// Dynamically import components
 const Background = dynamic(() => import('@/components/Background'), {
   ssr: false,
 })
@@ -46,8 +47,12 @@ export default function Home() {
             <Skills />
           </SkillsProvider>
           <Carousel />
-          <Projects />
-          <Writing />
+          <ProjectProvider initialData={normalizedData.projects}>
+            <Projects />
+          </ProjectProvider>
+          <ArticlesProvider initialData={normalizedData.articles}>
+            <Writing />
+          </ArticlesProvider>
           <EducationComponent />
           <Contact />
         </DataProvider>

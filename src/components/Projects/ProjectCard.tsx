@@ -8,7 +8,10 @@ import {
   FaLaptopCode,
   FaBook,
   FaBloggerB,
+  FaCode,
 } from 'react-icons/fa'
+import { SiStorybook } from 'react-icons/si'
+import { MdOpenInBrowser, MdOutlineOpenInBrowser } from 'react-icons/md'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import WritingCard from '../Writing/WritingCard'
 import { ProjectWithDetails } from '../../types/data'
@@ -33,7 +36,6 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
 
   return (
     <div className="-z-10 flex h-full min-h-[500px] max-w-full flex-col justify-between rounded-lg bg-gradient-to-br from-primary-300 to-secondary-300 p-6 shadow-lg transition-shadow hover:shadow-xl dark:bg-gradient-to-br dark:from-secondary-800 dark:to-primary-800">
-      {/* Image Section */}
       <div className="relative mb-4 h-48 w-full overflow-hidden rounded-lg">
         <Image
           src={image}
@@ -45,17 +47,14 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
         />
       </div>
 
-      {/* Title */}
       <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-primary-100">
         {title}
       </h3>
 
-      {/* Description */}
       <p className="mb-4 line-clamp-3 text-sm text-gray-600 dark:text-primary-300">
         {description}
       </p>
 
-      {/* Skills */}
       <div className="scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 mb-4 flex gap-2 overflow-x-auto whitespace-nowrap">
         {skills.map((skill, index) => (
           <span
@@ -67,7 +66,6 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
         ))}
       </div>
 
-      {/* Status and Date */}
       <div className="mb-4 flex items-center justify-between text-sm font-medium text-gray-500 dark:text-primary-400">
         <span>{status}</span>
         <span>
@@ -79,7 +77,7 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
       </div>
 
       {/* Tags */}
-      <div className="mb-4 flex gap-2 overflow-x-auto whitespace-nowrap">
+      <div className="scrollbar-thin mb-4 flex gap-2 overflow-x-auto whitespace-nowrap">
         {tags.map((tag, index) => (
           <span
             key={`${tag}-${index}`}
@@ -121,10 +119,22 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
             href={frontendRepo}
             data-tooltip-id="link-tooltip"
             data-tooltip-content="Frontend Code"
-            className="hover:text-whitedark:bg-gray-600 flex items-center justify-center rounded-full bg-gray-300 p-3 text-gray-800 transition-colors hover:bg-blue-700 dark:text-gray-200 dark:hover:bg-blue-700"
+            className="flex items-center justify-center rounded-full bg-gray-300 p-3 text-gray-800 transition-colors hover:bg-blue-700 hover:text-white dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-blue-700"
             aria-label={`${title} Frontend Repository`}
           >
             <FaLaptopCode />
+          </a>
+        )}
+
+        {codeRepo && codeRepo !== 'N/A' && (
+          <a
+            href={codeRepo}
+            data-tooltip-id="link-tooltip"
+            data-tooltip-content="Code Repository"
+            className="flex items-center justify-center rounded-full bg-gray-300 p-3 text-gray-800 transition-colors hover:bg-blue-700 hover:text-white dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-blue-700"
+            aria-label={`${title} Code Repository`}
+          >
+            <FaCode />
           </a>
         )}
 
@@ -133,10 +143,22 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
             href={storybook}
             data-tooltip-id="link-tooltip"
             data-tooltip-content="Storybook"
-            className="text-gray-80 hover:text-whitedark:bg-gray-500 flex items-center justify-center rounded-full bg-gray-300 p-3 transition-colors hover:bg-indigo-700 dark:hover:bg-indigo-600"
+            className="flex items-center justify-center rounded-full bg-gray-300 p-3 text-gray-800 transition-colors hover:bg-indigo-700 hover:text-white dark:bg-gray-500 dark:hover:bg-indigo-600"
             aria-label={`${title} Storybook`}
           >
-            <FaBook />
+            <SiStorybook />
+          </a>
+        )}
+
+        {demoUrl && (
+          <a
+            href={demoUrl}
+            data-tooltip-id="link-tooltip"
+            data-tooltip-content="Demo"
+            className="flex items-center justify-center rounded-full bg-gray-300 p-3 text-gray-800 transition-colors hover:bg-blue-700 hover:text-white dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-blue-700"
+            aria-label={`${title} Demo`}
+          >
+            <MdOpenInBrowser />
           </a>
         )}
 
@@ -158,7 +180,8 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
       {showBlogs && (
         <div className="flex flex-col gap-4">
           {articles.map(
-            blog => blog && <WritingCard key={blog.id} {...blog} />
+            blog =>
+              blog && <WritingCard key={blog.id} {...blog} parent="project:" />
           )}
         </div>
       )}

@@ -1,5 +1,7 @@
 'use client'
 
+import { useProjectContext } from '@/context/ProjectContext'
+
 import React, { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import ProjectCard from './ProjectCard'
@@ -11,6 +13,7 @@ import { ProjectWithDetails, Article, Skill } from '@/types/data'
 import ScrollButton from '../UI/ScrollButton'
 import { useData } from '@/context/DataContext'
 import clsx from 'clsx'
+import { useFilteredProjects } from '@/hooks/useFilteredProjects'
 
 const Slider = dynamic(() => import('react-slick'), { ssr: false })
 
@@ -46,13 +49,13 @@ const CustomNextArrow = (props: ArrowProps) => {
 }
 
 const sliderSettings = {
-  centerMode: true,
+  // centerMode: true,
   dots: true,
-  infinite: true, // Change to false to disable infinite scrolling
+  // infinite: true,
   speed: 500,
   slidesToShow: 3,
   slidesToScroll: 1,
-  swipeToSlide: true, // Enable swipe to slide
+  swipeToSlide: true,
   touchMove: true, // Ensure touch movement is enabled
   draggable: true, // Allow dragging on desktop
   nextArrow: <CustomNextArrow />,
@@ -78,45 +81,152 @@ const sliderSettings = {
   ],
 }
 
+// const Projects: React.FC = () => {
+//   // const { projects } = useData()
+//   // const [filteredProjects, setFilteredProjects] =
+//   //   useState<ProjectWithDetails[]>(projects)
+//   // const [filters, setFilters] = useState<string[]>([])
+//   // const [sortOption, setSortOption] = useState<string>('')
+
+//   // const applyFiltersAndSort = useCallback(() => {
+//   //   let filtered = [...projects]
+
+//   //   if (filters.length > 0) {
+//   //     filtered = filtered.filter(project =>
+//   //       filters.some(filter => project.tags.includes(filter))
+//   //     )
+//   //   }
+
+//   //   if (sortOption === 'date') {
+//   //     filtered.sort(
+//   //       (a, b) =>
+//   //         new Date(b.launchDate || 'TBD').getTime() -
+//   //         new Date(a.launchDate || 'TBD').getTime()
+//   //     )
+//   //   } else if (sortOption === 'title') {
+//   //     filtered.sort((a, b) => a.title.localeCompare(b.title))
+//   //   }
+
+//   //   setFilteredProjects(filtered)
+//   // }, [filters, sortOption, projects])
+
+//   // useEffect(() => {
+//   //   applyFiltersAndSort()
+//   // }, [applyFiltersAndSort, filters, sortOption])
+//   const { projects } = useData()
+//   const [filters, setFilters] = useState<string[]>([])
+//   const [sortOption, setSortOption] = useState<string | null>(null)
+//   const [searchQuery, setSearchQuery] = useState<string>('')
+//   const filteredProjects = useFilteredProjects(
+//     projects,
+//     filters,
+//     sortOption,
+//     searchQuery
+//   )
+
+//   const toggleFilter = (filter: string) => {
+//     setFilters(prevFilters =>
+//       prevFilters.includes(filter)
+//         ? prevFilters.filter(f => f !== filter)
+//         : [...prevFilters, filter]
+//     )
+//   }
+
+//   const handleSortChange = (option: string) => {
+//     setSortOption(option)
+//   }
+//   console.log('filteredProjects', filteredProjects)
+
+//   // const toggleFilter = (filter: string) => {
+//   //   if (filters.includes(filter)) {
+//   //     setFilters(filters.filter(f => f !== filter))
+//   //   } else {
+//   //     setFilters([...filters, filter])
+//   //   }
+//   // }
+
+//   // const handleSortChange = (option: string) => {
+//   //   setSortOption(option)
+//   // }
+
+//   return (
+//     <section
+//       id="projects"
+//       data-id="projects"
+//       className="my-48 min-h-screen w-screen"
+//     >
+//       <div className="slider-container relative mx-auto w-full max-w-7xl px-4 py-8">
+//         <h3 className="p-4 text-center text-2xl text-primary-900 md:text-left md:text-3xl lg:text-4xl">
+//           Projects
+//         </h3>
+//         <div className="mb-6 flex items-center justify-between">
+//           <div className="flex space-x-4">
+//             {['Frontend', 'Backend', 'Full-Stack'].map(filter => (
+//               <button
+//                 key={filter}
+//                 onClick={() => toggleFilter(filter)}
+//                 className={`whitespace-nowrap rounded-full px-4 py-2 text-gray-800 dark:text-white ${
+//                   filters.includes(filter)
+//                     ? 'bg-blue-600'
+//                     : 'bg-gray-300 hover:bg-gray-400 dark:bg-gray-700'
+//                 }`}
+//               >
+//                 {filter}
+//               </button>
+//             ))}
+//           </div>
+
+//           <div className="flex space-x-4">
+//             <button
+//               onClick={() => handleSortChange('Date')}
+//               className="whitespace-nowrap rounded-full bg-gray-300 px-4 py-2 text-gray-800 hover:bg-gray-400 dark:bg-gray-700 dark:text-gray-200"
+//             >
+//               Sort by Date
+//             </button>
+//             <button
+//               onClick={() => handleSortChange('Title')}
+//               className="whitespace-nowrap rounded-full bg-gray-300 px-4 py-2 text-gray-800 hover:bg-gray-400 dark:bg-gray-700 dark:text-gray-200"
+//             >
+//               Sort by Title
+//             </button>
+//           </div>
+//         </div>
+//         <Slider {...sliderSettings}>
+//           {filteredProjects.map(project => (
+//             <div key={project.id} className="px-2">
+//               {' '}
+//               {/* Use project.id as a unique key */}
+//               <ProjectCard {...project} />
+//             </div>
+//           ))}
+//         </Slider>
+//       </div>
+//     </section>
+//   )
+// }
+
+// export default Projects
+
+// const Slider = dynamic(() => import('react-slick'), { ssr: false })
+
 const Projects: React.FC = () => {
   const { projects } = useData()
-  const [filteredProjects, setFilteredProjects] =
-    useState<ProjectWithDetails[]>(projects)
-  const [filters, setFilters] = useState<string[]>([])
-  const [sortOption, setSortOption] = useState<string>('')
-
-  const applyFiltersAndSort = useCallback(() => {
-    let filtered = [...projects]
-
-    if (filters.length > 0) {
-      filtered = filtered.filter(project =>
-        filters.some(filter => project.tags.includes(filter))
-      )
-    }
-
-    if (sortOption === 'date') {
-      filtered.sort(
-        (a, b) =>
-          new Date(b.launchDate || 'TBD').getTime() -
-          new Date(a.launchDate || 'TBD').getTime()
-      )
-    } else if (sortOption === 'title') {
-      filtered.sort((a, b) => a.title.localeCompare(b.title))
-    }
-
-    setFilteredProjects(filtered)
-  }, [filters, sortOption, projects])
-
-  useEffect(() => {
-    applyFiltersAndSort()
-  }, [applyFiltersAndSort, filters, sortOption])
+  const {
+    filteredProjects,
+    filters,
+    sortOption,
+    setFilters,
+    setSortOption,
+    setSearchQuery,
+    resetFiltersAndSort,
+  } = useProjectContext()
 
   const toggleFilter = (filter: string) => {
-    if (filters.includes(filter)) {
-      setFilters(filters.filter(f => f !== filter))
-    } else {
-      setFilters([...filters, filter])
-    }
+    setFilters(prevFilters =>
+      prevFilters.includes(filter)
+        ? prevFilters.filter(f => f !== filter)
+        : [...prevFilters, filter]
+    )
   }
 
   const handleSortChange = (option: string) => {
@@ -127,7 +237,7 @@ const Projects: React.FC = () => {
     <section
       id="projects"
       data-id="projects"
-      className="my-48 min-h-screen w-screen"
+      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center py-24"
     >
       <div className="slider-container relative mx-auto w-full max-w-7xl px-4 py-8">
         <h3 className="p-4 text-center text-2xl text-primary-900 md:text-left md:text-3xl lg:text-4xl">
@@ -152,13 +262,13 @@ const Projects: React.FC = () => {
 
           <div className="flex space-x-4">
             <button
-              onClick={() => handleSortChange('date')}
+              onClick={() => handleSortChange('Date')}
               className="whitespace-nowrap rounded-full bg-gray-300 px-4 py-2 text-gray-800 hover:bg-gray-400 dark:bg-gray-700 dark:text-gray-200"
             >
               Sort by Date
             </button>
             <button
-              onClick={() => handleSortChange('title')}
+              onClick={() => handleSortChange('Title')}
               className="whitespace-nowrap rounded-full bg-gray-300 px-4 py-2 text-gray-800 hover:bg-gray-400 dark:bg-gray-700 dark:text-gray-200"
             >
               Sort by Title
@@ -166,8 +276,8 @@ const Projects: React.FC = () => {
           </div>
         </div>
         <Slider {...sliderSettings}>
-          {filteredProjects.map((project, index) => (
-            <div key={index} className="px-2">
+          {filteredProjects.map(project => (
+            <div key={project.id} className="px-2">
               <ProjectCard {...project} />
             </div>
           ))}
