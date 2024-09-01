@@ -4,12 +4,26 @@ import React, { useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import WritingCard from './WritingCard'
 import clsx from 'clsx'
-import { useData } from '@/context/DataContext'
+import { useArticlesContext } from '@/context/ArticlesContext'
+import SearchBar from '../UI/SearchBar'
+import dynamic from 'next/dynamic'
+import { IconButton } from '../shared'
+
+const DynamicFaSearch = dynamic(
+  () => import('react-icons/fa').then(mod => mod.FaSearch),
+  { ssr: false }
+)
 
 const Writing: React.FC = () => {
-  const { articles } = useData()
+  const {
+    filteredArticles: articles,
+    resetFiltersAndSort,
+    searchQuery,
+    setSearchQuery,
+  } = useArticlesContext()
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(4)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   // Media queries to determine screen size
   const isSmallScreen = useMediaQuery({ query: '(max-width: 768px)' }) // sm
@@ -45,16 +59,36 @@ const Writing: React.FC = () => {
     setCurrentPage(pageNumber)
   }
 
+  const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
+
   return (
     <section
       id="writing"
       data-id="writing"
-      className="mx-auto my-48 max-w-7xl px-4"
+      className="mx-auto my-48 flex min-h-screen max-w-7xl flex-col items-center justify-center px-4 py-24"
     >
-      <h3 className="]text-primary-800 mb-4 text-center text-2xl dark:text-primary-200 md:text-left md:text-3xl lg:text-4xl">
-        Articles
-      </h3>
-      {/* Responsive Grid Layout for Cards */}
+      <div className="mb-8 flex w-full items-center justify-between">
+        <h3 className="mb-4 text-center text-2xl text-primary-800 dark:text-primary-200 md:text-left md:text-3xl lg:text-4xl">
+          Articles
+        </h3>
+        <div className="flex justify-center gap-2">
+          {isSearchOpen && (
+            <SearchBar
+              placeholder="Search articles.."
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+          )}
+          <IconButton
+            size="sm"
+            icon={<DynamicFaSearch />}
+            onClick={toggleSearch}
+            ariaLabel="Toggle search"
+            variant={isSearchOpen ? 'outline' : 'icon'}
+          />
+        </div>
+      </div>
+
       <div
         className={clsx('mx-auto grid gap-8', {
           'grid-cols-1': isSmallScreen,
@@ -67,7 +101,6 @@ const Writing: React.FC = () => {
         ))}
       </div>
 
-      {/* Responsive Pagination Controls */}
       <div className="mt-8 flex flex-wrap items-center justify-center space-x-2">
         {Array.from({ length: totalPages }, (_, index) => (
           <button
