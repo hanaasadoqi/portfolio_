@@ -10,7 +10,7 @@ const useScroll = () => {
   const handleScroll = useCallback((direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { scrollLeft } = scrollRef.current
-      const scrollAmount = 500
+      const scrollAmount = 300
       const scrollTo =
         direction === 'left'
           ? scrollLeft - scrollAmount

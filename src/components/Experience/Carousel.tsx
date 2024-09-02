@@ -51,7 +51,7 @@ const Carousel: React.FC = () => {
     <section
       id="experience"
       data-id="experience"
-      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center py-24 sm:px-12"
+      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center py-24 md:px-12"
     >
       <div className="relative flex h-full w-full flex-col items-center justify-center">
         <div className="flex max-w-5xl flex-col items-center justify-center">
@@ -60,39 +60,39 @@ const Carousel: React.FC = () => {
           <h3 className="w-full text-center text-2xl dark:text-primary-900 md:text-left md:text-3xl lg:text-4xl">
             Experience
           </h3>
-          {/* <div className="relative z-10"> */}
-          <ArrowButton
-            onClick={prevSlide}
-            direction="left"
-            hidden={currentIndex === 0}
-            className="md:top-50 -bottom-16 -left-2 md:bottom-auto md:hidden"
-          />
-          <AnimatePresence>
-            {experiences.map((experience, index) => (
-              <motion.div
-                key={experience.id}
-                className={clsx(
-                  'transition-all duration-500 ease-in-out',
-                  index === currentIndex
-                    ? 'scale-100 opacity-100'
-                    : 'hidden opacity-0'
-                )}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5 }}
-              >
-                {index === currentIndex && <ExperienceCard {...experience} />}
-              </motion.div>
-            ))}
-          </AnimatePresence>
-          <ArrowButton
-            onClick={nextSlide}
-            direction="right"
-            hidden={currentIndex === experiences.length - 1}
-            className="md:top-50 -bottom-16 -right-2 md:bottom-auto md:hidden"
-          />
-          {/* </div> */}
+          <div className="relative z-10">
+            <ArrowButton
+              onClick={prevSlide}
+              direction="left"
+              hidden={currentIndex === 0}
+              className="md:top-50 -bottom-16 -left-2 md:bottom-auto md:hidden"
+            />
+            <AnimatePresence>
+              {experiences.map((experience, index) => (
+                <motion.div
+                  key={experience.id}
+                  className={clsx(
+                    'transition-all duration-500 ease-in-out',
+                    index === currentIndex
+                      ? 'scale-100 opacity-100'
+                      : 'hidden opacity-0'
+                  )}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {index === currentIndex && <ExperienceCard {...experience} />}
+                </motion.div>
+              ))}
+            </AnimatePresence>
+            <ArrowButton
+              onClick={nextSlide}
+              direction="right"
+              hidden={currentIndex === experiences.length - 1}
+              className="md:top-50 -bottom-16 -right-2 md:bottom-auto md:hidden"
+            />
+          </div>
         </div>
         <Timeline
           experiences={experiences.map(({ logo, company }) => ({

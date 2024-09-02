@@ -67,7 +67,7 @@ const Writing: React.FC = () => {
       data-id="writing"
       className="mx-auto my-48 flex min-h-screen max-w-7xl flex-col items-center justify-center px-4 py-24"
     >
-      <div className="mb-8 flex w-full items-center justify-between">
+      <div className="mb-8 flex w-full flex-col items-center justify-between md:flex-row">
         <h3 className="mb-4 text-center text-2xl text-primary-800 dark:text-primary-200 md:text-left md:text-3xl lg:text-4xl">
           Articles
         </h3>
