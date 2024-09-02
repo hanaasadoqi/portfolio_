@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ScrollProvider } from '@/context/ScrollContext'
 import { Poppins, Raleway, Merriweather } from 'next/font/google'
 import dynamic from 'next/dynamic'
 import clsx from 'clsx'
@@ -64,8 +65,10 @@ export default function RootLayout({
         )}
       >
         <DarkModeProvider>
-          <TableOfContents />
-          {children}
+          <ScrollProvider>
+            <TableOfContents />
+            {children}
+          </ScrollProvider>
           <DarkModeToggle />
         </DarkModeProvider>
       </body>

@@ -1,8 +1,10 @@
+// TableOfContents.tsx
 'use client'
-import React, { useEffect, useState, useCallback, useRef } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { IconButton, IconLibrary } from './shared'
 import clsx from 'clsx'
+import { useScrollContext } from '@/context/ScrollContext'
 
 interface NavLink {
   href: string
@@ -41,18 +43,16 @@ const TOCItem: React.FC<TOCItemProps> = ({
   ariaLabel,
   currentSection,
 }) => {
+  console.log('Current Section:', currentSection)
   return (
     <Link
       href={href}
       aria-label={ariaLabel}
-      className={clsx(
-        'block w-full p-2 text-base transition-colors duration-200',
-        {
-          'text-xl text-gray-800 dark:text-blue-400': currentSection,
-          'text-gray-600 hover:text-gray-800 dark:text-gray-200':
-            !currentSection,
-        }
-      )}
+      className={clsx('block w-full text-base transition-colors duration-200', {
+        'p-2 text-blue-700 hover:text-blue-600 active:text-blue-800 dark:text-blue-400 hover:dark:text-blue-300 active:dark:text-blue-500':
+          currentSection,
+        'text-gray-400 hover:text-gray-300 dark:text-gray-200': !currentSection,
+      })}
     >
       {label}
     </Link>
@@ -60,51 +60,13 @@ const TOCItem: React.FC<TOCItemProps> = ({
 }
 
 const TableOfContents: React.FC = () => {
-  const [currentSection, setCurrentSection] = useState<string>('')
-  const observerRef = useRef<IntersectionObserver | null>(null)
-
-  const handleIntersection = useCallback(
-    (entries: IntersectionObserverEntry[]) => {
-      const visibleSections = entries.filter(entry => entry.isIntersecting)
-      if (visibleSections.length > 0) {
-        const topMostSection = visibleSections.reduce((prev, current) => {
-          return prev.boundingClientRect.top < current.boundingClientRect.top
-            ? prev
-            : current
-        })
-        setCurrentSection(`#${topMostSection.target.id}`)
-      }
-    },
-    []
-  )
-
-  useEffect(() => {
-    const observerOptions: IntersectionObserverInit = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5,
-    }
-
-    observerRef.current = new IntersectionObserver(
-      handleIntersection,
-      observerOptions
-    )
-    const sections = document.querySelectorAll('section')
-
-    sections.forEach(section => {
-      if (observerRef.current) observerRef.current.observe(section)
-    })
-
-    return () => {
-      if (observerRef.current) {
-        sections.forEach(section => observerRef.current?.unobserve(section))
-        observerRef.current.disconnect()
-      }
-    }
-  }, [handleIntersection])
-
+  const { currentSection } = useScrollContext()
+  console.log('Current Section:', currentSection)
   return (
-    <div className="group fixed right-0 top-1/2 z-50 -translate-y-1/2 transform">
+    <div
+      data-id="hero"
+      className="group fixed right-0 top-1/4 z-50 -translate-y-1/2 transform md:right-4"
+    >
       {/* IconButton for opening the ToC */}
       <IconButton
         className="bg-primary group-hover:hidden"
