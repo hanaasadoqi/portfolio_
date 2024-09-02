@@ -120,7 +120,9 @@ export default function Contact() {
             placeholder="Enter your message"
           />
           <div className="mb-4 flex w-full items-center justify-end">
-            <BaseButton type="submit">Send Message</BaseButton>
+            <BaseButton type="submit" variant="primary" size="lg">
+              Send Message
+            </BaseButton>
           </div>
         </form>
       </div>
