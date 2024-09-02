@@ -55,7 +55,7 @@ export const sizeStyles: Record<ButtonSize, string> = {
 
 export const colorStyles: Record<ButtonVariant, string> = {
   primary:
-    'rounded-md bg-gray-200 dark:bg-gray-900 dark:text-primary-100 dark:hover:bg-primary-800 dark:hover:text-gray-900 hover:text-gray-800 border-primary-600 hover:bg-primary-300 hover:border-primary-700 focus-visible:ring-primary-700 active:bg-primary-400',
+    'dark:hover:text-white rounded-md bg-gray-200 dark:bg-gray-900 dark:text-primary-100 dark:hover:bg-primary-800 dark:active:text-gray-900 hover:text-gray-800 border-primary-600 hover:bg-primary-300 hover:border-primary-700 focus-visible:ring-primary-700 active:bg-primary-400',
   secondary:
     'rounded-md bg-gray-400 text-primary-700 hover:bg-primary-500 hover:border-primary-300 focus-visible:ring-primary-100 active:bg-primary-500',
   outline:
@@ -168,7 +168,6 @@ const BaseButton: React.FC<BaseButtonProps> = React.memo(
         {...rest}
         onKeyDown={handleKeyPress}
         onClick={onClick}
-        data-id="skills"
       >
         {loading ? 'Loading...' : children}
       </button>

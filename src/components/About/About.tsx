@@ -17,7 +17,7 @@ const About: React.FC = () => {
     <section
       id="about"
       data-id="about"
-      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center py-24"
+      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center px-12 py-24"
     >
       <div className="relative mx-auto w-full text-left">
         <div className="mb-4 space-y-2 px-4 text-center md:mb-8 md:px-12 md:text-left lg:mb-12">

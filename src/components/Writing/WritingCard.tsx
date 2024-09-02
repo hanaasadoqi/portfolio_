@@ -4,6 +4,7 @@ import React from 'react'
 import Tag from '../shared/Tag'
 import Image from 'next/image'
 import { ArticleWithDetails } from '@/types/data'
+import clsx from 'clsx'
 
 const WritingCard: React.FC<ArticleWithDetails & { parent?: string }> = ({
   id,
@@ -18,7 +19,13 @@ const WritingCard: React.FC<ArticleWithDetails & { parent?: string }> = ({
 }) => {
   return (
     <div className="flex cursor-pointer flex-col justify-evenly rounded-lg bg-primary-100 p-6 text-primary-900 shadow-md transition-shadow hover:shadow-lg dark:bg-primary-800 dark:text-primary-100">
-      <h3 className="mb-2 text-2xl font-semibold">{title}</h3>
+      <h3
+        className={clsx('mb-2 text-2xl font-semibold', {
+          'mb-4 text-sm text-gray-500': parent,
+        })}
+      >
+        {title}
+      </h3>
       <p className="mb-4 text-sm text-gray-500">
         Published on {new Date(publishedDate).toLocaleDateString()}
       </p>

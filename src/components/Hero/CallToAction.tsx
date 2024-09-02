@@ -19,7 +19,7 @@ const DynamicFaTwitter = dynamic(
 )
 
 const CallToAction: React.FC = () => (
-  <div className="flex flex-col items-center space-y-2 text-center lg:items-start lg:text-left">
+  <div className="flex flex-col items-center space-y-4 text-center lg:items-start lg:text-left">
     <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200 lg:text-xl">
       {"Looking to collaborate? Let's connect!"}
     </h3>

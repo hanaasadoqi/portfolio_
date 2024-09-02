@@ -30,9 +30,9 @@ const DarkModeToggle: React.FC = () => {
         aria-label="Toggle dark mode"
       >
         {isDarkMode ? (
-          <FaSun className="text-primary-900" size={32} />
+          <FaSun className="text-primary-900" size={24} />
         ) : (
-          <FaMoon className="text-primary-100" size={32} />
+          <FaMoon className="text-primary-100" size={24} />
         )}
       </motion.button>
       <ReactTooltip id="dark-mode-toggle-tooltip" place="top" />

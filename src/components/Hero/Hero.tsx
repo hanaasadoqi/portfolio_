@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
     <section
       id="hero"
       data-id="hero"
-      className="flex min-h-screen w-full flex-col items-center justify-center py-16 md:px-12 lg:flex-row lg:justify-between"
+      className="flex min-h-screen w-full flex-col items-center justify-center py-12 md:px-12 lg:flex-row lg:justify-between"
       aria-labelledby="hero-heading"
     >
       <div className="flex flex-col items-center space-y-6 lg:items-start">

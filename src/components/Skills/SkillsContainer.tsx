@@ -3,13 +3,12 @@
 import React, { useState } from 'react'
 import SkillCard from './SkillCard'
 import Modal from '../UI/Modal'
-import Button from '@/components/UI/Button'
-import IconButton from '@/components/shared/Buttons/IconButton/IconButton'
 import SkillControlsDisplay from './SkillControlsDisplay'
 import { Skill } from '@/types/data'
 import SkillModal from './SkillModal'
 import dynamic from 'next/dynamic'
 import { useSkillsContext } from '@/context/SkillsContext'
+import { BaseButton, IconButton } from '../shared'
 
 const DynamicFaFilter = dynamic(
   () => import('react-icons/fa').then(mod => mod.FaFilter),
@@ -54,7 +53,7 @@ const SkillsContainer: React.FC = () => {
     <section
       id="skills"
       data-id="skills"
-      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center md:px-12"
+      className="my-48 flex min-h-screen w-screen flex-col items-center justify-center px-12 py-24 md:px-24"
     >
       <SkillControlsDisplay
         currentControl={currentControl}
@@ -109,9 +108,9 @@ const SkillsContainer: React.FC = () => {
         {/* Show More Button */}
         {Object.keys(skills).length > displayedSkillsCount && (
           <div className="mt-6 flex justify-center">
-            <Button onClick={handleShowMore} variant="primary" fullWidth>
+            <BaseButton onClick={handleShowMore} variant="primary" size="lg">
               Show More
-            </Button>
+            </BaseButton>
           </div>
         )}
       </div>
