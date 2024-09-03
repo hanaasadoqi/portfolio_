@@ -41,6 +41,7 @@ export interface Project {
   title: string
   description: string
   image: string
+  images?: string[]
   backendRepo?: string
   frontendRepo?: string
   codeRepo?: string

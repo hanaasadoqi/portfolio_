@@ -46,7 +46,7 @@ export const ScrollProvider: React.FC<{ children: React.ReactNode }> = ({
     const observerOptions: IntersectionObserverInit = {
       root: null,
       rootMargin: '0px 0px -50px 0px',
-      threshold: [0.2, 0.4, 0.6, 0.8],
+      threshold: [0, 0.2, 0.4, 0.6, 0.8, 1],
     }
 
     observerRef.current = new IntersectionObserver(

@@ -14,6 +14,7 @@ import ScrollButton from '../UI/ScrollButton'
 import { useData } from '@/context/DataContext'
 import clsx from 'clsx'
 import { useFilteredProjects } from '@/hooks/useFilteredProjects'
+import Modal from '../UI/Modal'
 
 const Slider = dynamic(() => import('react-slick'), { ssr: false })
 
@@ -79,8 +80,61 @@ const sliderSettings = {
   ],
 }
 
+interface ProjectModalProps {
+  project: ProjectWithDetails
+}
+
+const ProjectModal: React.FC<ProjectModalProps> = ({ project }) => {
+  const { title, description, skillDetails } = project
+  return (
+    <div
+      data-id="project-card"
+      className="w-full rounded-lg bg-white shadow-lg dark:bg-gray-800 dark:shadow-gray-700"
+    >
+      <div className="flex flex-col items-center p-6">
+        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+          {title}
+        </h3>
+        <p className="text-gray-600 dark:text-gray-400">{description}</p>
+        <div className="flex items-center space-x-4">
+          {skillDetails?.map(skill => (
+            <span
+              key={skill.id}
+              className={clsx(
+                `rounded-full bg-gray-200 px-2 py-1 text-xs font-medium tracking-widest text-gray-600 dark:text-gray-400`
+              )}
+            >
+              {skill.name}
+            </span>
+          ))}
+        </div>
+        <div className="mt-2 flex items-center space-x-4">
+          <a
+            href={''}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800"
+          >
+            GitHub
+          </a>
+          <a
+            href={''}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800"
+          >
+            Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const Projects: React.FC = () => {
   const { projects } = useData()
+  const [selectedProject, setSelectedProject] =
+    useState<ProjectWithDetails | null>(null)
   const {
     filteredProjects,
     filters,
@@ -147,12 +201,23 @@ const Projects: React.FC = () => {
         </div>
         <Slider {...sliderSettings}>
           {filteredProjects.map(project => (
-            <div key={project.id} className="px-2">
+            <button
+              key={project.id}
+              className="px-2"
+              onClick={() => setSelectedProject(project)}
+              title={project.title}
+            >
               <ProjectCard {...project} />
-            </div>
+            </button>
           ))}
         </Slider>
       </div>
+      <Modal
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+      >
+        {selectedProject && <ProjectModal project={selectedProject} />}
+      </Modal>
     </section>
   )
 }
