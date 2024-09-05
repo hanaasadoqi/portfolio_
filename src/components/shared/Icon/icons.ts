@@ -18,6 +18,9 @@ import {
   FaHtml5,
   FaSearch,
   FaExternalLinkAlt,
+  FaPlus,
+  FaChevronDown,
+  FaChevronUp,
 } from 'react-icons/fa'
 import { FaHashnode } from 'react-icons/fa6'
 import { IoMdLink, IoMdClose } from 'react-icons/io'
@@ -82,6 +85,9 @@ const icons = {
   search: FaSearch,
   externalLink: FaExternalLinkAlt,
   close: IoMdClose,
+  plus: FaPlus,
+  arrowUp: FaChevronUp,
+  arrowDown: FaChevronDown,
 }
 
 const logos = {
@@ -92,5 +98,7 @@ const logos = {
   benvenuti,
   wework,
 }
+
+export default icons
 
 export { icons as IconLibrary, logos as LogoLibrary }

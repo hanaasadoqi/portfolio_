@@ -7,9 +7,15 @@ interface ModalProps {
   isOpen: boolean
   onClose: () => void
   children: React.ReactNode
+  size?: 'sm' | 'md' | 'lg'
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  children,
+  size = 'md',
+}) => {
   const modalRef = useRef<HTMLDivElement>(null)
   const lastFocusedElement = useRef<HTMLElement | null>(null)
 
@@ -86,27 +92,32 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm transition-opacity duration-300"
+      className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm transition-opacity duration-300"
       onClick={handleOutsideClick}
       aria-labelledby="modal-title"
     >
       <div
         ref={modalRef}
         className={clsx(
-          'relative mx-4 max-h-[80vh] w-full max-w-3xl transform-gpu overflow-hidden rounded-2xl bg-secondary-50 p-8 shadow-xl transition-transform',
-          'dark:bg-secondary-800'
+          'max-h-[80vh] w-full transform-gpu overflow-hidden rounded-2xl bg-secondary-50 p-2 shadow-xl transition-transform md:mx-4 md:p-8',
+          'dark:bg-secondary-800',
+          {
+            'max-w-7xl': size === 'lg',
+            'max-w-5xl': size === 'md',
+            'max-w-3xl': size === 'sm',
+          }
         )}
         onClick={e => e.stopPropagation()}
       >
+        <IconButton
+          aria-label="Close modal"
+          icon={<IconLibrary.close />}
+          variant="outline"
+          className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-gray-600 transition-all duration-300 hover:bg-gray-300 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-gray-700 dark:text-primary-400 dark:hover:bg-gray-600 dark:hover:text-gray-300 dark:focus:ring-offset-gray-800"
+          onClick={onClose}
+        />
         {/* Scrollable content container */}
-        <div className="max-h-[60vh] overflow-y-auto p-4">
-          <IconButton
-            aria-label="Close modal"
-            icon={<IconLibrary.close />}
-            variant="outline"
-            className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-gray-600 transition-all duration-300 hover:bg-gray-300 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-gray-700 dark:text-primary-400 dark:hover:bg-gray-600 dark:hover:text-gray-300 dark:focus:ring-offset-gray-800"
-            onClick={onClose}
-          />
+        <div className="max-h-[60vh] overflow-y-auto p-2 md:p-4">
           {children}
         </div>
       </div>
