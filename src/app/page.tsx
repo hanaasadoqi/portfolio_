@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { DataProvider } from '@/context/DataContext'
 import { SkillsProvider } from '@/context/SkillsContext'
 import { ArticlesProvider } from '@/context/ArticlesContext'
@@ -12,7 +12,7 @@ const Background = dynamic(() => import('@/components/Background'), {
 })
 const Hero = dynamic(() => import('@/components/Hero/Hero'), { ssr: true })
 const AboutComponent = dynamic(() => import('@/components/About/About'), {
-  ssr: false,
+  ssr: true,
 })
 const Skills = dynamic(() => import('@/components/Skills/SkillsContainer'), {
   ssr: false,
@@ -21,17 +21,17 @@ const Carousel = dynamic(() => import('@/components/Experience/Carousel'), {
   ssr: false,
 })
 const Projects = dynamic(() => import('@/components/Projects/Projects'), {
-  ssr: true,
+  ssr: false,
 })
 const EducationComponent = dynamic(
   () => import('@/components/Education/Education'),
-  { ssr: true }
+  { ssr: false }
 )
 const Writing = dynamic(() => import('@/components/Writing/Writing'), {
-  ssr: true,
+  ssr: false,
 })
 const Contact = dynamic(() => import('@/components/Contact/Contact'), {
-  ssr: true,
+  ssr: false,
 })
 
 export default function Home() {
@@ -43,16 +43,24 @@ export default function Home() {
         <DataProvider initialData={normalizedData}>
           <Hero />
           <AboutComponent />
-          <SkillsProvider initialData={normalizedData.skills}>
-            <Skills />
-          </SkillsProvider>
-          <Carousel />
-          <ProjectProvider initialData={normalizedData.projects}>
-            <Projects />
-          </ProjectProvider>
-          <ArticlesProvider initialData={normalizedData.articles}>
-            <Writing />
-          </ArticlesProvider>
+          <Suspense fallback={<div>Loading...</div>}>
+            <SkillsProvider initialData={normalizedData.skills}>
+              <Skills />
+            </SkillsProvider>
+          </Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Carousel />
+          </Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectProvider initialData={normalizedData.projects}>
+              <Projects />
+            </ProjectProvider>
+          </Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ArticlesProvider initialData={normalizedData.articles}>
+              <Writing />
+            </ArticlesProvider>
+          </Suspense>
           <EducationComponent />
           <Contact />
         </DataProvider>

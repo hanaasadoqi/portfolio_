@@ -1,6 +1,6 @@
-// TableOfContents.tsx
 'use client'
-import React from 'react'
+
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { IconButton, IconLibrary } from './shared'
 import clsx from 'clsx'
@@ -43,14 +43,12 @@ const TOCItem: React.FC<TOCItemProps> = ({
   ariaLabel,
   currentSection,
 }) => {
-  console.log('Current Section:', currentSection)
   return (
     <Link
       href={href}
       aria-label={ariaLabel}
       className={clsx('block w-full text-base transition-colors duration-200', {
-        'p-2 text-blue-700 hover:text-blue-600 active:text-blue-800 dark:text-blue-400 hover:dark:text-blue-300 active:dark:text-blue-500':
-          currentSection,
+        'p-2 text-white hover:text-gray-200 dark:text-blue-400': currentSection,
         'text-gray-400 hover:text-gray-300 dark:text-gray-200': !currentSection,
       })}
     >
@@ -61,27 +59,28 @@ const TOCItem: React.FC<TOCItemProps> = ({
 
 const TableOfContents: React.FC = () => {
   const { currentSection } = useScrollContext()
-  console.log('Current Section:', currentSection)
+  const [expanded, setExpanded] = useState(false)
+
   return (
     <div
       data-id="hero"
-      className="group fixed right-0 top-1/4 z-50 -translate-y-1/2 transform md:right-4"
+      className="group fixed right-0 top-1/2 z-50 flex -translate-y-1/2 transform flex-col items-end"
     >
-      {/* IconButton for opening the ToC */}
       <IconButton
-        className="bg-primary group-hover:hidden"
+        className="mb-2 rounded-full bg-primary-700 p-2 text-white transition-opacity duration-300 ease-in-out"
         icon={<IconLibrary.Hamburger />}
         aria-label="Toggle navigation menu"
         variant="secondary"
-        aria-expanded="false"
+        aria-expanded={expanded}
         aria-controls="toc-menu"
+        onClick={() => setExpanded(prev => !prev)}
       />
-
-      {/* Expandable ToC Menu */}
-      <div className="flex h-20 w-full cursor-pointer items-center justify-center bg-transparent transition-all duration-300 hover:w-72">
+      {expanded && (
         <div
           id="toc-menu"
-          className="hidden w-full flex-col items-start space-y-4 bg-gray-900 bg-opacity-75 p-4 text-white backdrop-blur-lg backdrop-filter group-hover:flex"
+          className={clsx(
+            'transition-tranform mr-4 overflow-hidden rounded-lg bg-gray-900 bg-opacity-75 p-4 text-white shadow-lg backdrop-blur-lg backdrop-filter duration-500 ease-in-out'
+          )}
         >
           {navLinks.map(({ href, label, ariaLabel }) => (
             <TOCItem
@@ -93,7 +92,7 @@ const TableOfContents: React.FC = () => {
             />
           ))}
         </div>
-      </div>
+      )}
     </div>
   )
 }

@@ -3,6 +3,8 @@ import { ScrollProvider } from '@/context/ScrollContext'
 import { Poppins, Raleway, Merriweather } from 'next/font/google'
 import dynamic from 'next/dynamic'
 import clsx from 'clsx'
+import { AuthProvider } from '@/context/AuthContext'
+import Ribbon from '@/components/Ribbon'
 import '../styles/globals.scss'
 import 'react-tooltip/dist/react-tooltip.css'
 
@@ -32,22 +34,10 @@ export const metadata: Metadata = {
   description: 'Full-stack Web Developer',
 }
 
-const TableOfContents = dynamic(() => import('@/components/TableOfContents'), {
-  ssr: false,
-})
 const DarkModeProvider = dynamic(
   () => import('../context/DarkModeContext').then(mod => mod.DarkModeProvider),
   { ssr: false }
 )
-
-const DarkModeToggle = dynamic(
-  () => import('@/components/shared/DarkModeToggle/DarkModeToggle'),
-  { ssr: false }
-)
-
-const Header = dynamic(() => import('@/components/Header/Header'), {
-  ssr: true,
-})
 
 export default function RootLayout({
   children,
@@ -64,13 +54,14 @@ export default function RootLayout({
           merriweather.variable
         )}
       >
-        <DarkModeProvider>
-          <ScrollProvider>
-            <TableOfContents />
-            {children}
-          </ScrollProvider>
-          <DarkModeToggle />
-        </DarkModeProvider>
+        <AuthProvider>
+          <DarkModeProvider>
+            <ScrollProvider>
+              <Ribbon />
+              {children}
+            </ScrollProvider>
+          </DarkModeProvider>
+        </AuthProvider>
       </body>
     </html>
   )
