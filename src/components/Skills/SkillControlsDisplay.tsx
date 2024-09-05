@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useCallback } from 'react'
 import SearchBar from '../UI/SearchBar'
 import Filter from '../UI/Filter'
 import Sort from '../UI/Sort'
@@ -13,7 +13,16 @@ const SkillControlsDisplay: React.FC<{
 }> = ({ currentControl, resetControls }) => {
   const displayRef = useRef<HTMLDivElement>(null)
   const { searchQuery, setSearchQuery } = useSkillsContext()
-  useClickOutside(displayRef, resetControls)
+
+  // Handle click outside event using a callback
+  const handleClickOutside = useCallback(() => {
+    if (currentControl) {
+      resetControls()
+    }
+  }, [currentControl, resetControls])
+
+  // Attach the click outside handler to the ref
+  useClickOutside(displayRef, handleClickOutside)
 
   return (
     <div ref={displayRef}>

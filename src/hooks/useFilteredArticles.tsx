@@ -17,7 +17,7 @@ export const useFilteredArticles = (
   // Memoize the filtered and sorted articles to avoid recalculating unless dependencies change
   const filteredArticles = useMemo(() => {
     // No need to filter if there's no filter criteria
-    if (!filters.length && !searchQuery && !sortOption) {
+    if (!filters.length && searchQuery !== '' && !sortOption) {
       return initialArticles
     }
 
@@ -30,7 +30,8 @@ export const useFilteredArticles = (
       filtered = filtered.filter(
         article =>
           article.title.toLowerCase().includes(lowercasedQuery) ||
-          article.description.toLowerCase().includes(lowercasedQuery)
+          article.description.toLowerCase().includes(lowercasedQuery) ||
+          article.tags.some(tag => tag.toLowerCase().includes(lowercasedQuery))
       )
     }
 
@@ -63,6 +64,7 @@ export const useFilteredArticles = (
 
     return filtered
   }, [initialArticles, filters, sortOption, searchQuery])
+  console.count('Articles Component Rendered')
 
   return filteredArticles
 }

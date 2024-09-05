@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, ReactNode } from 'react'
+import React, { createContext, useContext, ReactNode, useMemo } from 'react'
 import { ProjectWithDetails } from '@/types/data'
 import { useFilteredProjects } from '@/hooks/useFilteredProjects'
 
@@ -38,21 +38,23 @@ export const ProjectProvider: React.FC<{
     setSearchQuery('')
   }
 
+  const value = useMemo(() => {
+    return {
+      filteredProjects,
+      filters,
+      sortOption,
+      searchQuery,
+      setFilters,
+      setSortOption,
+      setSearchQuery,
+      resetFiltersAndSort,
+    }
+  }, [filteredProjects, filters, sortOption, searchQuery])
+
+  console.count('Projects Component Rendered')
+
   return (
-    <ProjectContext.Provider
-      value={{
-        filteredProjects,
-        filters,
-        sortOption,
-        searchQuery,
-        setFilters,
-        setSortOption,
-        setSearchQuery,
-        resetFiltersAndSort,
-      }}
-    >
-      {children}
-    </ProjectContext.Provider>
+    <ProjectContext.Provider value={value}>{children}</ProjectContext.Provider>
   )
 }
 

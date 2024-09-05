@@ -1,6 +1,12 @@
 'use client'
 
-import React, { createContext, useState, useContext, ReactNode } from 'react'
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useMemo,
+} from 'react'
 import { Skill, SkillWithDetails } from '@/types/data'
 import { useFilteredSkills } from '@/hooks/useFilteredSkills'
 
@@ -38,21 +44,21 @@ export const SkillsProvider: React.FC<{
     setSearchQuery('')
   }
 
+  const value = useMemo(() => {
+    return {
+      filteredSkills,
+      filters,
+      sortOption,
+      searchQuery,
+      setFilters,
+      setSortOption,
+      setSearchQuery,
+      resetFiltersAndSort,
+    }
+  }, [filteredSkills, filters, sortOption, searchQuery])
+
   return (
-    <SkillsContext.Provider
-      value={{
-        filteredSkills,
-        filters,
-        sortOption,
-        searchQuery,
-        setFilters,
-        setSortOption,
-        setSearchQuery,
-        resetFiltersAndSort,
-      }}
-    >
-      {children}
-    </SkillsContext.Provider>
+    <SkillsContext.Provider value={value}>{children}</SkillsContext.Provider>
   )
 }
 

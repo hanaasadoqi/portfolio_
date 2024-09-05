@@ -44,7 +44,8 @@ export const useFilteredProjects = (
           (project.tags &&
             project.tags.some(tag =>
               tag.toLowerCase().includes(lowercasedQuery)
-            ))
+            )) ||
+          project.description.toLowerCase().includes(lowercasedQuery)
       )
       console.log('After search query filter:', projects) // Debug log
     }
@@ -79,6 +80,7 @@ export const useFilteredProjects = (
   }, [initialData, filters, sortOption, searchQuery])
 
   console.log('Final filtered projects:', filteredProjects) // Debug log
+  console.count('Projects Component Rendered')
 
   return filteredProjects
 }

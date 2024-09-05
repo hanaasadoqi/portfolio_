@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import SkillCard from './SkillCard'
 import Modal from '../UI/Modal'
 import SkillControlsDisplay from './SkillControlsDisplay'
@@ -28,26 +28,30 @@ const DynamicFaRedo = dynamic(
 )
 
 const SkillsContainer: React.FC = () => {
-  const { filteredSkills: skills, resetFiltersAndSort } = useSkillsContext() // Access normalized data from context
-  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null) // State to track selected skill ID
-  const [displayedSkillsCount, setDisplayedSkillsCount] = useState(8) // State for pagination
-  const [currentControl, setCurrentControl] = useState<string | null>(null) // State to track current control being displayed
+  const { filteredSkills: skills, resetFiltersAndSort } = useSkillsContext()
+  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null)
+  const [displayedSkillsCount, setDisplayedSkillsCount] = useState(8)
+  const [currentControl, setCurrentControl] = useState<string | null>(null)
 
-  const openModal = (skill: Skill) => setSelectedSkill(skill)
+  const openModal = useCallback((skill: Skill) => setSelectedSkill(skill), [])
 
-  const closeModal = () => setSelectedSkill(null)
+  const closeModal = useCallback(() => setSelectedSkill(null), [])
 
-  const handleShowMore = () =>
-    setDisplayedSkillsCount(prevCount => prevCount + 8)
+  const handleShowMore = useCallback(
+    () => setDisplayedSkillsCount(prevCount => prevCount + 8),
+    []
+  )
 
-  const resetControls = () => {
-    setCurrentControl(null)
-    resetFiltersAndSort()
-  }
+  const resetControls = useCallback(() => {
+    if (currentControl) {
+      setCurrentControl(null)
+      resetFiltersAndSort()
+    }
+  }, [currentControl, resetFiltersAndSort])
 
-  const toggleControl = (control: string) => {
-    setCurrentControl(currentControl === control ? null : control)
-  }
+  const toggleControl = useCallback((control: string) => {
+    setCurrentControl(prevControl => (prevControl === control ? null : control))
+  }, [])
 
   return (
     <section
@@ -115,7 +119,7 @@ const SkillsContainer: React.FC = () => {
         )}
       </div>
 
-      <Modal isOpen={!!selectedSkill} onClose={closeModal}>
+      <Modal size="sm" isOpen={!!selectedSkill} onClose={closeModal}>
         {selectedSkill && (
           <SkillModal skill={selectedSkill} onLinkClick={closeModal} />
         )}

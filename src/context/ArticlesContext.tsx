@@ -40,19 +40,21 @@ export const ArticlesProvider: React.FC<{
     setSearchQuery('')
   }
 
+  const value = useMemo(() => {
+    return {
+      filteredArticles,
+      filters,
+      sortOption,
+      searchQuery,
+      setFilters,
+      setSortOption,
+      setSearchQuery,
+      resetFiltersAndSort,
+    }
+  }, [filteredArticles, filters, sortOption, searchQuery])
+
   return (
-    <ArticlesContext.Provider
-      value={{
-        filteredArticles,
-        filters,
-        sortOption,
-        searchQuery,
-        setFilters,
-        setSortOption,
-        setSearchQuery,
-        resetFiltersAndSort,
-      }}
-    >
+    <ArticlesContext.Provider value={value}>
       {children}
     </ArticlesContext.Provider>
   )

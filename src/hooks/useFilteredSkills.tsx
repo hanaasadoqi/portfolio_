@@ -24,14 +24,11 @@ export const useFilteredSkills = (
   const [filteredSkills, setFilteredSkills] = useState<SkillWithDetails[]>([])
 
   useEffect(() => {
-    console.log('Initial Data:', initialData) // Debug log
-
     // Convert initial data to an array
     let skills = Object.values(initialData)
 
     // Remove duplicates from initial data
     skills = removeDuplicates(skills)
-    console.log('After removing duplicates:', skills) // Debug log
 
     // Apply search query filter
     if (searchQuery) {
@@ -41,7 +38,6 @@ export const useFilteredSkills = (
           skill.name.toLowerCase().includes(lowercasedQuery) ||
           skill.tags.some(tag => tag.toLowerCase().includes(lowercasedQuery))
       )
-      console.log('After search query filter:', skills) // Debug log
     }
 
     // Apply tag filters
@@ -49,7 +45,6 @@ export const useFilteredSkills = (
       skills = skills.filter(skill =>
         filters.some(filter => skill.tags.includes(filter))
       )
-      console.log('After applying tag filters:', skills) // Debug log
     }
 
     // Apply sorting
@@ -66,13 +61,11 @@ export const useFilteredSkills = (
             return 0
         }
       })
-      console.log('After sorting:', skills) // Debug log
     }
 
     setFilteredSkills(skills)
   }, [initialData, filters, sortOption, searchQuery])
-
-  console.log('Final filtered skills:', filteredSkills) // Debug log
+  console.count('Articles Component Rendered')
 
   return filteredSkills
 }
