@@ -1,7 +1,7 @@
 [
   {
-    "id": 1,
     "title": "Transl8",
+    "category": "Full-Stack",
     "description": "A language learning platform that allows users to join chatrooms where their speech is translated in real-time and sent in a language of their choice. The project was built with a focus on improving language learning through interactive sessions.",
     "image": "https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_1280.jpg",
     "backendRepo": "https://github.com/hsadoqi/mod_3_back_end",
@@ -15,12 +15,11 @@
       "Real-Time Communication",
       "Web Application"
     ],
-    "skills": [1, 2, 3, 5],
-    "associatedBlogs": [1, 2]
+    "skills": ["JavaScript", "HTML/CSS", "Ruby on Rails"]
   },
   {
-    "id": 2,
     "title": "Lit",
+    "category": "Full-Stack",
     "description": "Lit is a social media platform for aspiring artists to collaborate, share ideas, and create marketable content. The platform provides users with tools to connect, share their portfolios, and build a community.",
     "image": "https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_1280.jpg",
     "backendRepo": "https://github.com/hsadoqi/mod5_backend",
@@ -36,12 +35,19 @@
       "Collaboration",
       "Content Creation"
     ],
-    "skills": [1, 2, 4],
-    "associatedBlogs": [3]
+    "skills": [
+      "JavaScript",
+      "HTML/CSS",
+      "Ruby on Rails",
+      "Restful APIs",
+      "PostgresSQL",
+      "Redux",
+      "React"
+    ]
   },
   {
-    "id": 3,
     "title": "Lit Rides",
+    "category": "Full-Stack",
     "description": "Lit Rides is a platform designed to help users plan long road trips, offer ride shares, or find companions for their journeys. The platform includes a robust search feature and user profiles to make trip planning easy and social.",
     "image": "https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_1280.jpg",
     "backendRepo": "https://github.com/cristinamurillo/lit_rides",
@@ -56,18 +62,17 @@
       "Trip Planning",
       "Social Media"
     ],
-    "skills": [1, 5],
-    "associatedBlogs": [5]
+    "skills": ["Ruby on Rails", "PostgresSQL", "Restful APIs", "HTML/CSS"]
   },
   {
-    "id": 4,
     "title": "Algorithm Visualizer",
+    "category": "Full-Stack",
     "description": "An interactive tool designed to help users visualize and understand various algorithms, including sorting, searching, and pathfinding algorithms. The visualizer aims to make complex algorithms more accessible through step-by-step animations.",
     "image": "https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_1280.jpg",
     "backendRepo": "https://github.com/hsadoqi/algorithm-visualizer-backend",
     "frontendRepo": "https://github.com/hsadoqi/algorithm-visualizer-frontend",
     "videoDemo": "https://www.example.com/algorithm-visualizer-demo",
-    "launchDate": "TBD",
+    "launchDate": null,
     "status": "In Progress",
     "tags": [
       "Full-Stack",
@@ -76,18 +81,25 @@
       "Education",
       "Web Application"
     ],
-    "skills": [1, 2, 3, 4],
-    "associatedBlogs": [2, 3]
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "TailwindCSS",
+      "Node.js",
+      "Express.js",
+      "TDD/BDD",
+      "Jest"
+    ]
   },
   {
-    "id": 5,
     "title": "Code Library",
+    "category": "Full-Stack",
     "description": "A personal code library platform designed to store, organize, and share reusable code snippets and templates. It includes features like tagging, search, and code categorization to make finding and using code snippets easy.",
     "image": "https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_1280.jpg",
     "backendRepo": "https://github.com/hsadoqi/code-library-backend",
     "frontendRepo": "https://github.com/hsadoqi/code-library-frontend",
     "videoDemo": "https://www.example.com/code-library-demo",
-    "launchDate": "TBD",
+    "launchDate": null,
     "status": "In Progress",
     "tags": [
       "Full-Stack",
@@ -95,18 +107,27 @@
       "Developer Tools",
       "Web Application"
     ],
-    "skills": [1, 7, 8],
-    "associatedBlogs": [8]
+    "skills": [
+      "Next.js",
+      "Express.js",
+      "TDD/BDD",
+      "Jest",
+      "Node.js",
+      "TailwindCSS",
+      "TypeScript",
+      "Storybook",
+      "Component-driven Design"
+    ]
   },
   {
-    "id": 6,
     "title": "Synapcity",
+    "category": "Full-Stack",
     "description": "Synapcity is a comprehensive note-taking and project management tool built to support dynamic linking between notes, real-time collaboration, customizable themes, and more. It’s designed to be a powerful tool for managing knowledge and tasks across different projects.",
     "image": "https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_1280.jpg",
     "backendRepo": "https://github.com/hsadoqi/synapcity-backend",
     "frontendRepo": "https://github.com/hsadoqi/synapcity-frontend",
     "videoDemo": "https://www.example.com/synapcity-demo",
-    "launchDate": "TBD",
+    "launchDate": null,
     "status": "In Progress",
     "tags": [
       "Full-Stack",
@@ -115,7 +136,18 @@
       "Collaboration",
       "Web Application"
     ],
-    "skills": [2, 6, 12, 14],
-    "associatedBlogs": [9, 10]
+    "skills": [
+      "Next.js",
+      "Express.js",
+      "TDD/BDD",
+      "Jest",
+      "Node.js",
+      "Storybook",
+      "PostgresSQL",
+      "Supabase",
+      "GraphQL",
+      "TailwindCSS",
+      "TypeScript"
+    ]
   }
 ]

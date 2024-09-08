@@ -1,122 +1,134 @@
 [
   {
-    "id": 1,
     "title": "Understanding React Hooks",
     "type": "article",
     "description": "An in-depth article exploring the fundamentals of React Hooks, how they simplify state management and side effects in functional components.",
     "image": "https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_1280.jpg",
     "publishedDate": "2023-05-12",
     "tags": ["React", "JavaScript", "Web Development"],
-    "skills": [1, 2],
-    "projects": [1],
-    "url": "/writing/understanding-react-hooks"
+    "url": "/writing/understanding-react-hooks",
+    "skills": ["JavaScript", "React", "TDD/BDD", "Redux"],
+    "projects": ["Code Library", "Algorithm Visualizer"]
   },
   {
-    "id": 2,
     "title": "TypeScript for JavaScript Developers",
     "type": "article",
     "description": "A comprehensive guide for JavaScript developers looking to transition to TypeScript, covering key concepts, common patterns, and best practices.",
     "image": "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "publishedDate": "2023-08-15",
     "tags": ["TypeScript", "JavaScript", "Programming Languages"],
-    "skills": [3],
-    "projects": [2],
-    "url": "/writing/typescript-for-javascript-developers"
+    "url": "/writing/typescript-for-javascript-developers",
+    "skills": ["JavaScript", "TypeScript", "TDD/BDD"],
+    "projects": ["Code Library", "Algorithm Visualizer", "Synapcity"]
   },
   {
-    "id": 3,
     "title": "Building a Portfolio with Next.js and Tailwind CSS",
     "type": "tutorial",
     "description": "A step-by-step tutorial on how to build a modern, responsive portfolio website using Next.js and Tailwind CSS.",
     "image": "https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "publishedDate": "2024-01-10",
     "tags": ["Next.js", "Tailwind CSS", "Web Development"],
-    "skills": [6, 14],
-    "projects": [3],
-    "url": "/writing/building-a-portfolio-with-nextjs-tailwind"
+    "url": "/writing/building-a-portfolio-with-nextjs-tailwind",
+    "skills": [
+      "TypeScript",
+      "Next.js",
+      "TailwindCSS",
+      "Component-driven Design",
+      "TDD/BDD",
+      "Jest",
+      "Storybook"
+    ],
+    "projects": ["Synapcity"]
   },
   {
-    "id": 4,
     "title": "Introduction to GraphQL with Apollo Client",
     "type": "article",
     "description": "An introductory article on GraphQL and how to use Apollo Client to manage data fetching in React applications.",
     "image": "https://images.pexels.com/photos/187041/pexels-photo-187041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "publishedDate": "2022-11-07",
     "tags": ["GraphQL", "Apollo Client", "React"],
-    "skills": [12],
-    "projects": [],
-    "url": "/writing/introduction-to-graphql-with-apollo-client"
+    "url": "/writing/introduction-to-graphql-with-apollo-client",
+    "skills": ["GraphQL", "Apollo Client", "React", "TDD/BDD"],
+    "projects": ["Synapcity"]
   },
   {
-    "id": 5,
     "title": "Component-Driven Development: A Practical Guide",
     "type": "guide",
     "description": "An overview of Component-Driven Development (CDD) and how to implement it in your React projects for more maintainable and scalable code.",
     "image": "https://images.pexels.com/photos/1476316/pexels-photo-1476316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "publishedDate": "2023-03-21",
     "tags": ["Component-Driven Development", "React", "Best Practices"],
-    "skills": [2],
-    "projects": [],
-    "url": "/writing/component-driven-development-guide"
+    "url": "/writing/component-driven-development-guide",
+    "skills": [
+      "React",
+      "Next.js",
+      "TDD/BDD",
+      "Jest",
+      "Storybook",
+      "TailwindCSS"
+    ],
+    "projects": ["Code Library"]
   },
   {
-    "id": 6,
     "title": "Improving Performance in React Applications",
     "type": "article",
     "description": "Techniques and strategies to optimize performance in React applications, including code-splitting, memoization, and lazy loading.",
     "image": "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "publishedDate": "2023-06-30",
     "tags": ["React", "Performance Optimization", "Web Development"],
-    "skills": [2],
-    "projects": [],
-    "url": "/writing/improving-performance-in-react-applications"
+    "url": "/writing/improving-performance-in-react-applications",
+    "skills": ["React", "Next.js", "TDD/BDD", "Jest", "TailwindCSS"],
+    "projects": ["Algorithm Visualizer"]
   },
   {
-    "id": 7,
     "title": "Modern JavaScript: ES6+ Features You Should Know",
     "type": "article",
     "description": "A rundown of essential ES6+ JavaScript features that every developer should be familiar with to write clean, modern code.",
     "image": "https://media.licdn.com/dms/image/D4D12AQHeu6x2jIurgw/article-cover_image-shrink_720_1280/0/1702274710606?e=2147483647&v=beta&t=66fwU5fPfdeXzLIH5AJwapmGxaf3EgMZyIaF75HrN0A",
     "publishedDate": "2022-09-15",
     "tags": ["JavaScript", "ES6", "Programming"],
-    "skills": [1],
-    "projects": [],
-    "url": "/writing/modern-javascript-es6-features"
+    "url": "/writing/modern-javascript-es6-features",
+    "skills": ["JavaScript", "React", "TypeScript"],
+    "projects": ["Transl8"]
   },
   {
-    "id": 8,
     "title": "Designing Accessible Web Applications",
     "type": "guide",
     "description": "Best practices and guidelines for designing web applications that are accessible to all users, including those with disabilities.",
     "image": "https://www.searchenginejournal.com/wp-content/uploads/2020/08/9-ways-you-can-make-your-website-more-accessible-5f3f5d3bd7a34.png",
     "publishedDate": "2022-12-05",
     "tags": ["Accessibility", "Web Development", "Best Practices"],
-    "skills": [],
-    "projects": [],
-    "url": "/writing/designing-accessible-web-applications"
+    "url": "/writing/designing-accessible-web-applications",
+    "skills": ["React", "Next.js", "TailwindCSS"],
+    "projects": ["Code Library"]
   },
   {
-    "id": 9,
     "title": "The Role of Storybook in Component-Driven Development",
     "type": "article",
     "description": "An article discussing how Storybook can be used as a tool for developing and testing UI components in isolation.",
     "image": "https://miro.medium.com/v2/resize:fit:1400/1*HtkXvMQIosNcOI0BlfqILQ.png",
     "publishedDate": "2023-02-28",
     "tags": ["Storybook", "Component-Driven Development", "UI Development"],
-    "skills": [2],
-    "projects": [],
-    "url": "/writing/role-of-storybook-in-cdd"
+    "url": "/writing/role-of-storybook-in-cdd",
+    "skills": ["Storybook", "Next.js", "TailwindCSS"],
+    "projects": ["Code Library"]
   },
   {
-    "id": 10,
     "title": "Testing Strategies for Modern Web Applications",
     "type": "article",
     "description": "An exploration of different testing strategies for web applications, including unit, integration, and end-to-end testing.",
     "image": "https://images.squarespace-cdn.com/content/v1/606e644436f84e09741ce897/2291a5c2-7569-4198-b664-6490b99420cf/typesofteststraetgy.png",
     "publishedDate": "2024-02-01",
     "tags": ["Testing", "Web Development", "Best Practices"],
-    "skills": [19, 20],
-    "projects": [],
-    "url": "/writing/testing-strategies-for-web-applications"
+    "url": "/writing/testing-strategies-for-web-applications",
+    "skills": [
+      "React",
+      "Next.js",
+      "TailwindCSS",
+      "Jest",
+      "Cypress",
+      "Storybook"
+    ],
+    "projects": ["Code Library", "Synapcity"]
   }
 ]

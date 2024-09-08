@@ -1,254 +1,459 @@
 [
   {
-    "id": 1,
     "name": "JavaScript",
     "icon": "Javascript",
     "startYear": 2018,
-    "tags": ["Frontend", "Backend", "Full-Stack", "Programming Language", "ES6+"],
-    "documentation": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    "projects": [1, 2, 3],
-    "articles": [1, 7],
-    "education": [1],
-    "experience": [1, 2, 3]
+    "categories": ["Programming Language", "Frontend", "Backend", "Full-Stack"],
+    "tags": [
+      "ES6+",
+      "DOM Manipulation",
+      "Event Handling",
+      "Asynchronous Programming",
+      "APIs"
+    ],
+    "documentation": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
   },
   {
-    "id": 2,
     "name": "React",
     "icon": "React",
     "startYear": 2018,
-    "tags": ["Frontend", "JavaScript Framework", "UI Library"],
-    "documentation": "https://reactjs.org/docs/getting-started.html",
-    "projects": [1, 4, 6],
-    "articles": [1, 5, 9],
-    "education": [1],
-    "experience": [1, 2, 3]
+    "categories": ["JavaScript Framework", "Frontend", "UI Library"],
+    "tags": [
+      "Component-Based Architecture",
+      "Hooks",
+      "State Management",
+      "Virtual DOM"
+    ],
+    "documentation": "https://reactjs.org/docs/getting-started.html"
   },
   {
-    "id": 3,
     "name": "TypeScript",
     "icon": "Typescript",
     "startYear": 2021,
-    "tags": ["Programming Language", "JavaScript", "Typed Language"],
-    "documentation": "https://www.typescriptlang.org/docs/",
-    "projects": [1],
-    "articles": [2],
-    "education": [],
-    "experience": [1, 2]
+    "categories": ["Programming Language", "Frontend", "Backend", "Full-Stack"],
+    "tags": ["Static Typing", "JavaScript", "Type Safety", "OOP Features"],
+    "documentation": "https://www.typescriptlang.org/docs/"
   },
   {
-    "id": 4,
     "name": "Redux",
     "icon": "Redux",
     "startYear": 2018,
-    "tags": ["State Management", "JavaScript", "React"],
-    "documentation": "https://redux.js.org/introduction/getting-started",
-    "projects": [2, 4],
-    "articles": [],
-    "education": [1],
-    "experience": [3]
+    "categories": ["State Management", "JavaScript Library"],
+    "tags": ["Global State Management", "Middleware", "React Integration"],
+    "documentation": "https://redux.js.org/introduction/getting-started"
   },
   {
-    "id": 5,
     "name": "Ruby on Rails",
     "icon": "Rubyonrails",
     "startYear": 2018,
-    "tags": ["Backend", "Web Framework", "Ruby"],
-    "documentation": "https://guides.rubyonrails.org/",
-    "projects": [1, 2, 3],
-    "articles": [],
-    "education": [1],
-    "experience": [1, 3]
+    "categories": ["Web Framework", "Backend"],
+    "tags": ["Ruby", "MVC Architecture", "RESTful APIs", "ActiveRecord"],
+    "documentation": "https://guides.rubyonrails.org/"
   },
   {
-    "id": 6,
     "name": "Next.js",
     "icon": "NextJs",
     "startYear": 2022,
-    "tags": ["Frontend", "React Framework", "SSR", "SSG"],
-    "documentation": "https://nextjs.org/docs",
-    "projects": [6],
-    "articles": [3],
-    "education": [],
-    "experience": []
+    "categories": ["React Framework", "Frontend", "Full-Stack"],
+    "tags": [
+      "Server-Side Rendering (SSR)",
+      "Static Site Generation (SSG)",
+      "API Routes",
+      "File-Based Routing"
+    ],
+    "documentation": "https://nextjs.org/docs"
   },
   {
-    "id": 7,
     "name": "Node.js",
     "icon": "NodeJs",
     "startYear": 2021,
-    "tags": ["Backend", "JavaScript Runtime"],
-    "documentation": "https://nodejs.org/en/docs/",
-    "projects": [5],
-    "articles": [],
-    "education": [],
-    "experience": []
+    "categories": ["JavaScript Runtime", "Backend"],
+    "tags": [
+      "Event-Driven Programming",
+      "Non-blocking I/O",
+      "APIs",
+      "Microservices"
+    ],
+    "documentation": "https://nodejs.org/en/docs/"
   },
   {
-    "id": 8,
     "name": "Express.js",
     "icon": "Express",
     "startYear": 2021,
-    "tags": ["Backend", "Web Framework", "Node.js"],
-    "documentation": "https://expressjs.com/en/starter/installing.html",
-    "projects": [5],
-    "articles": [],
-    "education": [],
-    "experience": []
+    "categories": ["Web Framework", "Backend"],
+    "tags": ["Routing", "Middleware", "REST APIs", "MVC Architecture"],
+    "documentation": "https://expressjs.com/en/starter/installing.html"
   },
   {
-    "id": 9,
     "name": "SQL",
     "icon": "Postgresql",
     "startYear": 2018,
-    "tags": ["Database", "Relational Database", "SQL"],
-    "documentation": "https://www.postgresql.org/docs/",
-    "projects": [3],
-    "articles": [],
-    "education": [1],
-    "experience": [1, 3]
+    "categories": ["Database", "Backend"],
+    "tags": [
+      "Relational Databases",
+      "Queries",
+      "Data Manipulation",
+      "Joins",
+      "Indexes"
+    ],
+    "documentation": "https://www.postgresql.org/docs/"
   },
   {
-    "id": 10,
     "name": "MySQL",
     "icon": "Mysql",
     "startYear": 2018,
-    "tags": ["Database", "Relational Database", "SQL"],
-    "documentation": "https://dev.mysql.com/doc/",
-    "projects": [5],
-    "articles": [],
-    "education": [],
-    "experience": []
+    "categories": ["Database", "Backend"],
+    "tags": [
+      "Relational Databases",
+      "Data Storage",
+      "Query Optimization",
+      "Indexes"
+    ],
+    "documentation": "https://dev.mysql.com/doc/"
   },
   {
-    "id": 11,
     "name": "PostgreSQL",
     "icon": "Postgresql",
     "startYear": 2018,
-    "tags": ["Database", "Relational Database", "SQL"],
-    "documentation": "https://www.postgresql.org/docs/",
-    "projects": [3],
-    "articles": [],
-    "education": [],
-    "experience": []
+    "categories": ["Database", "Backend"],
+    "tags": [
+      "Relational Databases",
+      "Data Integrity",
+      "Joins",
+      "Indexes",
+      "ACID Compliance"
+    ],
+    "documentation": "https://www.postgresql.org/docs/"
   },
   {
-    "id": 12,
     "name": "GraphQL",
     "icon": "Graphql",
     "startYear": 2021,
-    "tags": ["API", "Backend", "Query Language"],
-    "documentation": "https://graphql.org/learn/",
-    "projects": [6],
-    "articles": [4],
-    "education": [],
-    "experience": [2]
+    "categories": ["API", "Backend", "Query Language"],
+    "tags": [
+      "Schema Definition",
+      "Data Fetching",
+      "Resolvers",
+      "GraphQL Subscriptions"
+    ],
+    "documentation": "https://graphql.org/learn/"
   },
   {
-    "id": 13,
     "name": "HTML/CSS",
     "icon": "Html5",
     "startYear": 2018,
-    "tags": ["Frontend", "Markup Language", "Styling"],
-    "documentation": "https://developer.mozilla.org/en-US/docs/Web/HTML",
-    "projects": [1, 2],
-    "articles": [],
-    "education": [1],
-    "experience": [1, 3]
+    "categories": ["Markup Language", "Styling", "Frontend"],
+    "tags": ["HTML5", "CSS3", "Semantic Markup", "Responsive Design"],
+    "documentation": "https://developer.mozilla.org/en-US/docs/Web/HTML"
   },
   {
-    "id": 14,
     "name": "Tailwind CSS",
     "icon": "Tailwindcss",
     "startYear": 2022,
-    "tags": ["Frontend", "CSS Framework", "Utility-First"],
-    "documentation": "https://tailwindcss.com/docs",
-    "projects": [6],
-    "articles": [3],
-    "education": [],
-    "experience": []
+    "categories": ["CSS Framework", "Frontend"],
+    "tags": ["Utility-First CSS", "Responsive Design", "Customizable Themes"],
+    "documentation": "https://tailwindcss.com/docs"
   },
   {
-    "id": 15,
     "name": "RESTful APIs",
     "icon": "Server",
     "startYear": 2018,
-    "tags": ["API", "Backend", "Web Services"],
-    "documentation": "https://restfulapi.net/",
-    "projects": [1, 5],
-    "articles": [],
-    "education": [],
-    "experience": [1, 2]
+    "categories": ["API", "Backend"],
+    "tags": ["REST", "HTTP Methods", "Data Interchange", "JSON"],
+    "documentation": "https://restfulapi.net/"
   },
   {
-    "id": 16,
     "name": "Agile/Scrum",
     "icon": "ClipboardCheck",
     "startYear": 2019,
-    "tags": ["Project Management", "Team Collaboration", "Agile Methodology"],
-    "documentation": "https://www.scrum.org/resources/what-is-scrum",
-    "projects": [],
-    "articles": [],
-    "education": [],
-    "experience": [1, 2]
+    "categories": ["Project Management"],
+    "tags": ["Agile Methodology", "Team Collaboration", "Scrum Framework"],
+    "documentation": "https://www.scrum.org/resources/what-is-scrum"
   },
   {
-    "id": 17,
     "name": "Git",
     "icon": "GitAlt",
     "startYear": 2018,
-    "tags": ["Version Control", "Collaboration", "Source Control"],
-    "documentation": "https://git-scm.com/doc",
-    "projects": [1, 2, 6],
-    "articles": [],
-    "education": [],
-    "experience": [1, 2]
+    "categories": ["Version Control", "Collaboration"],
+    "tags": ["Branching", "Merging", "Code History", "Source Control"],
+    "documentation": "https://git-scm.com/doc"
   },
   {
-    "id": 18,
     "name": "Webpack",
     "icon": "Webpack",
     "startYear": 2019,
-    "tags": ["Frontend", "Module Bundler", "JavaScript"],
-    "documentation": "https://webpack.js.org/concepts/",
-    "projects": [],
-    "articles": [],
-    "education": [],
-    "experience": []
+    "categories": ["Module Bundler", "Frontend"],
+    "tags": ["Asset Bundling", "Code Splitting", "JavaScript"],
+    "documentation": "https://webpack.js.org/concepts/"
   },
   {
-    "id": 19,
     "name": "Docker",
     "icon": "Docker",
     "startYear": 2020,
-    "tags": ["DevOps", "Containerization", "CI/CD"],
-    "documentation": "https://docs.docker.com/get-started/",
-    "projects": [],
-    "articles": [],
-    "education": [],
-    "experience": []
+    "categories": ["DevOps", "Containerization"],
+    "tags": ["CI/CD", "Containers", "Orchestration"],
+    "documentation": "https://docs.docker.com/get-started/"
   },
   {
-    "id": 20,
     "name": "TDD/BDD",
     "icon": "Jest",
     "startYear": 2018,
-    "tags": ["Testing", "Best Practices", "Development Methodology"],
-    "documentation": "https://en.wikipedia.org/wiki/Behavior-driven_development",
-    "projects": [6],
-    "articles": [10],
-    "education": [1],
-    "experience": [1]
+    "categories": ["Development Methodology", "Testing"],
+    "tags": [
+      "Unit Testing",
+      "Behavior-Driven Development",
+      "Test-Driven Development"
+    ],
+    "documentation": "https://en.wikipedia.org/wiki/Behavior-driven_development"
   },
   {
-    "id": 21,
     "name": "Jest",
     "icon": "Jest",
     "startYear": 2018,
-    "tags": ["Testing", "JavaScript", "Unit Testing"],
-    "documentation": "https://jestjs.io/docs/getting-started",
-    "projects": [6],
-    "articles": [10],
-    "education": [],
-    "experience": [1]
+    "categories": ["Unit Testing", "Testing Framework"],
+    "tags": ["Testing", "JavaScript", "Test-Driven Development"],
+    "documentation": "https://jestjs.io/docs/getting-started"
+  },
+  {
+    "name": "Datadog",
+    "icon": "SiDatadog",
+    "startYear": 2022,
+    "categories": ["Monitoring", "DevOps"],
+    "tags": ["Infrastructure Monitoring", "APM", "Logging"],
+    "documentation": "https://docs.datadoghq.com/"
+  },
+  {
+    "name": "CircleCI",
+    "icon": "SiCircleCI",
+    "startYear": 2021,
+    "categories": ["CI/CD", "DevOps"],
+    "tags": ["Continuous Integration", "Deployment Pipelines", "Automation"],
+    "documentation": "https://circleci.com/docs/"
+  },
+  {
+    "name": "GitHub Actions",
+    "icon": "SiGitHubActions",
+    "startYear": 2021,
+    "categories": ["CI/CD", "DevOps"],
+    "tags": ["Automation", "Continuous Integration", "GitHub Integration"],
+    "documentation": "https://docs.github.com/en/actions"
+  },
+  {
+    "name": "Nginx",
+    "icon": "SiNginx",
+    "startYear": 2021,
+    "categories": ["Web Server", "Infrastructure"],
+    "tags": ["Reverse Proxy", "Load Balancing", "Caching"],
+    "documentation": "https://nginx.org/en/docs/"
+  },
+  {
+    "name": "Vercel",
+    "icon": "SiVercel",
+    "startYear": 2021,
+    "categories": ["Deployment", "Frontend"],
+    "tags": [
+      "Serverless Functions",
+      "Static Site Generation",
+      "Continuous Deployment"
+    ],
+    "documentation": "https://vercel.com/docs"
+  },
+  {
+    "name": "Stripe",
+    "icon": "SiStripe",
+    "startYear": 2021,
+    "categories": ["Payment Gateway", "API"],
+    "tags": ["Payment Processing", "Subscriptions", "Checkout API"],
+    "documentation": "https://stripe.com/docs"
+  },
+  {
+    "name": "Google Cloud Platform",
+    "icon": "SiGooglecloud",
+    "startYear": 2022,
+    "categories": ["Cloud", "Infrastructure"],
+    "tags": [
+      "App Engine",
+      "Google Kubernetes Engine",
+      "BigQuery",
+      "Cloud Functions"
+    ],
+    "documentation": "https://cloud.google.com/docs"
+  },
+  {
+    "name": "OAuth 2.0",
+    "icon": "SiGoogleAuthenticator",
+    "startYear": 2021,
+    "categories": ["Security", "Authentication"],
+    "tags": ["Authorization Framework", "User Authentication", "Access Tokens"],
+    "documentation": "https://oauth.net/2/"
+  },
+  {
+    "name": "JWT",
+    "icon": "Sijsonwebtokens",
+    "startYear": 2021,
+    "categories": ["Security", "Authentication"],
+    "tags": [
+      "Token-Based Authentication",
+      "User Sessions",
+      "Stateless Authentication"
+    ],
+    "documentation": "https://jwt.io/introduction/"
+  },
+  {
+    "name": "ElasticSearch",
+    "icon": "SiElasticSearch",
+    "startYear": 2022,
+    "categories": ["Search Engine", "Backend"],
+    "tags": ["Full-Text Search", "Data Indexing", "Distributed Search"],
+    "documentation": "https://www.elastic.co/guide/index.html"
+  },
+  {
+    "name": "Jira",
+    "icon": "SiJira",
+    "startYear": 2021,
+    "categories": ["Project Management", "Collaboration"],
+    "tags": ["Task Management", "Agile Workflow", "Kanban"],
+    "documentation": "https://www.atlassian.com/software/jira"
+  },
+  {
+    "name": "Kubernetes",
+    "icon": "SiKubernetes",
+    "startYear": 2022,
+    "categories": ["Container Orchestration", "DevOps"],
+    "tags": ["Containers", "Microservices", "Orchestration"],
+    "documentation": "https://kubernetes.io/docs/home/"
+  },
+  {
+    "name": "AutoCAD",
+    "icon": "SiAutocad",
+    "startYear": 2021,
+    "categories": ["Design Tool"],
+    "tags": ["3D Modeling", "CAD", "Architectural Design"],
+    "documentation": "https://www.autodesk.com/products/autocad/overview"
+  },
+  {
+    "name": "Rspec",
+    "icon": "SiRubygems",
+    "startYear": 2019,
+    "categories": ["Testing Framework", "Backend"],
+    "tags": ["Unit Testing", "Behavior-Driven Development", "Ruby Testing"],
+    "documentation": "https://rspec.info/documentation/"
+  },
+  {
+    "name": "Sinatra",
+    "icon": "SiRubySinatra",
+    "startYear": 2018,
+    "categories": ["Web Framework", "Backend"],
+    "tags": ["Routing", "Ruby Framework", "Microservices"],
+    "documentation": "http://sinatrarb.com/documentation.html"
+  },
+  {
+    "name": "Component-Driven Design",
+    "icon": "SiStyledComponents",
+    "startYear": 2022,
+    "categories": ["Design Methodology", "Frontend"],
+    "tags": [
+      "Component Composition",
+      "Reusable Components",
+      "Modular Development"
+    ],
+    "documentation": "https://www.componentdriven.org/"
+  },
+  {
+    "name": "CI/CD",
+    "icon": "automation",
+    "startYear": 2021,
+    "categories": ["DevOps", "Automation"],
+    "tags": [
+      "Continuous Integration",
+      "Continuous Deployment",
+      "Automation Pipelines"
+    ],
+    "documentation": "https://www.atlassian.com/continuous-delivery/ci-vs-cd"
+  },
+  {
+    "name": "Apollo Client",
+    "icon": "SiApollo",
+    "startYear": 2022,
+    "categories": ["API", "Frontend", "Backend"],
+    "tags": ["GraphQL Data Fetching", "Cache Management", "State Management"],
+    "documentation": "https://www.apollographql.com/docs/react/"
+  },
+  {
+    "name": "Bit",
+    "icon": "FaBitbucket",
+    "startYear": 2023,
+    "categories": ["Component Library", "Frontend"],
+    "tags": [
+      "Component Reusability",
+      "Component-Driven Development",
+      "Version Control for Components"
+    ],
+    "documentation": "https://bit.dev/docs"
+  },
+  {
+    "name": "Storybook",
+    "icon": "SiStorybook",
+    "startYear": 2022,
+    "categories": ["Component Library", "Frontend"],
+    "tags": ["Component Development", "Component Documentation", "UI Testing"],
+    "documentation": "https://storybook.js.org/docs"
+  },
+  {
+    "name": "Prisma",
+    "icon": "SiPrisma",
+    "startYear": 2022,
+    "categories": ["ORM", "Backend"],
+    "tags": [
+      "Database Abstraction",
+      "Type Safety",
+      "Migrations",
+      "Query Optimization"
+    ],
+    "documentation": "https://www.prisma.io/docs"
+  },
+  {
+    "name": "Supabase",
+    "icon": "SiSupabase",
+    "startYear": 2022,
+    "categories": ["Backend", "Database"],
+    "tags": ["PostgreSQL", "Realtime Data", "Authentication", "REST APIs"],
+    "documentation": "https://supabase.com/docs"
+  },
+  {
+    "name": "Cypress",
+    "icon": "SiCypress",
+    "startYear": 2023,
+    "categories": ["Testing Framework", "Frontend", "E2E Testing"],
+    "tags": ["End-to-End Testing", "Integration Testing", "Automation"],
+    "documentation": "https://docs.cypress.io/guides/overview/why-cypress"
+  },
+  {
+    "name": "Project Management",
+    "icon": "projects",
+    "startYear": 2019,
+    "categories": ["Soft Skill"],
+    "tags": ["Agile Methodologies", "Scrum Framework", "Task Management"],
+    "documentation": "https://www.pmi.org/about/learn-about-pmi/what-is-project-management"
+  },
+  {
+    "name": "Cross-Functional Collaboration",
+    "icon": "collab",
+    "startYear": 2021,
+    "categories": ["Soft Skill"],
+    "tags": [
+      "Interdisciplinary Communication",
+      "Product Development",
+      "Coordination"
+    ],
+    "documentation": "https://en.wikipedia.org/wiki/Cross-functional_team"
+  },
+  {
+    "name": "Technical Writing",
+    "icon": "TbWriting",
+    "startYear": 2020,
+    "categories": ["Soft Skill"],
+    "tags": ["Documentation", "Clear Communication", "Technical Documentation"],
+    "documentation": "https://en.wikipedia.org/wiki/Technical_writing"
   }
 ]
