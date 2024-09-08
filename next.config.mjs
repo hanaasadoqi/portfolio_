@@ -9,14 +9,35 @@ const nextConfig = {
   swcMinify: true,
 
   images: {
-    domains: [
-      'images.pexels.com',
-      'media.licdn.com',
-      'www.searchenginejournal.com',
-      'miro.medium.com',
-      'images.squarespace-cdn.com',
-      'localhost.com',
-      'cdn.pixabay.com',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.licdn.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.searchenginejournal.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'miro.medium.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.squarespace-cdn.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'localhost.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.pixabay.com',
+      },
     ],
   },
 }
