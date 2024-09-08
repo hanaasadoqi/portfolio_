@@ -41,3 +41,5 @@ next-env.d.ts
 /storybook-static
 
 settings.json
+/src/lib/supabase/.temp
+/src/lib/supabase/.branches
