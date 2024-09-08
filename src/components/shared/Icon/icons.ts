@@ -18,6 +18,8 @@ import {
   FaHtml5,
   FaSearch,
   FaExternalLinkAlt,
+  FaCodeBranch,
+  FaBitbucket
 } from 'react-icons/fa'
 import { FaHashnode } from 'react-icons/fa6'
 import { IoMdLink, IoMdClose } from 'react-icons/io'
@@ -36,14 +38,31 @@ import {
   SiJest,
   SiWebpack,
   SiNodedotjs,
+  SiCypress,
+  SiSupabase,
+  SiPrisma,
+  SiApollographql,
+  SiStorybook,
+  SiStyledcomponents,
+  SiRubysinatra,
+  SiRubygems,
+  SiAutocad,
+  SiKubernetes,
+  SiJira,
+  SiElasticsearch,
+  SiJsonwebtokens,
+  SiGooglecloud,
+  SiStripe,
+  SiVercel,
+  SiNginx,
+  SiGithubactions,
+  SiCircleci,
+  SiDatadog
+
 } from 'react-icons/si'
+import { TbWriting, TbSettingsAutomation } from 'react-icons/tb'
+import { GoProjectRoadmap } from 'react-icons/go'
 import { FiExternalLink } from 'react-icons/fi'
-import sirius from '/public/logos/siriusxm.svg'
-import flatiron from '/public/logos/flatiron-light.svg'
-// import stitchfix from "/public/logos/stitchfix.svg";
-import ventrop from '/public/logos/ventrop.svg'
-import benvenuti from '/public/logos/benvenuti.svg'
-import wework from '/public/logos/wework.svg'
 
 const icons = {
   Github: FaGithub,
@@ -82,15 +101,32 @@ const icons = {
   search: FaSearch,
   externalLink: FaExternalLinkAlt,
   close: IoMdClose,
+  projects: GoProjectRoadmap,
+  collab: FaCodeBranch,
+  SiCypress: SiCypress,
+  SiSupabase: SiSupabase,
+  SiPrisma: SiPrisma,
+  SiApollo: SiApollographql,
+  SiStorybook: SiStorybook,
+  SiStyledcomponents: SiStyledcomponents,
+  automation: TbSettingsAutomation,
+  TbWriting,
+  SiRubysinatra,
+  SiRubygems,
+  SiAutocad,
+  SiKubernetes,
+  SiJira,
+  SiElasticsearch,
+  SiJsonwebtokens,
+  SiGooglecloud,
+  SiStripe,
+  SiVercel,
+  SiNginx,
+  SiGithubactions,
+  SiCircleci,
+  SiDatadog,
+  link: FiExternalLink,
+  FaBitbucket
 }
 
-const logos = {
-  sirius,
-  ventrop,
-  flatiron,
-  // stitchfix,
-  benvenuti,
-  wework,
-}
-
-export { icons as IconLibrary, logos as LogoLibrary }
+export { icons as IconLibrary }
