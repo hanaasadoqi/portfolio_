@@ -37,9 +37,10 @@ yarn-error.log*
 next-env.d.ts
 
 *storybook.log
-/examples
+/_examples
 /storybook-static
 
 settings.json
+extensions.json
 /src/lib/supabase/.temp
 /src/lib/supabase/.branches

@@ -5,7 +5,7 @@ const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -43,8 +43,6 @@ const config: Config = {
           'linear-gradient(to bottom, #cbd5e1, #bfdbfe, #a5b4fc, #f0abfc, #fbcfe8, #a5f3fc, #d8b4fe, #06b6de)',
         'app-gradient-dark':
           'linear-gradient(to bottom, #0f172a, #1e3a8a, #4338ca, #e879f9, #ec4899, #6d28d9, #0c4a6e, #0891b2)',
-        // Add other gradient definitions if needed...
-
         'hero-light': 'linear-gradient(to bottom, #f1f5f9, #bfdbfe)',
         'hero-dark': 'linear-gradient(to bottom, #0f172a, #1e3a8a)',
 
@@ -106,8 +104,8 @@ const config: Config = {
           '100%': { backgroundPosition: '0% 50%', backgroundSize: '100% 100%' },
         },
         pulse: {
-          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
-          '50%': { transform: 'scale(1.2)', opacity: '0.7' },
+          '0%, 100%': { transform: 'scale(.9)', opacity: '1' },
+          '50%': { transform: 'scale(1)', opacity: '0.7' },
         },
       },
       animation: {
