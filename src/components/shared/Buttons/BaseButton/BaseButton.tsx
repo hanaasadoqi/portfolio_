@@ -83,17 +83,17 @@ export const outerStyles: Record<ButtonVariant, string> = {
   text: 'shadow-none hover:shadow-md active:shadow-inner',
   fab: 'shadow-md border-1 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-200 hover:shadow-lg active:shadow-inner',
   danger:
-    'hover:shadow-lg  border-transparent focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-600 hover:shadow-lg active:shadow-inner',
+    'hover:shadow-lg  border-transparent focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-600 hover:shadow-lg active:shadow-inner hover:text-white',
   icon: 'border-none',
 }
 
 export const textStyles: Record<ButtonSize, string> = {
   xs: 'text-xs md:text-sm font-light tracking-normal',
   sm: 'text-sm md:text-base md:font-normal md:tracking-wide',
-  md: 'text-base font-normal md:font-medium md:tracking-wide',
+  md: 'text-base font-normal md:font-extrabold md:tracking-wide',
   lg: 'text-base md:text-md font-bold md:tracking-widest',
-  xl: 'text-md md:text-lg font-medium md:tracking-widest',
-  full: 'text-lg font-medium tracking-widest',
+  xl: 'text-md md:text-lg font-extrabold md:tracking-widest',
+  full: 'text-lg font-extrabold tracking-widest',
 }
 
 const BaseButton: React.FC<BaseButtonProps> = React.memo(
@@ -136,7 +136,7 @@ const BaseButton: React.FC<BaseButtonProps> = React.memo(
     )
 
     const buttonStyles = clsx(
-      'focus:outline-none border inline-flex items-center justify-center whitespace-nowrap select-none transition-colors duration-300 ease',
+      'focus:outline-none border inline-flex items-center justify-center whitespace-nowrap select-none transition-colors duration-300 ease text-bold',
       {
         'hover:underline hover:underline-offset-2': variant === 'link',
         'opacity-50 cursor-not-allowed': disabled,

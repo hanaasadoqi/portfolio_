@@ -29,19 +29,19 @@ export interface IconButtonProps extends BaseButtonProps {
 }
 
 export const iconButtonSizes: Record<ButtonSize, string> = {
-  xs: 'p-0.5',
+  xs: 'p-0.75',
   sm: 'p-1',
-  md: 'p-1.5',
+  md: 'p-1',
   lg: 'p-2',
-  xl: 'p-2.5',
+  xl: 'p-2',
   full: 'w-full h-full',
 }
 
 const IconButton: React.FC<IconButtonProps> = ({
   icon,
   iconPosition = 'left',
-  size,
-  iconOnly = false,
+  size = "md",
+  iconOnly = true,
   iconClassName,
   children,
   className,
@@ -61,7 +61,7 @@ const IconButton: React.FC<IconButtonProps> = ({
         className={
           iconOnly ? clsx(size && iconButtonSizes[size], className) : className
         }
-        iconOnly={iconOnly}
+        iconOnly
         size={size}
         data-tooltip-id={tooltipId}
         data-tooltip-content={tooltip}

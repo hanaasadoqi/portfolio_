@@ -63,8 +63,11 @@ import {
 import { TbWriting, TbSettingsAutomation } from 'react-icons/tb'
 import { GoProjectRoadmap } from 'react-icons/go'
 import { FiExternalLink } from 'react-icons/fi'
+import { IconType } from 'react-icons'
 
-const icons = {
+const icons: {
+  [key: string]: IconType
+} = {
   Github: FaGithub,
   LinkedIn: FaLinkedin,
   Dev: FaDev,
@@ -110,23 +113,23 @@ const icons = {
   SiStorybook: SiStorybook,
   SiStyledcomponents: SiStyledcomponents,
   automation: TbSettingsAutomation,
-  TbWriting,
-  SiRubysinatra,
-  SiRubygems,
-  SiAutocad,
-  SiKubernetes,
-  SiJira,
-  SiElasticsearch,
-  SiJsonwebtokens,
-  SiGooglecloud,
-  SiStripe,
-  SiVercel,
-  SiNginx,
-  SiGithubactions,
-  SiCircleci,
-  SiDatadog,
+  TbWriting: TbWriting,
+  SiRubysinatra: SiRubysinatra,
+  SiRubygems: SiRubygems,
+  SiAutocad: SiAutocad,
+  SiKubernetes: SiKubernetes,
+  SiJira: SiJira,
+  SiElasticsearch: SiElasticsearch,
+  SiJsonwebtokens: SiJsonwebtokens,
+  SiGooglecloud: SiGooglecloud,
+  SiStripe: SiStripe,
+  SiVercel: SiVercel,
+  SiNginx: SiNginx,
+  SiGithubactions: SiGithubactions,
+  SiCircleci: SiCircleci,
+  SiDatadog: SiDatadog,
   link: FiExternalLink,
-  FaBitbucket
+  FaBitbucket: FaBitbucket
 }
 
 export { icons as IconLibrary }
