@@ -1,7 +1,7 @@
 [
   {
     "company": "Stitch Fix",
-    "website": "https://www.stitchfix.com/",
+    "url": "https://www.stitchfix.com/",
     "role": "Software Engineer II",
     "location": "New York, NY",
     "startDate": "2022-01-01",
@@ -31,7 +31,7 @@
   },
   {
     "company": "Sirius XM (Pandora Music)",
-    "website": "https://www.siriusxm.com/",
+    "url": "https://www.siriusxm.com/",
     "role": "Apprentice Software Engineer",
     "location": "Remote",
     "startDate": "2021-04-01",
@@ -59,7 +59,7 @@
   },
   {
     "company": "Flatiron School",
-    "website": "https://www.flatironschool.com/",
+    "url": "https://www.flatironschool.com/",
     "role": "Online Cohort Lead",
     "location": "Remote",
     "startDate": "2020-08-01",
@@ -84,7 +84,7 @@
   },
   {
     "company": "WeWork",
-    "website": "https://wework.com/",
+    "url": "https://wework.com/",
     "role": "Software Engineering Coach",
     "location": "Atlanta, Georgia",
     "startDate": "2019-04-01",
@@ -110,7 +110,7 @@
   {
     "url": "",
     "company": "Benvenuti Public Relations",
-    "website": "https://benvenutipr.com/",
+    "url": "https://benvenutipr.com/",
     "role": "Associate Publicist",
     "location": "New York, NY",
     "startDate": "2018-10-01",
@@ -126,7 +126,7 @@
   {
     "url": "",
     "company": "Ventrop Engineering Consulting Group, PLLC",
-    "website": "https://ventropengineering.com/",
+    "url": "https://ventropengineering.com/",
     "role": "Mechanical Engineering Intern",
     "location": "New York, NY",
     "startDate": "2012-05-01",

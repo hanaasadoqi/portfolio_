@@ -1,82 +1,51 @@
-import { PrismaClient } from "@prisma/client";
-import * as fs from "fs";
-import path from "path";
-import { createInterface } from "readline/promises";
+import { PrismaClient } from '@prisma/client'
+import { ProjectData, ArticleData, SeriesData, EducationData, WorkExperienceData, AboutData as AssetData, CommentData, SkillData } from './types'
+import { faker } from '@faker-js/faker'
+import * as fs from 'fs'
+import path from 'path'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 async function loadJSON(fileName: string) {
-  const filePath = path.join(process.cwd(), 'src/data', fileName);
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  return JSON.parse(fileContent);
+  const filePath = path.join(process.cwd(), 'src/lib/data', fileName)
+  const fileContent = fs.readFileSync(filePath, 'utf-8')
+  return JSON.parse(fileContent)
 }
 
-interface SkillData {
-  name: string;
-  icon: string;
-  startYear: number;
-  documentation?: string;
-  categories: string[];
-  tags: string[];
+
+async function resetDatabase() {
+  await prisma.$executeRaw`TRUNCATE TABLE "articles" CASCADE;`;
+  await prisma.$executeRaw`TRUNCATE TABLE "projects" CASCADE;`;
+  await prisma.$executeRaw`TRUNCATE TABLE "skills" CASCADE;`;
+  await prisma.$executeRaw`TRUNCATE TABLE "assets" CASCADE;`;
+  await prisma.$executeRaw`TRUNCATE TABLE "series" CASCADE;`;
+  await prisma.$executeRaw`TRUNCATE TABLE "comments" CASCADE;`;
+  await prisma.$executeRaw`TRUNCATE TABLE "educations" CASCADE;`;
+  await prisma.$executeRaw`TRUNCATE TABLE "work_experiences" CASCADE;`;
 }
 
-interface ProjectData {
-  title: string;
-  description: string;
-  category: string;
-  demoUrl?: string;
-  frontendRepo?: string;
-  backendRepo?: string;
-  codeRepo?: string;
-  videoDemo?: string;
-  launchDate?: string | null;
-  status: string;
-  image: string;
-  skills: string[];
-}
+async function generateComments(numComments: number, entityType: 'article' | 'project') {
+  const entities = entityType === 'article' ? await prisma.article.findMany({ select: { id: true } }) : await prisma.project.findMany({ select: { id: true } })
 
-interface ArticleData {
-  title: string;
-  type: string;
-  description: string;
-  image: string;
-  url: string;
-  publishedDate: string | Date;
-  tags: string[];
-  medium?: string;
-  hashnode?: string;
-  projects: string[];
-  skills: string[];
-}
-  interface EducationData {
-  degree: string;
-  school: string;
-  location: string;
+  const comments: CommentData[] = Array.from({ length: numComments }, () => ({
+    message: faker.lorem.paragraph(),
+    author: faker.person.fullName(),
+    [`${entityType}Id`]: entities[Math.floor(Math.random() * entities.length)].id
+  }))
 
-  startDate: string | Date;
-  endDate: string | Date;
-  skills: string[];
-  url: string;
-}
-
-interface WorkExperienceData {
-  company: string;
-  role: string;
-  location: string;
-  startDate: string;
-  endDate: string;
-  website: string;
-  logo: string;
-  description: string[];
-  skills: string[];
+  return comments
 }
 
 async function seed() {
-  const skills: SkillData[] = await loadJSON("skillsData.json");
-  const projects: ProjectData[] = await loadJSON("projectsData.json");
-  const articles: ArticleData[] = await loadJSON("articlesData.json");
-  const education: EducationData[] = await loadJSON("educationData.json");
-  const experience: WorkExperienceData[] = await loadJSON("experienceData.json");
+  const skills: SkillData[] = await loadJSON('skillsData.json')
+  const assets: AssetData[] = await loadJSON('assetData.json')
+  const projects: ProjectData[] = await loadJSON('projectsData.json')
+  const articles: ArticleData[] = await loadJSON('articlesData.json')
+  const seriesData: SeriesData[] = await loadJSON('seriesData.json')
+  const educationData: EducationData[] = await loadJSON('educationData.json')
+  const experiences: WorkExperienceData[] = await loadJSON('experienceData.json')
+
+  await resetDatabase()
 
   await prisma.skill.createMany({
     data: skills.map((skill: SkillData) => ({
@@ -85,50 +54,71 @@ async function seed() {
       startYear: skill.startYear,
       documentation: skill.documentation,
       categories: skill.categories,
-      tags: skill.tags
-    }))
+      tags: skill.tags,
+    })),
   })
 
-  const allSkills = await prisma.skill.findMany();
+  const allSkills = await prisma.skill.findMany()
 
-  for(const project of projects) {
-    const createdProject = await prisma.project.create({
+  await prisma.asset.createMany({
+    data: assets.map((asset: AssetData) => ({
+      title: asset.title,
+      description: asset.description,
+      type: asset.type,
+      src: asset.src,
+      alt: asset.alt,
+      path: asset.path,
+      poster: asset.poster,
+      aspectRatio: asset.aspectRatio,
+      category: asset.category,
+      srcSet: asset.srcSet,
+      sizes: asset.sizes,
+    })),
+  });
+
+  const allAssets = await prisma.asset.findMany()
+
+  for (const project of projects) {
+    await prisma.project.create({
       data: {
         title: project.title,
-        description: project.description,
         category: project.category,
-        demoUrl: project.demoUrl,
-        frontendRepo: project.frontendRepo,
+        description: project.description,
+        image: project.image,
+        status: project.status,
+        launchDate: project.launchDate,
         backendRepo: project.backendRepo,
+        frontendRepo: project.frontendRepo,
         codeRepo: project.codeRepo,
         videoDemo: project.videoDemo,
-        launchDate: project.launchDate ? new Date(project.launchDate) : null,
-        status: project.status,
-        image: project.image,
+        tags: project.tags,
         skills: {
           connect: project.skills
             .map((skillName: string) => {
-              const foundSkill = allSkills.find(s => s.name === skillName)
+              const foundSkill = allSkills.find((s: SkillData) => s.name === skillName)
               return foundSkill ? { id: foundSkill.id } : undefined
             })
             .filter((skill): skill is { id: string } => skill !== undefined),
-        }
-      }
+        },
+      },
     })
-
-    console.log(`Created project: ${createdProject.title}`)
   }
 
-  const allProjects = await prisma.project.findMany();
+  const allProjects = await prisma.project.findMany()
 
-  for(const article of articles) {
-    const createdArticle = await prisma.article.create({
+  for (const article of articles) {
+    await prisma.article.create({
       data: {
         title: article.title,
+        subtitle: article.subtitle,
         type: article.type,
+        category: article.category,
         description: article.description,
         image: article.image,
-        publishedDate: new Date(article.publishedDate)|| new Date(),
+        slug: article.slug,
+        publishedDate: article.publishedDate,
+        medium: article.medium,
+        hashnode: article.hashnode,
         tags: article.tags,
         skills: {
           connect: article.skills
@@ -143,62 +133,92 @@ async function seed() {
             .map((projectTitle: string) => {
               const foundProject = allProjects.find(
                 (p) => p.title === projectTitle
-              ); // Find the project by title
-              return foundProject ? { id: foundProject.id } : undefined; // Connect by ID
+              )
+              return foundProject ? { id: foundProject.id } : undefined
             })
             .filter((project): project is { id: string } => project !== undefined),
         },
       },
-    });
-  
-    console.log(`Created article: ${createdArticle.title}`)
+    })
   }
 
-  for(const edu of education) {
-    const createdEducation = await prisma.education.create({
+  const articleComments = await generateComments(50, 'article')
+  const projectComments = await generateComments(50, 'project')
+
+  await prisma.comment.createMany({
+    data: [...articleComments, ...projectComments]
+  })
+
+  const allArticles = await prisma.article.findMany();
+
+  for (const series of seriesData) {
+    await prisma.series.create({
       data: {
-        degree: edu.degree,
-        school: edu.school,
-        location: edu.location,
-        startDate: edu.startDate ? new Date(edu.startDate) : new Date(),
-        endDate: edu.endDate ? new Date(edu.endDate) : null,
-        url: edu.url,
+        title: series.title,
+        description: series.description,
+        category: series.category,
+        type: series.type,
+        tags: series.tags,
+        articles: {
+          connect: series.articles
+            .map((articleTitle: string) => {
+              const foundArticle = allArticles.find(
+                (a) => a.title === articleTitle
+              )
+              return foundArticle ? { id: foundArticle.id } : undefined
+            })
+            .filter((article): article is { id: string } => article !== undefined)
+        },
+      }
+    })
+  }
+
+
+  for (const education of educationData) {
+    await prisma.education.create({
+      data: {
+        degree: education.degree,
+        school: education.school,
+        location: education.location,
+        startDate: education.startDate,
+        endDate: education.endDate,
+        url: education.url,
         skills: {
-          connect: edu.skills
+          connect: education.skills
             .map((skillName: string) => {
-              const foundSkill = allSkills.find(s => s.name === skillName)
+              const foundSkill = allSkills.find((skill: SkillData) => skill.name === skillName)
               return foundSkill ? { id: foundSkill.id } : undefined
             })
-            .filter((skill): skill is { id: string } => skill !== undefined),
+            .filter((skill): skill is { id: string } => skill !== undefined)
         }
       }
     })
-    console.log(`Created education: ${createdEducation.school}`)
   }
 
-  for(const exp of experience) {
-    const createdExperience = await prisma.workExperience.create({
+  for (const experience of experiences) {
+    await prisma.workExperience.create({
       data: {
-        company: exp.company,
-        role: exp.role,
-        location: exp.location,
-        startDate: exp.startDate ? new Date(exp.startDate) : new Date(),
-        endDate: exp.endDate ? new Date(exp.endDate) : null,
-        logo: exp.logo,
-        description: exp.description,
-        website: exp.website,
+        company: experience.company,
+        role: experience.role,
+        location: experience.location,
+        startDate: experience.startDate,
+        endDate: experience.endDate,
+        url: experience.url,
+        logo: experience.logo,
+        description: experience.description,
         skills: {
-          connect: exp.skills
+          connect: experience.skills
             .map((skillName: string) => {
-              const foundSkill = allSkills.find(s => s.name === skillName)
-              return foundSkill? { id: foundSkill.id } : undefined
+              const foundSkill = allSkills.find((skill: SkillData) => skill.name === skillName)
+              return foundSkill ? { id: foundSkill.id } : undefined
             })
-            .filter((skill): skill is { id: string } => skill!== undefined),
+            .filter((skill): skill is { id: string } => skill !== undefined)
         }
       }
     })
-    console.log(`Created experience: ${createdExperience.company}`)
   }
+
+
 }
 
 seed()

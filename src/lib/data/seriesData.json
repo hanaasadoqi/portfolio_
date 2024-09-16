@@ -1,0 +1,42 @@
+[
+  {
+    "title": "React Mastery",
+    "description": "A series of articles and guides focused on mastering React, including its advanced features and best practices.",
+    "category": "Frontend",
+    "type": "Article",
+    "skills": [
+      "React",
+      "JavaScript",
+      "Component-Driven Development",
+      "Testing"
+    ],
+    "articles": [ "Understanding React Hooks", "Improving Performance in React Applications", "Component-Driven Development: A Practical Guide"]
+  },
+  {
+    "title": "TypeScript Transition",
+    "description": "A comprehensive series guiding JavaScript developers through the transition to TypeScript with practical tips and examples.",
+    "category": "Programming Languages",
+    "type": "Guide",
+    "skills": [
+      "TypeScript",
+      "JavaScript",
+      "Static Typing",
+      "Best Practices"
+    ],
+    "articles": ["TypeScript for JavaScript Developers", "Modern JavaScript: ES6+ Features You Should Know"]
+  },
+  {
+    "title": "Web Development Essentials",
+    "description": "A collection of articles and tutorials covering key aspects of modern web development, including both frontend and backend topics.",
+    "category": "Full-stack",
+    "type": "Tutorial",
+    "skills": [
+      "React",
+      "Next.js",
+      "TailwindCSS",
+      "GraphQL",
+      "Performance Optimization"
+    ],
+    "articles": ["Building a Portfolio with Next.js and Tailwind CSS", "Introduction to GraphQL with Apollo Client"]
+  }
+]
