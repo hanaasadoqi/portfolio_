@@ -1,0 +1,1482 @@
+---
+title: 'Designing Interactive Buttons: The Ultimate Guide for Web Developers'
+subtitle: 'Creating Effective and Accessible Buttons to Enhance User Experience'
+description: 'Guide to building interactive buttons using HTML, CSS, TailwindCSS and React'
+publishedDate: 'September 14, 2024'
+image: "https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+tags: ['button', 'ui', 'design', 'frontend', 'component', 'React', 'HTML/CSS', 'styling', 'javascript', 'Next.js']
+---
+
+Ever hear the saying that everything on the Internet is a form? If that's true, then the `button` is arguably the most critical element of those forms and therefore, one of the most crucial components of any web page.
+
+Buttons are more than just clickable elements; they are **fundamental interactive components** of web applications that allow users to transition from passive observers to active participants by providing an interface to interact with the page's content.
+
+Whether you're submitting a form, navigating to a different section, triggering an event, or opening a dialog, buttons are the core of user interactions on the web, **guiding users towards completing tasks and achieving their goals.**
+
+In this comprehensive guide, we'll delve deep into the design and implementation of buttons in web applications, **exploring their anatomy, default behaviors, styling techniques, accessibility requirements, and best practices**. Whether you are a beginner or an experienced developer, this guide will provide you with the knowledge and tools to create effective and accessible buttons that enhance the user experience.
+
+## What is a Button?
+
+### Definition and Role
+
+**Definition:** A button is an **element that users can click to trigger an action or an event.**
+
+* Typically **consists of text, an icon, or both, enclosed in a clickable area.**
+
+**Role:** Facilitates user interactions by **providing a clear and intuitive way to perform actions.**
+
+* Helps guide users through workflows by providing visual cues.
+* Improves user experience overall by directing user attention and interaction.
+* Enhances the overall usability of web applications.
+
+### Anatomy of a Button
+
+<img src="https://dds.dell.com/site/stage/df/bc/Button_Anatomy_48d67a6fcd.png" alt="Button Anatomy" />
+
+Buttons can be broken down into several key parts:
+
+  1. **Label:** The text and/or icon within the button that describes its action.
+  2. **Icon (Optional):** Optional icon to use alongside text label that helps to describe its action.
+  3. **Container:** The outer element that defines the clickable area.
+
+**Additional Parts:**
+
+<Callout>
+**Tooltip (Optional):** Provides additional context or information about the button's action, further enhancing usability and accessibility. Use sparingly; **tooltips should not replace essential information** that should be visible on the button itself.
+ </Callout>
+
+---
+
+## Default Buttons
+
+Understanding the default HTML, CSS, and behaviors of any HTML element is crucial to ensure it is functionally accurate and accessible.
+
+### Default HTML
+
+The default HTML structure for buttons defines the basic attributes and content within the `<button>` element. Proper use of its structure ensures they are accessible and function as expected. **Using semantic elements like**`<button>`**is important for accessibility and consistency.**
+
+<CodeFolding>
+
+```html
+<button type="button">Click Me</button>
+```
+
+</CodeFolding>
+
+**Non-semantic elements like**`<div>`**and**`<span>`**, on the other hand, require additional attributes and JavaScript** to achieve the same level of accessibility and functionality.
+
+```html
+<!-- Semantic button element -->
+<button>Submit</button>
+
+<!-- Non-semantic elements -->
+<div role="button" tabIndex="0">Submit</div>
+```
+
+#### Common Defaults
+
+* **Type:** Default type is `submit` if the element is used within a form; otherwise, it defaults to `button`.
+* **Content:** Buttons usually contain text, but they can also include icons (on their own or alongside text), as well as other HTML elements.
+* **Attributes:** Basic attributes include `type`, `disabled` and `name`.
+
+##### Basic Example
+
+  ```html
+  <button type="button">Click Me</button>
+    ```
+
+### Default Styles
+
+Default styles of a `<button>` element are the initial CSS properties applied by the browser's user agent stylesheet. These **styles may differ across devices and browsers, complicating web application styling.**
+
+Thankfully, **using CSS resets like**[`Normalize.css`](https://necolas.github.io/normalize.css/)**can also help standardize those styles across different browsers**. They remove browser-specific styling, allowing you to start over with a clean slate and add styles uniformly.
+
+#### Common Defaults
+
+* **Padding:** Spacing around the button content.
+* **Border:** Border styling (often `none` or a thin border).
+* **Font:** Inherited from the parent element; usually system default fonts.
+* **Background:** Typically a light gray background.
+* **Text Color:** Default color set to ensure readability specifically against default background color.
+You can find a full list of the browser default styles of any element [here](https://browserdefaultstyles.com/).
+
+For more information on the browser default styles of any element, you can also refer to resources like [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) or the [HTML5 specification](https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html).
+
+<img caption="Browser Default Styles" alt="Browser default styles image" src="https://cdn.hashnode.com/res/hashnode/image/upload/v1722046435937/051402da-e5da-4c70-8719-b423604aa546.png" fill="true" className="image-zoom-center"/>
+
+## Standardization with CSS Resets
+
+To ensure consistency across browsers, consider using CSS resets like [`Normalize.css`](https://necolas.github.io/normalize.css/).
+
+```css
+/* Example CSS Reset */
+button {
+  all: unset;
+  display: inline-block;
+}
+```
+
+### Advanced Styling Techniques
+
+Use advanced styling techniques, like CSS variables, to manage button styles and themes efficiently.
+
+```css
+:root {
+  --button-bg: #008CBA;
+  --button-color: #fff;
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-color);
+}
+```
+
+## Default Behaviors
+
+Default behaviors refer to the actions that occur when users interact with buttons without any additional scripting. Understanding these can help in enhancing or modifying button actions as needed.
+
+### Common Defaults
+
+<InfoBlock>
+
+* **Form Submission:** A button of type `submit` will submit its parent form element.
+  * This can be prevented by specifying `e.preventDefault()` in your form button's submit handler.
+  ```javascript
+  document.querySelector('button').addEventListener('click', function (e) {
+    e.preventDefault();
+    console.log('Button clicked, form not submitted');
+  });
+  ```
+* **Focus:** Buttons receive keyboard focus by default, enhancing accessibility by allowing navigation via `Tab` key.
+* **Click:** Clicking buttons trigger a `click` event in the browser, even if its functionality has yet to be defined.
+
+</InfoBlock>
+
+For a more detailed explanation on button types, default browser styles/behaviors and customizing for accessibility, I highly recommend [**Building a button component by Adam Argyle**.](https://web.dev/articles/building/a-button-component)
+
+---
+
+## HTML Specifications
+
+Buttons must adhere to HTML specifications to ensure proper functionality and accessibility. There are various ways to create button elements in HTML, and their implementation varies depending on the specific scenario.
+
+However, using `<button>` elements over clickable `<div>` or `<span>` elements improves accessibility and semantics, as `<button>` elements come with built-in keyboard accessibility.
+
+### Use Cases and Best Practices
+
+#### Form Submission
+
+For submitting forms, always use the `<button type="submit">` element to ensure proper form handling.
+
+<Callout>
+
+**Guarantee that the form data is submitted correctly** while maintaining the button's inherent accessibility features, such as keyboard navigation and screen reader support.
+
+</Callout>
+
+```html
+<button type="submit">
+  Submit
+</button>
+  ```
+
+#### JavaScript Actions
+
+For buttons that trigger JavaScript actions, use the `<button type="button">` element to avoid unintentionally submitting forms.
+
+```html
+<button type="button" onclick="handleAction()">
+  Click Me
+</button>
+
+<script>
+function handleAction() {
+  console.log('Button clicked, performing action');
+}
+</script>
+```
+
+#### Navigation
+
+For navigation, use anchor tags with `role="button"` to provide link behavior with button styling, avoiding `<div>` or `<span>`.
+
+```html
+<a href="#section" role="button">
+  Go to Section
+</a>
+```
+
+## Button Element - `<button>`
+
+It is **recommended to always prioritize semantic elements** when crafting the HTML of your web application; therefore, this should be the **default element used for actions** like form submission and triggering dialogs or modals.
+
+### Use Cases
+
+* **Rich Content Button:** The only element for buttons that can contain various types of content, including text, HTML elements (e.g. icons, images), and custom components.
+  ```html
+  <button>
+    <img src="icon.png" alt="Icon">
+      Click Me
+  </button>
+  ```
+* **JavaScript-Driven Button:** Use to trigger JavaScript functions; more semantic and accessible for complex interactions.
+  ```html
+  <button onclick="handleClick()">Click Me</button>
+  ```
+* **Form Submission with Enhanced Content:** Use for data submission with styled text or additional HTML elements; combines form functionality with enhanced styling.
+  ```html
+  <form action="/submit" method="post">
+      <button type="submit">
+        <span>Submit</span>
+      </button>
+  </form>
+  ```
+* **Advanced Styling and Interactions**: You require extensive customization, animations, or complex JavaScript interactions.
+* **Accessibility and Semantics**: Enhanced semantic meaning and support for ARIA attributes, making it more accessible and better for screen readers.
+
+### Advantages
+
+* **Flexibility**: Can include HTML content (e.g., icons, images) and custom styling.
+* **Enhanced Accessibility**: Better semantic meaning and supports ARIA attributes.
+* **Complex Interactions**: Allows for complex interactions and custom behavior.
+
+### Disadvantages
+
+* **Potentially More Complex**: May require more code and styling compared to `<input>`.
+  ```html
+  <button onclick="alert('Clicked!')">
+    <svg
+      htmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      width="16px"
+      height="16px"
+      viewBox="0 0 32 32"
+      version="1.1"
+      >
+      <title>Settings</title>
+      <path d={...}/>
+    </svg>
+  </button>
+  ```
+
+### Styling
+
+<CodeFolding>
+
+```css
+button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #006f8b;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 140, 186, 0.5);
+}
+
+button:active {
+  background-color: #005f6b;
+}
+```
+
+</CodeFolding>
+
+## Input Element - `<input />`
+
+Used primarily for form controls where a button element is not suitable; typically for old legacy systems.
+
+* Cannot include additional HTML content; only plain text via `value` HTML attribute.
+
+### Use Cases
+
+* **Simple JavaScript Actions**: You need a simple, straightforward button for basic JavaScript actions without extensive customization or complex styling.
+  ```html
+  <input type="button" value="Click Me" class="btn" onclick="alert('Clicked!')">
+  ```
+* **Consistent Cross-Browser Behavior**: The default behavior and styling are sufficient, and you want minimal code.
+* **Form Enhancements:** Perform client-side validation or other pre-submission processing; can also be used for basic form controls to submit parent form element or reset its form fields.
+  ```html
+  <form>
+    <input type="text" name="username" placeholder="Username">
+    <input type="reset" value="Reset">
+    <input type="submit" value="Submit">
+  </form>
+    ```
+
+### Advantages
+
+* **Simple Syntax**: Easy to implement with minimal HTML.
+* **Default Styles**: Consistent appearance across browsers with default styling.
+
+### Disadvantages
+
+* **Limited Flexibility**: Limited in terms of including complex content or extensive styling.
+* **No Semantic Meaning**: Less semantic compared to `<button>`, which might affect accessibility.
+
+### Styling
+
+While `<input>` elements are suitable for basic forms and simple actions, they lack the flexibility of `<button>` elements, which can include rich content.
+
+<CodeFolding>
+
+```css
+input[type="button"] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+input[type="button"]:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+```
+
+</CodeFolding>
+
+## Anchor Element - `<a>`
+
+Used for navigation purposes to provide link behavior with button styling.
+
+* Used when you want the element to behave like a link but perform an action other than navigation.
+* Supports link-specific attributes as well, including `href` and `target`.
+
+### Use Cases
+
+* **Single Page Applications (SPAs):** Use `<a>` tags to trigger client-side routing without reloading the page.
+  * This includes links to specific sections of a page using `#`
+  ```html
+  <a href="#" href="Jump to Top">Jump to Top</a>
+  ```
+* **Interactive Widgets:** Anchors that open modals, tooltips, or other interactive components.
+  ```html
+  <a href="#" onclick="openModal(); return false;">Open</a>
+  ```
+* **Dynamic Content Loading:** Links that fetch and display content dynamically via JavaScript.
+  ```html
+  <a href="#" onclick="loadContent(); return false;">Load More</a>
+  ```
+  * Clicking the link triggers the `loadContent` JavaScript function.
+  * `return false;` prevents the default link behavior (navigation) and ensures it acts solely as an interactive element.
+* **Link Semantics**: The action involves linking to a different location rather than triggering a script or submitting a form.
+* **Styling as Button**: You want a link styled as a button, providing an alternative to traditional buttons.
+
+### Advantages
+
+* **Semantics for Navigation**: Appropriate for navigation and linking tasks, which enhances SEO and accessibility.
+* **Customizable Styling**: Can be styled to look like a button while retaining link functionality.
+
+### Disadvantages
+
+* **Not Ideal for Forms**: Not suitable for form submission or complex button behaviors without additional JavaScript.
+* **Behavior Differences**: Needs additional handling for actions typically managed by `<button>`.
+
+### Styling
+
+```html
+<a href="https://www.example.com" class="btn btn-link">Go to Example</a>
+```
+
+Can be styled as a button using CSS.
+
+<CodeFolding>
+
+```css
+a.button {
+  display: inline-block;
+  background-color: #008CBA;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+a.button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+```
+
+</CodeFolding>
+
+### Summary
+
+* `<input type="button">`: Best for simple, basic buttons with minimal styling and cross-browser consistency.
+* `<button>`: Ideal for complex buttons with rich content, advanced styling, and better accessibility.
+* `<a>`: Suitable for navigation or when you want a link styled as a button.
+
+---
+
+## HTML Attributes
+
+### `type`
+
+Defines button type.
+
+* `type="button"`: Use for general-purpose buttons.
+* `type="submit"`: Use for form submission; typically, the parent form element.
+* `type="reset"`: Use to reset form fields within the form parent to their initial state.
+    ```html
+    <button type="submit">Submit</button>
+    <input type="submit" aria-label="Submit Form" value="Submit Form">
+    ```
+
+### `disabled`
+
+Used to disable the button, preventing user interaction.
+
+* Useful in cases where you need to indicate loading states or when actions are currently unavailable.
+  ```html
+  <button disabled>Disabled</button>
+    ```
+
+### `aria-*` Attributes
+
+Attributes used to enhance accessibility of an HTML element.
+
+* `aria-label`: For screen readers.
+  ```html
+  <button aria-label="Close">X</button>
+    ```
+* `aria-disabled`: Indicates disabled states.
+  ```html
+  <a 
+    role="button" 
+    aria-disabled="true" 
+    href="#">Disabled Link</a>
+    ```
+* `aria-pressed`: Used for toggle buttons to indicate pressed state.
+  ```html
+  <button 
+    aria-pressed="false" 
+    onclick="togglePressed(this)"
+    >Toggle</button>
+    ```
+* `aria-expanded`: Indicates that an element controls the visibility of another element (e.g., collapsible content).
+  ```html
+  <button 
+    aria-expanded="false" 
+    aria-controls="section" 
+    onclick="toggleSection(this, 'section')"
+    >Expand</button>
+  <div id="section" hidden>
+    Collapsible Content
+  </div>
+    ```
+* `aria-controls`: Associates the button with the ID of the controlled element.
+  ```html
+  <button 
+    aria-controls="section" 
+    onclick="toggleSection(this, 'section')"
+    >Toggle Section</button>
+  <div id="section" hidden>
+    Section Content
+  </div>
+    ```
+* `aria-describedby`: Provides additional descriptive information for the button.
+  ```html
+  <button aria-describedby="desc1">
+    Info
+  </button>
+  <div id="desc1">
+    This button provides additional information.
+  </div>
+    ```
+* `aria-live`: Indicates that an element will be updated, and those updates should be announced to users.
+  ```html
+  <div aria-live="polite" id="live-region">
+    Initial content.
+  </div>
+    ```
+* `aria-haspopup`: Indicates that an element has a popup context menu, sub-level menu, or dialog.
+  ```html
+  <button 
+    aria-haspopup="true" 
+    aria-controls="menu"
+    onclick="toggleMenu(this, 'menu')"
+    >
+    Open Menu
+  </button>
+  <ul id="menu" hidden>
+    <li><a href="#">Menu Item 1</a></li>
+    <li><a href="#">Menu Item 2</a></li>
+    <li><a href="#">Menu Item 3</a></li>
+  </ul>
+    ```
+
+### `name` and `value`
+
+Used for form submission buttons in to pass data to the server.
+
+```html
+<button type="submit" name="action" value="save">Save</button>
+<input type="button" value="Click Me">
+```
+
+### `role`
+
+Use `role="button"` for elements that behave like buttons but are not `<button>` elements to clearly indicate to the browser that they are interactive elements.
+
+```html
+<div role="button" tabIndex="0">Click Me</div>
+```
+
+---
+
+## Styling Buttons With CSS
+
+### Reset Styles
+
+Always reset default browser styles to ensure consistency across different browsers.
+
+```css
+button, 
+input[type="button"],
+a[role="button"] {
+  margin: 0;
+  padding: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  user-select: none;
+}
+```
+
+### Base Styles
+
+Apply base styles to ensure a consistent look and feel.
+
+```css
+button,
+input[type="button"],
+a[role="button"] {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+```
+
+---
+
+## Button States
+
+### Default State
+
+**Definition:** The button's default appearance before any user interaction.
+
+**Purpose:** represents the standard look of the button to convey its purpose without any user interaction.
+
+```css
+button {
+  background-color: #1D4ED8; /* Default background color */
+  color: white; /* Default text color */
+  border: none; /* Default border style */
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 0.75rem 1.5rem; /* Padding inside the button */
+  font-size: 1rem; /* Font size */
+  font-weight: bold; /* Font weight for emphasis */
+  cursor: pointer; /* Pointer cursor to indicate clickability */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+}
+```
+
+### Hover State
+
+**Definition:** The state when a user hovers their pointer over the button, indicating that the button is interactive.
+
+**Purpose:** Provides visual feedback to the user, confirming that the element is clickable.
+
+```css
+button:hover {
+  background-color: #006f8b; /* Slightly darker shade for visual feedback */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect to lift the button */
+  color: white; /* Ensure text color remains readable */
+}
+```
+
+<InfoBlock>
+
+#### Design Tips
+
+* **Consistent Design:** Use a slightly darker or lighter shade than the button's default color.
+* **Pro Tip:** Avoid drastic changes in color to maintain a consistent look and feel.
+* **Touch Devices:** Consider touch devices where hovering is not applicable. Provide alternative feedback mechanisms, such as visual changes on tap, to accommodate users on mobile devices or other touch devices.
+  * **Using Active State**
+    For touch devices, use `:active` pseudo-class or JavaScript to provide visual feedback, simulating the hover effect.
+    ```css
+    /* Hover state for non-touch devices */
+    button:hover {
+      background-color: #006f8b;
+    }
+        
+    /* Active state for touch devices */
+    button:active {
+      background-color: #005f6b;
+    }
+      ```
+  * **Using JavaScript**
+    For more advanced feedback, use JavaScript to add a class when tapped, then remove it after a short delay.
+    ```js
+    document.querySelector('.interactive-btn').addEventListener('touchstart', function() {
+      this.classList.add('active');
+      setTimeout(() => {
+        this.classList.remove('active');
+      }, 200); // Remove class after 200ms
+    });
+      ```
+
+</InfoBlock>
+
+### Active State
+
+**Definition:** The state when the button is being clicked or tapped.
+
+**Purpose:** Indicates that the button is being actively engaged by the user.
+
+```css
+button:active {
+  background-color: #005a6d; /* Even darker shade to indicate pressing */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); /* Inset shadow to show the button is pressed */
+  color: white; /* Ensure text color remains readable */
+}
+```
+
+<InfoBlock>
+
+#### Design Tips
+
+* **Consistent Design:** Apply a subtle change in color or add a box-shadow to simulate a pressed effect.
+* **Visual Feedback:** Ensure the active state is distinguishable from the hover state.
+
+</InfoBlock>
+
+### Focus State
+
+**Definition:** The state when the button is focused, typically through keyboard navigation.
+
+**Purpose:** Enhances accessibility by showing which element is currently focused.
+
+```css
+button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.5); /* Custom focus ring */
+  background-color: #004a6d; /* Maintain background color consistency or a lighter shade for focus */
+}
+```
+
+<InfoBlock>
+
+#### Design Tips
+
+* **Consistent Design:** Use a clear and visible outline or box-shadow to indicate focus.
+* **Visual Feedback:** Ensure the focus indicator is distinct and does not blend with the background.
+
+</InfoBlock>
+
+### Disabled State
+
+**Definition:** The state when a button is disabled and cannot be interacted with.
+
+**Purpose:** Communicates to the user that the button is currently inactive.
+
+```css
+button:disabled {
+  background-color: #e5e5e5; /* Light grey background to indicate disabled state */
+  color: #a1a1a1; /* Grey text color */
+  border: 1px solid #dcdcdc; /* Light border */
+  cursor: not-allowed; /* Indicate non-interactive state */
+  box-shadow: none; /* Remove shadow for disabled state */
+}
+```
+
+<InfoBlock>
+
+#### Design Tips
+
+* **Consistent Design:** Use a muted color scheme to differentiate the disabled state from the button's other states.
+* **Visual Feedback:** Make sure users understand why the button is disabled, possibly with additional information or tooltips.
+
+</InfoBlock>
+
+### Loading State
+
+**Definition:** The state when a button is in the process of performing an action and provides visual feedback to indicate that to the user.
+
+**Purpose:** Communicates to the user that their action is being processed; further prevents additional interactions until the current action is complete (e.g. a button that updates the current content).
+
+```html
+<button class="btn loading" disabled>
+  <span class="spinner"></span> Loading...
+</button>
+```
+
+<InfoBlock>
+
+#### Design Tips
+
+* **Consistent Design:** Use a consistent design for loading state, such as a spinner or progress loader, to provide clear feedback to users.
+* **Disable Interaction:** Ensure the button is disabled to prevent multiple submissions or actions.
+* **Button Label:** Include text like "Loading..." to clearly communicate the state to users.
+* **Animations:** Use a subtle animation for the spinner to indicate progress without distracting from the primary functionality.
+* **Consistent Size:** Ensure the button's size and position remain consistent to avoid layout shift while the button is in the loading state.
+* **Button Reset:** Ensure that once the loading process is complete, the button returns to its default state for further interactions.
+
+```css
+.btn.loading {
+  background-color: #008CBA;
+  color: white;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.spinner {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-left-color: #ffffff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+```
+
+</InfoBlock>
+
+---
+
+## Common Button Variants
+
+Buttons can represent different types, each serving various purposes within a web application.
+
+### Primary Button
+
+**Purpose:** Represents the main action on a page or within a section. This button should stand out and guide users towards the primary task.
+
+**Styling:** Bold, standout design to draw attention. Typically uses a distinct color from the rest of the UI, often the brand's primary color.
+
+<InfoBlock>
+
+#### Design Tips
+
+* Use bright, contrasting colors to help make them stand out.
+* **Primary Color Accent:** Use application's primary or brand colors to emphasize their importance while maintaining consistency across the design.
+* **Call to Action:** Primary buttons should drive the main actions you want users to take.
+  ```css
+  .btn-primary {
+    background-color: #1D4ED8; /* Primary brand color */
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .btn-primary:hover {
+    background-color: #1E40AF; /* Darker shade for hover effect */
+  }
+
+  .btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.5); /* Focus ring */
+  }
+  ```
+
+</InfoBlock>
+
+### Secondary Button
+
+**Purpose:** Represents less important actions than those represented by the primary button; used for alternative actions that are relevant but not the main focus.
+
+**Styling:** Subtle design, with less emphasis than the primary button. Usually with a more muted shade compared to the primary or a complementary color.
+
+<InfoBlock>
+
+#### Design Tips
+
+* Ensure the chosen colors can distinguish them from primary buttons or style them slightly differently, such as a ghost button instead.
+* **Complementary Color:** Use a color that complements the primary color to distinguish them without altering the main theme.
+  ```css
+  .btn-secondary {
+    background-color: #F3F4F6; /* Light grey or secondary color */
+    color: #1D4ED8; /* Complementary color */
+    border: 1px solid #E5E7EB; /* Light border */
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background-color: #E5E7EB; /* Slightly darker grey for hover effect */
+  }
+
+  .btn-secondary:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.5); /* Focus ring */
+  }
+  ```
+
+</InfoBlock>
+
+### Tertiary Button
+
+**Purpose:** Represent the least important actions; often used for minor functions and typically don't stand out as much.
+
+**Styling:** Minimal design, usually a text link or otherwise understated button; often used for actions like "Learn More" or "View Details."
+
+<InfoBlock>
+
+#### Design Tips
+
+* Style tertiary buttons as text links to keep them visually subtle
+* **Minimalist Design:** Keep the design minimal to avoid drawing too much attention.
+  ```css
+  .btn-tertiary {
+    background: none;
+    color: #1D4ED8; /* Link color */
+    border: none;
+    padding: 0;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s;
+  }
+
+  .btn-tertiary:hover {
+    color: #1E40AF; /* Darker shade for hover effect */
+  }
+
+  .btn-tertiary:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.5); /* Focus ring */
+  }
+  ```
+
+</InfoBlock>
+
+### Icon Button
+
+**Purpose:** Icons can provide visual context and improve the user experience by making buttons more recognizable. They can also be rendered alongside the text label or alone.
+
+* **Rendering Icons with Text:**
+  ```html
+  <button class="icon-button left-icon">
+    <img src="path/to/left-icon.svg" alt="Left Icon" class="icon" />
+    Click Me
+  </button>
+        
+  <button class="icon-button right-icon">
+    Click Me
+    <img src="path/to/right-icon.svg" alt="Right Icon" class="icon" />
+  </button>
+  ```
+* **Rendering Icon Only:**
+  ```html
+  <button class="icon-button" aria-label="Icon Description">
+    <img src="path/to/icon.svg" alt="Icon Description" class="icon" />
+  </button>
+  ```
+
+**Accessibility Tips:** If the button contains only an icon, ensure you use `aria-label` to add context for users. This can also be beneficial if the visual text is not sufficient to convey its purpose to screen readers.
+
+* Without it, users relying on screen readers may miss out on critical information.
+
+**Styling:** Compact design, often used in toolbars or action menus. Ensure the icon clearly represents the action.
+
+<InfoBlock>
+
+#### Design Tips
+
+* Use universally recognized icons to ensure users understand the action. Consider tooltips to provide additional information to users when they hover over the button.
+* Ensure the icon size is appropriate and maintains readability.
+  ```css
+  /* Base button styles */
+  .icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #1D4ED8; /* Default button color */
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Button with left icon */
+  .left-icon .icon {
+    margin-right: 0.5rem;
+  }
+
+  .left-icon {
+    background-color: #1D4ED8; /* Example color */
+  }
+
+  .left-icon:hover {
+    background-color: #1E40AF; /* Darker shade for hover effect */
+  }
+
+  /* Button with right icon */
+  .right-icon .icon {
+    margin-left: 0.5rem;
+  }
+
+  .right-icon {
+    background-color: #10B981; /* Example color */
+  }
+
+  .right-icon:hover {
+    background-color: #059669; /* Darker shade for hover effect */
+  }
+
+  /* Icon styles */
+  .icon {
+    width: 1.5rem; /* Example size */
+    height: 1.5rem; /* Example size */
+    display: block;
+  }
+
+  /* Hover and focus effects for icon button */
+  .icon-button:hover {
+    background-color: #1E40AF; /* Darker shade for hover effect */
+  }
+
+  .icon-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.5); /* Focus ring */
+  }
+  ```
+
+</InfoBlock>
+
+### Floating Action Button (FAB)
+
+**Purpose:** Represents a prominent action, floating above the UI. Typically used in mobile applications or views to highlight a primary action.
+
+**Styling:** Circular shape, vibrant colors, often used in mobile views. Positioned to stand out and is easily accessible.
+
+<InfoBlock>
+
+#### Design Tips
+
+* Position the FAB in a consistent location, such as the bottom-right corner, for easy access.
+* **Single Action:** Use for the most important action on the screen to avoid clutter.
+  ```css
+  .fab {
+    position: fixed;
+    bottom: 2rem; /* Adjust position from the bottom */
+    right: 2rem; /* Adjust position from the right */
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #FF5722; /* Vibrant color */
+    color: white;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .fab:hover {
+    background-color: #E64A19; /* Darker shade for hover effect */
+  }
+
+  .fab:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.5); /* Focus ring */
+  }
+  ```
+
+</InfoBlock>
+
+### Ghost Button
+
+**Purpose:** Represents actions that need to be visible but less prominent. Often used in secondary actions.
+
+**Styling:** Minimalistic design, often transparent or with a light border, blending with the background.
+
+<InfoBlock>
+
+#### Design Tips
+
+* Use a light border and transparent background to create a "ghost" effect.
+* **Border Visibility:** Ensure the border is visible against the background for clear recognition.
+  ```css
+  .ghost-button {
+    background-color: transparent;
+    color: #1D4ED8; /* Border and text color */
+    border: 1px solid #E5E7EB; /* Light border */
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .ghost-button:hover {
+    background-color: #F3F4F6; /* Light background for hover effect */
+    color: #1E40AF; /* Darker text color for hover effect */
+  }
+
+  .ghost-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.5); /* Focus ring */
+  }
+  ```
+
+</InfoBlock>
+
+### Link Button
+
+**Purpose:** Looks like a hyperlink but behaves like a button; often used for navigation or secondary actions.
+
+**Styling:** Styled like a text link but includes button behavior.
+
+<InfoBlock>
+
+#### Design Tips
+
+Style link buttons with underline and color changes on hover to mimic hyperlinks.
+
+```css
+.link-button {
+  background: none;
+  color: #1D4ED8; /* Link color */
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.link-button:hover {
+  color: #1E40AF; /* Darker shade for hover effect */
+}
+
+.link-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.5); /* Focus ring */
+}
+```
+
+</InfoBlock>
+
+## Support Different Button Sizes
+
+Provide size variants to **accommodate different use cases** and enhance usability **across various contexts and devices.**
+
+**Use consistent padding and font-sizes** to ensure that buttons remain **readable and easy to interact with.**
+
+```css
+/* Size variants */
+.btn-small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+      
+.btn-medium {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+      
+.btn-large {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+}
+```
+
+<InfoBlock>
+
+### Design Tips
+
+* **Consistent Design:** Maintain consistent padding within buttons to ensure that text and icons are properly aligned and buttons remain visually balanced.
+* **Contextual Usage:** Use smaller buttons in dense UI areas like toolbars or secondary actions and larger buttons for primary actions to make them stand out.
+
+</InfoBlock>
+
+### Responsive Design
+
+* **Tap Target:** On mobile devices, ensure buttons are large enough to be easily tapped (minimum of `44px` by `44px` as recommended by accessibility guidelines).
+* Use media queries to adjust button sizes for different screen sizes.
+  ```css
+  /* Mobile adjustments */
+  @media (max-width: 600px) {
+    .btn {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .btn {
+      padding: 0.75rem 1.25rem;
+      font-size: 1.125rem;
+    }
+  }
+  ```
+
+
+### Proper Spacing and Padding
+
+Enhance usability and aesthetics by ensuring the button has appropriate padding and margin.
+
+```css
+.btn {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+}
+
+.btn__icon {
+  margin-right: 0.5rem;
+}
+```
+
+---
+
+## Styling Considerations
+
+### CSS Classes
+
+Use descriptive CSS class names that follow a naming convention, such as BEM.
+
+```css
+  .btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .btn__label {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .btn__icon {
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    pointer-events: none;
+  }
+```
+
+Keep styles modular by using CSS or CSS-in-JS solutions like `styled-components` or `emotion`.
+
+```css
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+    
+.btn__label {
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+    
+.btn__icon {
+  margin-right: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  pointer-events: none;
+}
+```
+
+### Use Sufficient Color Contrast
+
+Ensure the text color and background color meet the WCAG AA standards for color contrast.
+
+* Use tools like the [Contrast Checker](https://webaim.org/resources/contrastchecker/) to verify color combinations.
+
+### Button Text is Legible and Descriptive
+
+Make sure the button text is concise but clearly describes the action.
+
+  Use an appropriate text size and font for readability.
+  ```css
+  .btn {
+    Font-size: 1rem;
+    font-wight: 600;
+    font-family: Arial, sans-serif;
+  }
+    ```
+
+---
+
+## Accessibility Requirements
+
+### Button Text and Localization
+
+Ensuring button text is clear and descriptive is crucial for user experience and accessibility. 
+Additionally, considering localization and internationalization can make your web application more inclusive and accessible to a global audience.
+
+* **Concise Text:** Buttons should have clear, concise text that describes the action.
+  * For example, "Submit" instead of "Click Here"
+* **Localization:** Adapt button text to different languages.
+  * For example, the German word for "Submit" is "Einreichen", which is longer than the English version.
+* **Internationalization:** Ensure your buttons can handle text length variations across languages without breaking the layout or truncating its label.
+  * may involve dynamic resizing or adjusting padding and margins.
+
+### Use appropriate ARIA roles and properties
+
+Using ARIA roles and properties allows us to make our buttons accessible to all users, including those who rely on assistive technologies.
+
+* Use `aria-disabled` to indicate when a button is disabled, preventing user interaction.
+  * Add in addition to the `disabled` attribute for semantic buttons.
+* For icon-only buttons, use `aria-label` to provide a text alternative that conveys the purpose of the button.
+* `role="button"` adds the button role to elements not implemented using the semantic `<button>` or `<input>` elements;
+  * Ensures the element is recognized as a button by assistive technologies.
+  ```html
+  <a role="button" href="#">Link as Button</a>
+  <div role="button" tabIndex="0">Div as Button</div>
+    ```
+
+For more ARIA roles and properties and implementations, refer to HTML Specifications section.
+
+### Provide keyboard navigability
+
+Ensure buttons are focusable and navigable using the `Tab` key; provide visual focus indicators to show the currently active button.
+
+* **Tab Key Navigation: Default behavior of the**`<button>`**element supports keyboard navigation out-of-the-box.** For elements not implemented using semantic `<button>` or `<input>` elements, add `tabIndex="0"` to make them focusable.
+  ```html
+  <a role="button" href="#" tabindex="0">Link as Button</a>
+  <div role="button" tabindex="0" onkeypress="handleKeyPress(event)">Div as Button</div>
+    ```
+* **Visual Focus Indicators:** Provide clear visual focus indicators to **show which button is currently focused**; helps users navigating using the keyboard to understand which element they are interacting with.
+  ```css
+  .btn:focus {
+    outline: 2px solid #007BFF;
+    outline-offset: 2px;
+  }
+    ```
+  * Ensure focus indicators are **highly visible and distinct from other button states to avoid confusion**; use a clear and contrasting outline or box-shadow.
+* **Handling Keyboard Events:** Ensure that non-semantic button elements **respond to the**`Enter`**and**`Space`**keys,** mimicking the behavior of semantic buttons implemented using `<button>` or `<input>`.
+  ```html
+  <div 
+    role="button" 
+    tabindex="0" 
+    onkeypress="handleKeyPress(event)"
+    >
+    Div as Button
+  </div>
+  <script>
+    function handleKeyPress(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        // Trigger button action
+        console.log('Button activated');
+      }
+    }
+  </script>
+    ```
+
+### Focus Management for Dynamic Content
+
+When dynamic content is added to the page (e.g., modals or dialogs), use JavaScript to manage focus states and ensure the user's focus is directed to the new content.
+
+```javascript
+// Focus the first focusable element in a modal when it opens
+function openModal() {
+  const modal = document.getElementById('myModal');
+  modal.style.display = 'block';
+  const firstFocusableElement = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  firstFocusableElement.focus();
+}
+```
+
+## Icon Accessibility
+
+### Using SVG Icons with Buttons
+
+SVG icons are scalable and resolution-independent, making them perfect for buttons. Ensure they are accessible by providing descriptive titles and using `aria-hidden` for decorative icons.
+
+```html
+<button aria-label="Settings">
+  <svg aria-hidden="true" viewBox="0 0 24 24">
+    <title>Settings</title>
+    <path d="..."></path>
+  </svg>
+</button>
+  ```
+
+### Text Alternatives for Icons
+
+Screen readers rely on text alternatives to **convey the meaning of non-text content to visually-impaired users** that would otherwise miss out on critical information.
+
+* Even for sighted users, text alternatives can be helpful; ex. in cases where images or icons fail to load.
+* **Use**`aria-label`: to provide a descriptive label for buttons that rely heavily on icons.
+  * For decorative icons that do not convey additional meaning, use `aria-hidden="true"` to hide them from screen readers.
+  ```html
+  <button aria-label="Search">
+    <img src="/path/to/icon.png" alt="" aria-hidden="true">
+  </button>
+    ```
+* **Visually Hidden Text:** For buttons where the icon itself conveys meaning, include visually hidden text using CSS to ensure screen readers can read it.
+  ```html
+  <button>
+    <span class="ui-button__icon" aria-hidden="true"><img src="/path/to/icon.png"/></span>
+    <span class="visually-hidden">Button Label</span>
+  <button>
+    ```
+  ```css
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+    ```
+
+---
+
+## Writing Guidelines
+
+1. **Concise Text:** Buttons should have clear, concise text that describes the action.
+    * If the functionality is already described on the screen, buttons only need a verb (e.g. "Save").
+    * If the functionality isn't described on the screen, buttons need a verb + the object (e.g. "Create Pin").
+         ex. `<button>Save</button>`
+2. **Word Limit:** Use fewer than 3 words.
+3. **Case:** Use sentence case (e.g. "Edit profile")
+
+### Examples
+
+1. `"Delete account"`
+2. `"Save changes"`
+3. `"Edit profile"`
+4. `"See job openings"`
+5. `"Cancel"`
+6. `"Learn more"`
+
+---
+
+## Best Practices
+
+1. **Primary Buttons:** Place primary buttons to the right or top of other button styles.
+    * Do not place more than one primary button per container/area.
+2. **Grouping Actions:** Group related actions together to provide a clear visual hierarchy.
+    * Group related buttons together to improve the user experience and clearly convey their relevance and importance.
+    * Use CSS to visually group buttons, making related actions easy to identify.
+        * Enhances usability, especially in forms and complex UIs.
+      ```css
+      .button-group {
+        display: flex;
+        gap: 10px;
+      }
+      
+      .button-group button {
+        flex: 1;
+      }
+        ```
+      ```html
+      <div class="button-group">
+        <button class="btn-primary">Save</button>
+        <button class="btn-secondary">Cancel</button>
+        <button class="btn-tertiary">Help</button>
+      </div>
+        ```
+    * Grouping buttons not only enhances the visual appeal but also improves the functionality and user experience by providing clear and organized action paths.
+3. **Button Label:** Show the full text on Buttons.
+    * Buttons should be stacked when they cannot be displayed side-by-side.
+    * Do not truncate the button text; in rare instances, truncate text on the secondary button before truncating the text on the primary button.
+4. **Simplicity:** Keep the button text as simple and actionable as possible.
+    * Refer to Writing Guidelines for more detail.
+5. **Accessibility:** Ensure icons on buttons are accessible to screen readers.
+    * Use an `IconButton` + `Tooltip` next to a disabled button if you must explain why it is disabled.
+        * Do not use a `Tooltip` directly on a disabled button since it is not accessible for keyboard and screen reader users.
+    * Always consider accessibility when designing and implementing buttons.
+6. **Consistency:** Keep button styles consistent across the application for a uniform look and feel.
+    * Provide enough spacing between buttons to avoid accidental clicks and enhance usability. This can be achieved using `margin`:
+    ```css
+    .btn {
+      margin: 0.5rem;
+    }
+      ```
+
+---
+
+## Summary
+
+In this blog, we explored the design and implementation of buttons in web applications, emphasizing their critical role in user interaction. We covered the following key points:
+
+* **Definition and Role:** Buttons are fundamental interactive elements that facilitate user actions and improve the overall usability of web applications.
+* **Anatomy of a Button:** Buttons consist of a label, optional icon, and container, with additional optional components like tooltips for enhanced usability.
+* **Default Buttons:** Understanding the default HTML, CSS, and behaviors of buttons ensures they are functionally accurate and accessible.
+* **HTML Specifications:** Using semantic elements like `<button>` over non-semantic elements improves accessibility and consistency.
+* **Styling Buttons with CSS:** Resetting default styles, applying base styles, and managing button states (default, hover, active, focus, disabled, loading) are crucial for a consistent look and feel.
+* **Common Button Variants:** Different button types (primary, secondary, tertiary, FAB, icon, ghost, link) serve various purposes within a web application.
+* **Accessibility. Requirements:** Ensuring buttons are accessible through clear text, appropriate ARIA roles, keyboard navigability, and focus management for dynamic content.
+* **Writing Guidelines:** Button text should be concise, descriptive, and follow best practices for clarity and actionability.
+* **Best Practices:** Grouping related actions, maintaining simplicity, ensuring accessibility, and keeping button styles consistent enhance the user experience.
+
+By following these guidelines and best practices, you can design and implement buttons that are not only functional and visually appealing but also accessible and user-friendly.
+
+---
+
+## What do you think?
+
+I hope you found this guide on designing interactive buttons helpful! I'd love to hear your thoughts, feedback, and any questions you might have. How do you implement buttons in your projects? Share your experiences and let's discuss in the comments below!
+
+Stay tuned for my upcoming follow-up blog where I'll dive into the practical implementation of buttons using Next.js, TypeScript, and Tailwind CSS. Make sure to follow me here on Hashnode so you don't miss it!
+
+Happy coding! 👩🏻‍💻
