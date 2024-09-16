@@ -1,7 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, ReactNode, useMemo } from 'react'
-import { Article } from '@/types/data'
+import { Article, ArticleWithDetails } from '@/types/data'
 import { useFilteredArticles } from '@/hooks/useFilteredArticles'
 
 interface ArticlesContextProps {
@@ -19,7 +19,7 @@ const ArticlesContext = createContext<ArticlesContextProps | undefined>(
   undefined
 )
 export const ArticlesProvider: React.FC<{
-  initialData: Record<number, Article>
+  initialData: Record<number, ArticleWithDetails>
   children: ReactNode
 }> = ({ initialData, children }) => {
   const memoizedData = useMemo(() => initialData, [initialData])
