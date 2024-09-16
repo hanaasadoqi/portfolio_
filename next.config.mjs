@@ -1,15 +1,31 @@
 import withBundleAnalyzer from '@next/bundle-analyzer'
+import { dirname, join } from 'path'
+import { fileURLToPath } from 'url'
+import createMDX from '@next/mdx'
+import remarkGfm from 'remark-gfm'
+import rehypeParse from 'rehype-parse'
+import rehypeReact from 'rehype-react'
+import rehypeSlug from 'rehype-slug'
+import rehypeStringify from 'rehype-stringify'
+import rehypePrism from 'rehype-prism-plus'
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
-/** @type {import('next').NextConfig} */
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-
   images: {
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'srev4agitwcxrnzk.public.blob.vercel-storage.com',
+        pathname: '/**'
+      },
       {
         protocol: 'https',
         hostname: 'images.pexels.com',
@@ -31,7 +47,7 @@ const nextConfig = {
         hostname: 'images.squarespace-cdn.com',
       },
       {
-        protocol: 'https',
+         protocol: 'https',
         hostname: 'localhost.com',
       },
       {
@@ -40,6 +56,23 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config, { isServer }) => {
+    config.resolve.alias['@'] = join(__dirname, 'src')
+    config.resolve.fallback = {
+      fs: false,
+    }
+    return config
+  },
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx', 'md'],
 }
 
-export default bundleAnalyzer(nextConfig)
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeParse, rehypeSlug, rehypeStringify, rehypeReact, rehypePrism],
+  },
+})
+
+const mdxConfig = withMDX(nextConfig)
+
+export default bundleAnalyzer(mdxConfig)
