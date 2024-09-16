@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 
 import React from 'react'
 import Tag from '../shared/Tag'
@@ -18,7 +18,7 @@ const WritingCard: React.FC<ArticleWithDetails & { parent?: string }> = ({
   parent,
 }) => {
   return (
-    <div className="flex cursor-pointer flex-col justify-evenly rounded-lg bg-primary-100 p-6 text-primary-900 shadow-md transition-shadow hover:shadow-lg dark:bg-primary-800 dark:text-primary-100">
+    <div className="flex flex-col justify-evenly rounded-lg bg-primary-100 text-primary-900 shadow-md transition-shadow hover:shadow-lg dark:bg-primary-800 dark:text-primary-100 p-4 m-2 w-full max-w-xs md:max-w-sm lg:max-w-md h-full">
       <h3
         className={clsx('mb-2 text-2xl font-semibold', {
           'mb-4 text-sm text-gray-500': parent,
@@ -38,8 +38,10 @@ const WritingCard: React.FC<ArticleWithDetails & { parent?: string }> = ({
           className="mb-4 h-48 w-full rounded-lg object-cover"
         />
       )}
-      <p className="mb-4 text-gray-700 dark:text-gray-300">{description}</p>
-      <div className="flex flex-wrap gap-2">
+      <p className="break-words line-clamp-3 text-pretty truncate mb-4 text-gray-700 dark:text-gray-300">{description}</p>
+
+      <div className="w-full flex-wrap flex justify-center items-center h-16">
+
         {tags.map((tag, index) => (
           <Tag key={index} tag={tag} />
         ))}
