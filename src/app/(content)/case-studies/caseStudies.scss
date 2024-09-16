@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+section {
+  padding-top: calc(var(--header-height) + 20px);
+}
+
+pre {
+  padding: 0px;
+  margin: 0px;
+}
+
+.callout {
+  @apply bg-gray-200 rounded-lg p-4 shadow-md hover:shadow-lg border-gray-400
+}
+
+ pre {
+  background-color: antiquewhite;
+ }
+
+li > pre {
+  @apply mx-0 md:mx-auto
+}
+
+div {
+  pre {
+    &:not([data-id="code-block"]) {
+      @apply overflow-hidden text-wrap m-0 p-0 lg:mx-24 bg-transparent transition-all duration-300 ease-in-out; // Apply Tailwind margin utility
+    }
+  }
+}
+
+// pre:where([data-id="code-block"]){
+//   @apply shadow-md hover:shadow-lg border-gray-400 hover:drop-shadow-lg;
+
+//   code {
+//     @apply overflow-hidden;
+
+//     span:where([class="code-line"]) {
+//       @apply flex flex-wrap
+
+//       span {
+//         &:not([class="punctuation"]) {
+//           @apply ml-4
+//         }
+//       }
+//     }
+//   }
+// }
+
+// pre[data-id="code-block"] {
+//   @apply shadow-md hover:shadow-lg border-gray-400 hover:drop-shadow-lg;
+//   overflow-x: auto; /* Ensure horizontal scroll if needed, or set to visible to enable wrapping */
+
+//   // code {
+//   //   @apply block; /* Ensure code takes the full width */
+//   //   white-space: pre-wrap; /* Allows the code to wrap and break */
+//   //   overflow-wrap: break-word; /* Break long words */
+//   //   word-wrap: break-word; /* Older browsers support */
+//   // }
+
+//   /* Styling for line numbers or code lines if needed */
+//   span[class="code-line"] {
+//     @apply flex flex-wrap;
+
+//     // span {
+//     //   &:not([class="selector"]) {
+//     //     @apply ml-4;
+//     //   }
+//     // }
+//   }
+// }
+// pre[data-id="code-block"] {
+//   @apply shadow-md hover:shadow-lg border-gray-400 hover:drop-shadow-lg;
+//   overflow-x: auto; /* Allows horizontal scrolling if necessary */
+
+//   code {
+//     @apply block; /* Ensure code takes the full width */
+//     white-space: pre-wrap; /* Allows code to wrap and break */
+//     overflow-wrap: break-word; /* Break long words */
+//     word-wrap: break-word; /* Older browsers support */
+//   }
+
+//   /* Apply flex and wrap only to lines of code */
+//   span[class="code-line"] {
+//     @apply flex flex-wrap;
+
+//     span {
+//       /* Apply margin only to spans that do not have the class `punctuation` or `selector` */
+//       @apply inline; /* Ensure all spans are inline by default */
+      
+//       &:not(.punctuation):not(.selector) {
+//         @apply ml-4;
+//       }
+//     }
+//   }
+// }
+
+pre[data-id="code-block"] {
+  @apply shadow-md hover:shadow-lg border-gray-400 hover:drop-shadow-lg overflow-x-auto;
+}
