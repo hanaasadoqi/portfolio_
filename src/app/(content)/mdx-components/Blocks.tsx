@@ -1,0 +1,17 @@
+export const InfoBlock = ({ children }: { children: React.ReactNode }) => {
+  return <div data-id="info-block" className="bg-gray-200 rounded-lg p-4 shadow-md hover:shadow-lg border-gray-400 text-gray-800">{children}</div>
+}
+
+export const Callout = ({ type = 'info', children }: { type?: 'info' | 'warning' | 'success'; children: React.ReactNode }) => {
+  const colors = {
+    info: 'bg-blue-50 border-blue-400 text-blue-800',
+    warning: 'bg-yellow-50 border-yellow-400 text-yellow-800',
+    success: 'bg-green-50 border-green-400 text-green-800',
+  }
+
+  return (
+    <div className={`border-l-4 p-4 my-6 ${colors[type]} rounded-md`}>
+      {children}
+    </div>
+  )
+}
