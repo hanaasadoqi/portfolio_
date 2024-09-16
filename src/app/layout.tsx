@@ -1,10 +1,15 @@
 import type { Metadata } from 'next'
-import { ScrollProvider } from '@/context/ScrollContext'
+import { Suspense } from 'react'
 import { Poppins, Raleway, Merriweather } from 'next/font/google'
-import dynamic from 'next/dynamic'
+import Providers from './providers'
+import Background from '@/components/Background'
+import { DarkModeToggle } from '@/components/shared'
+import { LoadingComponent } from '@/components/LoadingComponent'
 import clsx from 'clsx'
 import '../styles/globals.scss'
 import 'react-tooltip/dist/react-tooltip.css'
+import ModalWrapper from './ModalWrapper'
+import 'prism-themes/themes/prism-vsc-dark-plus.css'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -28,31 +33,18 @@ const merriweather = Merriweather({
 })
 
 export const metadata: Metadata = {
-  title: "Hanaa Sadoqi's Portfolio",
+  title: 'Hanaa Sadoqi',
   description: 'Full-stack Web Developer',
 }
 
-const TableOfContents = dynamic(() => import('@/components/TableOfContents'), {
-  ssr: false,
-})
-const DarkModeProvider = dynamic(
-  () => import('../context/DarkModeContext').then(mod => mod.DarkModeProvider),
-  { ssr: false }
-)
-
-const DarkModeToggle = dynamic(
-  () => import('@/components/shared/DarkModeToggle/DarkModeToggle'),
-  { ssr: false }
-)
-
-const Header = dynamic(() => import('@/components/Header/Header'), {
-  ssr: true,
-})
-
 export default function RootLayout({
   children,
+  skill,
+  project
 }: Readonly<{
   children: React.ReactNode
+  skill: React.ReactNode
+  project: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -64,13 +56,17 @@ export default function RootLayout({
           merriweather.variable
         )}
       >
-        <DarkModeProvider>
-          <ScrollProvider>
-            <TableOfContents />
-            {children}
-          </ScrollProvider>
-          <DarkModeToggle />
-        </DarkModeProvider>
+        <Providers>
+          <Background>
+            <Suspense fallback={<LoadingComponent />}>
+              <main className="relative z-10 flex min-h-screen w-full flex-col items-center bg-transparent">
+                {children}
+              </main>
+              {skill}
+              {project}
+            </Suspense>
+          </Background>
+        </Providers>
       </body>
     </html>
   )
