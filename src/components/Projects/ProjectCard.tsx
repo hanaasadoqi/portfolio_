@@ -15,6 +15,7 @@ import { MdOpenInBrowser, MdOutlineOpenInBrowser } from 'react-icons/md'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import WritingCard from '../Writing/WritingCard'
 import { ProjectWithDetails } from '../../types/data'
+import Link from 'next/link'
 
 const ProjectCard: React.FC<ProjectWithDetails> = ({
   title,
@@ -71,7 +72,7 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
         <span>
           {launchDate !== 'TBD'
             ? // ? new Date(publishedDate).toLocaleDateString()
-              ''
+            ''
             : 'TBD'}
         </span>
       </div>
@@ -91,7 +92,7 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
       {/* Action Buttons */}
       <div className="mb-4 flex flex-row items-center justify-center gap-4 overflow-x-auto whitespace-nowrap">
         {videoDemo && (
-          <a
+          <Link
             href={videoDemo}
             data-tooltip-id="link-tooltip"
             data-tooltip-content="Live Demo"
@@ -99,11 +100,11 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
             aria-label={`${title} Live Demo`}
           >
             <FaPlay />
-          </a>
+          </Link>
         )}
 
         {backendRepo && backendRepo !== 'N/A' && (
-          <a
+          <Link
             href={backendRepo}
             data-tooltip-id="link-tooltip"
             data-tooltip-content="Backend Code"
@@ -111,11 +112,11 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
             aria-label={`${title} Backend Repository`}
           >
             <FaServer />
-          </a>
+          </Link>
         )}
 
         {frontendRepo && frontendRepo !== 'N/A' && (
-          <a
+          <Link
             href={frontendRepo}
             data-tooltip-id="link-tooltip"
             data-tooltip-content="Frontend Code"
@@ -123,11 +124,11 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
             aria-label={`${title} Frontend Repository`}
           >
             <FaLaptopCode />
-          </a>
+          </Link>
         )}
 
         {codeRepo && codeRepo !== 'N/A' && (
-          <a
+          <Link
             href={codeRepo}
             data-tooltip-id="link-tooltip"
             data-tooltip-content="Code Repository"
@@ -135,11 +136,11 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
             aria-label={`${title} Code Repository`}
           >
             <FaCode />
-          </a>
+          </Link>
         )}
 
         {storybook && (
-          <a
+          <Link
             href={storybook}
             data-tooltip-id="link-tooltip"
             data-tooltip-content="Storybook"
@@ -147,11 +148,11 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
             aria-label={`${title} Storybook`}
           >
             <SiStorybook />
-          </a>
+          </Link>
         )}
 
         {demoUrl && (
-          <a
+          <Link
             href={demoUrl}
             data-tooltip-id="link-tooltip"
             data-tooltip-content="Demo"
@@ -159,7 +160,7 @@ const ProjectCard: React.FC<ProjectWithDetails> = ({
             aria-label={`${title} Demo`}
           >
             <MdOpenInBrowser />
-          </a>
+          </Link>
         )}
 
         {articles.length > 0 && (
