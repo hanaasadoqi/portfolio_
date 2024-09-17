@@ -1,6 +1,6 @@
 import prisma from '@/lib/prismaClient'
 import { ProjectPage, ProjectPreview } from '@/types'
-import { toTitleCaseBasic } from '@/utils/toTitlecase';
+import { toTitleCaseBasic } from '@/utils/toTitleCase';
 
 export async function fetchProjects(): Promise<ProjectPreview[]> {
   const projects = await prisma.project.findMany({
