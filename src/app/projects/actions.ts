@@ -9,19 +9,21 @@ export async function fetchProjects() {
           name: true,
           icon: true,
         }
+      },
+      articles: {
+        select: {
+          id: true,
+          title: true,
+          description: true,
+          image: true,
+        }
       }
     }
   })
 
   const finalProjects = projects.map(project => {
     return {
-      id: project.id,
-      title: project.title,
-      description: project.description,
-      image: project.image,
-      category: project.category,
-      launchDate: project.launchDate,
-      status: project.status,
+      ...project,
       details: {
         backendRepo: project.backendRepo,
         frontendRepo: project.frontendRepo,
@@ -29,8 +31,6 @@ export async function fetchProjects() {
         demoUrl: project.demoUrl,
         videoDemo: project.videoDemo,
       },
-      tags: project.tags,
-      skills: project.skills
     }
   })
 
@@ -48,11 +48,21 @@ export async function getProjectById(id: string) {
           icon: true,
           documentation: true
         }
-      }
+      },
+      articles: {
+        select: {
+          id: true,
+          title: true,
+          subtitle: true,
+          image: true,
+          slug: true,
+        }
+      },
+      assets: true
     }
   })
 
-  return {
+  const finalProject = {
     id: project?.id,
     title: project?.title,
     description: project?.description,
@@ -68,8 +78,9 @@ export async function getProjectById(id: string) {
       videoDemo: project?.videoDemo,
     },
     tags: project?.tags,
-    skills: project?.skills
+    skills: project?.skills,
+    articles: project?.articles
   }
 
-  // return { skill}
+  return finalProject
 }

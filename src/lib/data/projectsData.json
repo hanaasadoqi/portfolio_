@@ -23,7 +23,6 @@
     "category": "Full-Stack",
     "description": "Lit is a social media platform for aspiring artists to collaborate, share ideas, and create marketable content. The platform provides users with tools to connect, share their portfolios, and build a community.",
     "image": "https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_1280.jpg",
-
       "backendRepo": "https://github.com/hsadoqi/mod5_backend",
       "frontendRepo": "https://github.com/hsadoqi/mod5_frontend",
       "videoDemo": "https://www.youtube.com/watch?v=95DrDKhWZ9A",

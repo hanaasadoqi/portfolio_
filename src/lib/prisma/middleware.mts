@@ -81,16 +81,18 @@ async function seed() {
   for (const project of projects) {
     await prisma.project.create({
       data: {
-        title: project.title,
-        category: project.category,
-        description: project.description,
         image: project.image,
-        status: project.status,
-        launchDate: project.launchDate,
-        backendRepo: project.backendRepo,
+        title: project.title,
+        description: project.description,
+        category: project.category,
+        demoUrl: project.demoUrl,
         frontendRepo: project.frontendRepo,
+        backendRepo: project.backendRepo,
         codeRepo: project.codeRepo,
         videoDemo: project.videoDemo,
+        launchDate: project.launchDate,
+        status: project.status,
+        slug: project.slug || "/case-studies/introduction",
         tags: project.tags,
         skills: {
           connect: project.skills
