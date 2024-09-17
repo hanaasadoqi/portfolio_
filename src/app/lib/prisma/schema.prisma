@@ -81,6 +81,7 @@ model Article {
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 
+  @@index([title])
   @@map("articles")
 }
 
@@ -97,7 +98,7 @@ model Project {
   videoDemo       String?
   launchDate      String?
   status          String
-  slug            String?    @unique
+  slug            String?    
   fileContent     String?
   tags            String[]
   assets          Asset[]

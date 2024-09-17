@@ -7,7 +7,7 @@ import path from 'path'
 const prisma = new PrismaClient()
 
 async function loadJSON(fileName: string) {
-  const filePath = path.join(process.cwd(), 'src/lib/data', fileName)
+  const filePath = path.join(process.cwd(), 'src/app/lib/data', fileName)
   const fileContent = fs.readFileSync(filePath, 'utf-8')
   return JSON.parse(fileContent)
 }
