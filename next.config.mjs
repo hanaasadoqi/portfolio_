@@ -4,10 +4,12 @@ import { fileURLToPath } from 'url'
 import createMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import rehypeParse from 'rehype-parse'
-import rehypeReact from 'rehype-react'
 import rehypeSlug from 'rehype-slug'
 import rehypeStringify from 'rehype-stringify'
 import rehypePrism from 'rehype-prism-plus'
+import remarkRehype from 'remark-rehype'
+import remarkParse from 'remark-parse'
+import remarkSectionize from 'remark-sectionize'
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -17,6 +19,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 const nextConfig = {
+  reactProductionProfiling: true,
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -47,10 +50,6 @@ const nextConfig = {
         hostname: 'images.squarespace-cdn.com',
       },
       {
-         protocol: 'https',
-        hostname: 'localhost.com',
-      },
-      {
         protocol: 'https',
         hostname: 'cdn.pixabay.com',
       },
@@ -68,8 +67,8 @@ const nextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypeParse, rehypeSlug, rehypeStringify, rehypeReact, rehypePrism],
+    remarkPlugins: [remarkGfm, remarkRehype, remarkParse, remarkSectionize],
+    rehypePlugins: [rehypeParse, rehypeSlug, rehypeStringify, rehypePrism],
   },
 })
 
