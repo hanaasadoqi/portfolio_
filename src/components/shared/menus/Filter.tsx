@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useRef, useEffect, useCallback } from 'react'
 import { useSkillsContext } from '@/context/SkillsContext'
 import clsx from 'clsx'
