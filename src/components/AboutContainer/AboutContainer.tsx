@@ -1,11 +1,11 @@
-import React, { memo } from 'react'
+import { FC } from 'react'
 import ScrollButtons from './ScrollButtons'
 import AboutItemList from './AboutItemList'
 import { fetchAboutAssets } from '@/app/lib/actions/assets'
 
-const AboutContainer: React.FC = async () => {
+const AboutContainer: FC = async () => {
   const assets = await fetchAboutAssets()
-  console.log(assets)
+
   return (
     <div className="relative mx-auto w-full text-left">
       <div className="mb-4 space-y-2 px-4 text-center md:my-8 md:px-12 md:text-left lg:my-12">
@@ -21,4 +21,4 @@ const AboutContainer: React.FC = async () => {
   )
 }
 
-export default AboutContainer
+export default AboutContainer;

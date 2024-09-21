@@ -1,12 +1,12 @@
 'use client'
 
-import React, { Suspense, memo } from 'react'
+import { FC, Suspense, memo } from 'react'
 import useScroll from '@/hooks/useScroll'
 import AboutItemCard from './AboutItemCard'
 import { AboutAsset } from '@/types/asset.types'
 import { LoadingOverlay } from '@/components/shared'
 
-const AboutItemList: React.FC<{ about: AboutAsset[] }> = ({ about }) => {
+const AboutItemList: FC<{ about: AboutAsset[] }> = ({ about }) => {
   const { scrollRef } = useScroll()
 
   return (
