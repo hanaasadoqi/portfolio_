@@ -1,3 +1,5 @@
+"use client"
+
 import React, { ElementType, ForwardedRef, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router' // Assuming you're using Next.js

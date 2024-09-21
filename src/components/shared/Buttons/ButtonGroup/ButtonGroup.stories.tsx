@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import ButtonGroup from "./ButtonGroup";
-import { BaseButton, IconButton } from "../Buttons";
+import { BaseButton, IconButton } from "..";
 import {
   FaAdjust,
   FaDownload,

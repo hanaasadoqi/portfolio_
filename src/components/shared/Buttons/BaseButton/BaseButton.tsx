@@ -55,13 +55,13 @@ export const sizeStyles: Record<ButtonSize, string> = {
 
 export const colorStyles: Record<ButtonVariant, string> = {
   primary:
-    'dark:hover:text-white rounded-md bg-gray-200 dark:bg-gray-900 dark:text-primary-100 dark:hover:bg-primary-800 dark:active:text-gray-900 hover:text-gray-800 border-primary-600 hover:bg-primary-300 hover:border-primary-700 focus-visible:ring-primary-700 active:bg-primary-400',
+    'dark:text-white dark:hover:text-primary-100 rounded-md bg-primary-200 dark:bg-primary-800 text-gray-800 dark:bg-gray-900 dark:active:text-gray-900 hover:text-gray-700 border-primary-600 hover:bg-primary-300 hover:border-primary-700 focus-visible:ring-primary-700 active:bg-primary-400 hover:text-primary-700 ',
   secondary:
     'rounded-md bg-gray-400 text-primary-700 hover:bg-primary-500 hover:border-primary-300 focus-visible:ring-primary-100 active:bg-primary-500',
   outline:
     'rounded-md bg-primary-600 active:bg-primary-100 text-secondary-300 dark:text-secondary-800 border-primary-600 hover:bg-primary-500 hover:text-white hover:border-primary-700 focus-visible:bg-primary-600 focus-visible:text-white focus-visible:ring-primary-500 active:bg-primary-900',
   ghost:
-    'rounded-md text-primary-500 border-transparent hover:bg-primary-100 hover:border-primary-700 hover:text-primary-700 hover:shadow-sm focus-visible:ring-primary-100 active:bg-primary-200',
+    'rounded-md text-primary-500 border-transparent hover:bg-primary-100 dark:hover:bg-primary-900 hover:border-primary-700 dark:hover:border-primary-300 hover:text-primary-700  dark:hover:text-primary-300 hover:shadow-sm focus-visible:ring-primary-100 dark:focus-visible:ring-primary-900 active:bg-primary-200 dark:active:bg-primary-800 ',
   link: 'text-blue-600 bg-transparent hover:text-blue-700 focus-visible:text-blue-800 active:text-blue-900',
   text: 'rounded-sm bg-transparent text-primary-800 hover:bg-primary-200 hover:text-primary-700 focus-visible:bg-primary-200 focus-visible:text-primary-900 active:text-primary-900 active:bg-primary-300',
   fab: 'bg-primary-200 border-primary-100 hover:bg-primary-100 focus-visible:bg-primary-300 active:bg-primary-200',

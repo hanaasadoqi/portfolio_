@@ -8,16 +8,17 @@ import {
   sizeStyles,
   textStyles,
 } from '../BaseButton'
-import { IconButtonProps, iconButtonSizes } from '../IconButton'
-import { Icon } from '../../Icon'
+import { iconButtonSizes, TooltipPosition } from '../IconButton'
+import { Icon } from '../../common'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { Tooltip } from 'react-tooltip'
-import type { TooltipPosition } from '../IconButton'
+
 export type LinkButtonVariant = 'text' | 'ghost' | 'link'
 
 export interface LinkButtonProps {
   href?: string
+  as?: string
   onClick?: React.MouseEventHandler<HTMLAnchorElement>
   target?: '_blank' | '_top' | '_parent' | '_self'
   rel?: string
@@ -39,6 +40,7 @@ export interface LinkButtonProps {
 
 const LinkButton: React.FC<LinkButtonProps> = ({
   href = '#',
+  as,
   onClick,
   target,
   size,
@@ -84,6 +86,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({
     <>
       <Link
         href={href}
+        as={as}
         onClick={onClick}
         className={
           disabled || !href ? 'cursor-not-allowed opacity-50' : linkStyles

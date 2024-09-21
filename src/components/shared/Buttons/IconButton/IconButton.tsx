@@ -1,6 +1,8 @@
+"use client"
+
 import React from 'react'
 import { BaseButton, BaseButtonProps, ButtonSize } from '../BaseButton'
-import Icon from '../../Icon/Icon'
+import { Icon } from '../../common'
 import { Tooltip } from 'react-tooltip'
 import clsx from 'clsx'
 

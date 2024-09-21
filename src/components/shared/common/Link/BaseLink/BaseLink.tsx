@@ -1,6 +1,6 @@
 import React, { ElementType, ForwardedRef, forwardRef } from 'react'
 import PropTypes from 'prop-types'
-import { BaseComponent, BaseComponentProps } from '../../BaseComponent'
+import { BaseComponent, BaseComponentProps } from '../../../../../../_examples/ui/BaseComponent'
 
 export type BaseLinkProps<T extends ElementType> = BaseComponentProps<T> & {
   href: string
