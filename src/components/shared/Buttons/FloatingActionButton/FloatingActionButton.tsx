@@ -41,7 +41,7 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
       size={size}
       icon={icon}
       className={clsx(
-        "fixed rounded-full",
+        "fixed rounded-full z-10",
         positionClasses[position],
         className,
       )}

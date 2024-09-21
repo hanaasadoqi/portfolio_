@@ -2,6 +2,7 @@
 
 import React from 'react'
 import dynamic from 'next/dynamic'
+import { DarkModeToggle } from '@/components/shared'
 
 const DarkModeProvider = dynamic(
   () => import('@/context/DarkModeContext').then(mod => mod.DarkModeProvider),
@@ -25,6 +26,7 @@ export default function Providers({
       {/* <ScrollProvider>
         <DataProvider initialData={normalizedData}>{children}</DataProvider>
       </ScrollProvider> */}
+      <DarkModeToggle />
     </DarkModeProvider>
   )
 }
