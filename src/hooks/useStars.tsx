@@ -22,9 +22,8 @@ const Star: React.FC<StarProps> = ({
   float,
 }) => (
   <div
-    className={`absolute rounded-full ${animate ? 'animate-spin' : ''} ${
-      pulse ? 'animate-pulse' : ''
-    } ${float ? 'animate-float-slow' : ''}`}
+    className={`absolute rounded-full ${animate ? 'animate-spin' : ''} ${pulse ? 'animate-pulse' : ''
+      } ${float ? 'animate-float-slow' : ''}`}
     style={{
       width: `${size / 2}px`,
       height: `${size / 2}px`,
@@ -36,7 +35,7 @@ const Star: React.FC<StarProps> = ({
   />
 )
 
-const useStars = (id: string): ReactNode[] => {
+const useStars = (id: string, numOfStars?: number): ReactNode[] => {
   const [stars, setStars] = useState<ReactNode[]>([])
 
   useEffect(() => {
@@ -77,15 +76,14 @@ const useStars = (id: string): ReactNode[] => {
     }
 
     // Generate stars based on the updated numStars
-    const generatedStars = Array.from({ length: starCount }).map((_, index) => (
+    const generatedStars = Array.from({ length: numOfStars || starCount }).map((_, index) => (
       <Star
         key={`${starCount - index - 1})`}
         size={Math.random() * 5 + 1} // Random size between 2 and 5
-        color={`var(--accent-${
-          ['pink', 'blue', 'cyan', 'navy', 'yellow'][
-            Math.floor(Math.random() * 5)
-          ]
-        })`} // Random color
+        color={`var(--accent-${['one', 'two', 'three', 'four', 'five'][
+          Math.floor(Math.random() * 5)
+        ]
+          })`} // Random color
         top={`${Math.random() * 100}%`} // Random top position
         left={`${Math.random() * 100}%`} // Random left position
         animate={Math.random() < 0.3} // 30% chance to animate
@@ -95,7 +93,7 @@ const useStars = (id: string): ReactNode[] => {
     ))
 
     setStars(generatedStars)
-  }, [id])
+  }, [id, numOfStars])
 
   return stars
 }
