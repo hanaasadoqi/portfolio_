@@ -3,9 +3,10 @@
 import React, { createContext, useContext, ReactNode } from 'react'
 import { ProjectWithDetails } from '@/types/data'
 import { useFilteredProjects } from '@/hooks/useFilteredProjects'
+import { ProjectPreview } from '@/types'
 
 interface ProjectContextProps {
-  filteredProjects: ProjectWithDetails[]
+  filteredProjects: ProjectPreview[]
   filters: string[]
   sortOption: string | null
   searchQuery: string
@@ -18,7 +19,7 @@ interface ProjectContextProps {
 const ProjectContext = createContext<ProjectContextProps | undefined>(undefined)
 
 export const ProjectProvider: React.FC<{
-  initialData: Record<number, ProjectWithDetails>
+  initialData: Record<number, ProjectPreview>
   children: ReactNode
 }> = ({ initialData, children }) => {
   const [filters, setFilters] = React.useState<string[]>([])
