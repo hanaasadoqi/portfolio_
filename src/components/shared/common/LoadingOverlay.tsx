@@ -1,4 +1,4 @@
-export function LoadingComponent() {
+export function LoadingOverlay() {
   return (
     <div className="absolute rounded-2xl inset-0 z-50 flex items-center justify-center bg-primary-200 opacity-30 backdrop-blur-sm">
       <div className="opacity-100 flex flex-col items-center justify-center space-y-4">

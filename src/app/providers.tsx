@@ -1,20 +1,10 @@
 'use client'
 
 import React from 'react'
-import dynamic from 'next/dynamic'
-import { DarkModeToggle } from '@/components/shared'
+import { DarkModeProvider } from '@/context/DarkModeContext'
+import FabMenu from '@/components/shared/menus/FABMenu'
+import { ScrollProvider } from '@/context/ScrollContext'
 
-const DarkModeProvider = dynamic(
-  () => import('@/context/DarkModeContext').then(mod => mod.DarkModeProvider),
-  { ssr: true }
-)
-
-const ScrollProvider = dynamic(
-  () => import('@/context/ScrollContext').then(mod => mod.ScrollProvider),
-  {
-    ssr: true,
-  }
-)
 export default function Providers({
   children,
 }: Readonly<{
@@ -22,11 +12,10 @@ export default function Providers({
 }>) {
   return (
     <DarkModeProvider>
-      {children}
-      {/* <ScrollProvider>
-        <DataProvider initialData={normalizedData}>{children}</DataProvider>
-      </ScrollProvider> */}
-      <DarkModeToggle />
+      <ScrollProvider>
+        {children}
+      </ScrollProvider>
+      <FabMenu />
     </DarkModeProvider>
   )
 }

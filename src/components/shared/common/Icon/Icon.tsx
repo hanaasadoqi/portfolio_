@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import { IconContext } from 'react-icons';
 import clsx from 'clsx';
 import { IconLibrary } from './icons';
-import { ButtonSize } from '../Buttons';
+import { ButtonSize } from '../../buttons';
 
 export type IconType = 'svg' | 'react-icons';
 
@@ -41,7 +41,7 @@ const Icon: React.FC<IconProps> = ({
     md: '28px',
     lg: '32px',
     xl: '36px',
-    '2xl':'48px',
+    '2xl': '48px',
     full: '100%',
   };
 
@@ -77,12 +77,12 @@ const Icon: React.FC<IconProps> = ({
     ) : (
       icon
     );
-  
+
     if (!React.isValidElement(IconComponent)) {
       console.error('Invalid icon element passed to Icon component');
       return null;
     }
-  
+
     return (
       <span
         id={id}
@@ -102,7 +102,7 @@ const Icon: React.FC<IconProps> = ({
       </span>
     );
   };
-  
+
 
   const renderSVGIcon = () => {
     if (!children) {
@@ -116,25 +116,25 @@ const Icon: React.FC<IconProps> = ({
         {React.Children.map(children, child =>
           React.isValidElement(child) && child.type === 'svg'
             ? React.cloneElement(child as React.ReactElement, {
-                style: {
-                  ...iconStyle,
-                  width: computedSize,
-                  height: computedSize,
-                },
-                tabIndex: -1,
-                'aria-labelledby': ariaLabel ? 'svg-title' : undefined,
-                'data-testid': loading ? 'spinner' : 'svg-icon',
-                className: clsx(
-                  'select-none pointer-events-auto',
-                  child.props.className
-                ),
-                children: (
-                  <>
-                    {ariaLabel && <title id="svg-title">{ariaLabel}</title>}
-                    {child.props.children}
-                  </>
-                ),
-              })
+              style: {
+                ...iconStyle,
+                width: computedSize,
+                height: computedSize,
+              },
+              tabIndex: -1,
+              'aria-labelledby': ariaLabel ? 'svg-title' : undefined,
+              'data-testid': loading ? 'spinner' : 'svg-icon',
+              className: clsx(
+                'select-none pointer-events-auto',
+                child.props.className
+              ),
+              children: (
+                <>
+                  {ariaLabel && <title id="svg-title">{ariaLabel}</title>}
+                  {child.props.children}
+                </>
+              ),
+            })
             : child
         )}
       </span>
