@@ -1,6 +1,5 @@
 import React from 'react'
-import Icon from '../shared/Icon/Icon'
-import { IconLibrary } from '../shared/Icon/icons'
+import { IconLibrary, Icon } from '../shared'
 import { Skill } from '@/types/data'
 
 const SkillModalContent: React.FC<{ skill: Skill }> = ({ skill }) => {

@@ -5,6 +5,7 @@ import SkillsContainer from './components/SkillContainer'
 
 const Page = async () => {
   return (
+
     <SectionLayout id="skills">
       <SkillsContainer />
     </SectionLayout>
