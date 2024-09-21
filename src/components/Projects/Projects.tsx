@@ -1,6 +1,6 @@
 'use client'
 
-import { useProjectContext } from '@/context/ProjectContext'
+// import { useProjectContext } from '@/context/ProjectContext'
 
 import React, { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
@@ -9,11 +9,9 @@ import { Tooltip as ReactTooltip } from 'react-tooltip'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import { ProjectWithDetails, Article, Skill } from '@/types/data'
-import ScrollButton from '../ui/ScrollButton'
+import { ProjectWithDetails, Article, Skill, Project } from '@/types/data'
+import ScrollButton from '../shared/buttons/ScrollButton'
 import { useData } from '@/context/DataContext'
-import clsx from 'clsx'
-import { useFilteredProjects } from '@/hooks/useFilteredProjects'
 
 const Slider = dynamic(() => import('react-slick'), { ssr: false })
 
@@ -80,27 +78,38 @@ const sliderSettings = {
 }
 
 const Projects: React.FC = () => {
-  const { projects } = useData()
-  const {
-    filteredProjects,
-    filters,
-    sortOption,
-    setFilters,
-    setSortOption,
-    setSearchQuery,
-    resetFiltersAndSort,
-  } = useProjectContext()
+  const [projects, setProjects] = useState([])
+  const [filters, setFilters] = useState<string[]>([])
+
+  useEffect(() => {
+    fetch(`/api/projects`)
+      .then(res => res.json())
+      .then(data => setProjects(data))
+  })
+  // const { projects } = useData()
+
+  // const {
+  //   filteredProjects,
+  //   filters,
+  //   sortOption,
+  //   setFilters,
+  //   setSortOption,
+  //   setSearchQuery,
+  //   resetFiltersAndSort,
+  // } = useProjectContext()
 
   const toggleFilter = (filter: string) => {
-    setFilters(prevFilters =>
-      prevFilters.includes(filter)
-        ? prevFilters.filter(f => f !== filter)
-        : [...prevFilters, filter]
-    )
+    //   setFilters(prevFilters =>
+    //     prevFilters.includes(filter)
+    //       ? prevFilters.filter(f => f !== filter)
+    //       : [...prevFilters, filter]
+    //   )
+    console.log(filter)
   }
 
   const handleSortChange = (option: string) => {
-    setSortOption(option)
+    console.log(option)
+    //   setSortOption(option)
   }
 
   return (
@@ -119,11 +128,10 @@ const Projects: React.FC = () => {
               <button
                 key={filter}
                 onClick={() => toggleFilter(filter)}
-                className={`whitespace-nowrap rounded-full px-4 py-2 text-gray-800 dark:text-white ${
-                  filters.includes(filter)
-                    ? 'bg-blue-600'
-                    : 'bg-gray-300 hover:bg-gray-400 dark:bg-gray-700'
-                }`}
+                className={`whitespace-nowrap rounded-full px-4 py-2 text-gray-800 dark:text-white ${filters.includes(filter)
+                  ? 'bg-blue-600'
+                  : 'bg-gray-300 hover:bg-gray-400 dark:bg-gray-700'
+                  }`}
               >
                 {filter}
               </button>
@@ -146,7 +154,7 @@ const Projects: React.FC = () => {
           </div>
         </div>
         <Slider {...sliderSettings}>
-          {filteredProjects.map(project => (
+          {projects.map((project: any) => (
             <div key={project.id} className="px-2">
               <ProjectCard {...project} />
             </div>
