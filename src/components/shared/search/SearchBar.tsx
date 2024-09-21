@@ -1,5 +1,6 @@
+'use client'
+
 import React, { useRef, useEffect } from 'react'
-import { useSkillsContext } from '@/context/SkillsContext'
 import clsx from 'clsx'
 
 const SearchBar: React.FC<{
@@ -27,7 +28,7 @@ const SearchBar: React.FC<{
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
           className={clsx(
-            'w-full rounded-md p-2 shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-primary-700 dark:text-white dark:placeholder-primary-400 dark:focus-within:bg-primary-300 dark:focus-within:placeholder-primary-700'
+            'w-full rounded-md p-2 shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-primary-700 text-primary-900 dark:text-primary-100 dark:placeholder-primary-500 dark:focus-within:bg-primary-600 dark:focus-within:placeholder-primary-700'
           )}
           placeholder={placeholder}
         />
