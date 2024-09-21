@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useCallback } from 'react'
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import clsx from 'clsx'
 import dynamic from 'next/dynamic'
 import { AnimatePresence, motion } from 'framer-motion'

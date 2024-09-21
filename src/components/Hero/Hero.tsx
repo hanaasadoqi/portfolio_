@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
     <section
       id="hero"
       data-id="hero"
-      className="flex min-h-screen w-full flex-col items-end justify-center py-12 md:px-12 lg:flex-row lg:justify-between"
+      className="flex min-h-screen w-full flex-col items-center justify-center py-12 md:px-12 lg:flex-row lg:justify-between"
       aria-labelledby="hero-heading"
     >
       <div className="flex flex-col items-center space-y-6 lg:items-start">
@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
               {"Hi, I'm Hanaa Sadoqi"}
             </h1>
             <h2 className="text-xl font-medium text-gray-700 dark:text-gray-300 md:text-xl lg:text-2xl">
-              Full-stack Web Developer | UI/UX Enthusiast | Lifelong Learner
+              Full-stack Web Developer | Software Engineer | UI/UX Enthusiast
             </h2>
           </header>
 

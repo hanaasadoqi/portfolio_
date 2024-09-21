@@ -1,15 +1,13 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { Poppins, Raleway, Merriweather } from 'next/font/google'
-import Providers from './providers'
-import Background from '@/components/Background'
-import { DarkModeToggle } from '@/components/shared'
-import { LoadingComponent } from '@/components/LoadingComponent'
+import { LoadingOverlay } from '@/components'
+import Providers from './Providers'
 import clsx from 'clsx'
 import '../styles/globals.scss'
 import 'react-tooltip/dist/react-tooltip.css'
-import ModalWrapper from './ModalWrapper'
 import 'prism-themes/themes/prism-vsc-dark-plus.css'
+import ErrorBoundary from './shared/ErrorBoundary'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -39,34 +37,32 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  skill,
-  project
+  modal
 }: Readonly<{
   children: React.ReactNode
-  skill: React.ReactNode
-  project: React.ReactNode
+  modal: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
+
       <body
         className={clsx(
           'relative',
           poppins.variable,
           raleway.variable,
-          merriweather.variable
+          merriweather.variable,
         )}
       >
-        <Providers>
-          <Background>
-            <Suspense fallback={<LoadingComponent />}>
-              <main className="relative z-10 flex min-h-screen w-full flex-col items-center bg-transparent">
+        <ErrorBoundary>
+          <Providers>
+            <Suspense fallback={<LoadingOverlay />}>
+              <main className="relative z-0 flex min-h-screen w-full flex-col items-center bg-transparent">
                 {children}
               </main>
-              {skill}
-              {project}
+              {modal}
             </Suspense>
-          </Background>
-        </Providers>
+          </Providers>
+        </ErrorBoundary>
       </body>
     </html>
   )
