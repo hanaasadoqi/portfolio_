@@ -27,8 +27,16 @@ export interface Project {
   likeCount: number;
 }
 
-export type ProjectPreview = Pick<Project, "id" | "image" | "title" | "description" | "status"> & {
-  slug: string | null
+export type ProjectPreview = Pick<Project, "id" | "image" | "title" | "description" | "status" | "tags" | "launchDate"> & {
+  slug: string | null;
+  tags: string[] | null;
+  details?: {
+    demoUrl?: string | null;
+    frontendRepo?: string | null;
+    backendRepo?: string | null;
+    codeRepo?: string | null;
+    videoDemo?: string | null;
+  };
 }
 
 export type ProjectPage = Omit<Project, "slug" | "description" | "viewCount" | "likeCount" | "tags" | "fileContent" | "slug" | "launchDate" | "status" | "demoUrl" | "frontendRepo" | "backendRepo" | "codeRepo" | "videoDemo" | "id" | "category" | "title" | "description" | "image"> & {
@@ -41,7 +49,7 @@ export type ProjectPage = Omit<Project, "slug" | "description" | "viewCount" | "
   launchDate?: Date | null;
   slug?: string;
   fileContent?: string | null;
-  tags?: string | null;
+  tags?: string[] | null;
   viewCount?: string | null;
   likeCount?: string | null;
   details: {
@@ -50,5 +58,5 @@ export type ProjectPage = Omit<Project, "slug" | "description" | "viewCount" | "
     backendRepo?: string | null;
     codeRepo?: string | null;
     videoDemo?: string | null;
-  }
+  };
 }

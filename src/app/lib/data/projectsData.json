@@ -4,7 +4,6 @@
     "category": "Full-Stack",
     "description": "A language learning platform that allows users to join chatrooms where their speech is translated in real-time and sent in a language of their choice. The project was built with a focus on improving language learning through interactive sessions.",
     "image": "https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_1280.jpg",
-
       "backendRepo": "https://github.com/hsadoqi/mod_3_back_end",
       "frontendRepo": "https://github.com/hsadoqi/mod3_front_end",
       "videoDemo": "https://www.youtube.com/watch?v=AfMi3FF3qEY&t=50s",
@@ -16,7 +15,8 @@
       "Real-Time Communication",
       "Web Application"
     ],
-    "skills": ["JavaScript", "HTML/CSS", "Ruby on Rails"]
+    "skills": ["JavaScript", "HTML/CSS", "Ruby on Rails"],
+    "slug": "transl8"
   },
   {
     "title": "Lit",
@@ -44,7 +44,8 @@
       "PostgresSQL",
       "Redux",
       "React"
-    ]
+    ],
+    "slug": "lit"
   },
   {
     "title": "Lit Rides",
@@ -63,7 +64,8 @@
       "Trip Planning",
       "Social Media"
     ],
-    "skills": ["Ruby on Rails", "PostgresSQL", "Restful APIs", "HTML/CSS"]
+    "skills": ["Ruby on Rails", "PostgresSQL", "Restful APIs", "HTML/CSS"],
+    "slug": "lit-rides"
   },
   {
     "title": "Algorithm Visualizer",
@@ -90,7 +92,8 @@
       "Express.js",
       "TDD/BDD",
       "Jest"
-    ]
+    ],
+    "slug": "algorithm-visualizer"
   },
   {
     "title": "Code Library",
@@ -118,7 +121,8 @@
       "TypeScript",
       "Storybook",
       "Component-driven Design"
-    ]
+    ],
+    "slug": "code-library"
   },
   {
     "title": "Synapcity",
@@ -149,6 +153,7 @@
       "GraphQL",
       "TailwindCSS",
       "TypeScript"
-    ]
+    ],
+    "slug": "synapcity"
   }
 ]
