@@ -31,6 +31,12 @@ div {
   }
 }
 
+.modal-code {
+  white-space: pre-wrap; /* Ensures code wraps correctly */
+  overflow-x: auto; /* Allows horizontal scrolling */
+}
+
+
 
 pre[data-id="code-block"] {
   // padding: 0;
