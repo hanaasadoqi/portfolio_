@@ -2,7 +2,6 @@ export * from './common';
 export * from './buttons';
 export * from './search';
 export * from './menus';
-export * from './containers';
 export * from './labels';
 export * from './layout';
 export * from './media';

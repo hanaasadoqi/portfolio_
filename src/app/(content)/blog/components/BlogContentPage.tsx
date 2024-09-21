@@ -3,7 +3,6 @@ import fs from 'fs'
 import React from 'react';
 import BlogHeader from "@/app/(content)/blog/components/BlogHeader";
 import BlogContainer from "@/app/(content)/blog/components/BlogPage";
-import { fetchContent } from "@/utils/fetchContent";
 import { AutocompleteSearchBar } from '../../../../components/shared';
 import { fetchArticleTitles } from '@/app/lib/actions/articles';
 import { Suggestion } from '@/types';
