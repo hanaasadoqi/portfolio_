@@ -1,24 +1,27 @@
 import React, { memo } from 'react'
-import Icon from '../../../../components/shared/Icon/Icon'
-import { IconLibrary } from '../../../../components/shared/Icon/icons'
+import { IconLibrary, Icon } from '@/components'
 import SkillIcons from './SkillIcons'
-import clsx from 'clsx'
 import { FaSpinner } from 'react-icons/fa'
 import { Skill } from '../../types'
+import clsx from 'clsx'
+import { SkillPreview } from '@/types'
 
 // Define the Omitted version of Skill for projects with limited info
 type ProjectSkill = Omit<Skill, '_count' | 'categories' | 'tags' | 'startYear' | 'projects'>
 
 // SkillCardProps can either be a full Skill or a ProjectSkill
 interface SkillCardProps {
-  skill: Skill | ProjectSkill
+  skill: Skill | ProjectSkill | SkillPreview
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
   const { id, name, icon } = skill
 
+  // if (skill.startYear) {
+
   // Only calculate `yearsOfExperience`, `workExperiences`, and `projects` if the full `Skill` is provided
-  const yearsOfExperience = 'startYear' in skill ? new Date().getFullYear() - skill.startYear : undefined
+  // const yearsOfExperience = 'startYear' in skill ? new Date().getFullYear() - skill.startYear : undefined
+  // }/
   // const workExperiences = skill._count?.workExperiences || 0
   // const projects = skill.projects && skill.projects.length || 0
 
@@ -30,7 +33,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
   return (
     <div
       className={clsx(
-        'skill-card group relative h-48 max-h-52 w-full transform cursor-pointer overflow-hidden',
+        'skill-card group relative h-32 md:h-48 max-h-52 w-full transform cursor-pointer overflow-hidden',
         'rounded-2xl bg-gradient-to-br from-primary-500 to-secondary-500',
         'shadow-lg transition-transform duration-300 ease-in-out',
         'hover:scale-105 hover:from-secondary-500 hover:to-primary-500 hover:shadow-2xl',
@@ -44,7 +47,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
           id={id}
           experienceCount={1}
           projectsCount={2}
-          yearsOfExperience={yearsOfExperience}
+          yearsOfExperience={skill.startYear ? new Date().getFullYear() - skill.startYear : 0}
         />
       )}
 

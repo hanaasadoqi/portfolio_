@@ -1,7 +1,7 @@
 import SkillControlsDisplay from './SkillsControls/ControlsDisplay'
 import { memo, Suspense } from 'react'
 import SkillsList from './SkillsList'
-import { LoadingComponent } from '@/components/LoadingComponent'
+import { LoadingOverlay } from '@/components/shared'
 
 const SkillsContainer: React.FC = () => {
   return (
@@ -12,8 +12,8 @@ const SkillsContainer: React.FC = () => {
           <SkillControlsDisplay />
         </div>
       </div>
-      <div className="relative overflow-scroll">
-        <Suspense fallback={<LoadingComponent />}>
+      <div className="relative overflow-auto">
+        <Suspense fallback={<LoadingOverlay />}>
           <SkillsList />
         </Suspense>
       </div>

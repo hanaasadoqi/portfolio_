@@ -1,12 +1,11 @@
 'use client'
 
 import { memo, useEffect, useState, useCallback, Suspense } from 'react'
+import { LoadingOverlay, BaseButton } from '@/components'
+import SkeletonSkillCard from './SkillCard/SkeletonCard'
 import SkillCard from './SkillCard/SkillCard'
 import { Skill } from '../types'
-import { BaseButton } from '@/components/shared/Buttons'
-import SkeletonSkillCard from './SkillCard/SkeletonCard'
 import { useSearchParams } from 'next/navigation'
-import { LoadingComponent } from '../../../components/LoadingComponent'
 import Link from 'next/link'
 
 const renderSkeletons = (count: number) => {
@@ -89,9 +88,9 @@ const SkillsList: React.FC = () => {
       <div className="h-full w-full">
         <div className="relative">
 
-          {isLoading && <LoadingComponent />}
+          {isLoading && <LoadingOverlay />}
 
-          <div className="skills-container overflow-scroll shadow-inner h-96 lg:h-[700px] p-4 md:p-8 grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-6 overflow-auto smooth-scroll bg-white/30 shadow-lg rounded-2xl backdrop-blur-lg hover:shadow-2xl transition-shadow duration-500">
+          <div className="scrollbar-hide overflow-auto shadow-inner h-96 lg:h-[700px] p-4 md:p-8 grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-6 overflow-auto smooth-scroll bg-white/30 shadow-lg rounded-2xl backdrop-blur-lg hover:shadow-2xl transition-shadow duration-500">
             {(skills.length == 0 && !isLoading) && (<p>No results found.</p>)}
 
             {skills.map((skill, index) => (
@@ -109,7 +108,7 @@ const SkillsList: React.FC = () => {
         {/* Render the Load More button */}
         <div className="mt-8 w-full mx-auto flex items-center justify-end md:justify-center">
           {skills.length < totalCount && (
-            <BaseButton onClick={loadMore} disabled={isLoading} size="lg">
+            <BaseButton onClick={loadMore} disabled={isLoading} size="lg" className="z-10">
               {isLoading ? 'Loading...' : 'Load More'}
             </BaseButton>
           )}
