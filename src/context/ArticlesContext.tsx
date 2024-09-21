@@ -3,9 +3,11 @@
 import React, { createContext, useContext, ReactNode, useMemo } from 'react'
 import { Article, ArticleWithDetails } from '@/types/data'
 import { useFilteredArticles } from '@/hooks/useFilteredArticles'
+import { ArticlePreview } from '@/types'
+import { ArticlePreviewType } from '@/app/lib/actions/articles'
 
 interface ArticlesContextProps {
-  filteredArticles: Article[]
+  filteredArticles: ArticlePreviewType[]
   filters: string[]
   sortOption: string | null
   searchQuery: string
@@ -19,7 +21,7 @@ const ArticlesContext = createContext<ArticlesContextProps | undefined>(
   undefined
 )
 export const ArticlesProvider: React.FC<{
-  initialData: Record<number, ArticleWithDetails>
+  initialData: Record<number, ArticlePreviewType>
   children: ReactNode
 }> = ({ initialData, children }) => {
   const memoizedData = useMemo(() => initialData, [initialData])
@@ -29,8 +31,8 @@ export const ArticlesProvider: React.FC<{
 
   const filteredArticles = useFilteredArticles(
     memoizedData,
-    filters,
-    sortOption,
+    // filters,
+    // sortOption,
     searchQuery
   )
 

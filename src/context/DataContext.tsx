@@ -1,8 +1,9 @@
 'use client'
 
-import React, { createContext, useContext, ReactNode, useMemo } from 'react'
+import React, { createContext, useContext, ReactNode, useMemo, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { NormalizedData } from '@/types/data'
+import { ArticlePreviewType } from '@/app/lib/actions/articles'
 
 const SkillsProvider = dynamic(
   () => import('@/context/SkillsContext').then(mod => mod.SkillsProvider),
@@ -34,12 +35,27 @@ interface DataProviderProps {
 
 export const DataProvider = ({ initialData, children }: DataProviderProps) => {
   const memoizedData = useMemo(() => initialData, [initialData])
+  const [projects, setProjects] = useState([])
+  const [articles, setArticles] = useState<ArticlePreviewType[]>([])
+
+  useEffect(() => {
+    fetch(`/api/projects`)
+      .then(res => res.json())
+      .then(data => setProjects(data))
+
+    fetch(`/api/articles`)
+      .then(res => res.json())
+      .then(data => setArticles(data))
+  })
+
+
+
 
   return (
     <DataContext.Provider value={memoizedData}>
       <SkillsProvider initialData={memoizedData.skills}>
-        <ProjectProvider initialData={memoizedData.projects}>
-          <ArticlesProvider initialData={memoizedData.articles}>
+        <ProjectProvider initialData={projects}>
+          <ArticlesProvider initialData={articles}>
             {children}
           </ArticlesProvider>
         </ProjectProvider>
