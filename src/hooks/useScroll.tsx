@@ -32,11 +32,10 @@ const useScroll = () => {
 
   useEffect(() => {
     const scrollContainer = scrollRef.current
-    if (!scrollContainer) return // Safeguard against null value, just in case
-
+    if (!scrollContainer) return
     const throttledCheckScroll = () => checkScrollPosition()
     scrollContainer.addEventListener('scroll', throttledCheckScroll)
-    checkScrollPosition() // Initial check
+    checkScrollPosition()
 
     return () => {
       scrollContainer.removeEventListener('scroll', throttledCheckScroll)
