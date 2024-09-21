@@ -3,10 +3,10 @@
 import React, { Suspense, memo } from 'react'
 import useScroll from '@/hooks/useScroll'
 import AboutItemCard from './AboutItemCard'
-import { AboutData } from '../types'
-import { LoadingComponent } from '@/components/LoadingComponent'
+import { AboutAsset } from '@/types/asset.types'
+import { LoadingOverlay } from '@/components/shared'
 
-const AboutItemList: React.FC<{ about: AboutData[] }> = ({ about }) => {
+const AboutItemList: React.FC<{ about: AboutAsset[] }> = ({ about }) => {
   const { scrollRef } = useScroll()
 
   return (
@@ -16,7 +16,7 @@ const AboutItemList: React.FC<{ about: AboutData[] }> = ({ about }) => {
     >
       <div className="grid snap-x snap-mandatory auto-cols-max grid-flow-col items-center gap-4">
         {about.map(item => (
-          <Suspense key={`${item.id}-${item.title}`} fallback={<LoadingComponent />}>
+          <Suspense key={`${item.id}-${item.title}`} fallback={<LoadingOverlay />}>
             <AboutItemCard item={item} className="snap-center" />
           </Suspense>
         ))}
