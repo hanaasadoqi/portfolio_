@@ -1,4 +1,4 @@
-import prisma from '@/lib/prismaClient'
+import prisma from '@/app/lib/prismaClient'
 import { ProjectPage, ProjectPreview } from '@/types'
 import { toTitleCaseBasic } from '@/utils/toTitleCase';
 
@@ -10,7 +10,8 @@ export async function fetchProjects(): Promise<ProjectPreview[]> {
       title: true,
       description: true,
       status: true,
-      slug: true
+      slug: true,
+      tags: true,
     }
   })
 
@@ -89,7 +90,7 @@ export async function fetchProjectById(projectId: string): Promise<any> {
     status: project.status,
     slug: project.slug,
     fileContent: project.fileContent,
-    tags: project.tags.map(tag => tag.toLowerCase()),
+    tags: project.tags.map((tag: string) => tag.toLowerCase()),
     viewCount: project.viewCount,
     likeCount: project.likeCount,
     details: {
@@ -144,11 +145,65 @@ export async function fetchProjectsByQuery(query: string): Promise<ProjectPrevie
       title: true,
       description: true,
       status: true,
-      slug: true
+      slug: true,
+      tags: true
     }
   });
 
   return projects;
+}
+
+
+
+export async function fetchProjectSuggestions(query: string): Promise<any[]> {
+  const normalizedQuery = query.toLowerCase();
+  const titleCaseQuery = toTitleCaseBasic(query);
+
+  const suggestions = await prisma.project.findMany({
+    where: {
+      OR: [
+        {
+          tags: {
+            has: titleCaseQuery
+          }
+        },
+        {
+          title: {
+            contains: normalizedQuery,
+            mode: 'insensitive'
+          }
+        },
+        {
+          description: {
+            contains: normalizedQuery,
+            mode: 'insensitive'
+          }
+        },
+        {
+          skills: {
+            some: {
+              name: {
+                contains: normalizedQuery,
+                mode: 'insensitive'
+              }
+            }
+          }
+        },
+
+      ]
+    },
+    select: {
+      title: true,
+      id: true
+    }
+  })
+
+  return suggestions.map(project => {
+    return {
+      slug: project.id,
+      title: project.title
+    }
+  })
 }
 
 export async function fetchProjectsByCategory(category: string): Promise<ProjectPreview[]> {
@@ -168,7 +223,8 @@ export async function fetchProjectsByCategory(category: string): Promise<Project
       title: true,
       description: true,
       status: true,
-      slug: true
+      slug: true,
+      tags: true
     }
   });
 }

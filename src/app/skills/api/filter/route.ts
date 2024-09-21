@@ -15,6 +15,4 @@ export async function GET(req: Request) {
   const pageSizeNum = parseInt(pageSize)
   const { skills, totalCount } = await fetchFilteredSkills(query, filterByTag, filterByCategory, sortBy, pageNum, pageSizeNum);
   return NextResponse.json({ skills, totalCount });
-
-  
 }

@@ -1,14 +1,15 @@
-import prisma from '@/lib/prismaClient';
+import prisma from '@/app/lib/prismaClient';
 import { AboutAsset, ArticleAsset, ProjectAsset } from '@/types';
 
 export async function fetchAll() {
   const assets = await prisma.asset.findMany({})
   return assets;
 }
+
 export async function fetchAssets(page: number, pageSize: number): Promise<(ArticleAsset | ProjectAsset)[]> {
   const assets = await prisma.asset.findMany({
     where: {
-      type: "image"
+      type: "image",
     },
     select: {
       id: true,
@@ -23,76 +24,65 @@ export async function fetchAssets(page: number, pageSize: number): Promise<(Arti
       article: {
         select: {
           id: true,
-          slug: true
-        }
+          slug: true,
+        },
       },
       project: {
         select: {
           id: true,
-          slug: true
-        }
-      }
+          slug: true,
+        },
+      },
     },
     skip: (page - 1) * pageSize,
     take: pageSize,
   });
 
-  return assets.map(asset => {
-    if (asset.article) {
-      return {
-        ...asset,
-        type: "image",
-        article: {
-          id: asset.article.id,
-          slug: asset.article.slug
-        }
-      } as ArticleAsset;
-    } else if (asset.project) {
-      return {
-        ...asset,
-        type: "image",
-        project: {
-          id: asset.project.id,
-          slug: asset.project.slug
-        }
-      } as ProjectAsset;
-    }
-    return undefined;
-  }).filter((asset): asset is ArticleAsset | ProjectAsset => asset !== undefined);
+  return assets
+    .map((asset: any) => {
+      if (asset.article) {
+        return {
+          ...asset,
+          type: "image",
+          article: {
+            id: asset.article.id,
+            slug: asset.article.slug,
+          },
+        } as ArticleAsset;
+      } else if (asset.project) {
+        return {
+          ...asset,
+          type: "image",
+          project: {
+            id: asset.project.id,
+            slug: asset.project.slug,
+          },
+        } as ProjectAsset;
+      }
+      return undefined;
+    })
+    .filter((asset: any): asset is ArticleAsset | ProjectAsset => asset !== undefined);
 }
 
-
-export async function fetchAboutAssets(): Promise<AboutAsset[]> {
-  const images = await prisma.asset.findMany({
+export async function fetchAboutAssets(): Promise<any[]> {
+  const aboutAssets = await prisma.asset.findMany({
     select: {
+      id: true,
       title: true,
       description: true,
       src: true,
       alt: true,
       aspectRatio: true,
       srcSet: true,
+      type: true
     },
     where: {
-      type: "image",
       category: "personal"
     }
   });
 
-  const videos = await prisma.asset.findMany({
-    select: {
-      title: true,
-      description: true,
-      src: true,
-      poster: true,
-    },
-    where: {
-      type: "video",
-      category: "personal"
-    }
-  });
-
-  const assets = [...images, ...videos] as AboutAsset[];
-  return assets;
+  // const assets = aboutAssets as AboutAsset[];
+  return aboutAssets;
 }
 
 export async function fetchAssetsByArticle(articleId: string): Promise<ArticleAsset[]> {
@@ -108,6 +98,7 @@ export async function fetchAssetsByArticle(articleId: string): Promise<ArticleAs
       alt: true,
       aspectRatio: true,
       srcSet: true,
+      type: true,
       article: {
         select: {
           id: true,
@@ -116,7 +107,7 @@ export async function fetchAssetsByArticle(articleId: string): Promise<ArticleAs
       }
     }
   })
-  return assets.filter((asset): asset is ArticleAsset => asset !== undefined);
+  return assets.filter((asset: any): asset is ArticleAsset => asset !== undefined);
 }
 
 export async function fetchAssetsByProject(projectId: string): Promise<ProjectAsset[]> {
@@ -141,6 +132,6 @@ export async function fetchAssetsByProject(projectId: string): Promise<ProjectAs
     }
   });
 
-  return assets.filter((asset): asset is ProjectAsset => asset !== undefined);
+  return assets.filter((asset: any): asset is ProjectAsset => asset !== undefined);
 
 }

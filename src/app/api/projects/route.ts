@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { fetchProjects, fetchProjectsByQuery } from "@/app/actions/projects"
+import { fetchProjects, fetchProjectsByQuery } from "@/app/lib/actions/projects"
 
 export async function GET() {
   const projects = await fetchProjects();

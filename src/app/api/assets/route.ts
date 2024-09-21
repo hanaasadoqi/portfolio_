@@ -1,4 +1,4 @@
-import { fetchAssets } from "@/app/actions/assets";
+import { fetchAssets } from "@/app/lib/actions/assets";
 import { NextResponse } from "next/server";
 
 export async function GET() {

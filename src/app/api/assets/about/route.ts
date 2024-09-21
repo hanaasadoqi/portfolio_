@@ -1,4 +1,4 @@
-import { fetchAboutAssets } from "@/app/actions/assets";
+import { fetchAboutAssets } from "@/app/lib/actions/assets";
 import { NextResponse } from "next/server";
 
 export async function GET() {

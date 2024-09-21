@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { fetchProjectById } from '@/app/actions/projects';
+import { fetchProjectById } from '@/app/lib/actions/projects';
 
 export async function GET(request: Request) {
   const url = new URL(request.url);

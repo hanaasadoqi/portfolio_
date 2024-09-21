@@ -1,6 +1,6 @@
 'use server'
 
-import prisma from '@/lib/prismaClient'
+import prisma from '@/app/lib/prismaClient'
 import { Prisma } from '@prisma/client';
 
 import { Skill } from './types'
