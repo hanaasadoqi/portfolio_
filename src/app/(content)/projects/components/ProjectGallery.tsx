@@ -97,11 +97,11 @@ const ProjectGallery: React.FC<{
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 800px"
         />
         {/* Hover overlay */}
-        <Link href="/projects/id" as={`/projects/${featuredProject.id}`}>
-          <div className="absolute inset-0 bg-white/80 dark:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center shadow-lg rounded-md group-hover:shadow-xl group-hover:scale-105">
-            <div className="text-white text-center p-4">
+        <Link href="/projects/[id" as={`/projects/${featuredProject.id}`}>
+          <div className="absolute inset-0 bg-white/80 dark:bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center shadow-lg rounded-md group-hover:shadow-xl group-hover:scale-105">
+            <div className="text-white text-center p-4 flex flex-col justify-center items-center overflow-scroll">
               <h2 className="text-2xl font-bold">{featuredProject.title}</h2>
-              <p className="mt-2">{featuredProject.description}</p>
+              <p className="mt-2 prose-2xl">{featuredProject.description}</p>
             </div>
           </div>
         </Link>
@@ -120,11 +120,11 @@ const ProjectGallery: React.FC<{
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 30vw, 400px"
             />
             {/* Hover overlay */}
-            <Link href="/projects/id" as={`/projects/${project.id}`}>
-              <div className="absolute inset-0 bg-white/80 dark:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center shadow-lg rounded-md group-hover:shadow-xl group-hover:scale-105">
-                <div className="text-white text-center p-4">
-                  <h2 className="text-xl font-bold">{project.title}</h2>
-                  <p className="mt-2">{project.description}</p>
+            <Link href="/projects/[id]" as={`/projects/${project.id}`}>
+              <div className="absolute inset-0 bg-white/80 dark:bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center shadow-lg rounded-md group-hover:shadow-xl group-hover:scale-105">
+                <div className="text-white text-center p-4 overflow-scroll flex flex-col justify-center items-center">
+                  <h2 className="md:text-lg text-xl font-bold">{project.title}</h2>
+                  <p className="block md:hidden lg:block mt-2 prose-md md:prose-md">{project.description}</p>
                 </div>
               </div>
             </Link>
@@ -145,11 +145,11 @@ const ProjectGallery: React.FC<{
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 30vw, 300px"
             />
             {/* Hover overlay */}
-            <Link href="/projects/id" as={`/projects/${project.id}`}>
-              <div className="absolute inset-0 bg-white/80 dark:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center shadow-lg rounded-md group-hover:shadow-xl group-hover:scale-105">
-                <div className="text-white text-center p-4">
+            <Link href="/projects/[id]" as={`/projects/${project.id}`}>
+              <div className="absolute inset-0 bg-white/80 dark:bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center shadow-lg rounded-md group-hover:shadow-xl group-hover:scale-105">
+                <div className="w-full h-full text-white text-center p-4 overflow-scroll flex flex-col justify-center items-center">
                   <h2 className="text-xl font-bold">{project.title}</h2>
-                  <p className="mt-2">{project.description}</p>
+                  <p className="hidden lg:block mt-2 prose-md md:prose-lg">{project.description}</p>
                 </div>
               </div>
             </Link>
