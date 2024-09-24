@@ -8,6 +8,10 @@ import '../styles/globals.scss'
 import 'react-tooltip/dist/react-tooltip.css'
 import 'prism-themes/themes/prism-vsc-dark-plus.css'
 import ErrorBoundary from './shared/ErrorBoundary'
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
+
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -63,6 +67,8 @@ export default function RootLayout({
             </Suspense>
           </Providers>
         </ErrorBoundary>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
