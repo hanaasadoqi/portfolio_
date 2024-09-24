@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArticlePreviewType, fetchArticles, fetchArticleTitles } from '@/app/lib/actions/articles';
+import { fetchArticles, fetchArticleTitles } from '@/app/lib/actions/articles';
 import BlogsContainer from './components/BlogsContainer';
 
 export default async function BlogsPage() {

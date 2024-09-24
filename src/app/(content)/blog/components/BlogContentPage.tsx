@@ -63,7 +63,7 @@ export default async function BlogContentPage({ params }: ContentPageProps) {
     }
 
     return (
-      <div className="min-h-screen w-screen">
+      <div className="min-h-screen w-screen" data-id="skills">
         <div className="max-w-7xl mx-auto">
           <AutocompleteSearchBar
             suggestions={suggestions}

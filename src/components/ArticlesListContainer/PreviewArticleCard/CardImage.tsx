@@ -23,15 +23,10 @@ const CardImage: React.FC<CardImageProps> = ({ image, slug, title }) => {
         loading="lazy"
       />
       {slug && (
-        <ReadButton slug={slug} title={title} href="/blog/[slug]" as="/blog" />
+        <ReadButton slug={slug} title={title} href="/blog/[slug]" as={`/blog/${slug}`} />
       )}
     </div>
   )
 }
 
 export default CardImage
-
-// {/* </Overlay> */}
-// {/* </Link> */}
-// <Overlay>
-// {/* <Link href="/blog/[slug]" as={`/blog/${slug}`}> */}
