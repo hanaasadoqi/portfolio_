@@ -52,11 +52,11 @@ interface ProjectContentProps {
 
 const ProjectContent: React.FC<ProjectContentProps> = ({ project, handleSkills, showSkills, content }) => {
   return (
-    <div className="min-h-screen w-screen md:w-full md:mx-auto py-4 px-2 lg:px-8 overflow-y-auto bg-white/50 dark:bg-black/50 flex flex-col items-center justify-between">
+    <div className="min-h-screen w-screen lg:w-full lg:mx-auto py-4 px-2 lg:px-8 overflow-y-auto bg-white/50 dark:bg-black/50 flex flex-col items-center justify-between">
 
       <div className="flex flex-col items-center w-full h-full">
         <h2 className="text-center text-xl md:text-2xl lg:text-3xl font-semibold mb-4">{project.title}</h2>
-        <div className="flex lg:justify-center flex-nowrap gap-2 mb-4 w-full overflow-x-auto scrollbar-hide">
+        <div className="flex items-center md:justify-center flex-nowrap gap-2 mb-4 w-full overflow-x-auto scrollbar-hide">
           {project.skills && project.skills.length > 0 && (
             <Suspense fallback={<SkeletonSkillCard />}>
               {project.skills.map((skill, index) => (
