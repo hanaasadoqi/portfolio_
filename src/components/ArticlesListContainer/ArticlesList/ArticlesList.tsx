@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import SearchBar from '../../shared/search/SearchBar'
+import SearchBar from '../../shared/SearchBar'
 import dynamic from 'next/dynamic'
 import { IconButton, Pagination } from '@/components'
 import { ArticlePreviewType } from '@/app/lib/actions/articles';

@@ -3,7 +3,7 @@
 import React, { memo } from 'react'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 import clsx from 'clsx'
-import { IconButton } from '../buttons'
+import { IconButton } from '../shared'
 
 const ScrollButton: React.FC<{
   direction: 'left' | 'right'

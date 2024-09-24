@@ -1,7 +1,5 @@
 import React from "react";
-import { IconButton, IconButtonProps } from "../../../buttons/IconButton";
-import { LinkButton, LinkButtonProps } from "../../../buttons/LinkButton";
-import { BaseButton, BaseButtonProps } from "../../../buttons";
+import { IconButton, IconButtonProps, LinkButton, LinkButtonProps, BaseButton, BaseButtonProps } from '@/components/shared'
 
 // Base props shared among button types
 interface BaseTriggerProps {

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import clsx from "clsx";
-import { Video } from "../../media";
+import { Video } from "@/components";
 
 interface FlipCardProps {
   className?: string;

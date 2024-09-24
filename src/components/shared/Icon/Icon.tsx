@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import { IconContext } from 'react-icons';
 import clsx from 'clsx';
 import { IconLibrary } from './icons';
-import { ButtonSize } from '../../buttons';
+import { ButtonSize } from '@/components';
 
 export type IconType = 'svg' | 'react-icons';
 

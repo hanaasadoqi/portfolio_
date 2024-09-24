@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { DarkModeProvider } from '@/context/DarkModeContext'
-import FabMenu from '@/components/shared/menus/FABMenu'
+import FabMenu from '@/components/shared/FABMenu'
 import { ScrollProvider } from '@/context/ScrollContext'
 
 export default function Providers({

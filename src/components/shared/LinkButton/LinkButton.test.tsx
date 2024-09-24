@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import LinkButton, { LinkButtonVariant } from "./LinkButton";
-import { colorStyles, outerStyles, sizeStyles } from "../../BaseButton";
+import { colorStyles, outerStyles, sizeStyles } from "@/components";
 import { axe, toHaveNoViolations } from "jest-axe";
 
 expect.extend(toHaveNoViolations);

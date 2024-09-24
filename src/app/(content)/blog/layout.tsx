@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import Background from '@/components/shared/common/Background';
+import Background from '@/components/shared/Background';
 import { LoadingOverlay } from '@/components';
 import 'prism-themes/themes/prism-vsc-dark-plus.css'
 import './articleStyles.scss'

@@ -1,16 +1,13 @@
 'use client'
 
-// import { useProjectContext } from '@/context/ProjectContext'
-
 import React, { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import ProjectCard from './ProjectCard'
-import { Tooltip as ReactTooltip } from 'react-tooltip'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { ProjectWithDetails, Article, Skill, Project } from '@/types/data'
-import ScrollButton from '../shared/buttons/ScrollButton'
+import ScrollButton from '../../components/AboutContainer/ScrollButton'
 import { useData } from '@/context/DataContext'
 
 const Slider = dynamic(() => import('react-slick'), { ssr: false })

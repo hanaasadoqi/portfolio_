@@ -1,5 +1,5 @@
 import React from 'react';
-import Tag from '../../shared/labels/Tag';
+import Tag from '../../shared/Tag';
 
 interface CardTagsProps {
   tags: string[]

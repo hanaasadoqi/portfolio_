@@ -3,14 +3,7 @@ import dynamic from 'next/dynamic'
 import clsx from 'clsx'
 import { AboutAsset } from '@/types/asset.types'
 import { LoadingOverlay } from '@/components/shared'
-
-const DynamicVideo = dynamic(
-  () => import('../shared/media/Video/VideoComponent'),
-  {
-    ssr: false,
-    loading: () => <LoadingOverlay />,
-  }
-)
+import { Video as DynamicVideo } from '@/components/shared'
 
 const DynamicImage = dynamic(() => import('next/image'), {
   ssr: false,

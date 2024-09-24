@@ -5,7 +5,7 @@ import {
   LinkButton,
   ButtonRole,
   ButtonType,
-} from "../../../buttons";
+} from "@/components/shared";
 
 interface DropdownItemProps {
   icon?: React.ReactElement;

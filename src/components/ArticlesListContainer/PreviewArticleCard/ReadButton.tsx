@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import Overlay from '../common/Overlay';
+import { Overlay } from '@/components';
 import Link from 'next/link';
 
 interface ReadButtonProps {

@@ -1,9 +1,8 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import DropdownTrigger from "./DropdownTrigger";
 import { FaDownload } from "react-icons/fa";
-import { IconButtonProps } from "../../../buttons/IconButton";
-import { BaseButtonProps, LinkButtonProps } from "../../../buttons";
-import Link from "../../../../../../__mocks__/next/link";
+import { BaseButtonProps, LinkButtonProps, IconButtonProps } from "@/components/shared";
+import Link from "../../../../../__mocks__/next/link";
 
 // TO DO: Address navigation error
 /*

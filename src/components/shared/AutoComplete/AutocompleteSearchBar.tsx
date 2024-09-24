@@ -3,7 +3,7 @@
 import React, { useRef, useState, KeyboardEvent } from 'react';
 import clsx from 'clsx';
 import { FaSearch } from 'react-icons/fa';
-import { IconButton } from '../../buttons';
+import { IconButton } from '../IconButton';
 import SuggestionsList from './SuggestionsList';
 import useAutocomplete from '@/hooks/useAutocomplete';
 import { Suggestion } from '@/types';

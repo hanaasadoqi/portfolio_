@@ -7,9 +7,8 @@ import {
   outerStyles,
   sizeStyles,
   textStyles,
-} from '../../BaseButton'
-import { iconButtonSizes, TooltipPosition } from '../IconButton'
-import { Icon } from '../../common'
+  iconButtonSizes, TooltipPosition, Icon
+} from '@/components'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { Tooltip } from 'react-tooltip'

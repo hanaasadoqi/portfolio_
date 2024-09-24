@@ -4,7 +4,7 @@ import FloatingActionButton, {
   positionClasses,
 } from "./FloatingActionButton";
 import { FaChevronDown } from "react-icons/fa";
-import { ButtonSize, sizeStyles } from "../../BaseButton/BaseButton";
+import { ButtonSize, sizeStyles } from "@/components/shared";
 
 // Utility function to verify positioning
 const verifyPosition = async (

@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { ButtonGroupProps, LinkButton, LinkButtonProps } from '../..'
+import { ButtonGroupProps, LinkButton, LinkButtonProps } from '@/components'
 
 export interface NavItemProps extends Omit<LinkButtonProps, 'children'> {
   label: string

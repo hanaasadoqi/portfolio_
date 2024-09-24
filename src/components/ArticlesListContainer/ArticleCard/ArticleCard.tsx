@@ -4,7 +4,7 @@ import React from 'react';
 import { ArticlePreviewType } from '@/app/lib/actions/articles';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ReadButton } from '@/components'
+import ReadButton from '../PreviewArticleCard/ReadButton'
 
 interface ArticleCardProps {
   article: ArticlePreviewType;
