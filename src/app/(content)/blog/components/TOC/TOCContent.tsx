@@ -1,9 +1,9 @@
 import React from 'react';
-import TOCItemComponent from './TOCItem';
-import { TOCItem } from '@/hooks/useTOC';
+import TOCItem from './TOCItem';
+import { TOCItem as TOCItemType } from '@/hooks/useTOC';
 
 interface TOCContentProps {
-  tocItems: TOCItem[];
+  tocItems: TOCItemType[];
   activeId: string | null;
   expandedSections: Set<string>;
   toggleSection: (id: string) => void;
@@ -11,9 +11,9 @@ interface TOCContentProps {
 
 const TOCContent: React.FC<TOCContentProps> = ({ tocItems, activeId, expandedSections, toggleSection }) => {
   return (
-    <ul>
+    <ul className="scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-gray-100 dark:scrollbar-track-gray-700">
       {tocItems.map(item => (
-        <TOCItemComponent
+        <TOCItem
           key={item.id}
           item={item}
           activeId={activeId}

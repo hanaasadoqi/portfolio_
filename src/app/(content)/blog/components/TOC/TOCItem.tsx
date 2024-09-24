@@ -24,7 +24,7 @@ const TOCItem: React.FC<TOCItemProps> = ({ item, activeId, expandedSections, tog
             <Link href={`#${item.id}`} className={clsx(`flex-1 block break-normal py-2`, {
               'text-primary-700 dark:text-primary-300': !isActive,
               'text-primary-900 dark:text-primary-100': isActive
-            })}>
+            })} scroll={true}>
               <span>{item.text}</span>
             </Link>
             <button

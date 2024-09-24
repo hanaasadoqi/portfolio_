@@ -25,10 +25,10 @@ const TOCContainer: React.FC<TOCContainerProps> = ({ showTOC, toggleTOC, childre
           icon={showTOC ? <BiSolidBookContent /> : <BiBookContent />}
           onClick={toggleTOC}
         />
-        <div className="relative flex-1">
-          <div className={clsx("relative z-10 flex flex-col items-center justify-start transition-opacity duration-300 ease-in-out", { "hidden opacity-0": !showTOC, "flex opacity-100": showTOC })}>
-            <p className="w-full text-xl font-bold mb-4 pt-4 pl-4 text-left -z-10">Table of Contents</p>
-            <div className="flex-1 w-full flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-gray-100 dark:scrollbar-track-gray-700 p-4">
+        <div className="relative flex-1 h-full">
+          <div className={clsx("relative z-10 h-full flex flex-col items-center justify-start transition-opacity duration-300 ease-in-out", { "hidden opacity-0": !showTOC, "flex opacity-100": showTOC })}>
+            <p className="w-full text-xl font-bold mb-4 pt-4 pl-4 text-left">Table of Contents</p>
+            <div className="flex-1 w-full flex flex-col p-4 overflow-y-auto">
               {children}
             </div>
           </div>
