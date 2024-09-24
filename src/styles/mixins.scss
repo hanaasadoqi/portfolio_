@@ -38,4 +38,4 @@
 @include create-color-vars('projects', $projects, $experience);
 @include create-color-vars('writing', $writing, $projects);
 @include create-color-vars('education', $education, $writing);
-@include create-color-vars('contact', $contact, $education);
+// @include create-color-vars('contact', $contact, $education);
