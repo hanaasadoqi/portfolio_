@@ -54,6 +54,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'cdn.pixabay.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.hashnode.com'
+      }
     ],
   },
   webpack: (config, { isServer }) => {
