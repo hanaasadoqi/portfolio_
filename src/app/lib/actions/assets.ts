@@ -81,7 +81,6 @@ export async function fetchAboutAssets(): Promise<any[]> {
     }
   });
 
-  // const assets = aboutAssets as AboutAsset[];
   return aboutAssets;
 }
 

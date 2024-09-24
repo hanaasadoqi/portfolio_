@@ -26,7 +26,7 @@ const FabMenu: React.FC = () => {
 
   const navigateTo = useCallback(
     (path: string) => {
-      router.push(path);
+      router.replace(path);
       setIsOpen(false);
     },
     [router]

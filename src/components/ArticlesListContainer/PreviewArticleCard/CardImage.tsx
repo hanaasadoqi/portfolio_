@@ -21,7 +21,7 @@ const CardImage: React.FC<CardImageProps> = ({ image, slug, title }) => {
         loading="lazy"
       />
       {slug && (
-        <ReadButton slug={slug} title={title} href="/blog/[slug]" as={`/blog/${slug}`} />
+        <ReadButton slug={slug} title={title} href="/blog/[slug]" as={`/blog`} />
       )}
     </div>
   )
