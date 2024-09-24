@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import ReadButton from '../../../components/shared/buttons/ReadButton'
+import ReadButton from './ReadButton'
 
 interface CardImageProps {
   image: string

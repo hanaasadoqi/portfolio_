@@ -7,7 +7,7 @@ import {
   outerStyles,
   sizeStyles,
   textStyles,
-} from '../BaseButton'
+} from '../../BaseButton'
 import { iconButtonSizes, TooltipPosition } from '../IconButton'
 import { Icon } from '../../common'
 import Link from 'next/link'

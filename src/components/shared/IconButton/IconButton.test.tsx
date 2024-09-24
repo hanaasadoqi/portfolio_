@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import IconButton, { iconButtonSizes } from "./IconButton";
 import Icon from "../../Icon/Icon";
 import { FaChevronCircleDown } from "react-icons/fa";
-import { ButtonSize } from "../BaseButton/BaseButton";
+import { ButtonSize } from "../../BaseButton/BaseButton";
 
 describe("IconButton", () => {
   beforeEach(() => {

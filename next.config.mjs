@@ -10,6 +10,7 @@ import rehypePrism from 'rehype-prism-plus'
 import remarkRehype from 'remark-rehype'
 import remarkParse from 'remark-parse'
 import remarkSectionize from 'remark-sectionize'
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -59,6 +60,9 @@ const nextConfig = {
     config.resolve.alias['@'] = join(__dirname, 'src')
     config.resolve.fallback = {
       fs: false,
+    }
+    if (!isServer) {
+      config.plugins.push(new CaseSensitivePathsPlugin());
     }
     return config
   },
