@@ -2,13 +2,14 @@ import React, { Suspense } from 'react'
 import Hero from '@/components/Hero/Hero'
 import SkillsContainer from './skills/components/SkillContainer'
 import About from '../components/AboutContainer/AboutContainer'
-import { ContactForm } from '../components/ContactForm'
 import { Background } from '@/components/shared'
 import SectionLayout from '@/app/shared/SectionLayout'
 import { ArticlesListContainer } from '@/components'
 import { LoadingOverlay } from '@/components/shared'
 import StickySocialMediaLinks from '@/components/shared/menus/StickySocialMediaLinks'
 import ProjectGalleryContainer from './(content)/projects/components/ProjectGalleryContainer'
+import Education from '@/components/Education/Education'
+import ExperienceContainer from '@/components/Experience/ExperienceContainer'
 
 export default function Home() {
   return (
@@ -28,6 +29,11 @@ export default function Home() {
             <SkillsContainer />
           </Suspense>
         </SectionLayout>
+        <SectionLayout id="experience">
+          <Suspense fallback={<LoadingOverlay />}>
+            <ExperienceContainer />
+          </Suspense>
+        </SectionLayout>
         <SectionLayout id="projects">
           <ProjectGalleryContainer />
         </SectionLayout>
@@ -36,9 +42,8 @@ export default function Home() {
             <ArticlesListContainer />
           </Suspense>
         </SectionLayout>
-
-        <SectionLayout id="contact-me" full>
-          <ContactForm />
+        <SectionLayout id="education">
+          <Education />
         </SectionLayout>
       </div>
     </Background>
