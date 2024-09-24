@@ -1,5 +1,5 @@
 import prisma from '@/app/lib/prismaClient';
-import { ArticlePreview, ArticlePage, ArticleSuggestions } from '@/types';
+import { ArticlePreview, ArticleSuggestions } from '@/types';
 
 export type ArticlePreviewType = Omit<ArticlePreview, "description"> & { description: string | null; publishedDate?: string }
 

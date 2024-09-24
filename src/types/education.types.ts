@@ -1,12 +1,11 @@
 import { Skill } from './skill.types';
 
 export interface Education {
-  id: string;
-  degree?: string;
+  degree?: string | null;
   school: string;
-  location?: string;
+  location?: string | null;
   startDate: string;
-  endDate?: string;
-  skills?: Skill[];
-  url?: string;
+  endDate?: string | null;
+  skills?: any[];
+  url?: string | null;
 }

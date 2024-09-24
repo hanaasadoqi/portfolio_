@@ -4,11 +4,11 @@ export interface WorkExperience {
   id: string;
   company: string;
   role: string;
-  location?: string;
+  location?: string | null;
   startDate: string;
-  endDate?: string;
-  url?: string;
-  logo?: string;
+  endDate?: string | null;
+  url?: string | null;
+  logo?: string | null;
   description: string[];
   skills?: Skill[];
 }
