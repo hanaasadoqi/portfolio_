@@ -2,10 +2,10 @@ import { FC, memo } from 'react'
 import dynamic from 'next/dynamic'
 import clsx from 'clsx'
 import { AboutAsset } from '@/types/asset.types'
-import { LoadingOverlay, Video } from '@/components/shared'
+import { LoadingOverlay } from '@/components/shared'
 
 const DynamicVideo = dynamic(
-  () => import('@/components/shared/media').then(mod => mod.Video),
+  () => import('../shared/media/Video/VideoComponent'),
   {
     ssr: false,
     loading: () => <LoadingOverlay />,
@@ -127,4 +127,4 @@ const AboutItemCard: React.FC<{ item: AboutAsset; className?: string }> = ({
   )
 }
 
-export default AboutItemCard;
+export default memo(AboutItemCard);

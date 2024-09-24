@@ -1,8 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import ReadButton from '../../shared/buttons/ReadButton'
-import Overlay from '../../shared/common/Overlay'
+import ReadButton from '../../../components/shared/buttons/ReadButton'
 
 interface CardImageProps {
   image: string

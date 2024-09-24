@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import Link from "next/link";
-import { extractTextFromChildren, createIdFromText } from "_examples/extractTextFromChildren";
+import { extractTextFromChildren, createIdFromText } from "../../../utils/extractTextFromChildren";
 
 export interface HeadingProps extends React.HTMLProps<HTMLHeadingElement> {
   level: number;

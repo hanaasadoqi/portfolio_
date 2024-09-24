@@ -1,7 +1,7 @@
 "use client"
 
 import useScroll from '@/hooks/useScroll'
-import ScrollButton from '@/components/shared/buttons/ScrollButton'
+import ScrollButton from '../../components/shared/buttons/ScrollButton'
 
 const ScrollButtons: React.FC = () => {
   const { scrollPosition, handleScroll } = useScroll()

@@ -6,7 +6,7 @@ import SearchBar from '../../shared/search/SearchBar'
 import dynamic from 'next/dynamic'
 import { IconButton, Pagination } from '@/components'
 import { ArticlePreviewType } from '@/app/lib/actions/articles';
-import { Suggestion, ArticlePreview } from '@/types';
+import { Suggestion } from '@/types';
 import { useFilteredArticles } from '@/hooks/useFilteredArticles';
 import ArticlesGrid from '../ArticlesGrid/ArticlesGrid';
 
@@ -28,11 +28,10 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ initialArticles, suggestion
 
   const articles = useFilteredArticles(initialArticles, searchQuery)
 
-  // Media queries to determine screen size
-  const isSmallScreen = useMediaQuery({ query: '(max-width: 768px)' }) // sm
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 768px)' })
   const isMediumScreen = useMediaQuery({
     query: '(min-width: 769px) and (max-width:1030px)',
-  }) // lg
+  })
   const isLargeScreen = useMediaQuery({ query: '(min-width: 1030px)' })
 
   const isXLargeScreen = useMediaQuery({ query: '(min-width: 1600px)' })
@@ -93,18 +92,3 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ initialArticles, suggestion
 }
 
 export default ArticlesList;
-
-// <div className="mt-8 flex flex-wrap items-center justify-center">
-//   {Array.from({ length: totalPages }, (_, index) => (
-//     <button
-//       key={index}
-//       className={`m-1 rounded-full flex items-center justify-center px-3 py-1 text-sm ${currentPage === index + 1
-//         ? 'bg-primary-500 text-white'
-//         : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
-//         }`}
-//       onClick={() => handlePageChange(index + 1)}
-//     >
-//       {index + 1}
-//     </button>
-//   ))}
-// </div>
