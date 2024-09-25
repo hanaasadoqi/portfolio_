@@ -58,7 +58,7 @@ const ModalContainer: React.FC<ModalContainerProps> = ({ showSkills, handleSkill
     >
       <div className="h-full w-full flex items-center justify-center">
         <div
-          className={clsx("bg-white/50 dark:bg-black/50 overflow-y-auto max-h-full", {
+          className={clsx("bg-white/50 dark:bg-black/50 overflow-y-auto h-full w-full flex flex-col justify-center items-center", {
             "md:max-w-5xl": isProject,
             "md:max-w-4xl": isSkill,
             "md:max-w-6xl": isArticle,

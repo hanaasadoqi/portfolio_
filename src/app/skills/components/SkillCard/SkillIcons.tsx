@@ -32,7 +32,7 @@ const SkillIcons: React.FC<SkillIconsProps> = ({
           {...commonProps}
         />
 
-        {experienceCount && experienceCount > 0 && (
+        {experienceCount && experienceCount > 0 ? (
           <IconButton
             className="hidden lg:block text-primary-900 hover:text-white"
             aria-label="Professional Experience"
@@ -41,9 +41,9 @@ const SkillIcons: React.FC<SkillIconsProps> = ({
             tooltip={`${experienceCount} Professional Experience${experienceCount > 1 ? 's' : ''}`}
             {...commonProps}
           />
-        )}
+        ) : null}
 
-        {projectsCount && projectsCount > 0 && (
+        {projectsCount && projectsCount > 0 ? (
           <IconButton
             aria-label="Number of Personal Projects"
             className="hidden lg:block text-primary-900 hover:text-white"
@@ -52,9 +52,9 @@ const SkillIcons: React.FC<SkillIconsProps> = ({
             tooltip={`${projectsCount} Project${projectsCount > 1 ? 's' : ''}`}
             {...commonProps}
           />
-        )}
+        ) : null}
 
-        {yearsOfExperience && yearsOfExperience > 0 && (
+        {yearsOfExperience && yearsOfExperience >= 0 ? (
           <IconButton
             aria-label="Years of Knowledge"
             className="hidden lg:block text-primary-900 hover:text-white"
@@ -63,7 +63,7 @@ const SkillIcons: React.FC<SkillIconsProps> = ({
             tooltip={`${yearsOfExperience} Year${yearsOfExperience > 1 ? 's' : ''}`}
             {...commonProps}
           />
-        )}
+        ) : null}
       </div>
     </div>
   );

@@ -95,9 +95,9 @@ const SkillsList: React.FC = () => {
 
             {skills.map((skill, index) => (
               <Suspense key={index} fallback={renderSkeletons(1)} >
-                <Link key={index} href={`/skills/[id]`} as={`/skills/${skill.id}`} scroll={false}>
-                  <SkillCard skill={skill} />
-                </Link>
+                {/* <Link key={index} href={`/skills/[id]`} as={`/skills/${skill.id}`} scroll={false}> */}
+                <SkillCard skill={skill} />
+                {/* </Link> */}
               </Suspense>
             ))}
           </div>

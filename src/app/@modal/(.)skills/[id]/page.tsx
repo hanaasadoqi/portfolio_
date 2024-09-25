@@ -11,7 +11,7 @@ export default async function Page({
   const skill = (await getSkillById(id)) as SkillModalType
 
   return (
-    <ModalContainer title={skill.name} icon={skill.icon}>
+    <ModalContainer title={skill.name} icon={skill.icon} isSkill>
       <SkillContent skill={skill} />
     </ModalContainer>
   )

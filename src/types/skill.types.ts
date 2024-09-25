@@ -8,14 +8,14 @@ import { Education } from './education.types';
 export interface Skill {
   id: string;
   name: string;
-  icon: string;
+  icon: string | null;
   startYear: number;
-  documentation?: string;
+  documentation?: string | null;
   categories: string[];
   tags: string[];
   series?: Series[];
-  projects?: Project[];
-  articles?: Article[];
+  projects?: any[];
+  articles?: any[];
   experiences?: WorkExperience[];
   educations?: Education[];
 }

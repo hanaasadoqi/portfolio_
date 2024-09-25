@@ -1,17 +1,36 @@
 import prisma from '@/app/lib/prismaClient'
 import { Skill, SkillPreview } from '@/types'
 
-export async function fetchSkills(): Promise<SkillPreview[]> {
-  return await prisma.skill.findMany({
+export async function fetchSkills(): Promise<{ skills: any[] }> {
+  const skills = await prisma.skill.findMany({
     select: {
       id: true,
-      name: true,
       icon: true,
+      name: true,
       documentation: true,
-      startYear: true
-    }
+      startYear: true,
+      _count: {
+        select: {
+          projects: true,
+          experiences: true
+        }
+      }
+    },
   })
+
+  return { skills }
 }
+export async function getSkillById(id: string) {
+  return await prisma.skill.findUnique({
+    where: { id },
+    include: {
+      projects: true,
+      articles: true,
+      experiences: true,
+    },
+  });
+}
+
 
 export async function fetchSkillTags(): Promise<string[]> {
   const tags = await prisma.skill.findMany({

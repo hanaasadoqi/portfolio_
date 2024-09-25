@@ -6,29 +6,23 @@ import { Skill } from '../../types'
 import clsx from 'clsx'
 import { SkillPreview } from '@/types'
 
-// Define the Omitted version of Skill for projects with limited info
 type ProjectSkill = Omit<Skill, '_count' | 'categories' | 'tags' | 'startYear' | 'projects'>
-
-// SkillCardProps can either be a full Skill or a ProjectSkill
 interface SkillCardProps {
-  skill: Skill | ProjectSkill | SkillPreview
+  skill: any
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
   const { id, name, icon } = skill
-
-  // if (skill.startYear) {
-
+  const { projects, experiences } = skill._count
   // Only calculate `yearsOfExperience`, `workExperiences`, and `projects` if the full `Skill` is provided
-  // const yearsOfExperience = 'startYear' in skill ? new Date().getFullYear() - skill.startYear : undefined
-  // }/
-  // const workExperiences = skill._count?.workExperiences || 0
-  // const projects = skill.projects && skill.projects.length || 0
+  const yearsOfExperience = 'startYear' in skill ? new Date().getFullYear() - skill.startYear : undefined
 
   // Dynamically load the appropriate icon from the icon library
   const IconComponent = icon && icon in IconLibrary
     ? IconLibrary[icon as keyof typeof IconLibrary]
     : IconLibrary.Loading
+
+
 
   return (
     <div
@@ -42,14 +36,13 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
       tabIndex={0}
       aria-label={`Skill card for ${name}`}
     >
-      {'_count' in skill && (
-        <SkillIcons
-          id={id}
-          experienceCount={1}
-          projectsCount={2}
-          yearsOfExperience={skill.startYear ? new Date().getFullYear() - skill.startYear : 0}
-        />
-      )}
+
+      <SkillIcons
+        id={id}
+        experienceCount={experiences}
+        projectsCount={projects}
+        yearsOfExperience={yearsOfExperience}
+      />
 
       <div className="flex h-full transform flex-col items-center md:items-start justify-end rounded-lg bg-gradient-to-br from-primary-400 to-secondary-300 shadow-md transition-transform hover:scale-105 dark:from-purple-700 dark:to-blue-800 p-2 lg:p-3 gap-2 lg:gap-4 2xl:p-6">
         <React.Suspense fallback={<FaSpinner />}>
@@ -62,7 +55,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
           )}
         </React.Suspense>
 
-        <h3 className="mb-0 overflow-hidden font-semibold text-white text-center md:text-left text-base lg:text-xl">
+        <h3 className="mb-0 font-semibold text-white text-center md:text-left text-base lg:text-xl">
           {name}
         </h3>
       </div>

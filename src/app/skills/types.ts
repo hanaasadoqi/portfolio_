@@ -5,10 +5,7 @@ export interface Skill {
   startYear: number
   categories: string[]
   tags: string[]
-  _count?: {
-    projects: number
-    workExperiences: number
-  },
+  experiences?: any[]
   projects?: any[]
   articles?: any[]
   series?: any[]
