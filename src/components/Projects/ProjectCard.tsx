@@ -44,11 +44,11 @@ const ProjectCard: React.FC<ProjectPreview> = ({
         )}
       </div>
 
-      <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-primary-100">
+      <h3 className="md:mb-2 text-xl font-semibold text-gray-900 dark:text-primary-100">
         {title}
       </h3>
 
-      <p className="mb-4 line-clamp-3 text-sm text-gray-600 dark:text-primary-300">
+      <p className="md:mb-4 line-clamp-3 truncate text-sm text-gray-600 dark:text-primary-300">
         {description}
       </p>
 

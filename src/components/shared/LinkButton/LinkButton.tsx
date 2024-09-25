@@ -99,15 +99,17 @@ const LinkButton: React.FC<LinkButtonProps> = ({
         scroll={scroll}
         download={download}
         data-id={`${href.replace('#', '')}-btn`}
-        data-tooltip-id={tooltipId}
-        data-tooltip-content={tooltip}
-        data-tooltip-place={tooltipPlace}
+        {...(tooltip ? {
+          'data-tooltip-id': tooltipId,
+          'data-tooltip-content': tooltip,
+          'data-tooltip-place': tooltipPlace,
+        } : {})}
         {...rest}
       >
         {icon && <Icon icon={icon} size={size} className={className} />}
         {!iconOnly && children}
       </Link>
-      {tooltip && <Tooltip id={tooltipId} className="z-50" />}
+      {tooltip && tooltipId && <Tooltip id={tooltipId} className="z-50" />}
     </>
   )
 }

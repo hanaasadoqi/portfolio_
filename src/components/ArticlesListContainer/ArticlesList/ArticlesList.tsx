@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import SearchBar from '../../shared/SearchBar'
 import dynamic from 'next/dynamic'
@@ -25,8 +25,11 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ initialArticles, suggestion
   const [itemsPerPage, setItemsPerPage] = useState(1)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [articles, setArticles] = useState<ArticlePreviewType[]>([])
+  const [titleSuggestions, setTitleSuggestions] = useState<Suggestion[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
-  const articles = useFilteredArticles(initialArticles, searchQuery)
+  // const articles = useFilteredArticles(initialArticles, searchQuery)
 
   const isSmallScreen = useMediaQuery({ query: '(max-width: 768px)' })
   const isMediumScreen = useMediaQuery({
@@ -48,11 +51,9 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ initialArticles, suggestion
   }, [isSmallScreen, isMediumScreen, isLargeScreen, isXLargeScreen])
 
   // Calculate total pages
-  const totalPages = Math.ceil(articles.length / itemsPerPage)
 
   // Calculate articles to display on current page
   const startIndex = (currentPage - 1) * itemsPerPage
-  const currentArticles = articles.slice(startIndex, startIndex + itemsPerPage)
 
   // Pagination handler
   const handlePageChange = (pageNumber: number) => {
@@ -61,8 +62,40 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ initialArticles, suggestion
 
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
 
+  useEffect(() => {
+    const loadArticles = async () => {
+      try {
+        console.log(initialArticles)
+        setArticles(initialArticles);
+        setTitleSuggestions(suggestions);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadArticles();
+  }, [initialArticles, suggestions]);
+
+  const filteredArticles = useMemo(() => {
+    if (!searchQuery) return articles;
+    const query = searchQuery.toLowerCase();
+    return articles.filter(
+      (article) =>
+        article.title.toLowerCase().includes(query) ||
+        article.description?.toLowerCase().includes(query) ||
+        article.subtitle.toLowerCase().includes(query) ||
+        article.tags.join(" ").toLowerCase().includes(query)
+    );
+  }, [searchQuery, articles]);
+
+  const currentArticles = filteredArticles.slice(startIndex, startIndex + itemsPerPage)
+
+  const totalPages = Math.ceil(filteredArticles.length / itemsPerPage)
+
   return (
-    <>
+    <div className="flex flex-col justify-center items-center">
       <div className="my-2 md:mb-8 flex w-full flex-col items-center justify-between md:flex-row">
         <h3 className="mb-4 text-center text-2xl text-primary-800 dark:text-primary-200 md:text-left md:text-3xl lg:text-4xl">
           Articles
@@ -84,10 +117,17 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ initialArticles, suggestion
           />
         </div>
       </div>
-
-      <ArticlesGrid articles={currentArticles} />
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
-    </>
+      {isLoading ? (
+        <div className="text-center text-gray-500 dark:text-gray-400">Loading articles...</div>
+      ) : filteredArticles.length > 0 ? (
+        <>
+          <ArticlesGrid articles={currentArticles} />
+          <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+        </>
+      ) : (
+        <div className="text-center text-gray-500 dark:text-gray-400">No articles found.</div>
+      )}
+    </div>
   )
 }
 
