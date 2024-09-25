@@ -32,6 +32,7 @@ model Skill {
 
 model Asset {
   id              String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  order           Int?
   title           String
   description     String?
   src             String
