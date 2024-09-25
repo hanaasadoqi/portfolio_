@@ -6,6 +6,7 @@ import { MdOpenInBrowser } from "react-icons/md";
 interface ProjectLinks {
   details: Links;
   title?: string;
+  iconOnly?: boolean;
 }
 
 interface Links {
@@ -18,23 +19,24 @@ interface Links {
 
 export const ProjectLinksBar: React.FC<ProjectLinks> = memo(({
   title,
-  details
+  details,
+  iconOnly = false
 }) => {
   const { frontendRepo, backendRepo, videoDemo, demoUrl, codeRepo } = details;
   return (
-    <div className="flex justify-center md:items-start items-center p-4 gap-2">
+    <div className="flex justify-center md:items-start items-center p-1 md:p-4 md:gap-2">
       {videoDemo && (
         <LinkButton
           href={videoDemo}
           tooltipId="link-tooltip"
           tooltip="Video Demo"
           tooltipPlace="bottom-start"
-          className="gap-2 px-3 py-2"
+          className="md:gap-2 px-3 py-2"
           variant="ghost"
           aria-label={`${title} Video Demo`}
         >
           <FaPlay />
-          <span className="hidden md:block">Video Demo</span>
+          {!iconOnly && <span className="hidden md:block">Video Demo</span>}
         </LinkButton>
       )}
 
@@ -44,12 +46,12 @@ export const ProjectLinksBar: React.FC<ProjectLinks> = memo(({
           tooltipId="link-tooltip"
           tooltip="Backend Code"
           tooltipPlace="bottom-start"
-          className="gap-2 px-3 py-2"
+          className="md:gap-2 px-3 py-2"
           variant="ghost"
           aria-label={`${title} Backend Repository`}
         >
           <FaServer />
-          <span className="hidden md:block">Backend</span>
+          {!iconOnly && <span className="hidden md:block">Backend</span>}
         </LinkButton>
       )}
 
@@ -59,12 +61,12 @@ export const ProjectLinksBar: React.FC<ProjectLinks> = memo(({
           tooltipId="frontend-tooltip"
           tooltip="Frontend Repository"
           tooltipPlace="bottom-start"
-          className="gap-2 px-3 py-2"
+          className="md:gap-2 px-3 py-2"
           variant="ghost"
           aria-label={`${title} Frontend Repository`}
         >
           <FaLaptopCode />
-          <span className="hidden md:block">Frontend</span>
+          {!iconOnly && <span className="hidden md:block">Frontend</span>}
         </LinkButton>
       )}
 
@@ -74,12 +76,12 @@ export const ProjectLinksBar: React.FC<ProjectLinks> = memo(({
           tooltipId="code-tooltip"
           tooltip="Code Repository"
           tooltipPlace="right"
-          className="gap-2 px-3 py-2"
+          className="md:gap-2 px-3 py-2"
           variant="ghost"
           aria-label={`${title} Code Repository`}
         >
           <FaCode />
-          <span className="hidden md:block">Code</span>
+          {!iconOnly && <span className="hidden md:block">Code</span>}
         </LinkButton>
       )}
 
@@ -89,12 +91,12 @@ export const ProjectLinksBar: React.FC<ProjectLinks> = memo(({
           tooltipId="link-tooltip"
           tooltip="Demo"
           tooltipPlace="top-start"
-          className="gap-2 px-3 py-2"
+          className="md:gap-2 px-3 py-2"
           variant="ghost"
           aria-label={`${title} Demo`}
         >
           <MdOpenInBrowser />
-          <span className="hidden md:block">Live Demo</span>
+          {!iconOnly && <span className="hidden md:block">Live Demo</span>}
         </LinkButton>
       )}
     </div>

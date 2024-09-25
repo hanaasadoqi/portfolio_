@@ -10,7 +10,7 @@ import { ProjectLinksBar } from './ProjectLinksBar'
 import type { SkillCard } from '@/types'
 import { toId } from '@/utils/toId'
 
-const SkillCard: React.FC<{ skill: SkillPreview }> = memo(({ skill }) => {
+const ProjectSkillCard: React.FC<{ skill: SkillPreview }> = memo(({ skill }) => {
   const IconComponent =
     skill.icon && skill.icon in IconLibrary
       ? IconLibrary[skill.icon as keyof typeof IconLibrary]
@@ -41,7 +41,7 @@ const SkillCard: React.FC<{ skill: SkillPreview }> = memo(({ skill }) => {
   );
 });
 
-SkillCard.displayName = 'SkillCard';
+ProjectSkillCard.displayName = 'ProjectSkillCard';
 
 interface ProjectContentProps {
   project: ProjectPage
@@ -60,7 +60,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ project, handleSkills, 
           {project.skills && project.skills.length > 0 && (
             <Suspense fallback={<SkeletonSkillCard />}>
               {project.skills.map((skill, index) => (
-                <SkillCard key={index} skill={skill} />
+                <ProjectSkillCard key={index} skill={skill} />
               ))}
             </Suspense>
           )}

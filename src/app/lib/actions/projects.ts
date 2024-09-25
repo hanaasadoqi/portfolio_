@@ -2,7 +2,7 @@ import prisma from '@/app/lib/prismaClient'
 import { ProjectPage, ProjectPreview } from '@/types'
 import { toTitleCaseBasic } from '@/utils/toTitleCase';
 
-export async function fetchProjects(): Promise<ProjectPreview[]> {
+export async function fetchProjects(): Promise<any[]> {
   const projects = await prisma.project.findMany({
     select: {
       id: true,
@@ -12,10 +12,42 @@ export async function fetchProjects(): Promise<ProjectPreview[]> {
       status: true,
       slug: true,
       tags: true,
+      skills: {
+        select: {
+          id: true,
+          name: true,
+          icon: true,
+        }
+      },
+      frontendRepo: true,
+      backendRepo: true,
+      codeRepo: true,
+      demoUrl: true,
+      videoDemo: true
     }
   })
 
-  return projects;
+  const newProjects = projects.map(project => {
+    return {
+      id: project.id,
+      image: project.image,
+      title: project.title,
+      description: project.description,
+      status: project.status,
+      tags: project.tags,
+      skills: project.skills,
+      details: {
+        demoUrl: project.demoUrl ?? undefined,
+        frontendRepo: project.frontendRepo ?? undefined,
+        backendRepo: project.backendRepo ?? undefined,
+        codeRepo: project.codeRepo ?? undefined,
+        videoDemo: project.videoDemo ?? undefined
+      },
+
+    }
+  })
+
+  return newProjects;
 }
 
 export async function fetchProjectById(projectId: string): Promise<any> {
@@ -228,69 +260,3 @@ export async function fetchProjectsByCategory(category: string): Promise<Project
     }
   });
 }
-
-// export async function fetchProjects(query: {
-//   filterTags?: string[],
-//   filterCategory?: string,
-//   filterSkills?: string[],
-//   filterTitle?: string,
-//   sortBy?: 'title' | 'date',
-//   searchQuery?: string
-// }): Promise<ProjectPreview[]> {
-//   const whereConditions: Prisma.ProjectWhereInput = {
-//     AND: []
-//   };
-
-//   if (query.filterTags) {
-//     whereConditions.AND.push({
-//       tags: {
-//         hasSome: query.filterTags
-//       }
-//     });
-//   }
-//   if (query.filterCategories) {
-//     whereConditions.AND.push({
-//       category: {
-//         equals: query.filterCategory
-//       }
-//     });
-//   }
-
-//   if (query.filterSkills) {
-//     whereConditions.AND.push({
-//       skills: {
-//         some: {
-//           name: {
-//             in: query.filterSkills
-//           }
-//         }
-//       }
-//     });
-//   }
-
-//   if (query.filterTitle) {
-//     whereConditions.AND.push({
-//       title: {
-//         contains: query.filterTitle,
-//         mode: 'insensitive'
-//       }
-//     });
-//   }
-
-//   const orderBy = query.sortBy ? { [query.sortBy]: 'asc' } : undefined;
-
-//   const projects = await prisma.project.findMany({
-//     where: whereConditions,
-//     orderBy,
-//     select: {
-//       id: true,
-//       image: true,
-//       title: true,
-//       description: true,
-//       status: true,
-//       slug: true
-//     }
-//   });
-
-//   return projects;
-// }
