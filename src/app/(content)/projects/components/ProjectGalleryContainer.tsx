@@ -11,7 +11,7 @@ const ProjectGalleryContainer: React.FC = async () => {
 
   return (
     <div className="w-full h-full">
-      <h3 className="text-primary-900 dark:text-primary-100">Projects</h3>
+      <h2 className="text-primary-900 dark:text-primary-100 text-2xl md:text-3xl lg:text-4xl">Projects</h2>
       <ProjectGallery featuredProject={featuredProject} rightProjects={rightGallery} bottomProjects={bottomGallery} />
     </div>
   )

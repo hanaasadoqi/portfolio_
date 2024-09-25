@@ -6,7 +6,7 @@ interface CardDescriptionProps {
 
 const CardDescription: React.FC<CardDescriptionProps> = ({ description }) => {
   return (
-    <p className="flex-grow break-words line-clamp-3 text-gray-700 dark:text-gray-300 mb-4">
+    <p className="break-words line-clamp-3 text-gray-700 dark:text-gray-300">
       {description}
     </p>
   )

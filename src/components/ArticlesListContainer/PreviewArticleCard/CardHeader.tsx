@@ -15,13 +15,13 @@ const CardHeader: React.FC<CardHeaderProps> = ({ title, publishedDate, parent })
   return (
     <>
       <h3
-        className={clsx('md:mb-2 text-2xl font-semibold', {
-          'text-sm mb-4 text-gray-500': parent,
+        className={clsx('text-base md:text-xl text-2xl font-semibold mb-0', {
+          'text-sm text-gray-500': parent,
         })}
       >
         {title}
       </h3>
-      <p className="md:mb-4 text-sm text-gray-500 dark:text-gray-400">
+      <p className="md:mb-2 text-sm md:text-base lg:text-lg text-gray-500 dark:text-gray-400">
         Published on {formattedDate}
       </p>
     </>

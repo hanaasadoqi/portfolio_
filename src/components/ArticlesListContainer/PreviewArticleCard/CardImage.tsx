@@ -10,7 +10,7 @@ interface CardImageProps {
 
 const CardImage: React.FC<CardImageProps> = ({ image, slug, title }) => {
   return (
-    <div className="relative group mb-4">
+    <div className="relative group">
       <Image
         src={image}
         alt={`${title} thumbnail`}

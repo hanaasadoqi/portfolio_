@@ -18,7 +18,7 @@ const PreviewArticleCard: React.FC<Omit<ArticleCardProps, "description">> = ({
 }) => {
   return (
     <div
-      className="flex flex-col justify-between rounded-lg bg-primary-100 text-primary-900 shadow-md transition-shadow hover:shadow-lg dark:bg-primary-800 dark:text-primary-100 p-4 m-2 w-full max-w-sm md:max-w-md lg:max-w-lg h-full"
+      className="space-y-2 flex flex-col justify-between rounded-lg bg-primary-100 text-primary-900 shadow-md transition-shadow hover:shadow-lg dark:bg-primary-800 dark:text-primary-100 p-4 m-2 w-full max-w-sm md:max-w-md lg:max-w-lg h-full"
       aria-label={`Article card for ${title}`}
     >
       {/* Title and Date */}

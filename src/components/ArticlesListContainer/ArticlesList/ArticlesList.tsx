@@ -27,7 +27,7 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ initialArticles, suggestion
   const [searchQuery, setSearchQuery] = useState('')
   const [articles, setArticles] = useState<ArticlePreviewType[]>([])
   const [titleSuggestions, setTitleSuggestions] = useState<Suggestion[]>([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   // const articles = useFilteredArticles(initialArticles, searchQuery)
 
@@ -65,9 +65,8 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ initialArticles, suggestion
   useEffect(() => {
     const loadArticles = async () => {
       try {
-        console.log(initialArticles)
-        setArticles(initialArticles);
-        setTitleSuggestions(suggestions);
+        await setArticles(initialArticles);
+        await setTitleSuggestions(suggestions);
       } catch (error) {
         console.error('Error fetching articles:', error);
       } finally {
