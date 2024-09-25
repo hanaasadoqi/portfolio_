@@ -1,25 +1,16 @@
-import clsx from "clsx"
-import { PreviewArticleCard } from "../PreviewArticleCard"
-import { ArticlePreviewType } from "@/app/lib/actions/articles"
+import React from 'react'
+import { PreviewArticleCard } from '../PreviewArticleCard'
+import { ArticlePreviewType } from '@/app/lib/actions/articles'
 
 interface ArticlesGridProps {
   articles: ArticlePreviewType[]
-  isSmallScreen?: boolean;
-  isMediumScreen?: boolean;
-  isLargeScreen?: boolean;
 }
 
-export default function ArticlesGrid({ articles, isSmallScreen, isMediumScreen, isLargeScreen }: ArticlesGridProps) {
+export default function ArticlesGrid({ articles }: ArticlesGridProps) {
   return (
-    <div
-      className={clsx('grid justify-center justify-items-center items-center md:gap-2 grid-flow-col auto-cols-fr transition-transform ease duration-300', {
-        'grid-cols-1': isSmallScreen,
-        'grid-cols-2': isMediumScreen,
-        'grid-cols-3': isLargeScreen
-      })}
-    >
-      {articles.slice(0, articles.length).map(item => (
-        <PreviewArticleCard key={`${item.slug}-${item.slug}`} {...item} />
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-transform ease duration-300">
+      {articles.map(article => (
+        <PreviewArticleCard key={article.slug} {...article} />
       ))}
     </div>
   )

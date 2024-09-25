@@ -10,13 +10,13 @@ interface CardImageProps {
 
 const CardImage: React.FC<CardImageProps> = ({ image, slug, title }) => {
   return (
-    <div className="relative group">
+    <div className="relative flex-grow group transition-transform duration-300 ease">
       <Image
         src={image}
-        alt={`${title} thumbnail`}
+        alt={`${title} image`}
         width={600}
         height={400}
-        className="w-full h-48 sm:h-56 lg:h-64 rounded-lg object-cover transition-transform duration-300 group-hover:scale-105"
+        className="rounded-lg object-cover w-full h-full group-hover:scale-105"
         priority={false}
         loading="lazy"
       />

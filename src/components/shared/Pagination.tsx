@@ -1,10 +1,10 @@
-import React from 'react';
-import clsx from 'clsx';
+import React, { memo } from 'react'
+import clsx from 'clsx'
 
 interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
+  currentPage: number
+  totalPages: number
+  onPageChange: (page: number) => void
 }
 
 const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
@@ -13,10 +13,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <nav
-      className="mt-8 flex flex-wrap items-center justify-center"
-      aria-label="Pagination Navigation"
-    >
+    <nav className="mt-8 flex items-center justify-center" aria-label="Pagination Navigation">
       {pages.map(page => (
         <button
           key={page}
@@ -36,7 +33,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
         </button>
       ))}
     </nav>
-  );
-};
+  )
+}
 
-export default React.memo(Pagination);
+export default memo(Pagination)

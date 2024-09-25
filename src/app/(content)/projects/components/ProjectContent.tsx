@@ -83,7 +83,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ project, handleSkills, 
         </div>
       </div>
 
-      <div className="max-w-5xl md:max-w-6xl lg:max-w-7xl w-full mt-8 flex flex-col md:flex-row items-center justify-center">
+      <div className="max-w-5xl md:max-w-6xl lg:max-w-7xl w-full prose-xl mt-8 flex flex-col justify-center">
         {content}
       </div>
     </div>

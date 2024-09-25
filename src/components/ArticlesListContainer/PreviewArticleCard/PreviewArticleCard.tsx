@@ -1,34 +1,20 @@
 import React from 'react'
-import { ArticlePreviewType } from '@/app/lib/actions/articles'
 import CardTags from './CardTags'
 import CardImage from './CardImage'
 import CardHeader from './CardHeader'
+import { ArticlePreviewType } from '@/app/lib/actions/articles'
 
-interface ArticleCardProps extends ArticlePreviewType {
-  parent?: string;
-}
-
-const PreviewArticleCard: React.FC<Omit<ArticleCardProps, "description">> = ({
+const PreviewArticleCard: React.FC<Omit<ArticlePreviewType, 'description'>> = ({
   title,
   image,
   slug,
   publishedDate,
   tags,
-  parent,
 }) => {
   return (
-    <div
-      className="space-y-2 flex flex-col justify-between rounded-lg bg-primary-100 text-primary-900 shadow-md transition-shadow hover:shadow-lg dark:bg-primary-800 dark:text-primary-100 p-4 m-2 w-full max-w-sm md:max-w-md lg:max-w-lg h-full"
-      aria-label={`Article card for ${title}`}
-    >
-      {/* Title and Date */}
+    <div className="flex flex-col justify-between p-4 bg-primary-100 rounded-lg shadow-lg dark:bg-primary-800 transition-shadow hover:shadow-xl h-[500px] gap-2" aria-label={`Article card for "${title}"`}>
       <CardHeader title={title} publishedDate={publishedDate} />
-
-      {/* Image with Overlay */}
-      {(!parent && image) && (
-        <CardImage image={image} slug={slug} title={title} />
-      )}
-
+      {image && <CardImage image={image} slug={slug} title={title} />}
       <CardTags tags={tags} />
     </div>
   )
