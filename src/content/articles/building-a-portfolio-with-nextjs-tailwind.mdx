@@ -1,0 +1,202 @@
+---
+title: "Building a Portfolio with Next.js 14, TypeScript, and TailwindCSS from Scratch (Sort of)"  
+subtitle: "Refactoring for Scalability, `Performance, and Cross-Browser Compatibility"  
+description: "A deep dive into refactoring a portfolio website using best practices in Next.js 14, TailwindCSS, and TypeScript, with a focus on scalable architecture, performance optimization, and cross-browser compatibility."  
+tags: ["Next.js", "Tailwind CSS", "TypeScript", "Cross-Browser Testing", "Accessibility", "App Router"]
+publishedDate: September 25th, 2024
+---
+
+## Introduction
+
+Building a portfolio is one of those essential but intimidating tasks for any developer. Whether you're starting from scratch or trying to overhaul an old site, it can feel like a never-ending project. 
+
+If you’ve been putting it off or need to improve an existing one, you’re not alone.
+
+### Why the Refactor?
+
+Ever since I graduated from Flatiron School, building my portfolio has been this giant, looming task I’ve always avoided. I got lucky and landed a job soon after, so I was able to push it off. Fast-forward almost seven years, and here I am—unexpectedly unemployed in an industry filled with uncertainty—and that task hasn’t gotten any smaller.
+
+So I finally built it. I took my time, learned new tech, and put together what I thought was an incredible site. But here’s the thing: has anyone *ever* really finished a project to their satisfaction?
+
+The day I launched my portfolio was exciting...until things started breaking. I was proudly showing it to a friend when I opened the site in **Safari** and found the layout *completely* messed up.
+
+My skills section struggled to load, sometimes breaking entirely. I was so caught up in fixing issue after issue that I ended up abandoning **type safety** and making sloppy coding decisions.
+
+My original portfolio felt rushed and incomplete, so this refactor is my attempt to fix it. Instead of beating myself up over the mistakes, I’m using this as an opportunity to rebuild, learn, and apply everything I’ve picked up over the years—this time, consciously. 
+
+The focus now is making my portfolio scalable, accessible, performant, and cross-browser compatible.
+
+---
+
+## Facing the Mess: What Went Wrong?
+
+The first step in refactoring is admitting what went wrong. It was more than just one or two things; it was a combination of poor planning, lack of testing, and performance issues that snowballed. Here’s a breakdown of where it all went south:
+
+1. **Cross-Browser Testing Neglect**: I developed the site primarily for **Chrome** and ignored other browsers. When I finally checked it on **Safari**, the layout was completely broken.
+   - I hadn’t factored in cross-browser testing at all, which led to unexpected issues across multiple devices.
+2. **Disorganized Project Structure**: My hybrid approach of splitting components between feature-based directories in `/app` and shared components in `/components` quickly became confusing.
+   - This made the codebase harder to scale and maintain.
+3. **Poor Performance**: I failed to take advantage of **Next.js’s** powerful features, like **Incremental Static Regeneration (ISR)** or caching.
+   - This oversight led to slow page loads, especially with so much data crammed into a single route (`/`).
+4. **Last-Minute Deployment Chaos**: I hadn’t run the build in a while, and when I did, it became a nightmare.
+   - I had to scramble to fix breaking issues, cutting corners, and abandoning **type safety** just to get something functional online.
+
+Clearly, the site needed a serious refactor, not just a few tweaks. Now that I’ve pinpointed the core problems, the real work begins.
+
+---
+
+## Documentation Isn’t Optional (I Learned the Hard Way)
+
+One of my biggest mistakes was ignoring the documentation for tools like **Next.js**, **Prisma**, **Supabase**, and **Tailwind CSS**. 
+
+I assumed I could wing it, but it didn’t take long for that to backfire. Skipping documentation leads to bad practices, confusion, and unnecessary rework.
+
+<Callout>
+
+**Always read the docs.**
+
+Whether it’s your first time with a tool or your hundredth, tech evolves. Documentation keeps you in sync with the latest best practices.
+
+</Callout>
+
+---
+
+## Rethinking the Structure and Tech Stack
+
+In the original build, I jumped into coding without properly planning the structure or tech stack. That resulted in an over-complicated and bloated project. This time, I’m planning it out to avoid a tangled mess later on.
+
+### App Router for Organization
+
+**Next.js 14’s App Router** allows me to colocate components, API routes, and pages in a modular way. I’m embracing this feature to improve my project’s structure. Here’s how I’m breaking it down:
+
+- **Pages and Routes in `/app`**: Keeping the main routes organized and separated.
+- **Reusable Components in `/components`**: Ensuring all reusable UI elements are centralized and easy to find.
+- **Database Logic in `/services`**: Handling interactions with **Prisma** and **Supabase** in one place for easy database integration.
+
+### Tech Choices Done Right
+
+- **Prisma and Supabase**: I’m reworking the database schema to be scalable and performant. In the first version, I rushed this part, which led to issues.
+- **MDX Components**: I integrated **MDX** for blog content in the original version but didn’t bother with proper styling. This time, I’m making sure the components are consistently styled with **Tailwind CSS**.
+
+<Callout>
+
+**Plan your project structure and tech stack upfront.**
+
+</Callout>
+
+---
+
+## Simplifying the Project Structure
+
+Initially, I thought organizing components by feature inside `/app` and keeping shared components in `/components` would be smart. But it turned into a nightmare. I was duplicating components because I didn’t realize some already existed elsewhere. As the project grew, so did the confusion.
+
+### Solution: Centralize and Scale
+
+I’m simplifying things this time. Reusable components will all live in `/components/shared`, and any route-specific logic will remain in the `/app` folder. The homepage, which was overloaded with data, is being broken down into smaller, lazy-loaded sections for better performance.
+
+```plaintext
+/app
+  page.tsx
+/components
+  /shared
+    /Button.tsx
+    /Card.tsx
+    /Header.tsx
+/services
+  /prisma.ts
+  /supabase.ts
+```
+
+<Callout>
+
+A clear, centralized structure **prevents confusion and code duplication.**
+
+</Callout>
+
+---
+
+## Fixing Performance
+
+The original build wasn’t optimized for performance at all. I had a lot of data packed into one route and wasn’t using **Next.js’s ISR** or lazy loading. As a result, load times were slow, and the overall experience was clunky.
+
+### Performance Tweaks
+
+This time, I’m leveraging **Next.js 14** to its fullest:
+
+- **ISR (Incremental Static Regeneration)**: Keeping content fresh without needing to rebuild the entire site.
+- **Lazy Loading**: Large sections of content, especially on the homepage, will lazy-load to improve performance.
+- **Server Actions**: Handling data fetching server-side to reduce client-side load.
+- **Caching Strategies**: Implementing proper caching to avoid unnecessary data fetching.
+
+---
+
+## Cross-Browser Testing: Do It, Seriously
+
+Cross-browser testing was an afterthought the first time around, and it bit me hard. My site looked great in **Chrome**, but as soon as I opened it in **Safari**, the layout was a mess. Further testing revealed issues in **Firefox** and **Edge** too.
+
+### Solution: Test Early, Test Often
+
+Now, I’m testing across all major browsers—**Safari**, **Chrome**, **Firefox**, and **Edge**—on both desktop and mobile. Tools like **BrowserStack** help me simulate different devices and ensure consistency across platforms.
+
+<Callout>
+
+Don’t wait until after launch to **test your site across browsers.** Do it from the start.
+
+</Callout>
+
+---
+
+## Accessibility Matters (Don’t Skip It)
+
+In the first version, I ignored accessibility entirely. No **ARIA attributes**, no proper keyboard navigation, no care for screen readers. Not great.
+
+### Solution: Building for Everyone
+
+This time, I’m making sure accessibility is a priority. Every interactive element will have proper **ARIA attributes**, and the entire site will be fully keyboard-navigable.
+
+<Callout>
+
+**Lesson:** Accessibility isn’t optional -- build for everyone.
+
+</Callout>
+
+---
+
+## TDD, BDD, and Why Testing Saves Lives
+
+In the original build, I skipped writing tests, which led to massive refactoring headaches. I had no way of ensuring things worked without manually testing every single change.
+
+### Solution: Embracing TDD and BDD
+
+This time, I’m doing it right. I’m using **Test-Driven Development (TDD)** and **Behavior-Driven Development (BDD)** from the start. With **Jest**, **React Testing Library**, and **Cypress**, I’ll write meaningful tests that ensure my code remains reliable and maintainable.
+
+<Callout>
+
+**Lesson:** Write tests first. It’ll save you from future chaos.
+
+</Callout>
+
+---
+
+## What’s Next?
+
+This refactor has been a journey, but it’s only the beginning. In future posts, I’ll dive deeper into topics like **styling consistency with Tailwind CSS**, **component-driven design (CDD)** using **Storybook**, and how I’m ensuring **accessibility** from the ground up.
+
+### Upcoming Blog Posts
+
+1. **Styling Consistency with TailwindCSS and SCSS**  
+   I’ll discuss how I’m combining **TailwindCSS** for utility-first design and **SCSS** for dynamic variables to ensure consistency across the site.
+2. **Component-Driven Design (CDD) and Storybook**  
+   A deep dive into how I’m structuring components for reusability and documenting them in **Storybook**.
+3. **Accessibility from the Ground Up**  
+   I’ll show how I’m implementing ARIA labels, ensuring proper keyboard navigation, and building a more inclusive website.
+
+---
+
+## Key Takeaways
+
+1. **Cross-Browser Testing**: Don’t wait until after launch—test early and across all devices and browsers.
+2. **Simplified Structure**: A centralized and scalable project structure prevents confusion and duplication.
+3. **Performance Optimization**: Use **Next.js features** like ISR and lazy loading to keep your site fast and efficient.
+4. **Deployment Readiness**: Keep builds clean and enforce type safety throughout development.
+5. **TDD and BDD**: Write tests first to ensure maintainability and avoid future refactoring chaos.
