@@ -25,33 +25,25 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@/public/*": [
-        "public/*"
-      ],
-      "@/mocks/*": [
-        "__mocks__/*"
-      ],
-      "@/components/*": [
-        "src/components/*"
-      ],
-      "@/utils/*": [
-        "src/utils/*"
-      ]
+      "@/*": ["src/*"],
+      "@/public/*": ["public/*"],
+      "@/mocks/*": ["__mocks__/*"],
+      "@/components/*": ["src/components/*"],
+      "@/utils/*": ["src/utils/*"]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.mts",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src/app/**/*.ts", 
+    "next-sitemap.config.ts"
   ],
   "exclude": [
     "node_modules",
-    "_examples",
-    ".next"
+    ".next",
+    "public",
+    "node_modules/**/*"
   ]
 }

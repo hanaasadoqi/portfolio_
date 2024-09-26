@@ -13,7 +13,8 @@
     "analyze": "ANALYZE=true next build",
     "migrate": "prisma migrate dev",
     "seed": "node --loader ts-node/esm src/app/lib/prisma/middleware.mts",
-    "build:profile": "cross-env NODE_ENV=production REACT_PROFILE=1 next build --profile"
+    "build:profile": "cross-env NODE_ENV=production REACT_PROFILE=1 next build --profile",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.1",
@@ -46,6 +47,7 @@
     "mdx": "^0.2.3",
     "next": "^14.2.6",
     "next-mdx-remote": "^5.0.0",
+    "next-sitemap": "^4.2.3",
     "prism-themes": "^1.9.0",
     "prop-types": "^15.8.1",
     "react": "^18",
