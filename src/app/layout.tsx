@@ -8,10 +8,8 @@ import '../styles/globals.scss'
 import 'react-tooltip/dist/react-tooltip.css'
 import 'prism-themes/themes/prism-vsc-dark-plus.css'
 import ErrorBoundary from './shared/ErrorBoundary'
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-
-
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -35,20 +33,56 @@ const merriweather = Merriweather({
 })
 
 export const metadata: Metadata = {
-  title: 'Hanaa Sadoqi',
-  description: 'Full-stack Web Developer',
+  title: "Hanaa Sadoqi's Portfolio",
+  description: 'Full-stack Web Developer | Software Engineer | UI/UX Enthusiast',
+  manifest: '/manifest.json',
+  authors: [{ name: 'Hanaa Sadoqi' }],
+  keywords: [
+    'web developer',
+    'software',
+    'full-stack',
+    'frontend',
+    'backend',
+    'coding',
+    'web',
+    'development',
+    'software engineer',
+  ],
+  colorScheme: 'dark',
+  viewport: { width: 'device-width', initialScale: 1 },
+  icons: {
+    icon: '/favicon_io/favicon.ico',
+    apple: '/favicon_io/icon-192x192.png',
+    other: [
+      {
+        rel: 'icon',
+        url: '/favicon_io/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+      {
+        rel: 'icon',
+        url: '/favicon_io/favicon-16x16.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+    ],
+  },
 }
 
 export default function RootLayout({
   children,
-  modal
+  modal,
 }: Readonly<{
   children: React.ReactNode
   modal: React.ReactNode
 }>) {
   return (
     <html lang="en" className="dark">
-
+      <head>
+        {/* Link the manifest directly */}
+        <link rel="manifest" href="/favicon_io/site.webmanifest" />
+      </head>
       <body
         className={clsx(
           'relative',
