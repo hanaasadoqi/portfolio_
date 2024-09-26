@@ -3,7 +3,7 @@ import React from 'react';
 import { fetchArticles, fetchArticleTitles } from '@/app/lib/actions/articles';
 import BlogsContainer from './components/BlogsContainer';
 
-export default async function BlogsPage() {
+export default async function BlogPage() {
   const articles = await fetchArticles()
   const titles = await fetchArticleTitles()
   return (

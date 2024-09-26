@@ -7,6 +7,9 @@ import rehypePrism from 'rehype-prism-plus'
 import mdxComponents from "@/components/mdx/MDXComponents.server";
 import { fetchProjectById } from "@/app/lib/actions/projects";
 import ProjectContent from "../components/ProjectContent";
+import { LoadingOverlay } from '@/components';
+import MDXComponentsProvider from '@/components/mdx/MDXComponentsProvider';
+import { Suspense } from 'react';
 
 
 interface Params {
@@ -40,5 +43,11 @@ export default async function ProjectDocsPage({ params }: Params) {
   const pageTitle = project.title as string;
   const pageDescription = project.description as string;
 
-  return <ProjectContent project={project} content={content} />
+  return (
+    <Suspense fallback={<LoadingOverlay />}>
+      <MDXComponentsProvider>
+        <ProjectContent project={project} content={content} />
+      </MDXComponentsProvider>
+    </Suspense>
+  )
 }
