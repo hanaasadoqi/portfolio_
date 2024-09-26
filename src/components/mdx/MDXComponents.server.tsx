@@ -29,11 +29,11 @@ const mdxComponents = {
   h4: CustomH4,
   h5: CustomH5,
   h6: CustomH6,
+  p: ({ children, className, ...props }: any) => <p className="text-gray-900 dark:text-gray-100" {...props}>{children}</p>,
   img: (props: any) => <MDXImage {...props} />,
   li: ({ children, ...props }: any) => <LI {...props}>{children}</LI>,
   ol: ({ children, ...props }: any) => <OL {...props}>{children}</OL>,
   ul: ({ children, ...props }: any) => <UL {...props}>{children}</UL>,
-  hr: () => <hr className="not-prose" />,
   code: ({ children, className, ...props }: any) => {
     const language = className?.replace('language-', '') || 'text';
     return (

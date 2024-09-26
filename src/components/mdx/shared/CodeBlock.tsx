@@ -13,7 +13,6 @@ export const CodeBlock = ({ children, language, className }: { children: React.R
     if (codeRef.current) {
       try {
         const text = codeRef.current.innerText;
-        console.log(codeRef.current)
         await navigator.clipboard.writeText(text);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
@@ -26,17 +25,15 @@ export const CodeBlock = ({ children, language, className }: { children: React.R
 
   return className ? (
     <div className="relative p-2">
-      <pre ref={codeRef} className={`bg-gray-700 text-gray-200 rounded-lg p-2`} data-id="code-block">
-        <code className={`language-${language} bg-gray-700 w-full`} >
-          {children}
-        </code>
-      </pre>
+      <code ref={codeRef} className={`language-${language} bg-gray-700 text-gray-200 rounded-lg w-full overflow-x-auto scrollbar-thin`} data-id="code-block">
+        {children}
+      </code>
       <IconButton
         onClick={handleCopy}
         size="xs"
         variant="ghost"
-        className="absolute right-2 top-8 bg-gray-700 text-white p-1 rounded-md hover:bg-gray-300 hover:text-gray-900 focus:outline-none"
-        icon={copied ? <FaClipboardCheck /> : <FaClipboard />} ariaLabel={'Copy Code Block'} />
+        className="absolute opacity-10 hover:opacity-100 -right-3 -top-3 bg-gray-700 text-white p-1 rounded-md hover:bg-gray-300 hover:text-gray-900 focus:outline-none"
+        icon={copied ? <FaClipboardCheck size={16} /> : <FaClipboard size={16} />} ariaLabel={'Copy Code Block'} />
     </div>
   ) : (
     <code data-id="inline-code" className={clsx(`bg-gray-200 dark:bg-gray-800 dark:text-red-200 text-red-600 py-1.5 px-2 m-1 rounded-md`, className)}>{children}</code>
