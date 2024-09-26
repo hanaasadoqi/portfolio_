@@ -1,0 +1,323 @@
+<TabList label="Select a Tab">
+
+<Tab id="project-scope" label="Project Scope">
+
+### Project Scope
+
+#### Inclusions
+
+- **User Authentication**: Secure login and registration system with password hashing.
+- **Snippet Management**: Full CRUD (Create, Read, Update, Delete) operations for code snippets.
+- **Tagging and Categorization**: Assign tags and categories to snippets for easier organization.
+- **Search Functionality**: Advanced search using keywords, tags, and categories.
+- **Code Editor Integration**: Rich text editor with syntax highlighting for multiple programming languages.
+- **Sharing Capabilities**: Ability to set snippets as public or private and share them via unique URLs.
+- **Responsive Design**: A mobile-first design approach to ensure optimal user experience across all devices.
+
+#### Exclusions
+
+- **Real-time Collaboration**: No live multi-user editing or collaboration on snippets.
+- **Version Control**: No built-in versioning for code snippets.
+- **Third-Party Integrations**: Excludes integrations with external platforms such as GitHub or GitLab.
+
+---
+
+### Goals and Objectives
+
+- **Improve Code Reusability**: Centralize code snippets to enable easy storage, retrieval, and reuse.
+- **Enhance Organization**: Use tags and categories to keep code snippets organized.
+- **Facilitate Sharing**: Provide options to share code snippets with specific individuals or the community.
+- **User-Friendly Interface**: Ensure the platform is intuitive and responsive for an excellent user experience.
+- **Scalability**: Architect the platform for future expansion to accommodate additional features and increased user load.
+
+</Tab>
+
+<Tab id="MVP" label="Minimum Viable Product (MVP)">
+
+### Minimum Viable Product (MVP)
+
+The MVP aims to deliver core functionalities that provide immediate value to users:
+
+- **User Authentication**: Secure sign-up and login capabilities, including session management.
+- **Snippet Management**: Users can create, edit, delete, and organize their code snippets.
+- **Tagging and Categorization**: Tag snippets and organize them into predefined or custom categories.
+- **Search Functionality**: Simple search that allows users to find snippets by title or content.
+- **Code Editor**: Basic code editor supporting syntax highlighting for multiple programming languages.
+- **Responsive Design**: Ensure a mobile-first approach for accessibility across devices.
+
+#### Features
+
+##### Core Features
+
+1. **User Authentication**
+   - Email and password-based authentication with bcrypt password hashing.
+   - User sessions and JWT-based authentication.
+2. **Snippet Management**
+   - Create, read, update, and delete snippets.
+   - Syntax highlighting for over 20 programming languages using CodeMirror integration.
+   - Rich text editor for editing code.
+3. **Tagging and Categorization**
+   - Assign multiple tags to each snippet for easy filtering.
+   - Organize snippets into categories for better structure and retrieval.
+4. **Search Functionality**
+   - Keyword search with real-time results.
+   - Advanced filtering based on tags and categories.
+5. **Snippet Sharing and Permissions**
+   - Ability to set snippets as public or private.
+   - Shareable links for public snippets with view-only permissions.
+6. **User Profiles (Post-MVP)**
+   - Customizable user profiles including avatar, bio, and a list of public snippets.
+7. **Import/Export of Snippets (Post-MVP)**
+   - Ability to import/export snippets in various formats such as JSON, Markdown, or XML.
+8. **Notifications (Post-MVP)**
+   - Users receive email notifications when snippets are shared with them or updated.
+
+</Tab>
+
+<Tab id="technologies" label="Technology Stack">
+
+### Technology Stack
+
+#### Frontend
+
+- **Next.js**: For server-side rendering, static site generation, and dynamic routing.
+- **Tailwind CSS**: A utility-first CSS framework for building modern, responsive UIs quickly.
+- **React**: JavaScript library for creating interactive UIs.
+
+#### Backend
+
+- **Node.js**: Server-side JavaScript runtime.
+- **Next.js API Routes**: Serverless functions for handling API requests.
+- **MongoDB**: NoSQL database for storing user profiles, snippets, and metadata.
+- **Mongoose**: ODM for MongoDB, providing schema validation and database interaction.
+
+#### Authentication
+
+- **NextAuth.js**: Authentication library for handling sessions, JWTs, and social logins.
+- **bcrypt**: Password hashing for securely storing user credentials.
+
+#### Additional Libraries
+
+- **react-codemirror2**: Code editor component with support for multiple languages and syntax highlighting.
+- **react-syntax-highlighter**: For rendering code blocks with syntax highlighting.
+- **Jest** and **React Testing Library**: Unit and integration testing libraries.
+
+</Tab>
+
+<Tab id="architecture" label="Architecture">
+
+### Architecture Overview
+
+#### Client-Server Architecture
+
+The platform follows a client-server architecture where:
+
+- **Client**: The frontend is a React-based Next.js application that handles user interactions and UI rendering.
+- **Server**: Next.js API routes handle server-side logic, including database operations and authentication.
+
+#### Data Flow
+
+1. **User Actions**: Triggered through the UI, such as creating a snippet.
+2. **API Requests**: Client sends requests to Next.js API routes.
+3. **Server Processing**: The server processes requests, interacts with MongoDB using Mongoose, and returns responses.
+4. **UI Update**: The client updates based on the server's response.
+
+#### Component Hierarchy
+
+- **Layout Components**: Header, Footer, Sidebar.
+- **Pages**: Home, Dashboard, Snippet Detail, Add/Edit Snippet, Login, Signup.
+- **Reusable Components**: Code Editor, SnippetCard, TagInput, SearchBar.
+
+</Tab>
+
+<Tab id="database-design" label="Database Design">
+
+### Database Design
+
+#### Overview
+
+The database is MongoDB, with two primary collections:
+
+1. **Users**: Stores user profile information and authentication data.
+2. **Snippets**: Stores code snippets, tags, and metadata.
+
+#### Schema Definitions
+
+##### User Schema
+
+- **username**: Unique string.
+- **email**: Unique, validated email.
+- **password**: Hashed password.
+- **createdAt**: Date the user was created.
+
+##### Snippet Schema
+
+- **title**: Snippet title.
+- **content**: Snippet content (code).
+- **language**: Programming language.
+- **tags**: Array of tags.
+- **category**: Snippet category.
+- **author**: References User.
+- **isPublic**: Boolean flag for public/private visibility.
+- **createdAt**: Timestamp for creation.
+- **updatedAt**: Timestamp for the last update.
+
+</Tab>
+
+<Tab id="authentication" label="Authentication">
+
+### Authentication Implementation
+
+Authentication is managed by **NextAuth.js** with the following strategies:
+
+#### Password Authentication
+
+- **Registration**: Passwords hashed with bcrypt before storage.
+- **Login**: Credentials-based login with email and password.
+
+#### Social Authentication (Optional)
+
+- **Google** and **GitHub** logins via OAuth.
+  
+#### Security
+
+- **JWT Tokens**: Session management via JWT.
+- **Password Hashing**: Ensures no plain-text passwords.
+- **HTTPS**: Mandatory in production for secure communication.
+
+</Tab>
+
+<Tab id="frontend" label="Frontend Development">
+
+### Frontend Development
+
+#### Key Components
+
+- **Pages**:
+  - **Home**: Displays a list of public snippets.
+  - **Dashboard**: User's personal snippet management area.
+  - **Snippet Detail**: Page to view detailed snippet information.
+  - **Add/Edit Snippet**: Snippet form with validation and syntax highlighting.
+- **Reusable Components**: CodeEditor, TagInput, SearchBar, SnippetCard.
+
+#### Styling
+
+- **Tailwind CSS**: Styled using utility classes for rapid development.
+- **Responsive Design**: Mobile-first approach with breakpoints for larger screens.
+
+#### API Integration
+
+- **Fetch API**: To interact with Next.js API routes for CRUD operations.
+- **Error Handling**: Implemented using hooks and state management.
+
+</Tab>
+
+<Tab id="backend" label="Backend Development">
+
+### Backend Development
+
+#### API Routes
+
+- **/api/auth/register**: For user registration.
+- **/api/snippets**: CRUD operations on snippets.
+- **Authentication**: Handled with NextAuth.js and custom API routes.
+
+#### Middleware
+
+- **Database Connection Middleware**: Ensures MongoDB is connected.
+- **Authentication Middleware**: Protects routes from unauthorized access.
+
+</Tab>
+
+<Tab id="deployment" label="Deployment Strategy">
+
+### Deployment Strategy
+
+#### Hosting Platform
+
+- **Vercel**: Preferred for automatic deployment of Next.js applications.
+
+#### Steps
+
+1. **Configure environment variables** in Vercel.
+1. **Automatic build and deployment** on each push to the main branch.
+
+</Tab>
+
+<Tab id="testing" label="Testing and Quality Assurance">
+
+### Testing and Quality Assurance
+
+#### Testing Frameworks
+
+- **Jest**: Unit tests for JavaScript functions.
+- **React Testing Library**: For testing React components.
+- **Supertest**: For API route testing.
+
+#### CI/CD
+
+- **GitHub Actions**: Continuous integration pipeline to run tests on every push.
+
+</Tab>
+
+<Tab id="considerations" label="Other Considerations">
+
+### Performance Considerations
+
+- **Static Site Generation (SSG)**: For public snippets to improve load times.
+- **Server-Side Rendering (SSR)**: For dynamic content, such as user dashboards.
+
+### Security Considerations
+
+- **Input Sanitization**: To prevent injection attacks.
+- **HTTPS Enforcement**: Ensured in production for secure communications.
+- **Environment Variables**: Store sensitive data securely.
+
+### Scalability Considerations
+
+- **Horizontal Scaling**: Handled automatically by Vercel.
+- **MongoDB Atlas**: Offers scaling options for database growth.
+- **Load Balancing**: Vercel handles load balancing automatically.
+
+</Tab>
+
+<Tab id="appendix" label="Appendix">
+
+### Appendix
+
+#### Environment Variables
+
+- **MONGODB_URI**: Connection string for MongoDB.
+- **NEXTAUTH_SECRET**: Secret for NextAuth.js.
+- **JWT_SECRET**: JWT session secret.
+
+#### Sample `.env.local`
+
+```bash
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/code-library?retryWrites=true&w=majority
+NEXTAUTH_SECRET=your-nextauth-secret
+JWT_SECRET=your-jwt-secret
+```
+
+#### Helpful Commands
+
+- **Install dependencies**:
+  ```bash
+  npm install
+  ```
+- **Run development server**:
+  ```bash
+  npm run dev
+  ```
+- **Run tests**:
+  ```bash
+  npm test
+  ```
+- **Build for production**:
+  ```bash
+  npm run build
+  ```
+
+</Tab>
+
+</TabList>
