@@ -55,7 +55,7 @@ export const sizeStyles: Record<ButtonSize, string> = {
 
 export const colorStyles: Record<ButtonVariant, string> = {
   primary:
-    'dark:text-white dark:hover:text-primary-100 rounded-md bg-primary-200 dark:bg-primary-800 text-gray-800 dark:bg-gray-900 dark:active:text-gray-900 hover:text-gray-700 border-primary-600 hover:bg-primary-300 hover:border-primary-700 focus-visible:ring-primary-700 active:bg-primary-400 hover:text-primary-700 ',
+    'dark:text-white dark:hover:text-primary-100 rounded-md bg-primary-200 dark:bg-secondary-800 text-gray-800 dark:bg-gray-900 dark:active:text-gray-900 hover:text-gray-700 border-primary-600 hover:bg-secondary-300 hover:border-primary-700 focus-visible:ring-primary-700 active:bg-primary-400 hover:text-primary-700 ',
   secondary:
     'rounded-md bg-gray-400 text-primary-700 hover:bg-primary-500 hover:border-primary-300 focus-visible:ring-primary-100 active:bg-primary-500',
   outline:
@@ -67,7 +67,7 @@ export const colorStyles: Record<ButtonVariant, string> = {
   fab: 'bg-primary-200 border-primary-100 hover:bg-primary-100 focus-visible:bg-primary-300 active:bg-primary-200',
   danger:
     'rounded-md text-red-600 hover:bg-red-500 dark:hover:text-white hover:bg-red-500 active:bg-red-700 dark:hover:bg-red-500 dark:active:bg-red-600',
-  icon: 'text-primary-500 bg-transparent hover:text-primary-300 active:text-primary-600',
+  icon: 'text-secondary-500 bg-transparent hover:text-secondary-600 active:text-secondary-700',
 }
 
 export const outerStyles: Record<ButtonVariant, string> = {

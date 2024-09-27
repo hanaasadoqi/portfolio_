@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
 
         <div className="flex flex-col space-y-4 md:space-y-8 lg:space-y-12">
           <header className="text-center lg:text-left" id="hero-heading">
-            <h1 className="mb-2 text-2xl font-bold text-primary-900 transition-all duration-300 dark:text-white md:text-3xl lg:text-4xl">
+            <h1 className="mb-2 text-2xl text-accent-primary-950 dark:text-accent-primary-50 font-bold transition-all duration-300 md:text-3xl lg:text-4xl">
               {"Hi, I'm Hanaa Sadoqi"}
             </h1>
             <h2 className="text-xl font-medium text-gray-700 dark:text-gray-300 md:text-xl lg:text-2xl">
