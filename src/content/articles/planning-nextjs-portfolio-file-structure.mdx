@@ -1,0 +1,1274 @@
+---
+title: 'Planning the File Structure for My Next.js Portfolio Rebuild: A Practical Approach'
+subtitle: 'Organizing Components and Code Before Writing a Single Line'
+description: 'A detailed walkthrough of how I planned the file structure for my Next.js portfolio rebuild. Learn how to strategically organize your files and components before starting development, ensuring scalability and maintainability.'
+tags: ['Next.js', 'TypeScript', 'Installation', 'Project Organization', 'File Structure', 'Getting Started', 'Portfolio', 'App Router']
+---
+
+## Introduction
+
+In this tutorial, I'll walk you through building a portfolio site from scratch using Next.js 14, TypeScript, and TailwindCSS. Whether you're new to these technologies or looking to refresh your skills, by the end of this guide, you'll hopefully a solid foundation and understanding of how to set up and configure these tools to build a performant and scalable application.
+
+### What is Next.js?
+
+Next.js is a React-based framework that simplifies the development of web applications. It offers powerful features like **server-side rendering (SSR)**, **static site generation (SSG)**, and **incremental static regeneration (ISR)**, making it the perfect choice for building dynamic, optimized, and scalable websites.
+
+Next.js also provides built-in routing and API capabilities, making it a full-stack solution that works seamlessly with React. With the newest update, Next.js 14, we also now have enhanced features like **App Router**, parallel routes, and server actions, making it even easier to manage your application’s structure and performance.
+
+### What is TypeScript?
+
+TypeScript is a **superset of JavaScript** that adds static types, allowing you to catch potential errors during development rather than at runtime. By using TypeScript in a Next.js project, you get the benefits of type checking, better tooling (like IntelliSense in your code editor), and improved code maintainability.
+
+In this guide, I'm opting for TypeScript to take full advantage of its features while building my portfolio, making it easier to scale and debug in the future.
+
+### What is TailwindCSS?
+
+TailwindCSS is a utility-first CSS framework that allows you to build custom designs quickly by applying predefined classes directly in your HTML. Unlike traditional CSS frameworks that come with predefined components, Tailwind allows you to create your own components without having to fight against a predefined style system.
+
+It integrates well with Next.js and TypeScript, so that you can build highly customizable, responsive designs that are easy to maintain. Tailwind also helps keep your CSS footprint small, thanks to its **JIT (Just-In-Time)** engine that generates only the styles you use in your project.
+
+---
+
+## Installation
+
+### Create Your Next.js App
+
+To get started, use the following command to initialize your project with `create-next-app`, which includes default configuration files and an optimized setup:
+
+```bash
+npx create-next-app@latest
+```
+
+You'll be prompted with a series of questions. Let’s break each one down:
+
+#### Project Name
+
+```bash
+What is your project name?
+```
+
+This is pretty straightforward. Your input here will name the folder that hosts your app, and Next.js will use this name in various parts of your configuration. Don't stress too much about it, though—you can change it later, and you can easily connect it to any GitHub repository, regardless of the project’s folder name.
+
+If you don't enter a name, it will be created using the default name `my-app`.
+
+#### TypeScript Setup
+
+```bash
+Would you like to use TypeScript? No / Yes
+```
+
+**TypeScript** is highly recommended because of the benefits it provides in catching bugs early and making your codebase easier to maintain. If you're new to TypeScript, don’t worry—Next.js makes integrating it seamless. Choosing 'Yes' will automatically set up TypeScript, and you’ll find a `tsconfig.json` file generated for you.
+
+#### ESLint Configuration
+
+```bash
+Would you like to use ESLint? No / Yes
+```
+
+**ESLint** is a tool to enforce coding standards and help you avoid errors in your JavaScript/TypeScript code. It integrates well with Next.js and can help you maintain consistent and error-free code. If you're working in a team or plan to scale the project, ESLint is essential. Even if you’re a solo developer, it’s worth using to keep things clean.
+
+#### TailwindCSS Setup
+
+```bash
+Would you like to use TailwindCSS? No / Yes
+```
+
+Selecting **'Yes'** here saves you time by automatically configuring **TailwindCSS** for you. If you’d prefer to configure your styling manually, Next.js supports a variety of CSS options including:
+
+- CSS Modules
+- SASS/SCSS/LESS
+- Pure CSS
+
+However, in this guide, we’ll use TailwindCSS because of its simplicity, flexibility, and ease of building responsive, modern UIs.
+
+#### `src/` Directory
+
+```bash
+Would you like your code inside a `src/` directory? No / Yes
+```
+
+This question asks if you want your project files to be placed under a `src/` folder for better organization. It's not mandatory, but it’s considered a best practice in larger projects because it helps separate application logic from configuration files and utilities. If you're starting from scratch, I recommend selecting 'Yes' for a cleaner project structure.
+
+#### App Router
+
+```bash
+Would you like to use App Router? (recommended) No / Yes
+```
+
+With Next.js 14, the **App Router** simplifies routing and layouts with new features like nested layouts, intercepting routes, and parallel routes. It’s the new standard for Next.js projects, and I highly recommend enabling it. This guide assumes you’ll be using the App Router, so choose 'Yes' here.
+
+#### Import Alias
+
+```bash
+Would you like to customize the import alias (`@/*` by default)? No / Yes
+```
+
+Next.js uses the `@/*` alias by default for absolute imports from the root of your project. You can customize this alias if needed, but for most projects, sticking with `@/*` is enough and helps keep things simple.
+
+### Manual Installation (Optional)
+
+If you prefer more finegrained control over your setup or you’re upgrading an existing project, you also have the option of manually installing Next.js, TypeScript, and TailwindCSS.
+
+To do this, follow these steps:
+
+1. Install Next.js:
+    ```bash
+
+    npm install next react react-dom
+
+    ```
+2. Install TypeScript and the required type definitions:
+    ```bash
+
+    npm install typescript @types/react @types/node --save-dev
+
+    ```
+3. Create a tsconfig.json file:
+    ```bash
+
+    npx tsc --init
+
+    ```
+4. Install TailwindCSS:
+    ```bash
+
+    npm install tailwindcss postcss autoprefixer
+
+    ```
+5. Initialize Tailwind:
+    ```bash
+
+    npx tailwindcss init
+
+    ```
+6. Configure your Tailwind and PostCSS:
+    - Add the following to tailwind.config.js:
+    ```js
+    module.exports = {
+      content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+      theme: {
+        extend: {},
+      },
+      plugins: [],
+    };
+    ```
+7. Include Tailwind in your global CSS file (globals.css):
+    ```css
+
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    ```
+
+Now you have manually installed Next.js, TypeScript, and TailwindCSS, allowing you more control over your setup.
+
+Follow the official instructions in the [Next.js documentation](https://nextjs.org/docs/getting-started/installation) for more information on how to customize your setup.
+
+---
+
+## Understanding Your Next.js Project Structure
+
+Awesome, now that you've created your new Next.js project, let’s take a look at the file structure generated. If you answered 'yes' to all the prompts, your project should look something like this:
+
+```bash
+
+.node_modules/
+src/
+  app/
+    fonts/
+    favicon.ico
+    globals.css
+    layout.tsx
+    page.tsx
+.eslintrc.json
+.gitignore
+next-env.d.ts
+next.config.mjs
+package-lock.json
+package.json
+postcss.config.mjs
+README.md
+tailwind.config.ts
+tsconfig.json
+
+```
+
+Let’s break down each folder and file to understand its purpose.
+
+### `node_modules/`
+
+This directory contains all the project dependencies installed via `npm` or `yarn`. You typically don't need to worry about this folder -- it's generated automatically when you install packages.
+
+Thanks to `.gitignore`, it's always ignored in version control as well!
+
+### `src/`
+
+This is where all your application code lives, if you opted for the `src/` directory structure from the initial prompts. Next.js places all the core parts of your app here. To start, you should find the following files and folders:
+
+#### `app/`
+
+This folder contains the main logic for your app, including page components and layouts.
+
+##### `layout.tsx`
+
+This file acts as a wrapper for your pages. It's where you can define global components like headers (including elements like navbars) or footers that persist across all routes.
+
+Think of this component as a consistent layout shared across your pages. You should avoid including code that depends on logic or anything data-related (like fetching from a server); this component should only be used for basic UI definitions that will wrap all other `page.tsx` and `layout.tsx` files below it within the folder directory.
+
+This is also where you host meta information that should persist across different pages.
+
+<CodeFolding>
+
+```tsx
+
+  import type { Metadata } from "next";
+  import localFont from "next/font/local";
+  import "./globals.css";
+
+  const geistSans = localFont({
+    src: "./fonts/GeistVF.woff",
+    variable: "--font-geist-sans",
+    weight: "100 900",
+  });
+  const geistMono = localFont({
+    src: "./fonts/GeistMonoVF.woff",
+    variable: "--font-geist-mono",
+    weight: "100 900",
+  });
+
+  export const metadata: Metadata = {
+    title: "Create Next App",
+    description: "Generated by create next app",
+  };
+
+  export default function RootLayout({
+    children,
+  }: Readonly<{
+    children: React.ReactNode;
+  }>) {
+    return (
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          {children}
+        </body>
+      </html>
+    );
+  }
+
+```
+
+</CodeFolding>
+
+**Breakdown**:
+
+- **Imports**:
+  - The `Metadata` type is imported to define metadata like title and description, which will be useful for SEO.
+  - The `localFont` function is used to load fonts from the `/fonts` folder locally. `geistSans` and `geistMono` are examples of variable fonts being loaded.
+- **Metadata Object**:
+  - This object holds the metadata for the entire app. In this example, it sets the title (`Create Next App`) and description (`Generated by create next app`).
+- **RootLayout Component**:
+  - The layout wraps all pages with an `<html>` tag and sets the language attribute to English (`lang="en"`). The `body` tag uses the `geistSans` and `geistMono` font variables to apply custom fonts.
+  - The `children` prop allows all nested page components to render within this layout.
+
+##### `page.tsx`
+
+This file defines the main homepage of your app. In this example, it uses the `Image` component from Next.js for optimized image handling and defines a simple page layout using Tailwind CSS classes.
+
+<CodeFolding>
+
+```tsx
+
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <Image
+          className="dark:invert"
+          src="https://nextjs.org/icons/next.svg"
+          alt="Next.js logo"
+          width={180}
+          height={38}
+          priority
+        />
+        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+          <li className="mb-2">
+            Get started by editing{" "}
+            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
+              src/app/page.tsx
+            </code>
+            .
+          </li>
+          <li>Save and see your changes instantly.</li>
+        </ol>
+
+        <div className="flex gap-4 items-center flex-col sm:flex-row">
+          <a
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className="dark:invert"
+              src="https://nextjs.org/icons/vercel.svg"
+              alt="Vercel logomark"
+              width={20}
+              height={20}
+            />
+            Deploy now
+          </a>
+          <a
+            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read our docs
+          </a>
+        </div>
+      </main>
+      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="https://nextjs.org/icons/file.svg"
+            alt="File icon"
+            width={16}
+            height={16}
+          />
+          Learn
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="https://nextjs.org/icons/window.svg"
+            alt="Window icon"
+            width={16}
+            height={16}
+          />
+          Examples
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="https://nextjs.org/icons/globe.svg"
+            alt="Globe icon"
+            width={16}
+            height={16}
+          />
+          Go to nextjs.org →
+        </a>
+      </footer>
+    </div>
+  );
+}
+```
+
+</CodeFolding>
+
+**Breakdown**:
+
+- **`Image` Component**: This component optimizes image loading and provides automatic lazy loading, serving responsive images based on the user’s device.
+- **Tailwind CSS Classes**: The main layout uses utility classes to define a grid layout with three rows, where the middle row (`1fr`) takes up most of the space. Flexbox is used for aligning items in the main content and footer sections.
+
+#### `fonts/`
+
+This folder is typically where you can store custom fonts. If you want to import a local font (as opposed to using a web font), you can add it here and use Next.js's `next/font` API to load it automatically in your project.
+
+#### `favicon.ico`
+
+This file is the default favicon for your website. You can replace it with your own custom favicon to make your site stand out in browser tabs.
+
+#### `globals.css`
+
+This file is where your global styles live. By default, when you use TailwindCSS, this is where the core Tailwind utilities are imported, such as:
+
+```css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+```
+
+Without these initial utilities imported, you won’t be able to use TailwindCSS in your project. You can also define global CSS variables or resets here.
+
+<CodeFolding>
+
+```css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+```
+
+</CodeFolding>
+
+**Breakdown**:
+
+- **CSS Variables**: Global CSS variables for background and foreground colors are defined here, and they change based on the user’s preferred color scheme (light or dark mode).
+- **Custom Utility (`@layer utilities`)**: A custom utility class `.text-balance` is defined, allowing for text wrapping with better balance.
+
+### `.eslintrc.json`
+
+This file holds the configuration for ESLint, a tool that helps enforce coding standards. In a Next.js project, this includes rules for identifying potential issues in your TypeScript and JavaScript code. Next.js provides sensible defaults, but you can extend this configuration as your project grows.
+
+```json
+
+{
+  "extends": ["next/core-web-vitals", "next/typescript"]
+}
+
+```
+
+### `.gitignore`
+
+The `.gitignore` file tells Git which files or directories to ignore in version control. This usually includes build outputs, environment variables, and node modules. It ensures that sensitive or unnecessary files don't end up in your version control repository.
+
+<CodeFolding>
+
+```txt
+
+  # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+  # dependencies
+  /node_modules
+  /.pnp
+  .pnp.js
+  .yarn/install-state.gz
+
+  # testing
+  /coverage
+
+  # next.js
+  /.next/
+  /out/
+
+  # production
+  /build
+
+  # misc
+  .DS_Store
+  *.pem
+
+  # debug
+  npm-debug.log*
+  yarn-debug.log*
+  yarn-error.log*
+
+  # local env files
+  .env*.local
+
+  # vercel
+  .vercel
+
+  # typescript
+  *.tsbuildinfo
+  next-env.d.ts
+
+```
+
+</CodeFolding>
+
+### `next-env.d.ts`
+
+This file is automatically generated by Next.js when you use TypeScript. It provides type definitions for Next.js and should not be manually edited.
+
+<CodeFolding>
+
+```ts
+
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/app/building-your-application/configuring/typescript for more information.
+
+```
+
+</CodeFolding>
+
+### `next.config.mjs`
+
+This is the main configuration file for your Next.js app. It’s where you can customize how your app behaves, whether that’s enabling experimental features, defining custom build directories, or adjusting how your pages are rendered (e.g., SSR, SSG).
+
+<CodeFolding>
+
+```js
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
+
+export default nextConfig;
+
+```
+
+</CodeFolding>
+
+### `package.json` (and `package-lock.json`)
+
+These files contain metadata about your project’s dependencies. The `package.json` lists the dependencies and scripts available, while the `package-lock.json` ensures that your dependency tree is consistent when installing across different environments.
+
+<CodeFolding>
+
+```json
+
+{
+  "name": "new-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.2.13"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.13"
+  }
+}
+
+```
+
+</CodeFolding>
+
+### `postcss.config.mjs`
+
+This is the configuration file for PostCSS, a tool that TailwindCSS relies on to process your CSS. By default, `create-next-app` sets this up to work seamlessly with Tailwind.
+
+<CodeFolding>
+
+```js
+
+/** @type {import('postcss-load-config').Config} */
+const config = {
+  plugins: {
+    tailwindcss: {},
+  },
+};
+
+export default config;
+
+```
+
+</CodeFolding>
+
+### `README.md`
+
+This is the default README generated by `create-next-app`. It contains basic information about how to start and deploy your project.
+
+<CodeFolding>
+
+```md
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+
+</CodeFolding>
+
+### `tailwind.config.ts`
+
+This file holds the configuration for TailwindCSS. You can customize Tailwind’s default settings, add custom themes, or extend the framework as needed.
+
+<CodeFolding>
+
+```ts
+
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;
+
+```
+
+</CodeFolding>
+
+**Breakdown**:
+
+- **`content` Array**: This tells Tailwind which files to scan for class names. Tailwind will remove unused styles from production builds by scanning these files.
+- **`theme.extend`**: This is where you extend or customize Tailwind’s default theme. In this case, we’re adding custom colors for `background` and `foreground`, which are mapped to the CSS variables defined in `globals.css`.
+
+### `tsconfig.json`
+
+This file defines the TypeScript configuration for your project. It tells the TypeScript compiler how to handle your files and where to look for certain modules.
+
+<CodeFolding>
+
+```json
+
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+
+```
+
+</CodeFolding>
+
+**Breakdown**:
+
+- **`compilerOptions`**: This section defines how TypeScript should behave. For example, it enables strict mode (`strict: true`), allows JavaScript files (`allowJs: true`), and defines module resolution strategies.
+- **`paths`**: This allows you to use the `@/*` alias for absolute imports from the root of your project, as configured during installation.
+
+---
+
+## Crafting My Portfolio File Structure
+
+Now that we’ve covered the basics of the project setup, let’s dive into how I approached organizing the file structure for my **portfolio rebuild**.
+
+In my original build, I experimented with different ways of structuring the files. Initially, I had a dedicated `components` folder inside `src`, which contained a `shared` folder for reusable components like `BaseButton`, `IconButton`, `FlipCard`, and so on. I also had separate folders for each section like **About**, **Skills**, and **Projects**.
+
+However, this approach became confusing as I found myself duplicating components across different sections and often having to rebuild elements that could have been reused.
+
+<CodeFolding>
+
+```bash
+
+  src/
+    app/
+      page.tsx
+      layout.tsx
+    components/
+      shared/
+        BaseButton/
+        Icon/
+        ImageComponent/
+        Input/
+        FlipCard/
+        Overlay/
+        VideoComponent/
+      About/
+        AboutContainer/
+        AboutItemCard/
+        AboutCardFront/
+        AboutCardBack/
+
+```
+
+</CodeFolding>
+
+This separation made sense in theory, but as the project grew, it became harder to manage. I ended up with a tangled mess where related files were scattered across different directories.
+
+Eventually, I tried colocating the `components` folders within each section under `app` while keeping reusable components like buttons and cards under `shared`.
+
+<CodeFolding>
+
+```bash
+
+  src/
+    components/
+      mdx/
+        IconButton/
+        Heading/
+        List/
+      shared/
+        BaseButton/
+        IconButton/
+        Icon/
+        Input/
+        FlipCard/
+        ImageComponent/
+    app/
+      (content)/
+        blog/
+          ArticlesContainer/
+          ArticlesGrid/
+          ArticlesCard/
+        projects/
+          components/
+            ProjectContainer/
+            ProjectCard/
+            ProjectSkillCard/
+      skills/
+        components/
+          SkillContainer/
+          SkillList/
+          SkillCard/
+      page.tsx
+      layout.tsx
+      
+```
+
+</CodeFolding>
+
+While this was an improvement, it still felt too fragmented. The split between the `components` folder and `app` created confusion. I realized I needed a more intentional structure, where components and logic were clearly grouped by their purpose while allowing for reusability.
+
+### Final File Structure
+
+After much trial and error, I refined the structure to balance component reuse with logical separation. I organized components under `components/` based on their purpose (like **cards**, **media**, **buttons**), and grouped page-specific logic under `sections/` within `app/`. This way, shared components live in a central place, while page-level components remain colocated within their respective sections.
+
+<CodeFolding>
+
+```bash
+
+  src/
+    app/
+      (content)/
+        blog/
+          [slug]/
+          components/
+            ArticleContainer/
+            ArticleGrid/
+          layout.tsx
+          page.tsx
+        projects/
+          [id]/
+          components/
+            ProjectContainer/
+            ProjectGrid/
+          layout.tsx
+          page.tsx
+        mdx/
+      sections/
+        about/
+          AboutContainer.tsx
+          AboutCard.tsx
+          index.tsx
+        skills/
+          SkillsContainer.tsx
+          index.tsx
+        projects/
+          ProjectsContainer.tsx
+          index.tsx
+      page.tsx
+      layout.tsx
+    components/
+      links/
+        Link/
+        LinkButton/
+        NavLink/
+        SocialMediaLinks/
+      buttons/
+        BaseButton/
+        ButtonGroup/
+        IconButton/
+      cards/
+        CardDescription/
+        CardTags/
+        CardHeader/
+        FlipCard/
+        CardWithDetails/
+        SkillCard/
+        ProjectCard/
+      layouts/
+        Flex/
+        Grid/
+      media/
+        ImageHeader/
+        ImageCard/
+        VideoCard/
+      wrappers/
+        Overlay/
+        LinkOverlay/
+        ImageOverlay/
+        ButtonOverlay/
+      labels/
+        Tag/
+        Badge/
+      search/
+        SearchBar/
+        AutocompleteSearchBar/
+      controls/
+        Filter/
+        Sort/
+        Reset/
+        Pagination/
+        ScrollButtons/
+    services/
+    hooks/
+    contexts/
+    styles/
+      globals.css
+    types/
+      
+```
+
+</CodeFolding>
+
+## **Breaking Down the Final Structure**
+
+### **`public/`**
+
+This folder is used to host static files, like images, in which the files can then be referenced by code starting from the base URL (`/`). Normally, this is the folder that would host your images, icons, fonts, as well as static metadata files, such as `robots.txt`, `favicon.io`, etc.
+
+However, Next.js cannot safely cache assets within this folder in the event they may change; only assets in the directory at build time will be served while any files added at request time won't be available.
+
+I'm already planning to handle my fonts using Next.js's font system, which supports self-hosting, and using Vercel Blob to host my static assets, such as images and videos. While these optimizations definitely reduce the need for a `public/` folder, there are still a few potential use cases that make sense.
+
+```bash
+
+  node_modules/
+  public/
+    metadata/
+      robots.txt
+      sitemap.xml
+      favicon.ico
+      apple-touch-icon.png
+    images/
+      og-image.png
+    docs/
+      Hanaa_Sadoqi_Resume.pdf
+  src/
+  package-lock.json
+  package.json
+  next.config.mjs
+  tsconfig.json
+
+```
+
+#### Use Cases
+
+1. **Favicon and Metadata Assets**
+   While my metadata will be handled within either individual routes or layouts under the `app/` folder, it is still a good idea  to store static assets used for SEO or social sharing within `public/`.
+   ```md
+    public/
+      |-- favicon.ico
+      |-- robots.txt
+      |-- sitemap.xml
+      |-- apple-touch-icon.png
+   ```
+2. **Static Downloads**
+   For files that you intended for users to be able to download directly, you can use this directory to host those files. This is especially useful if you need the file to be easily downloadable via a static URL (e.g. `/hanaa_sadoqi_resume.pdf`).
+   - Other potential files include PDFs, terms of service, privacy policy documents, etc.
+3. **Custom Static Assets**
+   Despite using Vercel Blob, there are cases in which static assets should be served directly and are therefore hosted within this folder.
+   - Examples include icon sets, documents, etc.
+   - You may also choose to statically host images such as **custom Open Graph images** under `public/` and access them directly in your metadata:
+    ```ts
+    export const metadata: Metadata = {
+      title: "My App",
+      description: "My App's soooo cool",
+      openGraph: {
+        images: [
+          {
+            url: "/images/og-image.png",
+          }
+        ]
+      }
+    }
+    ```
+
+### `src/styles`
+
+```bash
+
+  node_modules/
+  public/
+  src/
+    app/
+    styles/
+      globals.css
+      fonts.ts
+  package-lock.json
+  package.json
+  tailwind.config.ts
+  postcss.config.mjs
+
+```
+
+I created this folder to host all my styles for the entire application. So far, it will be used to contain both `globals.css` and font definitions file `fonts.ts` but it may be used to host a lot more than that in the future. For now though, I'm moving my `globals.css` file in this directory -- don't forget to update the imports in `layout.tsx` to ensure the correct files are loaded.
+
+#### Fonts
+
+The new font system, supported by `next/font`, will automatically optimize your fonts with **built-in automatic self-hosting**. Files for web fonts will be downloaded at build time with the rest of the static assets, without sending any requests from the browser.  
+
+The fonts will be preloaded on the `page` or `layout` on which it is defined so that it is either available on the unique route for that page or globally availale on all the routes wrapped by the layout.
+
+To load the same font in multiple files, rather than initialize different instances of the same fonts to be hosted on multiple routes, it is recommended to use a font loader function and reuse the constant wherever it is needed.
+
+For argument's sake and because I'm not sure how much I'd like to scale my portfolio in the future, I've decided to host them under `src/styles/fonts`in a font definitions file.
+
+<CodeFolding>
+
+```ts
+
+// src/styles/fonts.ts
+import { Poppins, Raleway, Merriweather } from 'next/font/google'
+
+export const poppins = Poppins({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+  weight: ['400', '500', '600', '700', '800'],
+})
+
+export const raleway = Raleway({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-raleway',
+  weight: ['400', '500', '700'],
+})
+
+export const merriweather = Merriweather({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-merriweather',
+  weight: ['300', '400', '700'],
+})
+
+// src/app/layout.tsx
+import { poppins, raleway, merriweather } from '@/styles/fonts';
+import clsx from 'clsx';
+
+export default function RootLayout({
+  children
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body
+        className={clsx(poppins.className, raleway.className, merriweather.className)}>
+    </html>
+  )
+}
+```
+
+</CodeFolding>
+
+### **`src/app/`**
+
+```bash
+
+  node_modules/
+  public/
+  src/
+    app/
+      (content)/
+        blog/
+        projects/
+        mdx/
+      layout.tsx
+      page.tsx
+    styles/
+  package-lock.json
+  package.json
+  next.config.mjs
+  tailwind.config.ts
+  tsconfig.json
+
+```
+
+#### **`(content)/`**
+
+For my application, I plan to host two different types of dynamic sections, including for blogs and project case studies. As such, ach dynamic section of the app (blog, projects) has its own directory within the same private route group `(content)/`.
+
+Each directory will also have separate `components/` for route-specific logic and layout.
+
+##### **`mdx/`**
+
+Because I plan to host dynamic content within both `blog/` and `project/`, I am creating this folder to host all my MDX components, which will then be loaded and used within either route.
+
+#### **`sections/`**
+
+This folder will be used to hold page-specific sections like **About**, **Skills**, **Experience**, **Projects** and so on.
+
+Each section will be colocated with their respective components (e.g. **SkillsContainer**).
+
+<CodeFolding>
+
+```bash
+
+  node_modules/
+  public/
+  src/
+    app/
+      (content)/
+      sections/
+        Hero/
+          HeroContainer.tsx
+          HeroCTA.tsx
+          index.ts
+        About/
+          AboutContainer.tsx
+          AboutCard.tsx
+          imdex.ts
+        Skills/
+          SkillsContainer.tsx
+          index.ts
+        ...
+        index.ts
+      layout.tsx
+      page.tsx
+    styles/
+  package-lock.json
+  package.json
+  next.config.mjs
+  tailwind.config.ts
+  tsconfig.json
+
+```
+
+</CodeFolding>
+
+<InfoBlock>
+
+If you're confused about the `index.ts` files within each directory, it's a standard technique used by developers to make their code easier to understannd at a glance.
+
+If I follow the above file structure, I should end up with the following code within my `app/page.tsx`:
+
+```tsx
+
+import {
+  Hero,
+  About,
+  Skills
+} from '@/sections`;
+
+export default function Page(){
+  return (
+    <main>
+      <Hero />
+      <About />
+      <Skills />
+    </main>
+  )
+}
+
+```
+
+As opposed to:
+
+```tsx
+
+import HeroContainer from '../sections/Hero/HeroContainer.tsx';
+import AboutContainer from '../sections/About/AboutContainer';
+import SkillsContainer from '../sections/Skills/SkillsContainer';
+
+export default function Page(){
+  return (
+    <main>
+      <HeroContainer />
+      <AboutContainer />
+      <SkillsContainer />
+    </main>
+  )
+}
+
+```
+
+The above works fine but the hallmark of good code is that it's readable and maybe it's just me but I vastly prefer the former setup!
+
+</InfoBlock>
+
+#### **`components/`**
+
+And finally, this folders will contain reusable, generic components shared across the app.
+
+- Each category is separated into folders to make it easier to locate and maintain components.
+- Some examples of potential folders:
+  - **`cards/`** includes components like `SkillCard` and `ProjectCard`, ensuring all card components are reusable and share a consistent style.
+  - **`media/`** includes components for handling media like images and videos.
+  - **`wrappers/`** contains layout-related utilities, such as `Overlay` and `GridWrapper`.
+
+<CodeFolding>
+
+```bash
+
+node_modules/
+public/
+src/
+  app/
+  components/
+    buttons/
+      BaseButton/
+      IconButton/
+      index.ts
+    cards/
+      CardDescription/
+      CardTags/
+      CardHeader/
+      index.ts
+    layouts/
+      Flex/
+      Grid/
+    media/
+      ImageComponent/
+      BackgroundImage/
+      ImageHeader/
+      ImageCard/
+      Video/
+      VideoCard/
+    wrappers/
+      Section/
+      Overlay/
+      Background/
+  styles/
+next.config.mjs
+package-lock.json
+package.json
+tailwind.config.ts
+tsconfig.json
+
+```
+
+</CodeFolding>
+  
+By organizing components based on their functionality and colocating context-specific logic, it becomes easier to scale the project while maintaining separation of concerns and limiting code duplication.
+
+### Imports
+
+And finally, don't forget to update the paths within `tsconfig.json` to keep your project maintainable and avoid deep relative imports (e.g. `../../../styles`):
+
+```json
+
+  "paths": {
+      "@/*": ["./src/*"],
+      "@/sections/*": ["./src/app/sections/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/fonts/*": ["./src/styles/fonts/*"],
+      "@/components/*": ["./src/components/*"],
+  }
+
+```
+
+---
+
+## Conclusion
+
+I haven’t built all the components yet, but laying out the file structure is the first step to making sure things don’t get out of hand when I finally *do* start coding. One of the key lessons I’ve learned from previous projects is how important it is to plan the structure upfront—otherwise, I end up with duplicated components and spaghetti code that’s hard to maintain.
+
+Right now, the focus has been on getting the right organization in place. I’m aiming to have a clear, scalable structure where reusable components are easy to find and section-specific components live where they belong. This way, when I’m actually writing the code, I can focus on building without worrying about where to place everything or how to keep it consistent.
+
+### What’s Next?
+
+Next up is tackling the design system and styling. Now that I’ve got the structure mapped out, I’ll be working on how the portfolio will look and feel, making sure the design is as clean and scalable as the code. In the next post, I’ll break down how I plan to use TailwindCSS, CSS variables, and SCSS to build a responsive and flexible design system that will grow with the portfolio.
+
+Here's what I’ll cover:
+
+- **Customizing TailwindCSS**: Setting up a consistent design system by extending Tailwind’s utilities.
+- **CSS Variables**: Using variables for themes and dark mode support, giving me flexibility without adding bloat.
+- **SCSS**: Where it fits into the workflow and how I’ll use it to keep things organized.
+
+I’m not rushing into building the actual components yet, but by planning the structure first, the hope is that I’ll be in a good spot when I start writing code.
+
+---
+
+I’m sharing this process as I go, so if you’re working through similar challenges or thinking about restructuring your own projects, feel free to reach out with questions or feedback. The next post will dive into design systems and styling, so stick around if you’re interested in building something clean, scalable, and easy to maintain.

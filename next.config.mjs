@@ -20,7 +20,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 const nextConfig = {
-  // reactProductionProfiling: true,
+  reactProductionProfiling: true,
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -57,6 +57,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cdn.hashnode.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com'
       }
     ],
   },
