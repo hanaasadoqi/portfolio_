@@ -14,7 +14,7 @@ export const CodeFolding: React.FC<{ children: React.ReactNode }> = ({ children,
           onClick={() => setIsOpen(!isOpen)}
           variant="ghost"
         >
-          {isOpen ? 'Hide Code' : 'Show Code'}
+          {isOpen ? 'Hide' : 'Show'}
         </BaseButton>
       </div>
 

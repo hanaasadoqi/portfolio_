@@ -36,6 +36,6 @@ export const CodeBlock = ({ children, language, className }: { children: React.R
         icon={copied ? <FaClipboardCheck size={16} /> : <FaClipboard size={16} />} ariaLabel={'Copy Code Block'} />
     </div>
   ) : (
-    <code data-id="inline-code" className={clsx(`bg-gray-200 dark:bg-gray-800 dark:text-red-200 text-red-600 py-1.5 px-2 m-1 rounded-md`, className)}>{children}</code>
+    <span data-id="inline-code" className={clsx(`bg-gray-200 dark:bg-gray-800 dark:text-red-200 text-red-600 py-1.5 px-2 m-1 rounded-md`, className)}>{children}</span>
   )
 }

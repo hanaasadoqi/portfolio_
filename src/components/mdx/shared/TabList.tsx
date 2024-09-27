@@ -33,7 +33,7 @@ export const TabList: React.FC<DropdownTabsProps> = ({ label, children }) => {
 
       {/* Tab buttons for larger screens */}
       <div className="md:flex">
-        <ul className="hidden md:flex flex-col space-y-2 text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">
+        <ul className="not-prose hidden md:flex flex-col space-y-2 text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">
           {children.map((tab, index) => {
             const { label } = tab.props;
             const isActive = activeTab === index;
@@ -43,7 +43,7 @@ export const TabList: React.FC<DropdownTabsProps> = ({ label, children }) => {
                 <button
                   onClick={() => handleTab(index)}
                   className={clsx(
-                    'list-style-none inline-flex items-center px-4 py-2 rounded-l-lg w-full transition-all duration-200 text-left',
+                    'not-prose inline-flex items-center px-4 py-2 rounded-l-lg w-full transition-all duration-200 text-left',
                     {
                       'bg-primary-600 text-white': isActive,
                       'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700':

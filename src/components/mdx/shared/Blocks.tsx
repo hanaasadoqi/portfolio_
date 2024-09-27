@@ -1,5 +1,5 @@
 export const InfoBlock = ({ children }: { children: React.ReactNode }) => {
-  return <div data-id="info-block" className="mx-auto bg-gray-200 dark:bg-gray-950 rounded-lg p-8 shadow-md hover:shadow-lg border-gray-400 text-gray-800">{children}</div>
+  return <div data-id="info-block" className="mx-auto bg-gray-200 dark:bg-gray-800 rounded-lg p-8 shadow-md hover:shadow-lg border-gray-400 text-gray-800">{children}</div>
 }
 
 export const Callout = ({ type = 'info', children }: { type?: 'info' | 'warning' | 'success'; children: React.ReactNode }) => {
