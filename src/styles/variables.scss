@@ -1,6 +1,7 @@
+
+// slate
 $neutral: (
-  '#cbd5e1',
-  '#f8fafc',
+  '#f9fafb',
   '#f1f5f9',
   '#e2e8f0',
   '#cbd5e1',
@@ -10,86 +11,26 @@ $neutral: (
   '#334155',
   '#1e293b',
   '#0f172a',
-  '#020617'
+  '#020617',
 );
 
+// gray
 $hero: (
-  '#bfdbfe',
-  '#eff6ff',
-  '#dbeafe',
-  '#bfdbfe',
-  '#93c5fd',
-  '#60a5fa',
-  '#3b82f6',
-  '#2563eb',
-  '#1d4ed8',
-  '#1e40af',
-  '#1e3a8a',
-  '#172554'
+  '#f9fafb',
+  '#f3f4f6',
+  '#e5e7eb',
+  '#d1d5db',
+  '#9ca3af',
+  '#6b7280',
+  '#4b5563',
+  '#374151',
+  '#1e293b',
+  '#0f172a',
+  '#020617',
 );
 
+// sky
 $about: (
-  '#a5b4fc',
-  '#eef2ff',
-  '#e0e7ff',
-  '#c7d2fe',
-  '#a5b4fc',
-  '#818cf8',
-  '#6366f1',
-  '#4f46e5',
-  '#4338ca',
-  '#3730a3',
-  '#312e81',
-  '#1e1b4b'
-);
-
-$skills: (
-  '#f0abfc',
-  '#fdf4ff',
-  '#fae8ff',
-  '#f5d0fe',
-  '#f0abfc',
-  '#e879f9',
-  '#d946ef',
-  '#c026d3',
-  '#a21caf',
-  '#86198f',
-  '#701a75',
-  '#4a044e'
-);
-
-$experience: (
-  '#fbcfe8',
-  '#fdf2f8',
-  '#fce7f3',
-  '#fbcfe8',
-  '#f9a8d4',
-  '#f472b6',
-  '#ec4899',
-  '#db2777',
-  '#be185d',
-  '#9d174d',
-  '#831843',
-  '#500724'
-);
-
-$projects: (
-  '#d8b4fe',
-  '#faf5ff',
-  '#ede9fe',
-  '#ddd6fe',
-  '#c4b5fd',
-  '#a78bfa',
-  '#8b5cf6',
-  '#7c3aed',
-  '#6d28d9',
-  '#5b21b6',
-  '#4c1d95',
-  '#341a5e'
-);
-
-$projects: (
-  '#a5f3fc',
   '#f0f9ff',
   '#e0f2fe',
   '#bae6fd',
@@ -100,12 +41,42 @@ $projects: (
   '#0369a1',
   '#075985',
   '#0c4a6e',
-  '#082f49'
+  '#082f49',
 );
 
-$writing: (
-  '#d8b4fe',
-  '#faf5ff',
+// blue
+$skills: (
+  '#eff6ff',
+  '#dbeafe',
+  '#bfdbfe',
+  '#93c5fd',
+  '#60a5fa',
+  '#3b82f6',
+  '#2563eb',
+  '#1d4ed8',
+  '#1e40af',
+  '#1e3a8a',
+  '#172554',
+);
+
+// indigo
+$experience: (
+  '#eef2ff',
+  '#e0e7ff',
+  '#c7d2fe',
+  '#a5b4fc',
+  '#818cf8',
+  '#6366f1',
+  '#4f46e5',
+  '#4338ca',
+  '#3730a3',
+  '#312e81',
+  '#1e1b4b',
+);
+
+// violet
+$projects: (
+  '#f5f3ff',
   '#ede9fe',
   '#ddd6fe',
   '#c4b5fd',
@@ -115,20 +86,35 @@ $writing: (
   '#6d28d9',
   '#5b21b6',
   '#4c1d95',
-  '#341a5e'
+  '#2e1065',
 );
 
+// purple
+$writing: (
+  '#faf5ff',
+  '#f3e8ff',
+  '#e9d5ff',
+  '#d8b4fe',
+  '#c084fc',
+  '#a855f7',
+  '#9333ea',
+  '#7e22ce',
+  '#6b21a8',
+  '#581c87',
+  '#3b0764',
+);
+
+// fuschia
 $education: (
-  '#06b6de',
-  '#ecfeff',
-  '#cffafe',
-  '#a5f3fc',
-  '#67e8f9',
-  '#22d3ee',
-  '#06b6d4',
-  '#0891b2',
-  '#0e7490',
-  '#155e75',
-  '#164e63',
-  '#083344'
+  '#fdf4ff',
+  '#fae8ff',
+  '#f5d0fe',
+  '#f0abfc',
+  '#e879f9',
+  '#d946ef',
+  '#c026d3',
+  '#a21caf',
+  '#86198f',
+  '#701a75',
+  '#4a044e',
 );

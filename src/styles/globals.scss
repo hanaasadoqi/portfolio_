@@ -40,6 +40,7 @@ body {
     color 0.3s ease; /* Smooth transition for background and text colors */
 }
 
+
 //   a {
 //     @apply text-primary-400 hover:text-primary-300;
 //     color: var(--primary-400);
@@ -357,7 +358,7 @@ body {
   h5,
   h6,
   li {
-    color: var(--primary-800);
+    color: var(--primary-950);
     transition: color 0.3s ease;
   }
 }
@@ -387,6 +388,7 @@ ol {
 }
 
 li {
+  // @apply mb-2 text-sm md:text-base lg:text-lg prose dark:prose-invert prose-x;
   @apply mb-2;
 }
 
@@ -394,7 +396,7 @@ li {
 @layer base {
   h1 {
     @apply text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
-    @apply font-sans font-bold leading-tight text-primary-900 dark:text-white;
+    @apply font-sans font-bold leading-tight text-accent-primary-950 dark:text-accent-primary-50;
     margin-bottom: 2rem;
     transition: color 0.3s ease;
   }
@@ -431,7 +433,8 @@ li {
   }
 
   p {
-    @apply font-raleway text-base font-normal leading-relaxed text-secondary-900 dark:text-primary-100;
+    @apply font-raleway text-base font-normal leading-relaxed text-primary-900 dark:text-primary-100;
+    @apply prose prose-xl dark:prose-invert;
     margin-bottom: 1rem;
   }
 
@@ -539,4 +542,3 @@ dialog:not([open]) {
   opacity: 0;
   pointer-events: none;
 }
-
