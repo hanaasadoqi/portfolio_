@@ -44,8 +44,8 @@ const ProjectsClient: React.FC<ProjectsClientProps> = ({ initialProjects, projec
 
 
   return (
-    <main className="min-h-screen bg-gray-100 dark:bg-gray-900 p-4 sm:p-6 md:p-8">
-      <div className="max-w-7xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-md p-8">
+    <main className="min-h-screen p-4 sm:p-6 md:p-8">
+      <div className="max-w-7xl mx-auto bg-white/60 dark:bg-black/60 rounded-xl shadow-md p-8">
         {/* Header */}
         <header className="mb-8">
           <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4 text-center md:text-left">Projects</h1>

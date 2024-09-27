@@ -47,7 +47,7 @@ const ExperienceCarousel: React.FC<ExperienceCarouselProps> = ({ experiences, ti
       <div className="flex w-full  md:max-w-5xl flex-col items-center justify-center">
         <h3
           id="experience-heading"
-          className="w-full text-center text-2xl font-semibold dark:text-primary-900 md:text-left md:text-3xl lg:text-4xl"
+          className="w-full text-center text-2xl font-semibold text-primary-900 dark:text-primary-100 md:text-left md:text-3xl lg:text-4xl"
         >
           Experience
         </h3>
