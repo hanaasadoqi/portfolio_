@@ -54,7 +54,7 @@ export default function BlogsContainer({ fetchedArticles, fetchedTitles }: { fet
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredArticles.map((article) => (
             <Suspense key={article.id} fallback={<LoadingOverlay />}>
-              <ArticleCard article={article} />
+              <ArticleCard article={article} full />
             </Suspense>
           ))}
         </div>
