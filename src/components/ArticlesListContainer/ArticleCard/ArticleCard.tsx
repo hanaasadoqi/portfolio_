@@ -5,6 +5,7 @@ import { ArticlePreviewType } from '@/app/lib/actions/articles';
 import Image from 'next/image';
 import Link from 'next/link';
 import ReadButton from '../PreviewArticleCard/ReadButton'
+import CardImage from '../PreviewArticleCard/CardImage';
 
 interface ArticleCardProps {
   article: ArticlePreviewType;
@@ -13,20 +14,8 @@ interface ArticleCardProps {
 const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
   return (
     <article className="flex flex-col md:flex-row bg-primary-100 dark:bg-primary-800 shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      <div className="md:w-1/3 w-full relative h-48 md:h-auto">
-        <Image
-          src={article.image}
-          alt={article.title}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          style={{ objectFit: 'cover' }}
-          className="object-cover"
-          priority={false}
-          loading="lazy"
-        />
-        {article.slug && (
-          <ReadButton slug={article.slug} title={article.title} href="/blogs/[slug]" as="/blog" />
-        )}
+      <div className="md:w-1/3 w-full relative h-48">
+        <CardImage image={article.image} slug={article.slug} title={article.title} />
       </div>
       <div className="md:w-2/3 w-full p-4 flex flex-col justify-between">
         <div>
