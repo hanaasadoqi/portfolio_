@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   viewport: { width: 'device-width', initialScale: 1 },
   icons: {
     icon: '/favicon_io/favicon.ico',
-    apple: '/favicon_io/icon-192x192.png',
+    apple: '/favicon_io/apple-touch-icon.png',
     other: [
       {
         rel: 'icon',
@@ -80,8 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        {/* Link the manifest directly */}
-        <link rel="manifest" href="/favicon_io/site.webmanifest" />
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body
         className={clsx(
