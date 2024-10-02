@@ -48,8 +48,6 @@ export const metadata: Metadata = {
     'development',
     'software engineer',
   ],
-  colorScheme: 'dark',
-  viewport: { width: 'device-width', initialScale: 1 },
   icons: {
     icon: '/favicon_io/favicon.ico',
     apple: '/favicon_io/apple-touch-icon.png',
