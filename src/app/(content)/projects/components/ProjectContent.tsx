@@ -52,7 +52,7 @@ interface ProjectContentProps {
 
 const ProjectContent: React.FC<ProjectContentProps> = ({ project, handleSkills, showSkills, content }) => {
   return (
-    <div className="container mt-8 md:mt-16 lg:mt-24 w-full mx-auto py-4 px-2 lg:px-8 overflow-y-auto bg-white/50 dark:bg-black/50 flex flex-col items-center justify-between">
+    <div className="container mt-8 md:mt-16 lg:mt-24 w-full md:mx-auto py-4 px-2 lg:px-8 overflow-y-auto bg-white/50 dark:bg-black/50 flex flex-col items-center justify-between">
       <div className="flex flex-col items-center w-full h-full">
         <h2 className="text-center text-xl md:text-2xl lg:text-3xl font-semibold mb-4">{project.title}</h2>
         <div className="flex items-center md:justify-center flex-nowrap gap-2 mb-4 w-full overflow-x-auto scrollbar-hide">
@@ -83,7 +83,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ project, handleSkills, 
       </div>
 
       <div className="max-w-5xl md:max-w-6xl lg:max-w-7xl w-full mt-2 flex flex-col justify-center">
-        <div className="prose prose-2xl mx-auto lg:px-4">
+        <div className="prose prose-2xl dark:prose-invert prose-a:no-underline hover:prose-a:underline prose-strong:text-primary-950 dark:prose-strong:text-primary-100 prose-pre:m-4 md:p-4 lg:p-12 prose-pre:relative">
           {content}
         </div>
       </div>

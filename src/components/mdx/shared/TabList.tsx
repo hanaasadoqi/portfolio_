@@ -60,7 +60,7 @@ export const TabList: React.FC<DropdownTabsProps> = ({ label, children }) => {
         </ul>
 
         {/* Tab content */}
-        <div className="w-full p-6 bg-white dark:bg-gray-900 rounded-lg shadow ">
+        <div className="w-screen p-6 md:p-12 bg-white dark:bg-gray-900 rounded-lg shadow">
           {children[activeTab]}
         </div>
       </div>

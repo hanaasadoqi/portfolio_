@@ -11,7 +11,7 @@ interface TOCContentProps {
 
 const TOCContent: React.FC<TOCContentProps> = ({ tocItems, activeId, expandedSections, toggleSection }) => {
   return (
-    <ul className="scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-gray-100 dark:scrollbar-track-gray-700">
+    <ul className="scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-gray-100 dark:scrollbar-track-gray-700 pb-24">
       {tocItems.map(item => (
         <TOCItem
           key={item.id}
