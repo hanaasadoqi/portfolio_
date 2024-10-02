@@ -7,7 +7,7 @@ interface CardTagsProps {
 
 const CardTags: React.FC<CardTagsProps> = ({ tags }) => {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex whitespace-nowrap gap-2 overflow-x-scroll scrollbar-hide">
       {tags.map((tag, index) => (
         <Tag key={`${tag}-${index}`} tag={tag} />
       ))}
