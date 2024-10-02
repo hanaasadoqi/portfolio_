@@ -38,31 +38,33 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, full }) => {
       </div>
       <div className="md:w-2/3 w-full p-4 flex flex-col justify-between">
         <div>
-          <Link href={`/blog/[slug]`} as={`/blog/${article.slug}`} className="text-lg md:text-xl font-semibold text-primary-600 dark:text-primary-400 hover:underline">
+          <Link href={`/blog/[slug]`} as={`/blog/${article.slug}`} className="line-clamp-2 text-lg md:text-xl font-semibold text-primary-600 dark:text-primary-400 hover:underline">
             {article.title}
           </Link>
-          <h3 className="text-base md:text-lg text-gray-600 dark:text-gray-300 mt-2">{article.subtitle}</h3>
-          <p className="hidden md:block text-gray-700 dark:text-gray-200 mt-4 text-sm md:text-base line-clamp-3">
+          <h3 className="line-clamp-2 text-base md:text-lg text-gray-600 dark:text-gray-300 mt-2">{article.subtitle}</h3>
+          <p className="line-clamp-3 hidden md:block text-gray-700 dark:text-gray-200 mt-4 text-sm md:text-base">
             {article.description && article.description.length > 150
               ? `${article.description?.substring(0, 150)}...`
               : article.description}
           </p>
         </div>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {article.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-xs md:text-sm bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 px-2 py-1 rounded"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        {article.publishedDate && (
-          <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-            Published on {new Date(article.publishedDate).toLocaleDateString()}
+        <div>
+          <div className="mt-4 flex gap-2 overflow-x-scroll scrollbar-hide whitespace-nowrap">
+            {article.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-xs md:text-sm bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 px-2 py-1 rounded"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
-        )}
+          {article.publishedDate && (
+            <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+              Published on {new Date(article.publishedDate).toLocaleDateString()}
+            </div>
+          )}
+        </div>
       </div>
     </article>
   );
