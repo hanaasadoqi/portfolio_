@@ -17,7 +17,15 @@ import {
   Tabs,
   Tab,
   DropdownTabs,
-  TabList
+  TabList,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Container,
+  Button,
 } from "./shared/index";
 import { AiFillAccountBook } from "react-icons/ai";
 
@@ -51,7 +59,15 @@ const mdxComponents = {
   Tab,
   TabList,
   DropdownTabs,
-  AiFillAccountBook
+  AiFillAccountBook,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Button,
+  Container,
 };
 
 export default mdxComponents;
