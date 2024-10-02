@@ -10,7 +10,7 @@ export const CodeFolding: React.FC<{ children: React.ReactNode }> = ({ children,
     <>
       <div data-id="code-folding">
         <BaseButton
-          size="sm"
+          size="md"
           onClick={() => setIsOpen(!isOpen)}
           variant="ghost"
         >
