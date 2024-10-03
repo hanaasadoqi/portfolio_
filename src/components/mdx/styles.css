@@ -1,0 +1,23 @@
+.codeBlock {
+  white-space: pre-wrap;  /* Ensures line breaks and white space are preserved */
+  word-wrap: break-word;  /* Allows breaking long lines */
+  line-height: 1.5;       /* Improves readability with proper line height */
+}
+
+span.highlight {
+  background-color: yellow;  /* Ensure the highlight is applied only to the selected portion */
+  position: relative;        /* Allows proper positioning of the badge */
+  border-radius: 3px;
+  padding: 2px;
+}
+
+span.highlight .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ffeb3b; /* Yellow badge background */
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 10px;
+  color: black;
+}

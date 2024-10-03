@@ -21,6 +21,7 @@
 
 html {
   scroll-behavior: smooth;
+  // overflow:
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased; 
@@ -34,103 +35,38 @@ body {
   @apply font-raleway text-base antialiased;
   min-height: 100vh;
   overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-y: auto;
   font-feature-settings: 'liga' on; /* Enable ligatures */
   transition:
     background-color 0.3s ease,
     color 0.3s ease; /* Smooth transition for background and text colors */
 }
 
+pre {
+  white-space: pre-wrap;  /* Ensures line breaks and white space are preserved */
+  word-wrap: break-word;  /* Allows breaking long lines */
+  line-height: 1.5;       /* Improves readability with proper line height */
+  width: 100%;
+}
 
-//   a {
-//     @apply text-primary-400 hover:text-primary-300;
-//     color: var(--primary-400);
-//     transition: color 0.3s ease; /* Smooth transition for text color */
-//   }
+span.highlight {
+  background-color: yellow;  /* Ensure the highlight is applied only to the selected portion */
+  position: relative;        
+  border-radius: 3px;
+  padding: 2px;
+}
 
-//   p,
-//   h1,
-//   h2,
-//   h3,
-//   h4,
-//   h5,
-//   h6,
-//   li {
-//     color: var(--primary-100);
-//     transition: color 0.3s ease; /* Smooth transition for text color */
-//   }
-// }
+span.highlight .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ffeb3b; /* Yellow badge background */
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 10px;
+  color: black;
+}
 
-// /* SEO and Accessibility Enhancements */
-// // a {
-// //   color: var(--primary-600);
-// //   transition: color 0.3s ease; /* Smooth transition for link color */
-// //   // &:hover {
-// //   //   color: var(--primary-700);
-// //   // }
-// // }
-
-// // p {
-// //   margin-bottom: 1.5rem;
-// //   line-height: 1.7;
-// //   color: var(--primary-700);
-// // }
-
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6 {
-//   color: var(--primary-900);
-//   font-weight: 700;
-//   line-height: 1.25;
-//   margin-bottom: 1rem;
-//   transition: color 0.3s ease; /* Smooth transition for heading color */
-// }
-
-// img {
-//   max-width: 100%;
-//   height: auto;
-//   display: block;
-//   border-radius: 0.375rem; /* Small border radius for consistency */
-//   box-shadow: var(--shadow);
-//   transition: box-shadow 0.3s ease; /* Smooth transition for shadow effect */
-// }
-
-// #hero {
-//   // @apply bg-hero-gradient dark:bg-hero-gradient-dark;
-
-//   padding-top: 5rem;
-// }
-
-// #about {
-//   // @apply bg-about-gradient dark:bg-about-gradient-dark;
-// }
-
-// #experience {
-//   // @apply bg-experience-gradient dark:bg-experience-gradient-dark;
-// }
-
-// #projects {
-//   // @apply bg-projects-gradient dark:bg-projects-gradient-dark;
-// }
-
-// #skills {
-//   // @apply bg-skills-gradient dark:bg-skills-gradient-dark;
-// }
-
-// #writing {
-//   // @apply bg-writing-gradient dark:bg-writing-gradient-dark;
-// }
-
-// #education {
-//   // @apply bg-education-gradient dark:bg-education-gradient-dark;
-// }
-// #contact {
-//   // @apply bg-contact-gradient dark:bg-contact-gradient-dark;
-// }
-
-/* Add this to your global CSS file or Tailwind CSS configuration */
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
 }
@@ -139,145 +75,11 @@ body {
   -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
   scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
-// .header {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   z-index: 50;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   padding: 1rem;
-//   background-color: rgba(255, 255, 255, 0.8); /* Updated */
-//   -webkit-backdrop-filter: blur(10px); /* Updated */
-//   backdrop-filter: blur(10px); /* Updated */
-//   transition: transform 0.3s ease-in-out;
-// }
-
-// .header-hidden {
-//   transform: translateY(-100%);
-// }
-
-// .header-visible {
-//   transform: translateY(0);
-// }
-
-// .active-section {
-//   background-color: var(--primary-500);
-//   color: white;
-//   transition: background-color 0.3s ease-in-out;
-// }
-// /* Custom Scrollbar Style */
-// ::-webkit-scrollbar {
-//   height: 4px; /* Initial height for horizontal scrollbar */
-//   width: 4px; /* Initial width for vertical scrollbar */
-//   background: transparent; /* Background of the scrollbar track */
-// }
-
-// ::-webkit-scrollbar-thumb {
-//   background-color: #888; /* Color of the scrollbar thumb */
-//   border-radius: 10px; /* Rounded corners for the scrollbar thumb */
-//   transition:
-//     background-color 0.3s ease,
-//     height 0.3s ease,
-//     width 0.3s ease; /* Smooth transition for thumb properties */
-// }
-
-// ::-webkit-scrollbar-thumb:hover {
-//   background-color: #555; /* Darker color when hovered */
-//   height: 4px; /* Increased height when scrolling */
-//   width: 4px; /* Increased width when scrolling */
-// }
-
-// ::-webkit-scrollbar-track {
-//   background: transparent; /* Transparent track background */
-// }
-
-@import './variables.scss';
-@import './mixins.scss';
 
 #nav,
 #dark-mode-toggle-container {
   z-index: 9999;
 }
-
-// .custom-scrollbar::-webkit-scrollbar {
-//   height: 2px;
-//   width: 2px;
-//   background: transparent;
-// }
-
-// .custom-scrollbar::-webkit-scrollbar-thumb {
-//   background-color: #888;
-//   border-radius: 10px;
-//   transition:
-//     background-color 0.3s ease,
-//     height 0.3s ease,
-//     width 0.3s ease;
-// }
-
-// .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-//   background-color: #555;
-//   height: 2px;
-//   width: 2px;
-// }
-
-// .custom-scrollbar::-webkit-scrollbar-track {
-//   background: transparent;
-// }
-
-/* Add these styles to your global CSS or component-specific CSS file */
-
-.custom-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.custom-arrow:hover {
-  background-color: #f0f0f0;
-}
-
-.slick-prev::before,
-.slick-next::before {
-  display: none; /* Hide default arrow styles */
-}
-
-// .scrollbar-thin {
-//   scrollbar-width: thin;
-//   scrollbar-color: #c4c4c4 #ffffff;
-// }
-
-// .custom-scrollbar::-webkit-scrollbar {
-//   height: 4px;
-// }
-
-// .custom-scrollbar::-webkit-scrollbar-thumb {
-//   background-color: #c4c4c4;
-//   border-radius: 4px;
-// }
-
-// /* Ensure the slider container allows overflow */
-// .slider-container {
-//   overflow-x: auto; /* Allow horizontal scrolling */
-//   overflow-y: hidden; /* Hide vertical overflow if needed */
-//   white-space: nowrap; /* Prevent line breaks */
-// }
-
-// /* Customize scrollbar if needed */
-// .slider-container::-webkit-scrollbar {
-//   height: 8px; /* Height of the horizontal scrollbar */
-// }
-
-// .slider-container::-webkit-scrollbar-thumb {
-//   background-color: #c4c4c4; /* Scrollbar thumb color */
-//   border-radius: 4px; /* Scrollbar thumb roundness */
-// }
-
-
 
 /* Light Mode Color Variables */
 @layer base {
@@ -542,3 +344,76 @@ dialog:not([open]) {
   opacity: 0;
   pointer-events: none;
 }
+
+.custom-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background - color 0.3s ease;
+}
+
+.custom-arrow:hover {
+  background-color: #f0f0f0;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  display: none; /* Hide default arrow styles */
+}
+
+/* Add this CSS */
+.side-panel {
+  contain: strict;
+}
+
+// /* Customize scrollbars in Firefox */
+// * {
+//   scrollbar-width: thin; /* Makes the scrollbar thinner */
+//   scrollbar-color: #888 transparent; /* Sets the color of the thumb and track */
+// }
+
+// /* When hovering over the scrollbar in Firefox */
+// // html::-webkit-scrollbar-thumb:hover {
+// //   background-color: #555; /* Darker color when hovered */
+// // }
+
+// * {
+//   scrollbar-width: thin;
+//   scrollbar-color: #888 transparent;
+//   // height: 4px;
+//   // width: 4px;
+//   // background: transparent;
+// }
+
+
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #555
+}
+
+// *::-webkit-scrollbar {
+//   height: 4px; /* Initial height for horizontal scrollbar */
+//   width: 4px; /* Initial width for vertical scrollbar */
+//   background: transparent; /* Background of the scrollbar track */
+// }
+
+*::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+  transition:
+    background-color 0.3s ease,
+    height 0.3s ease,
+    width 0.3s ease; /* Smooth transition for thumb properties */
+}
+
+// *::-webkit-scrollbar-thumb:hover {
+//   background-color: #555; /* Darker color when hovered */
+//   height: 2px; /* Increased height when scrolling */
+//   width: 2px; /* Increased width when scrolling */
+// }
+
+*::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track background */
+}
+

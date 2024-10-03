@@ -82,7 +82,7 @@ export default function RootLayout({
       </head>
       <body
         className={clsx(
-          'relative',
+          'relative overscroll-contain',
           poppins.variable,
           raleway.variable,
           merriweather.variable,
