@@ -12,7 +12,7 @@ import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import mdxComponents from '@/components/mdx/MDXComponents.server';
-
+import remarkHighlight from '@/remarkHighlight.mjs';
 export const runtime = "nodejs";
 export const dynamic = "force-static";
 
@@ -39,7 +39,7 @@ export default async function BlogContentPage({ params }: ContentPageProps) {
       options: {
         mdxOptions: {
           rehypePlugins: [rehypePrism, rehypeSlug],
-          remarkPlugins: [remarkGfm],
+          remarkPlugins: [remarkGfm, remarkHighlight],
         },
         parseFrontmatter: true,
       },
@@ -78,8 +78,8 @@ export default async function BlogContentPage({ params }: ContentPageProps) {
           tags={tags}
         />
         <BlogContainer title={title} subtitle={subtitle}>
-          <div className="rounded-lg flex-1 border-x border-gray-300 dark:border-gray-800 md:p-6 mb-24 overflow-auto">
-            <div className="prose prose-2xl dark:prose-invert prose-a:no-underline hover:prose-a:underline prose-strong:text-primary-950 dark:prose-strong:text-primary-100 prose-pre:m-4 p-4 md:p-12 prose-pre:relative">
+          <div className="rounded-lg flex-1 border-x border-gray-300 dark:border-gray-800 md:p-6 pb-24 overflow-y-scroll">
+            <div className="prose-pre:!whitespace-pre-wrap prose-pre:break-word  prose prose-2xl dark:prose-invert prose-a:no-underline hover:prose-a:underline prose-strong:text-primary-950 dark:prose-strong:text-primary-100 md:prose-pre:m-4 prose-pre:p-2 p-4 md:p-12 prose-pre:!overflow-visible">
               {content}
             </div>
           </div>

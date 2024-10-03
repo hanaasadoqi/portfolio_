@@ -26,6 +26,7 @@ import {
   Td,
   Container,
   Button,
+  CodeWithHighlights
 } from "./shared/index";
 import { AiFillAccountBook } from "react-icons/ai";
 
@@ -68,6 +69,7 @@ const mdxComponents = {
   Td,
   Button,
   Container,
+  CodeWithHighlights
 };
 
 export default mdxComponents;
