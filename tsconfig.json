@@ -38,7 +38,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/**/*.ts", 
-    "next-sitemap.config.ts"
+    "next-sitemap.config.ts", 
+    "src/remarkHighlight.mjs"  
   ],
   "exclude": [
     "node_modules",

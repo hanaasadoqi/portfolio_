@@ -11,6 +11,7 @@ import remarkRehype from 'remark-rehype'
 import remarkParse from 'remark-parse'
 import remarkSectionize from 'remark-sectionize'
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
+import remarkHighlight from './src/remarkHighlight.mjs'
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -79,7 +80,7 @@ const nextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkGfm, remarkRehype, remarkParse, remarkSectionize],
+    remarkPlugins: [remarkGfm, remarkRehype, remarkParse, remarkSectionize, remarkHighlight],
     rehypePlugins: [rehypeParse, rehypeSlug, rehypeStringify, rehypePrism],
   },
 })
