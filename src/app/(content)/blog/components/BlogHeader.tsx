@@ -17,8 +17,8 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
       style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="absolute inset-0 bg-transparent opacity-70" />
       <div className="relative w-full h-full flex flex-col items-center justify-center px-6 text-center">
-        <h1 id="article-title" className="mb-3 dark:text-gray-100 text-gray-900 font-semibold text-2xl md:text-3xl lg:text-4xl">{title}</h1>
-        <h3 id="article-subtitle" className="mb-3 dark:text-gray-200 text-gray-800 font-semibold text-base md:text-xl">{subtitle}</h3>
+        <h1 id="article-title" className="mb-3 dark:text-gray-100 text-gray-900 font-semibold text-4xl md:text-5xl">{title}</h1>
+        <h3 id="article-subtitle" className="hidden md:block mb-3 dark:text-gray-200 text-gray-800 font-semibold text-base md:text-xl">{subtitle}</h3>
         {publishedDate && <time className="mb-2 text-base lg:text-lg dark:text-gray-300 text-gray-800">{publishedDate}</time>}
       </div>
       <div className="scrollbar-hide overflow-x-scroll flex w-full flex-nowrap md:flex-wrap md:justify-center gap-1 mx-6 max-w-lg">

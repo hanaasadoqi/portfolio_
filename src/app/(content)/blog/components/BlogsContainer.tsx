@@ -42,7 +42,7 @@ export default function BlogsContainer({ fetchedArticles, fetchedTitles }: { fet
 
 
   return (
-    <div className="max-w-7xl w-full mx-auto space-y-6 px-12">
+    <div className="max-w-7xl w-full mx-auto space-y-6 px-12 overflow-y-scroll">
       <SearchBar
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}

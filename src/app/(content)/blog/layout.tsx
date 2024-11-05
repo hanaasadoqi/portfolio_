@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import Background from '@/components/shared/Background';
 import { LoadingOverlay } from '@/components';
 import 'prism-themes/themes/prism-vsc-dark-plus.css'
+import 'katex/dist/katex.min.css'
 import './articleStyles.scss'
 import '@/styles/globals.scss';
 
