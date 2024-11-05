@@ -12,6 +12,9 @@ import remarkParse from 'remark-parse'
 import remarkSectionize from 'remark-sectionize'
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 import remarkHighlight from './src/remarkHighlight.mjs'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import { remarkMermaid } from '@theguild/remark-mermaid'
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -80,8 +83,8 @@ const nextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkGfm, remarkRehype, remarkParse, remarkSectionize, remarkHighlight],
-    rehypePlugins: [rehypeParse, rehypeSlug, rehypeStringify, rehypePrism],
+    remarkPlugins: [remarkGfm, remarkRehype, remarkParse, remarkSectionize, remarkHighlight, remarkMath, remarkMermaid],
+    rehypePlugins: [rehypeParse, rehypeSlug, rehypeStringify, rehypePrism, rehypeKatex],
   },
 })
 
