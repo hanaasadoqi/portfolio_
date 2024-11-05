@@ -17,11 +17,11 @@ const TOCItem: React.FC<TOCItemProps> = ({ item, activeId, expandedSections, tog
   const isExpanded = expandedSections.has(item.id);
 
   return (
-    <li key={item.id} className={`ml-${item.level * 4} text-gray-900 `}>
+    <li key={item.id} className={`ml-${item.level * 2} text-gray-900 `}>
       {hasChildren ? (
-        <div>
+        <>
           <div className="w-full inline-flex justify-between hover:bg-blue-100 dark:hover:bg-blue-900 px-2 h-full w-full focus:outline-none rounded">
-            <Link href={`#${item.id}`} className={clsx(`flex-1 block break-normal py-2`, {
+            <Link href={`#${item.id}`} className={clsx(`flex-1 block overflow-wrap break-words py-2`, {
               'text-primary-700 dark:text-primary-300': !isActive,
               'text-primary-900 dark:text-primary-100': isActive
             })} scroll={true}>
@@ -48,12 +48,12 @@ const TOCItem: React.FC<TOCItemProps> = ({ item, activeId, expandedSections, tog
               ))}
             </ul>
           )}
-        </div>
+        </>
       ) : (
         <Link
           href={`#${item.id}`}
           className={clsx(
-            "block break-normal p-2 hover:bg-blue-200 dark:hover:bg-blue-950 rounded",
+            "block hover:bg-blue-200 dark:hover:bg-blue-950 rounded overflow-wrap break-words",
             {
               'text-gray-900 dark:text-primary-100': isActive,
               'text-gray-700 dark:text-primary-300': !isActive
