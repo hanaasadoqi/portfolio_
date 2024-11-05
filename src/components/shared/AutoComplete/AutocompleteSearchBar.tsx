@@ -8,19 +8,22 @@ import SuggestionsList from './SuggestionsList';
 import useAutocomplete from '@/hooks/useAutocomplete';
 import { Suggestion } from '@/types';
 import useClickOutside from '@/hooks/useClickOutside';
+import { useRouter } from 'next/router';
 
 interface AutocompleteSearchBarProps {
   suggestions: Suggestion[];
   size?: number;
   placeholder?: string;
   className?: string;
+  side?: boolean;
 }
 
-const AutocompleteSearchBar: React.FC<AutocompleteSearchBarProps> = ({ suggestions, size = 24, placeholder = "Search articles...", className }) => {
+const AutocompleteSearchBar: React.FC<AutocompleteSearchBarProps> = ({ suggestions, size = 24, placeholder = "Search articles...", className, side = false }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [showSearchBar, setShowSearchBar] = useState<boolean>(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState<number>(-1);
+  // const router = useRouter()
 
   const {
     query,
@@ -35,6 +38,10 @@ const AutocompleteSearchBar: React.FC<AutocompleteSearchBarProps> = ({ suggestio
     setQuery(suggestion.title);
     setShowSuggestions(false);
     setShowSearchBar(false);
+    // if (suggestion.slug) {
+    //   router.push(suggestion.slug)
+    // }
+
   };
 
   const handleShowSearch = () => {
@@ -67,10 +74,14 @@ const AutocompleteSearchBar: React.FC<AutocompleteSearchBarProps> = ({ suggestio
     >
       <div
         className={clsx(
-          'max-w-lg transition-all duration-300 ease-in-out',
+          'transition-all duration-300 ease-in-out',
           {
             'flex-1 w-full opacity-100': showSearchBar,
             'w-0 opacity-0': !showSearchBar,
+          },
+          {
+            'max-w-lg': !side,
+            'max-w-full': side
           }
         )}
       >
@@ -93,6 +104,7 @@ const AutocompleteSearchBar: React.FC<AutocompleteSearchBarProps> = ({ suggestio
             onSuggestionClick={handleSuggestionClick}
             activeSuggestionIndex={activeSuggestionIndex}
             setActiveSuggestionIndex={setActiveSuggestionIndex}
+            side={side}
           />
 
         )}

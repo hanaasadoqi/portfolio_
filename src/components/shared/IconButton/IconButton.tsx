@@ -76,7 +76,7 @@ const IconButton: React.FC<IconButtonProps> = ({
         {!iconOnly && iconPosition === 'right' && <IconComponent />}
         {iconOnly && <IconComponent />}
       </BaseButton>
-      <Tooltip id={tooltipId} className="z-50" />
+      <Tooltip id={tooltipId} className="z-50 toolTip not-prose" />
     </>
   )
 }
