@@ -12,13 +12,13 @@ export const TabList: React.FC<DropdownTabsProps> = ({ label, children }) => {
     <>
       {/* Mobile dropdown */}
       {label && (
-        <div className="md:hidden w-full mb-4">
+        <div className="md:hidden max-w-full m-4">
           <label htmlFor="tabs" className="sr-only">
             {label}
           </label>
           <select
             id="tabs"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            className="mx-auto bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             value={activeTab}
             onChange={(e) => handleTab(Number(e.target.value))}
           >
@@ -43,7 +43,7 @@ export const TabList: React.FC<DropdownTabsProps> = ({ label, children }) => {
                 <button
                   onClick={() => handleTab(index)}
                   className={clsx(
-                    'not-prose inline-flex items-center px-4 py-2 rounded-l-lg w-full transition-all duration-200 text-left',
+                    'not-prose inline-flex items-center px-4 py-2 rounded-l-lg max-w-full transition-all duration-200 text-left',
                     {
                       'bg-primary-600 text-white': isActive,
                       'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700':

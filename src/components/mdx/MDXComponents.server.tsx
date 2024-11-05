@@ -26,10 +26,24 @@ import {
   Td,
   Container,
   Button,
-  CodeWithHighlights
+  CodeWithHighlights,
+  ExplanationItem,
+  ItemHeader,
+  ItemContent,
+  CodeContainer,
+  SidePanel,
+  CodeEditor,
+  Modal,
+  Editor,
+  Mermaid
 } from "./shared/index";
 import { AiFillAccountBook } from "react-icons/ai";
+import clsx from 'clsx'
 
+// import dynamic from 'next/dynamic';
+// const Mermaid = dynamic(() => import('./shared/Mermaid').then(mod => mod.default), {
+//   ssr: false,
+// });
 
 const mdxComponents = {
   h1: CustomH1,
@@ -38,13 +52,18 @@ const mdxComponents = {
   h4: CustomH4,
   h5: CustomH5,
   h6: CustomH6,
-  p: ({ children, className, ...props }: any) => <p className="text-gray-900 dark:text-gray-100" {...props}>{children}</p>,
+  p: ({ children, className, ...props }: any) => <p className="text-base md:text-lg text-gray-900 dark:text-gray-100 hover:text-primary-800 dark:hover:text-primary-300" {...props}>{children}</p>,
   img: (props: any) => <MDXImage {...props} />,
-  li: ({ children, ...props }: any) => <LI {...props}>{children}</LI>,
+  li: ({ className, children, ...props }: any) => <LI {...props} className={clsx("ml-2 mb-2 text-base md:text-lg text-gray-900 dark:text-gray-100 hover:text-primary-700 dark:hover:text-primary-400", className)}>{children}</LI>,
   ol: ({ children, ...props }: any) => <OL {...props}>{children}</OL>,
   ul: ({ children, ...props }: any) => <UL {...props}>{children}</UL>,
   code: ({ children, className, ...props }: any) => {
     const language = className?.replace('language-', '') || 'text';
+    if (className?.includes('language-mermaid')) {
+      className = "mermaid"
+      return <CodeBlock className={className} language={language} {...props}>{children}</CodeBlock>
+    }
+
     return (
       <CodeBlock language={language} className={className} {...props}>
         {children}
@@ -69,7 +88,17 @@ const mdxComponents = {
   Td,
   Button,
   Container,
-  CodeWithHighlights
+  CodeWithHighlights,
+  CodeContainer,
+  ExplanationItem,
+  ItemHeader,
+  ItemContent,
+  SidePanel,
+  Mermaid: ({ chart, ...props }: any) => (
+    <Mermaid chart={chart || ``}{...props} />
+  ),
+  CodeEditor,
+  Modal,
+  Editor,
 };
-
 export default mdxComponents;

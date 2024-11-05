@@ -1,9 +1,10 @@
 'use client'
 
-import { BaseButton, IconButton } from "@/components/shared";
+import { BaseButton } from "@/components/shared";
 import clsx from "clsx";
 import { useState, useRef } from "react";
 import { FaClipboardCheck, FaClipboard } from "react-icons/fa";
+import Mermaid from "./Mermaid";
 
 export const CodeBlock = ({ children, language, className }: { children: React.ReactNode, className?: string, language?: string }) => {
   const [copied, setCopied] = useState(false)
@@ -22,6 +23,8 @@ export const CodeBlock = ({ children, language, className }: { children: React.R
       }
     }
   };
+
+  console.log(language)
 
   return className ? (
     <>

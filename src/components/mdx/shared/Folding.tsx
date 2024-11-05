@@ -3,7 +3,7 @@
 import { BaseButton } from "@/components/shared";
 import { useState } from "react";
 
-export const CodeFolding: React.FC<{ children: React.ReactNode }> = ({ children, ...props }) => {
+export const CodeFolding: React.FC<{ children: React.ReactNode; show?: string; hide?: string }> = ({ children, show = "Show", hide = "Hide", ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ export const CodeFolding: React.FC<{ children: React.ReactNode }> = ({ children,
           onClick={() => setIsOpen(!isOpen)}
           variant="ghost"
         >
-          {isOpen ? 'Hide' : 'Show'}
+          {isOpen ? hide : show}
         </BaseButton>
       </div>
 
