@@ -1,36 +1,35 @@
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 import Hero from '@/components/Hero/Hero'
 import SkillsContainer from './skills/components/SkillContainer'
 import About from '../components/AboutContainer/AboutContainer'
-import { Background } from '@/components/shared'
 import SectionLayout from '@/app/shared/SectionLayout'
 import { ArticlesListContainer } from '@/components'
-import { LoadingOverlay } from '@/components/shared'
 import StickySocialMediaLinks from '@/components/shared/StickySocialMediaLinks'
 import ProjectGalleryContainer from './(content)/projects/components/ProjectGalleryContainer'
 import Education from '@/components/Education/Education'
 import ExperienceContainer from '@/components/Experience/ExperienceContainer'
+import LoadingComponent from '../app/skills/loading'
 
-export default function Home() {
+export default async function Home() {
   return (
-    <Background>
+    <>
       <StickySocialMediaLinks />
-      <div className="flex h-full w-full flex-col items-center overflow-hidden bg-transparent scrollbar-hide">
+      <div className="flex h-full w-full flex-col items-center overflow-y-auto overscroll-contain bg-transparent z-20">
         <SectionLayout id="hero" full>
           <Hero />
         </SectionLayout>
         <SectionLayout id="about" screen>
-          <Suspense fallback={<LoadingOverlay />}>
+          <Suspense fallback={<LoadingComponent />}>
             <About />
           </Suspense>
         </SectionLayout>
         <SectionLayout id="skills">
-          <Suspense fallback={<LoadingOverlay />}>
+          <Suspense fallback={<LoadingComponent />}>
             <SkillsContainer />
           </Suspense>
         </SectionLayout>
         <SectionLayout id="experience">
-          <Suspense fallback={<LoadingOverlay />}>
+          <Suspense fallback={<LoadingComponent />}>
             <ExperienceContainer />
           </Suspense>
         </SectionLayout>
@@ -38,7 +37,7 @@ export default function Home() {
           <ProjectGalleryContainer />
         </SectionLayout>
         <SectionLayout id="writing">
-          <Suspense fallback={<LoadingOverlay />}>
+          <Suspense fallback={<LoadingComponent />}>
             <ArticlesListContainer />
           </Suspense>
         </SectionLayout>
@@ -46,6 +45,6 @@ export default function Home() {
           <Education />
         </SectionLayout>
       </div>
-    </Background>
+    </>
   )
 }

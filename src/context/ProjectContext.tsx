@@ -1,7 +1,6 @@
 'use client'
 
 import React, { createContext, useContext, ReactNode } from 'react'
-import { ProjectWithDetails } from '@/types/data'
 import { useFilteredProjects } from '@/hooks/useFilteredProjects'
 import { ProjectPreview } from '@/types'
 

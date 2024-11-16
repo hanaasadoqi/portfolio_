@@ -1,9 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, ReactNode, useMemo } from 'react'
-import { Article, ArticleWithDetails } from '@/types/data'
 import { useFilteredArticles } from '@/hooks/useFilteredArticles'
-import { ArticlePreview } from '@/types'
 import { ArticlePreviewType } from '@/app/lib/actions/articles'
 
 interface ArticlesContextProps {

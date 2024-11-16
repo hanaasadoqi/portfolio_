@@ -2,7 +2,7 @@ import { compileMDX } from 'next-mdx-remote/rsc';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-import mdxComponents from '../components/mdx/MDXComponents.server';
+import mdxComponents from '@/components/mdx/mdxComponents';
 import { getMdxFileContent } from '@/utils/getMdxFile';
 import { ReactElement } from 'react';
 

@@ -96,11 +96,20 @@ export async function fetchArticleBySlug(slug: string): Promise<any> {
   return article;
 }
 
-export async function fetchArticleTitles(): Promise<ArticleSuggestions[]> {
+export async function fetchArticleInfo(): Promise<Array<{
+  slug: string | null;
+  title: string;
+  subtitle?: string;
+  description?: string | null;
+  tags?: string[];
+}>> {
   const titles = await prisma.article.findMany({
     select: {
       title: true,
       slug: true,
+      tags: true,
+      subtitle: true,
+      description: true,
     }
   });
 

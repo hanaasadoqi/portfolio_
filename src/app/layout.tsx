@@ -1,15 +1,13 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import { Poppins, Raleway, Merriweather } from 'next/font/google'
-import { LoadingOverlay } from '@/components'
 import Providers from './providers'
-import clsx from 'clsx'
-import '../styles/globals.scss'
-import 'react-tooltip/dist/react-tooltip.css'
-import 'prism-themes/themes/prism-vsc-dark-plus.css'
 import ErrorBoundary from './shared/ErrorBoundary'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+
+import clsx from 'clsx'
+import LoadingComponent from './@modal/(.)skills/[id]/loading'
+import { Suspense } from 'react'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -68,39 +66,39 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   modal,
 }: Readonly<{
   children: React.ReactNode
-  modal: React.ReactNode
+  modal?: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark dark:bg-app-gradient bg-app-gradient-light">
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
+        id="root"
         className={clsx(
           'relative overscroll-contain',
           poppins.variable,
           raleway.variable,
-          merriweather.variable,
+          merriweather.variable
         )}
       >
         <ErrorBoundary>
           <Providers>
-            <Suspense fallback={<LoadingOverlay />}>
-              <main className="relative z-0 flex min-h-screen w-full flex-col items-center bg-transparent">
-                {children}
-              </main>
-              {modal}
+            <Suspense fallback={<LoadingComponent />}>
+              {children}
             </Suspense>
+            {modal}
+            <Analytics />
+            <SpeedInsights />
           </Providers>
         </ErrorBoundary>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   )
 }
+
