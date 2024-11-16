@@ -1,7 +1,4 @@
-import withBundleAnalyzer from '@next/bundle-analyzer'
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
-import createMDX from '@next/mdx'
+import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import rehypeParse from 'rehype-parse'
 import rehypeSlug from 'rehype-slug'
@@ -10,29 +7,43 @@ import rehypePrism from 'rehype-prism-plus'
 import remarkRehype from 'remark-rehype'
 import remarkParse from 'remark-parse'
 import remarkSectionize from 'remark-sectionize'
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 import remarkHighlight from './src/remarkHighlight.mjs'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
-import { remarkMermaid } from '@theguild/remark-mermaid'
+import bundleAnalyzer from '@next/bundle-analyzer'
 
-const bundleAnalyzer = withBundleAnalyzer({
+const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const withMDX = nextMDX({
+  options: {
+    remarkPlugins: [
+      remarkGfm,
+      remarkRehype,
+      remarkParse,
+      remarkSectionize,
+      remarkHighlight,
+      remarkMath,
+    ],
+    rehypePlugins: [
+      rehypeParse,
+      rehypeSlug,
+      rehypeStringify,
+      rehypePrism,
+      rehypeKatex,
+    ],
+  },
+})
 
 const nextConfig = {
-  reactProductionProfiling: true,
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'srev4agitwcxrnzk.public.blob.vercel-storage.com',
-        pathname: '/**'
+        pathname: '/**',
       },
       {
         protocol: 'https',
@@ -60,34 +71,16 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cdn.hashnode.com'
+        hostname: 'cdn.hashnode.com',
       },
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com'
-      }
+        hostname: 'images.unsplash.com',
+      },
     ],
-  },
-  webpack: (config, { isServer }) => {
-    config.resolve.alias['@'] = join(__dirname, 'src')
-    config.resolve.fallback = {
-      fs: false,
-    }
-    if (!isServer) {
-      config.plugins.push(new CaseSensitivePathsPlugin());
-    }
-    return config
   },
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx', 'md'],
 }
 
-const withMDX = createMDX({
-  options: {
-    remarkPlugins: [remarkGfm, remarkRehype, remarkParse, remarkSectionize, remarkHighlight, remarkMath, remarkMermaid],
-    rehypePlugins: [rehypeParse, rehypeSlug, rehypeStringify, rehypePrism, rehypeKatex],
-  },
-})
-
-const mdxConfig = withMDX(nextConfig)
-
-export default bundleAnalyzer(mdxConfig)
+// export default withBundleAnalyzer(withMDX(nextConfig))
+export default withMDX(nextConfig);
