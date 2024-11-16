@@ -44,7 +44,6 @@ const config: Config = {
           'linear-gradient(to bottom, var(--hero-300), var(--about-300), var(--skills-300), var(--experience-300), var(--projects-300), var(--writing-300), var(--education-300), var(--neutral-300))',
         'app-gradient-dark':
           'linear-gradient(to bottom, var(--hero-950), var(--about-950), var(--skills-950), var(--experience-950), var(--projects-950), var(--writing-950), var(--education-950), var(--neutral-950))',
-
         'hero-light': 'linear-gradient(to bottom, var(--hero-300), var(--about-300))',
         'hero-dark': 'linear-gradient(to bottom, var(--hero-950), var(--about-950))',
         'about-light': 'linear-gradient(to bottom, var(--about-300), var(--skills-300))',
@@ -114,6 +113,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/container-queries'), require('@tailwindcss/forms')],
 }
 export default config
