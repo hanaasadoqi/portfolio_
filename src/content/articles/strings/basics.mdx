@@ -1,0 +1,696 @@
+---
+title: "Basics of Strings"
+---
+
+## Compare Two Strings
+
+Comparing two strings checks if they are identical or determines their lexicographical order.
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Operation</Th>
+      <Th>Approach</Th>
+      <Th>Time Complexity</Th>
+      <Th>Space Complexity</Th>
+      <Th>Important Notes</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>Compare two strings</Td>
+      <Td>`localeCompare`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Locale-specific, useful for multi-locale sorting</Td>
+    </Tr>
+    <Tr>
+      <Td></Td>
+      <Td>Direct comparison</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Standard, fast for lexicographical error</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+<Tabs>
+  <Tab label="`localeCompare`">
+
+**Explanation**: `localeCompare` compares strings based on locale, allowing language-specific sorting.
+
+- Returns $0$ if equal
+- Returns a negative value if the first string is lexicographically smaller.
+- Returns a positive value if the first string is larger.
+
+**Time**: $O(n)$ for `n` characters in the shortest string.
+
+**Space**: $O(1)$
+
+**Considerations**: Suitable for multi-locale applications; behavior varies by locale, e.g. sorting in different languages.
+
+```ts
+function compareStringsLocale(str1: string, str2: string): number {
+  return str1.localeCompare(str2)
+}
+```
+
+  </Tab>
+  <Tab label="Direct comparison">
+
+**Explanation**: Directly compares the strings using `===`, `<` and `>` operators. Useful for basic lexicographical ordering in a single locale.
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**: Simpler and faster than `localeCompare` for standard comparisons without multi-locale needs.
+
+```ts
+function compareStringsDirect(str1: string, str2: string): number {
+  if(str1 === str2) return 0;
+  return str1 < str2 ? -1 : 1;
+}
+```
+
+  </Tab>
+</Tabs>
+
+---
+
+## Searching for Character
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Operation</Th>
+      <Th>Approach</Th>
+      <Th>Time Complexity</Th>
+      <Th>Space Complexity</Th>
+      <Th>Important Notes</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>Find character</Td>
+      <Td>Using `indexOf`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Returns index; stops after first match</Td>
+    </Tr>
+    <Tr>
+      <Td></Td>
+      <Td>Using `includes`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Returns boolean; does not provide index</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+<Tabs>
+  <Tab label="Using `indexOf`">
+
+**Explanation**: Searches for the first instance of a character.
+
+- Returns `-1` if the character isn't found.
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**: Simple and efficient for a single search; doesn't find multiple instances without further looping.
+
+```ts
+function findCharIndexOf(str: string, char: string): number {
+  return str.indexOf(char)
+}
+```
+
+  </Tab>
+  <Tab label="Using `includes`">
+
+**Explanation**: Determines if a character exists within a string.
+
+- Returns `true` if character is found.
+- Otherwise, returns `false`.
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**: Use `includes` only when existence matters; doesn't provide index information.
+
+```ts
+function containsChar(str: string, char: string): boolean {
+  return str.includes(char)
+}
+```
+  </Tab>
+</Tabs>
+
+---
+
+## Remove Character at a Specific Position
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Operation</Th>
+      <Th>Approach</Th>
+      <Th>Time Complexity</Th>
+      <Th>Space Complexity</Th>
+      <Th>Important Notes</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>Remove character</Td>
+      <Td>Using `slice`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(n)$</Td>
+      <Td>Simple, efficient for single character removal</Td>
+    </Tr>
+    <Tr>
+      <Td></Td>
+      <Td>Using `split` and `join`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(n)$</Td>
+      <Td>Flexible; supports complex removal cases</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+<Tabs>
+  <Tab label="Using `slice`">
+
+**Explanation**: Combines slices of the string **before and after the specified position** to omit the character at that index.
+
+**Time**: $O(n)$
+
+**Space**: $O(n)$; creates a new string.
+
+**Considerations**: Simple approach; ensure position is within bounds to avoid errors.
+
+```ts
+function removeCharSlice(str: slice, position: number): string {
+  return str.slice(0, position) + str.slice(position + 1)
+}
+```
+
+  </Tab>
+  <Tab label="Using `split` and `join`">
+
+**Explanation**: Splits the array into an array, filters out the character at the specified position, and joins the array back to form a new string.
+
+**Time**: $O(n)$
+
+**Space**: $O(n)$
+
+**Considerations**: Slightly **less efficient than `slice`** but can be useful for cases with *more complex* removal logic.
+
+```ts
+function removeCharSplit(str: string, position: number): string {
+  return str.split('').filter((_, index) => index !== position).join('')
+}
+```
+  </Tab>
+</Tabs>
+
+---
+
+## Replacing Characters in a String
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Operation</Th>
+      <Th>Approach</Th>
+      <Th>Time Complexity</Th>
+      <Th>Space Complexity</Th>
+      <Th>Important Notes</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>Replace Character</Td>
+      <Td>Using `replace` (single)</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(n)$</Td>
+      <Td>Efficient for one-time replacements.</Td>
+    </Tr>
+    <Tr>
+      <Td></Td>
+      <Td>Using `replaceAll` (multiple)</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(n)$</Td>
+      <Td>Use for multiple replacements.</Td>
+    </Tr>
+    <Tr>
+      <Td></Td>
+      <Td>Using Regex for flexibility</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(n)$</Td>
+      <Td>Useful for pattern matching.</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+<Tabs>
+  <Tab label="Using `replace` (single)">
+
+**Explanation**: Replaces only the first instance of a character or substring.
+
+**Time**: $O(n)$
+
+**Space**: $O(n)$
+
+**Considerations**: Efficient for one-time replacements; doesn't replace multiple instances.
+
+```ts
+function replaceChar(str: string, oldChar: string, newChar: string): string {
+  return str.replace(oldChar, newChar)
+}
+```
+
+  </Tab>
+  <Tab label="Using `replaceAll` (multiple)">
+
+**Explanation**: Replaces all instances of a substring within the string.
+
+**Time**: $O(n)$
+
+**Space**: $O(n)$
+
+**Considerations**: Use for multiple replacements; if not supported, use regex.
+
+```ts
+function replaceAllChars(str: string, oldChar: string, newChar: string): string {
+  return str.replaceAll(oldChar, newChar)
+}
+```
+  </Tab>
+  <Tab label="Regex">
+
+**Explanation**: Replaces characters using a regular expression with the global (`g`) flag for multiple matches.
+
+**Time**: $O(n)$
+
+**Space**: $O(n)$
+
+**Considerations**: Useful for pattern matching but ensure `oldChar` is regex-safe.
+
+```ts
+function replaceUsingRegex(str: string, oldChar: string, newChar: string): string {
+  const regex = new RegExp(oldChar, 'g')
+  return str.replace(regex, newChar)
+}
+```
+  </Tab>
+</Tabs>
+
+---
+
+## Check if a String is a Substring of Another
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Operation</Th>
+      <Th>Approach</Th>
+      <Th>Time Complexity</Th>
+      <Th>Space Complexity</Th>
+      <Th>Important Notes</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>Find character</Td>
+      <Td>Using `indexOf`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Locale-specific, useful for multi-locale sorting</Td>
+    </Tr>
+    <Tr>
+      <Td></Td>
+      <Td>Using `includes`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Standard, fast for lexicographical error</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+<Tabs>
+  <Tab label="Using `indexOf`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+
+  </Tab>
+  <Tab label="Using `includes`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+  </Tab>
+</Tabs>
+
+---
+
+## Splitting a String by a Delimiter
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Operation</Th>
+      <Th>Approach</Th>
+      <Th>Time Complexity</Th>
+      <Th>Space Complexity</Th>
+      <Th>Important Notes</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>Replace Character</Td>
+      <Td>Using `replace` (single)</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Locale-specific, useful for multi-locale sorting</Td>
+    </Tr>
+    <Tr>
+      <Td></Td>
+      <Td>Using `replaceAll` (multiple)</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Standard, fast for lexicographical error</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+<Tabs>
+  <Tab label="Using `indexOf`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+
+  </Tab>
+  <Tab label="Using `includes`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+  </Tab>
+</Tabs>
+
+---
+
+## Reversing a String
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Operation</Th>
+      <Th>Approach</Th>
+      <Th>Time Complexity</Th>
+      <Th>Space Complexity</Th>
+      <Th>Important Notes</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>Find character</Td>
+      <Td>Using `indexOf`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Locale-specific, useful for multi-locale sorting</Td>
+    </Tr>
+    <Tr>
+      <Td></Td>
+      <Td>Using `includes`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Standard, fast for lexicographical error</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+<Tabs>
+  <Tab label="Using `indexOf`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+
+  </Tab>
+  <Tab label="Using `includes`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+  </Tab>
+</Tabs>
+
+---
+
+## Converting Case
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Operation</Th>
+      <Th>Approach</Th>
+      <Th>Time Complexity</Th>
+      <Th>Space Complexity</Th>
+      <Th>Important Notes</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>Find character</Td>
+      <Td>Using `indexOf`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Locale-specific, useful for multi-locale sorting</Td>
+    </Tr>
+    <Tr>
+      <Td></Td>
+      <Td>Using `includes`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Standard, fast for lexicographical error</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+<Tabs>
+  <Tab label="Using `indexOf`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+
+  </Tab>
+  <Tab label="Using `includes`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+  </Tab>
+</Tabs>
+
+---
+
+## Trimming Whitespace
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Operation</Th>
+      <Th>Approach</Th>
+      <Th>Time Complexity</Th>
+      <Th>Space Complexity</Th>
+      <Th>Important Notes</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>Replace Character</Td>
+      <Td>Using `replace` (single)</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Locale-specific, useful for multi-locale sorting</Td>
+    </Tr>
+    <Tr>
+      <Td></Td>
+      <Td>Using `replaceAll` (multiple)</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Standard, fast for lexicographical error</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+<Tabs>
+  <Tab label="Using `indexOf`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+
+  </Tab>
+  <Tab label="Using `includes`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+  </Tab>
+</Tabs>
+
+---
+
+## Finding String Length
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Operation</Th>
+      <Th>Approach</Th>
+      <Th>Time Complexity</Th>
+      <Th>Space Complexity</Th>
+      <Th>Important Notes</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>Find character</Td>
+      <Td>Using `indexOf`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Locale-specific, useful for multi-locale sorting</Td>
+    </Tr>
+    <Tr>
+      <Td></Td>
+      <Td>Using `includes`</Td>
+      <Td>$O(n)$</Td>
+      <Td>$O(1)$</Td>
+      <Td>Standard, fast for lexicographical error</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+<Tabs>
+  <Tab label="Using `indexOf`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+
+  </Tab>
+  <Tab label="Using `includes`">
+
+**Explanation**:
+
+**Time**: $O(n)$
+
+**Space**: $O(1)$
+
+**Considerations**:
+
+```ts
+
+```
+  </Tab>
+</Tabs>
+
+---

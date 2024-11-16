@@ -1,0 +1,424 @@
+# Project Documentation: Synapcity
+
+## Table of Contents
+
+- [Project Documentation: Synapcity](#project-documentation-synapcity)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Project Scope](#project-scope)
+    - [Inclusions](#inclusions)
+    - [Exclusions](#exclusions)
+  - [Goals and Objectives](#goals-and-objectives)
+  - [Minimum Viable Product (MVP)](#minimum-viable-product-mvp)
+  - [Features](#features)
+    - [Core Features](#core-features)
+    - [Additional Features (Post-MVP)](#additional-features-post-mvp)
+  - [Technology Stack](#technology-stack)
+    - [Frontend](#frontend)
+    - [Backend](#backend)
+    - [Real-Time Collaboration](#real-time-collaboration)
+    - [Authentication](#authentication)
+  - [Architecture Overview](#architecture-overview)
+    - [Client-Server Architecture](#client-server-architecture)
+    - [Data Flow](#data-flow)
+    - [Component Hierarchy](#component-hierarchy)
+  - [Database Design](#database-design)
+    - [Overview](#overview)
+    - [Schema Definitions](#schema-definitions)
+      - [User Schema](#user-schema)
+      - [Note Schema](#note-schema)
+      - [Project Schema](#project-schema)
+      - [Task Schema](#task-schema)
+    - [Relationships](#relationships)
+  - [Authentication and Real-Time Collaboration](#authentication-and-real-time-collaboration)
+    - [Overview](#overview-1)
+    - [Real-Time Collaboration](#real-time-collaboration-1)
+    - [Security](#security)
+  - [Frontend Development](#frontend-development)
+    - [Key Components](#key-components)
+    - [Styling](#styling)
+  - [Backend Development](#backend-development)
+    - [API Routes](#api-routes)
+    - [Real-Time Sync](#real-time-sync)
+  - [Deployment Strategy](#deployment-strategy)
+    - [Hosting Platform](#hosting-platform)
+    - [Steps](#steps)
+  - [Testing and Quality Assurance](#testing-and-quality-assurance)
+    - [Testing Frameworks](#testing-frameworks)
+    - [Testing Strategy](#testing-strategy)
+  - [Performance and Scalability](#performance-and-scalability)
+  - [Security Considerations](#security-considerations)
+  - [Conclusion](#conclusion)
+  - [Appendix](#appendix)
+    - [Environment Variables](#environment-variables)
+    - [Sample `.env.local`](#sample-envlocal)
+    - [Helpful Commands](#helpful-commands)
+
+---
+
+## Introduction
+
+**Synapcity** is a comprehensive note-taking and project management platform designed to facilitate efficient knowledge management and task tracking across multiple projects. It features dynamic linking between notes, real-time collaboration for teams, and customizable themes to enhance user experience. Synapcity serves as a robust tool for both individual users and teams who need powerful features to organize, manage, and collaborate on projects effectively.
+
+---
+
+## Project Scope
+
+### Inclusions
+
+- **Dynamic Note Linking**: Easily link notes together to establish relationships between concepts.
+- **Real-Time Collaboration**: Multiple users can collaborate on the same note, with real-time updates.
+- **Project and Task Management**: Organize notes and tasks under specific projects and areas, with deadlines and priorities.
+- **Customizable Themes**: Support for light/dark modes and user-defined color schemes.
+- **Version Control**: Track changes in notes over time, with the ability to roll back to previous versions.
+- **Markdown Support**: Rich-text editing with markdown syntax.
+- **Responsive Design**: A mobile-first, responsive UI that works across all device sizes.
+
+### Exclusions
+
+- **Third-Party Integrations (MVP)**: No integrations with external services like Google Drive or GitHub.
+- **Audio/Video Embeds**: No support for embedding audio or video media in notes during the MVP phase.
+
+---
+
+## Goals and Objectives
+
+- **Centralize Knowledge**: Provide users with a platform to organize their notes, ideas, and tasks in a structured manner.
+- **Facilitate Collaboration**: Allow teams to collaborate in real time, with synchronized updates to notes.
+- **Enhance Task Management**: Enable users to create, assign, and track tasks across different projects.
+- **Flexible Customization**: Support theme customization to match individual or team preferences.
+- **Scalability**: Ensure that the platform can scale to support increasing amounts of content, users, and projects over time.
+
+---
+
+## Minimum Viable Product (MVP)
+
+The MVP will focus on delivering key functionalities to give users a robust experience for managing notes and tasks:
+
+- **User Registration and Authentication**: Secure registration and login system with OAuth and email/password.
+- **Note Creation and Management**: Users can create, edit, delete, and link notes together.
+- **Real-Time Collaboration**: Multiple users can edit the same note, with real-time syncing.
+- **Project and Task Organization**: Users can create projects, categorize notes, and manage tasks.
+- **Customizable Themes**: Basic light/dark mode toggle, with additional customization options for colors.
+- **Responsive Design**: Accessible on both desktop and mobile devices.
+
+---
+
+## Features
+
+### Core Features
+
+1. **Dynamic Note Linking**
+   - Users can easily link notes, creating dynamic connections between them.
+   - Link previews show when hovering over linked notes.
+
+2. **Real-Time Collaboration**
+   - Multiple users can collaborate on the same note, with changes synchronized in real time.
+   - Integrated conflict resolution system to handle simultaneous edits.
+
+3. **Project and Task Management**
+   - Users can create projects and organize notes within project folders.
+   - Tasks can be created, assigned, and tracked for completion.
+   - Deadline and priority management for tasks.
+
+4. **Customizable Themes**
+   - Light and dark modes available by default.
+   - Users can create custom themes by defining color schemes and typography preferences.
+
+5. **Version Control for Notes**
+   - Every change made to a note is tracked, with the ability to revert to previous versions.
+   - Version history is displayed in a timeline format.
+
+6. **Markdown Support**
+   - Rich-text editor that supports markdown for formatting.
+   - Real-time rendering of markdown content for live preview.
+
+7. **Responsive Design**
+   - The platform is optimized for mobile, tablet, and desktop experiences.
+   - Ensures the best user experience across all devices.
+
+### Additional Features (Post-MVP)
+
+- **Third-Party Integrations**
+  - Integrations with tools like Google Drive, GitHub, and Slack for sharing notes and tasks.
+
+- **Reminders and Notifications**
+  - Email or in-app notifications for upcoming deadlines, note changes, or task updates.
+
+- **Kanban Board View**
+  - A Kanban-style task view for organizing tasks in a project visually.
+
+---
+
+## Technology Stack
+
+### Frontend
+
+- **Next.js**: A React-based framework for server-side rendering and static site generation.
+- **Tailwind CSS**: A utility-first CSS framework for responsive and customizable UI design.
+- **React**: JavaScript library for building dynamic user interfaces.
+- **Tiptap**: Advanced rich-text editor with support for real-time collaboration and markdown.
+
+### Backend
+
+- **Node.js**: JavaScript runtime for server-side logic.
+- **Next.js API Routes**: Serverless API endpoints for backend operations.
+- **MongoDB**: NoSQL database to store notes, projects, and user data.
+- **Mongoose**: ODM library for MongoDB and Node.js, providing schema validation and querying capabilities.
+
+### Real-Time Collaboration
+
+- **Yjs**: A CRDT-based library for real-time collaboration.
+- **WebSocket**: Communication protocol used for synchronizing note changes between users.
+
+### Authentication
+
+- **NextAuth.js**: Authentication library for Next.js, handling OAuth, JWTs, and session management.
+- **bcrypt**: Library for hashing user passwords.
+
+---
+
+## Architecture Overview
+
+### Client-Server Architecture
+
+Synapcity uses a client-server architecture where:
+
+- **Client**: Frontend that handles the user interface and interactions, built using Next.js and React.
+- **Server**: Backend APIs handle note management, project tracking, authentication, and collaboration using Next.js API routes.
+
+### Data Flow
+
+1. **User Actions**: Users interact with the frontend to create, link, or edit notes.
+2. **API Calls**: Frontend sends requests to the server via API routes for note operations, project management, etc.
+3. **Database Interaction**: Server processes requests, interacts with MongoDB using Mongoose, and returns results.
+4. **Real-Time Updates**: Changes to notes are broadcasted to all collaborators using WebSockets and Yjs.
+5. **Frontend UI Updates**: The frontend dynamically updates based on the responses and real-time data from the server.
+
+### Component Hierarchy
+
+- **Layout Components**: Sidebar, Header, Footer.
+- **Pages**: Dashboard, Projects, Notes, Task Manager.
+- **UI Components**: NoteEditor, TaskList, ProjectCard, ThemeSwitcher.
+
+---
+
+## Database Design
+
+### Overview
+
+The database is built on MongoDB, with the following key collections:
+
+1. **Users**: Stores user profiles, authentication data, and theme preferences.
+2. **Notes**: Stores notes, metadata, links between notes, and version history.
+3. **Projects**: Organizes notes and tasks into specific projects.
+4. **Tasks**: Tracks tasks, due dates, priorities, and associated notes or projects.
+
+### Schema Definitions
+
+#### User Schema
+
+- **Fields**:
+  - `username`: Unique string.
+  - `email`: Unique, validated email.
+  - `password`: Hashed using bcrypt.
+  - `theme`: User-defined theme settings.
+  - `createdAt`: Timestamp for when the user was created.
+
+#### Note Schema
+
+- **Fields**:
+  - `title`: Note title.
+  - `content`: Main content of the note.
+  - `links`: Array of linked note IDs.
+  - `author`: Reference to the `User` who created the note.
+  - `versionHistory`: Array of note versions.
+  - `createdAt`, `updatedAt`: Timestamps.
+
+#### Project Schema
+
+- **Fields**:
+  - `name`: Project name.
+  - `description`: Brief description of the project.
+  - `owner`: Reference to the `User` who owns the project.
+  - `notes`: Array of linked note IDs.
+  - `tasks`: Array of linked task IDs.
+  - `createdAt`: Timestamp.
+
+#### Task Schema
+
+- **Fields**:
+  - `title`: Task title.
+  - `description`: Task details.
+  - `dueDate`: Deadline for task completion.
+  - `priority`: Priority level (low, medium, high).
+  - `completed`: Boolean flag.
+  - `project`: Reference to the `Project` the task belongs to.
+
+### Relationships
+
+- **One-to-Many**: A project can have many notes and tasks.
+- **Many-to-Many**: Notes can link to multiple other notes.
+
+---
+
+## Authentication and Real-Time Collaboration
+
+### Overview
+
+Authentication is handled via **NextAuth.js**, with multiple strategies supported:
+
+- **Email and Password**: Traditional login method with
+
+
+
+ bcrypt for password hashing.
+- **OAuth Providers**: Support for Google, GitHub, etc.
+
+### Real-Time Collaboration
+
+- **Yjs + WebSocket**: Enables real-time collaboration, ensuring multiple users can edit notes simultaneously, with conflicts resolved automatically using Yjs’s CRDT algorithm.
+
+### Security
+
+- **JWT**: JSON Web Tokens for session management.
+- **Role-Based Access Control**: Different levels of access for note viewers, editors, and admins.
+
+---
+
+## Frontend Development
+
+### Key Components
+
+- **Pages**:
+  - **Dashboard**: Overview of projects, tasks, and recent notes.
+  - **Projects**: Page for managing projects, with options to add/edit projects.
+  - **Notes**: Page to view, edit, and link notes.
+  - **Task Manager**: Displays tasks with deadlines and priorities.
+- **Reusable Components**:
+  - **NoteEditor**: Rich-text editor with real-time collaboration and markdown support.
+  - **TaskList**: Component to display and manage tasks.
+  - **ThemeSwitcher**: Allows users to toggle between light and dark modes or customize themes.
+
+### Styling
+
+- **Tailwind CSS**: Used for utility-based styling, with custom theme support for user-defined styles.
+- **Responsive Design**: Ensures optimal layout and usability on all device sizes.
+
+---
+
+## Backend Development
+
+### API Routes
+
+- **Authentication Routes**:
+  - `/api/auth/register`: Handles user registration.
+  - `/api/auth/login`: Manages login requests.
+- **Note Routes**:
+  - `POST /api/notes`: Creates a new note.
+  - `GET /api/notes/[id]`: Retrieves a specific note.
+  - `PUT /api/notes/[id]`: Updates a note.
+  - `DELETE /api/notes/[id]`: Deletes a note.
+- **Project Routes**:
+  - `POST /api/projects`: Creates a new project.
+  - `GET /api/projects/[id]`: Retrieves a specific project.
+
+### Real-Time Sync
+
+- **WebSocket Server**: Synchronizes note edits between users in real-time.
+- **Yjs CRDT**: Manages collaborative edits to prevent conflicts during concurrent updates.
+
+---
+
+## Deployment Strategy
+
+### Hosting Platform
+
+- **Vercel**: Preferred hosting for Next.js applications, providing seamless deployment and scaling.
+- **MongoDB Atlas**: Cloud-hosted MongoDB for reliable, scalable database management.
+
+### Steps
+
+1. **Configure environment variables** in Vercel’s dashboard for MongoDB and authentication secrets.
+2. **Continuous Deployment**: Automatically triggered on pushes to the main Git repository.
+
+---
+
+## Testing and Quality Assurance
+
+### Testing Frameworks
+
+- **Jest**: For unit testing of individual functions and components.
+- **React Testing Library**: For testing React components.
+- **Supertest**: For API testing.
+
+### Testing Strategy
+
+- **Unit Tests**: Covering critical functions and components.
+- **Integration Tests**: Testing interactions between components and API routes.
+- **End-to-End Tests**: Using tools like Cypress for testing the complete user flow.
+
+---
+
+## Performance and Scalability
+
+- **Server-Side Rendering (SSR)**: Used for pages that require authentication and dynamic content.
+- **Incremental Static Regeneration (ISR)**: For rendering static content like public notes.
+- **Horizontal Scaling**: Automatically handled by Vercel's serverless infrastructure.
+
+---
+
+## Security Considerations
+
+- **Input Validation**: Sanitize all user input to prevent injection attacks.
+- **Session Security**: JWTs are used for session management, with short-lived tokens and refresh mechanisms.
+- **HTTPS**: Enforced in production for all client-server communications.
+
+---
+
+## Conclusion
+
+Synapcity offers a comprehensive solution for managing notes, projects, and tasks. With features like dynamic linking, real-time collaboration, and customizable themes, the platform is positioned to become an essential tool for both individual users and teams looking to streamline knowledge and task management. Built with scalability in mind, Synapcity can easily adapt to future enhancements.
+
+---
+
+## Appendix
+
+### Environment Variables
+
+- **MONGODB_URI**: Connection string for MongoDB.
+- **NEXTAUTH_SECRET**: Secret for NextAuth.js.
+- **JWT_SECRET**: JWT session secret.
+- **WEBSOCKET_URL**: URL for the WebSocket server.
+
+### Sample `.env.local`
+
+```bash
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/synapcity?retryWrites=true&w=majority
+NEXTAUTH_SECRET=your-nextauth-secret
+JWT_SECRET=your-jwt-secret
+WEBSOCKET_URL=ws://localhost:3000
+```
+
+### Helpful Commands
+
+- **Install dependencies**:
+  ```bash
+  npm install
+  ```
+- **Run development server**:
+  ```bash
+  npm run dev
+  ```
+- **Run tests**:
+  ```bash
+  npm test
+  ```
+- **Build for production**:
+  ```bash
+  npm run build
+  ```
+
+---
+
+This documentation provides a comprehensive guide to **Synapcity**, ensuring clarity on the project’s features, architecture, and technical decisions.

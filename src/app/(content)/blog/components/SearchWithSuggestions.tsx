@@ -1,4 +1,4 @@
-import { fetchArticleTitles } from '@/app/lib/actions/articles';
+import { fetchArticleInfo } from '@/app/lib/actions/articles';
 import { AutocompleteSearchBar } from '@/components';
 import { Suggestion } from '@/types';
 import React from 'react'
@@ -7,7 +7,7 @@ const SearchWithSuggestions: React.FC = async () => {
   let suggestions: Suggestion[] = [];
 
   try {
-    suggestions = await fetchArticleTitles();
+    suggestions = await fetchArticleInfo();
   } catch (error) {
     console.error('Error fetching article titles:', error);
     suggestions = [];

@@ -1,0 +1,1202 @@
+---
+title: "Refactoring Styling for Consistency: TailwindCSS, SCSS, and Semantic HTML"
+subtitle: "Cleaning Up a Messy Styling Approach by Streamlining TailwindCSS, SCSS for Variables, and Improving Semantic HTML"
+description: "Learn how I cleaned up my styling approach, consolidating TailwindCSS for consistency, using SCSS for dynamic variables, and ensuring HTML for a cleaner and more maintainable codebase."
+tags: ["TailwindCSS", "SCSS", "CSS Variables", "CSS Modules", "Semantic HTML", "Next.js", "Responsive Design", "Portfolio"]
+clientRender: true
+---
+
+## Introduction
+
+In my previous posts, I covered how I organized the file structure for my Next.js portfolio rebuild and the decisions I made to ensure scalability and maintainability. Now that the foundational pieces are in place, it’s time to tackle the next major challenge: styling.
+
+In the initial build of my portfolio, I made the rookie mistake of mixing too many styling approaches—TailwindCSS, SCSS, CSS modules, and even some plain CSS thrown in for good measure. This led to inconsistent styles across the site, with no clear structure, making it increasingly difficult to ensure visual consistency.
+
+To clean this up, I'm focusing on:
+
+- Consolidating my styling with TailwindCSS for consistency.
+- Using SCSS only where necessary, particularly for dynamic CSS variables.
+- Fixing semantic HTML issues by using proper tag structures, which not only improves maintainability but also enhances accessibility.
+
+If you’re working through a similar challenge in your project, this guide should help you avoid some of the pitfalls I encountered. Now, let’s dive into how I’m cleaning up my styling and making it future-proof.
+
+---
+
+## The Mistake: Mixing Too Many Styling Approaches
+
+When I first started working on my portfolio, I was excited by the range of styling options Next.js provides. Between **Global CSS**, **CSS Modules**, **TailwindCSS**, and **Sass (SCSS)**, I saw all the potential and ended up mixing them all, thinking I could get the best of each.
+
+In theory, this combination sounds powerful:
+
+- **Global CSS**: A traditional styling approach where you define global styles that affect the entire application. While this is easy to implement, it can lead to **larger CSS bundles** and affect performance if not scoped carefully.
+- **CSS Modules**: Scoped CSS that avoids naming conflicts and makes it easier to manage local styles. It works particularly well for **component-level** styling.
+- **TailwindCSS**: A utility-first CSS framework that allows for inline utility classes in your JSX. It’s quick and offers responsive design out-of-the-box.
+- **Sass (SCSS)**: A preprocessor that adds powerful features like **variables**, **mixins**, and **loops**, making CSS more dynamic and reusable.
+- **CSS-in-JS**: Styles embedded directly within JavaScript components, useful for **dynamic** or **theme-based** styles.
+
+But in reality, this turned into a tangled mess. By mixing too many different approaches, I created a fragmented and inconsistent design system. Styles were scattered, difficult to maintain, and even worse, some styles were being overwritten or duplicated, leading to unnecessary bloat in the CSS output.  Worse, I found myself overriding base HTML tags like `h3` to look like `h4` or `h5`, which further impacted both performance and accessibility.
+
+It was clear I needed a better approach—a strategy that consolidates styling methods, reduces duplication, and improves maintainability across the board.
+
+---
+
+## The Problem
+
+As I worked on my portfolio, I wanted each section to evoke a unique feeling—something beyond just "standard" web design. The idea hit me when I came upon a video of the galaxy: what if my portfolio’s main route (`/`) could convey the vastness and depth of space? Each section would have its own color scheme, mimicking different moods and themes as the user scrolls through.
+
+<img src="/images/galaxy.png" alt="Picture of the galaxy"/>
+
+Here's how I approached it:
+
+- **Hero Section**: Neutral **gray tones** set a calm and balanced introduction, representing the start of the journey.
+- **About Section**: **Sky blues** evoke openness and trust, inviting users to learn more about me.
+- **Skills Section**: **Deep blues** convey knowledge and confidence, symbolizing technical mastery.
+- **Experience Section**: Indigo hues suggest creativity and wisdom, representing professional growth.
+- **Projects Section**: Violet highlights imagination and innovation, perfect for showcasing creative work.
+- **Articles Section**: Purple reflects personal expression and insight, fitting for sharing written content.
+- **Education Section**: Bold fuchsia brings energy and passion, embodying the excitement of learning.
+- **Neutral Section**: Slate tones serve as a subtle transition, maintaining consistency across the site.
+
+To keep things consistent and cohesive, I used TailwindCSS’s predefined colors for each section. But, of course, this is where the problem started...each section needed a different primary and secondary color scheme, but I wanted the ability to reuse components like buttons and cards across the entire site.
+
+<Callout>
+ How could I keep these components consistent while also allowing them to adapt to different sections, without duplicating styles or bloating my CSS?
+</Callout>
+
+Tailwind’s utility classes are great, but I needed a way to dynamically apply styles across sections without having to rewrite or override those utilities for each one. With multiple sections and more components being added, things got quickly get out of hand.
+
+---
+
+## The Solution
+
+### Rule #1: Consolidate with TailwindCSS for Consistency
+
+TailwindCSS is incredibly powerful for creating utility-first designs directly in your `jsx` components. However, using it consistently across the entire project can become a challenge without a solid strategy to manage your styles effectively.
+
+#### Refactor Plan
+
+- **Remove unnecessary custom CSS and CSS modules**, and replace them with Tailwind's utility classes wherever applicable. This helps to reduce duplication and makes your styling approach much more consistent.
+- **Use Tailwind's `@apply` directive** to define commonly used styles for reusable components like buttons and cards.
+  ```css
+      .btn-primary {
+        @apply bg-blue-500 text-white px-4 py-2 rounded;
+      }
+    
+    ```
+
+This reduces the need for hardcoding styles repeatedly across components, making your code DRY (Don't Repeat Yourself).
+
+Leverage Tailwind's responsive utilities consistently across the project to ensure the site adapts fluidly to different screen sizes, providing a seamless UI experience for users on any device.
+
+By consolidating most of the styling within TailwindCSS, I hope to eliminate the confusion caused by mixing methods and set a clear, maintainable styling direction.
+
+---
+
+### Rule #2: Use SCSS for Dynamic Variables Only
+
+While TailwindCSS is great, there are still cases where dynamic CSS variables can be useful, especially for things like themes or breakpoints that need to be calculated or modified at runtime. Luckily, this is exactly what I need to solve my aforementioed problem!
+
+#### Refactor Plan
+
+- **Limit SCSS usage** to dynamic variables, letting Tailwind handle the rest. By keeping SCSS focused, TailwindCSS remains the backbone of the styling, while SCSS steps in when flexibility is needed.
+  - The best part is that SCSS is prerendered at build time so that means that by the time TailwindCSS runs at build time, our CSS variables will already have been defined.
+- Define **theme variables** in SCSS, like primary colors or font sizes, and inject them as CSS variables. This way, everything is precomputed by the time Tailwind kicks in.
+  ```scss
+    $primary-color: #3490dc;
+    :root {
+      --primary-color: #{$primary-color};
+    }
+    ```
+- You can then use TailwindCSS to define utilities based on CSS variables; since these utilities will be equal to the defined CSS variables, when their values change, so do the values of the utilities -- without having to recompile the TailwindCSS code like you would with hardcoded data.
+  - In your `tailwind.config.ts`:
+    ```ts
+      theme: {
+        extend: {
+          colors: {
+            primary: 'var(--primary-color)',
+          }
+        }
+      }
+      ```
+
+If your site needs to dynamically switch themes (e.g. dark mode vs. light mode or my own styling plan), you can use SCSS to manage your dynamic variables and apply them globally or however you need to to satisfy your application's needs
+
+---
+
+### Rule #3: Fix Semantic HTML and Stop Overriding Tags
+
+In my first version, I was guilty of forcing tags like `h3` to behave like `h4` or `h5`, which not only cluttered the code but also wrecked the site's **semantic structure**. This made everything harder to maintain and less accessible for users and search engines.
+
+#### Refactor Plan
+
+- **Use the correct HTML tags**: Stick to the right tag for the right content. If you need an `h4`, use it. Avoid overriding tags (e.g. styling `h3` to look like an `h4`) to maintain clear, semantic structure.
+  - All elements should follow **semantic HTML** guidelines.
+- **Use Tailwind’s typography utilities** (`text-lg`, `font-bold`, etc.) to manage typography without directly altering HTML tags to ensure they maintain their correct semantic meaning.
+- **Predefine base styles for HTML tags** using Tailwind's `@apply` directive, making sure they are consistent, responsive, and adaptable to the theme.
+  - For more granular control (like specific styles in different sections), I’ll define those in individual component files (e.g., `AboutCard`, `SkillCard`) so I can easily handle variations without compromising the overall structure.
+
+#### Why This Matters
+
+- **Accessibility**: Proper tags mean screen readers and assistive technologies can interpret the site correctly, improving user experience for everyone.
+- **Maintainability**: Clean, well-structured HTML makes it easier to track styles, avoids unnecessary CSS overrides, and makes it easier to understand and maintain your codebase, especially as the project grows.
+- **SEO**: Search engines
+
+---
+
+### Rule #4: Never Skip Responsive Design and Testing
+
+TailwindCSS’s responsive utilities make handling responsive design straightforward, but just relying on that isn't enough. Testing is critical to ensure your layout looks solid across all screen sizes and devices.
+
+#### Refactor Plan
+
+- **Mobile-first design**: Tailwind is mobile-first by default, which means all components should scale well from small screens upwards. I’ll test across key breakpoints (`sm`, `md`, `lg`, `xl`) to ensure consistency and avoid any awkward layout shifts.
+- **Cross-browser and device testing**: It’s not enough for it to look good on just one browser or device. Tools like **BrowserStack** and **Sauce Labs** are essential to ensure everything works seamlessly across all platforms and screen sizes—because nobody wants a layout that breaks on Safari or a weird screen resolution.
+
+#### Why It Matters
+
+- **User Experience**: Consistent layouts across devices and browsers mean a smoother experience for your users, and better user experience leads to higher engagement.
+- **Preventing headaches later**: Responsive design isn’t just for looks—poor responsiveness leads to unpredictable bugs that could surface as users navigate your site, which you’d rather catch early on.
+
+---
+
+## Using Semantic HTML for Accessibility and Structure
+
+### Full-Screen Sections
+
+#### Definition
+
+Section elements, defined by the `<section>` tag, are block-level elements used to group content into thematic areas. Each section should be logically related, representing a specific purpose or theme. These sections also serve to clearly divide content in a webpage for accessibility and improved UX, as they are recognized by screen readers, enabling easier navigation for users with disabilities.
+
+#### Characteristics
+
+- **Block-level** element.
+- Used to **group thematic content**.
+- Can contain **headings, paragraphs, lists, media, and other block-level elements.**
+
+#### When to Use
+
+- **Block-level element**: Meaning it takes up the full width available and starts on a new line.
+- Used to **group thematically related content.**
+- **Adds semantic value**: It gives meaning to your content structure, making it easier for search engines and assistive technology to understand.
+- **Alternatives:** `div` (layout), `<article>`, `<nav>`, or `<aside>`.
+
+#### Usage
+
+- Use a `<section>` when grouping logically related content, such as a **product category, contact form, or gallery of images.**
+- Creates a *clear division for screen readers*, improving accessibility and UX by separating content
+  ```html
+      <section class="min-h-screen flex items-center justify-center">
+        <h1 class="text-5xl font-bold">Welcome</h1>
+      </section>
+    ```
+- Use for content with *multiple headings or logical parts*; each with its own subheading.
+- **Do not use for purely visual/layout purposes.** For layout-only needs, use a non-semantic `<div>` instead.
+- **Examples**
+  - features, testimonials, or services within a web page.
+  - dashboard panel, settings, etc.
+
+For my portfolio, especially because it's intended to be rendered on a single route, `<section>`s are crucial to my refactor plan. Wrap major sections like `Hero`, `About`, and `Skills` in `<section>` tags.
+
+#### Best Practices
+
+- **Avoid overusing sections**, especially for purely visual purposes; use **only for semantically grouped content.**
+- Each section should contain a **heading tag to define the start of its content (`<h1>` to `<h6>`).***
+- **Use `min-h-screen` for full-screen height** to ensure each spans the entire viewport.
+- Flex utilities (`flex items-center justify-center`) **ensure the content remains vertically and horizontally centered** within each section.
+
+### Articles for Blogs and Case Studies
+
+#### Definiton
+
+The `<article>` element is used to represent **self-contained, independent content** that could stand on its own or be reused. This tag is **ideal for blog posts, case studies, or user-generated content** like reviews or forum posts. If you can imagine the content being syndicated (e.g., in an RSS feed), then it likely belongs in an `<article>`.
+
+#### Characteristics
+
+- **Block-level element.**
+- Represents **stand-alone, self-contained content** that makes sense on its own.
+- Often paired with semantic elements such as `header`, `footer`, and `section`.
+
+#### When to Use
+
+- Used for **posts, articles, news, and user-generated content.**
+- Content can be **read independently or shared** in a distributed or syndicated context.
+- **Do not use if it doesn't have a standalone meaning separate from the page.**
+
+#### Usage
+
+- Use `<article>` for blog posts or case studies where each unit of content is a **self-contained entity.**
+  - Blog posts
+  - News articles
+  - Product reviews
+  - Case studies
+- Helps search engines recognize content as distinct and improves SEO by allowing search engines to accurately interpret its structure.
+  ```html
+    <article class="mb-8">
+      <h2 class="text-3xl font-semibold">Understanding Component-Driven Design</h2>
+      <p>In this blog, I plan to...</p>
+      </article>
+      ```
+- Avoid using `<article>` for content that **doesn't make sense when separated** from the page context.
+
+#### Common Use Cases
+
+The `<article>` tags allow you to build modular, independent content blocks.
+
+##### **Blog Post**
+
+```html
+  <article>
+    <h1>How to Build a React App</h1>
+    <p>This guide walks you through building a React app from scratch...</p>
+    <p>By the end, you will have a basic understanding of JSX, components, and state management...</p>
+  </article>
+  ```
+
+##### **News Story**
+
+```html
+  <article>
+    <h1>Latest News on Climate Change</h1>
+    <p>Global temperatures are rising faster than anticipated, experts say...</p>
+    <p><time datetime="2024-10-02">October 2, 2024</time></p>
+  </article>
+  ```
+
+##### **Forum Post**
+
+```html
+  <article>
+    <h1>My Journey Learning JavaScript</h1>
+    <p>I started learning JavaScript a few months ago, and here’s what I’ve learned so far...</p>
+    <p>By: <em>User123</em></p>
+  </article>
+  ```
+
+#### Best Practices
+
+- Ensure proper keyboard navigation and interaction for interactive elements within the article.
+- When properly nested with `<header>`, `<footer>`, and correct heading tags, it can help improve how its content is indexed on Google.
+- **Combine with other semantic tags:**
+  - `header` for article titles.
+  - `footer` for bylines, author names, or dates.
+  - `section` to subdivide large articles.
+- Always use heading elements (`<h1>`, `<h2>`, etc.) inside an article to organize the content logically.
+  ```html
+    <article class="mb-8">
+      <header>
+        <h2 class="text-3xl font-semibold">Understanding Component-Driven Design</h2>
+        <time datetime="2024-09-30">Published on September 30, 2024</time>
+      </header>
+      <p>Component-Driven Design (CDD) is an approach to building UIs where each part of the interface is broken down into reusable, isolated components...</p>
+      <footer>
+        <p>Written by John Doe</p>
+      </footer>
+    </article>
+    ```
+
+#### Stylng
+
+Can be styled like any other block element with margins, padding, borders, etc.
+
+```css
+  article {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+  }
+  ```
+
+### Figures for Images and Videos
+
+#### Definition
+
+Semantic tags **used to encapsulate media**, such as images, charts, or code snippets, along with an optional caption provided by the `<figcaption`>` element. This element **provides a semantic wrapper for media and its description**, enhancing both accessibility and readability.
+
+#### Characteristics
+
+- **Block-level** element.
+- Used to **associate media content** with a caption.
+- The `<figcaption>` tag is **optional**; commonly **used to describe content**.
+
+#### When to Use
+
+- Use when you need to **associate a description with a visual element**, such as an image, chart, or diagram.
+- Use when media content is an **important part of the document and makes sense independently** (rather than merely a decorative element).
+- **Do not use if the content is purely structural.**
+
+#### Usage
+
+- Use `<figure>` to wrap content such as images and videos and provide proper descriptions using `<figcaption>`.
+- Improves accessibility by associating captions with media content.
+  ```html
+    <figure class="max-w-md mx-auto py-8">
+      <img srrc="image.jpg" alt="Image">
+      <figcaption class="text-center text-sm text-gray-500">Portfolio Project</figcaption>
+    </figure>
+    ```
+
+#### Common Use Cases
+
+##### **Image with a Caption**
+
+```html
+  <figure>
+    <img src="landscape.jpg" alt="A beautiful mountain landscape">
+    <figcaption>A view of the Rocky Mountains during sunset.</figcaption>
+  </figure>
+  ```
+
+##### **Diagram with a Caption**
+
+```html
+  <figure>
+    <img src="flowchart.png" alt="Flowchart of the application architecture">
+    <figcaption>Application architecture flowchart.</figcaption>
+  </figure>
+  ```
+
+##### **Code Snippet with a Caption**
+
+```html
+  <figure>
+    <pre><code>console.log("Hello, World!");</code></pre>
+    <figcaption>A basic JavaScript example of a console log statement.</figcaption>
+  </figure>
+  ```
+
+#### Best Practices
+
+- **Always include `alt` attribute for images** inside `<figiure>`.
+  - Provides a **description of the image** itself.
+  - `<figcaption>` is used to **provide additional context or commentary.**
+- **Use `<figcaption>` to provide details or context** for media that aren't immediately obvious from the image or media itself.
+  - **Always include to improve the overall semantic structure**; helps search engines index images and other media content more accurately.
+- **Don't use for decorative elements**; reserve for content that is important to the page.
+
+#### Styling
+
+Use CSS to add padding, margins, and borders to create a visually appealing layout.
+```css
+figure {
+  margin: 20px 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+```
+
+### Interactive Elements (Buttons, Inputs, Forms)
+
+#### Definition
+
+Interactive elements like `<button>`, `<input>`, and `<form>` **allow users to interact with your site** — whether by submitting data, navigating, or triggering events. These elements are **fundamental for user engagement and form submission.**
+
+#### Usage
+
+Interactive elements **should be used with proper semantic structure and accessibility in mind** to ensure that your forms and buttons are usable by everyone.
+```html
+  <form action="/submit" method="POST" class="space-y-4">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" class="input-primary" required>
+    <button type="submit" class="btn-primary">Submit</button>
+  </form>
+  ```
+
+#### Best Practices
+
+- **Use semantic elements**: Use `<button>`, `<input>`, and `<form>` correctly to ensure accessibility and ease of use.
+- **Label your inputs**: **Always provide `<label>` elements** for inputs to make forms accessible.
+- **Use the correct type attribute** for buttons (submit, reset, button) to avoid unexpected behavior.
+  - `type="button"` for generic actions.
+  - `type="submit"` to submit a form.
+  - `type="reset"` to reset a form’s fields to default values.
+- **Accessible button labels**: If using *icon-only buttons*, make sure to **use `aria-label` to provide context** for screen readers.
+- **Use placeholder sparingly**: Don’t rely solely on placeholders to communicate an input’s purpose, as they disappear once the user begins typing. **Always pair inputs with labels.**
+- **Use the correct method**: Typically, use *`method="POST"` for sensitive data (like login forms)* and *`method="GET"` for non-sensitive data (like search forms)*.
+- **Group related inputs logically**: Use `<fieldset>` to group related inputs and `<legend>` to label them.
+  ```html
+    <fieldset>
+      <legend>Personal Information</legend>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </fieldset>
+    ```
+
+#### Common Mistakes
+
+- **Forgetting labels**: Inputs without labels can confuse users, especially those relying on assistive technologies.
+- **Overcomplicating forms**: Keep your forms simple and functional to avoid frustrating users.
+- **Leaving out the `type` attribute**: Omitting this **can cause unwanted behavior in forms**, especially if the button defaults to submit.
+- **Ignoring input validation**: HTML5 provides built-in form validation using attributes like `required`, `minlength`, and `maxlength`.
+- **Not using `action` and `method`**: These attributes define how the form is processed. **Omitting them can break form functionality.**
+
+#### Usage
+
+Use `<button>`, `<input>`, and other form elements appropriately to ensure accessibility.
+
+- Semantic HTML ensures that assistive technologies can interact with your forms correctly.
+  ```html
+    <form action="/submit" method="POST" class="flex flex-col space-y-4">
+      <input type="text" class="input-primary" placeholder="Your Name">
+      <button type="submit" class="btn-primary">Submit</button>
+    <form>
+    ```
+
+##### Common Use Cases
+
+- **Forms**: Collect user input (e.g., contact forms, sign-up forms).
+- **Buttons**: Trigger actions, submit forms, or initiate an event (e.g., form submission, loading additional content).
+- **Input Fields**: Collect various types of user data such as text, emails, passwords, dates, and numbers.
+
+### Consistent Typography with Tailwind Base Styles
+
+#### Definition
+
+Typography elements like headings (`<h1>` to `<h6>`), paragraphs (`<p>`), and inline text formatting elements such as `<strong>`, `<em>`, and `<span>`, **help structure your content and define the visual hierarchy of your text**. Good typography is *essential* for **readability, accessibility, and user engagement.**
+
+#### Usage
+
+Use Tailwind to apply typography consistently across HTML elements, including headings, paragraphs, lists, etc.
+
+- Guarantees a consistent look and feel without needing to override styles in every component.
+  ```css
+    @layer base {
+        h1 {
+          @apply text-4xl font-bold;
+        }
+
+        p {
+          @apply text-lg leading-relaxed;
+        }
+
+        a {
+          @apply text-blue-500 hover:text-blue-700;
+        }
+      }
+      ```
+
+
+## Getting Started with Tailwind and Autoprefixer
+
+First things first, you'll need to set up Tailwind and Autoprefixer. If you’ve already used `create-next-app`, you may have some of these tools set up, but let’s make sure everything is squared away.
+
+### Install TailwindCSS
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+If you used create-next-app, you'll also need to install Autoprefixer:
+
+```bash
+npm install -D autoprefixer
+```
+
+<InfoBlock>
+
+### What is Autoprefixer?
+
+Autoprefixer is a PostCSS plugin that adds vendor prefixes to your CSS. It's essential for ensuring that your CSS works across different browsers that require specific prefixes for certain features—especially as newer CSS features get rolled out inconsistently across browsers.
+
+#### Why Use Autoprefixer?
+
+Browser compatibility can be tricky. As CSS evolves, some browsers might not fully support newer features, or they might need vendor-specific prefixes to render them correctly. That’s where Autoprefixer comes in.
+
+Autoprefixer takes care of adding these browser-specific prefixes based on usage statistics, so you don’t have to worry about manually adding them for each property.
+
+**Example**:
+
+```css
+
+  /* Autoprefixer automatically adds vendor prefixes */
+  display: flex;
+  /* Output for Safari or older browsers might look like: */
+  -webkit-display: flex;
+
+```
+
+### Adding Autoprefixer to Your Project
+
+Install the package with the following:
+
+```bash
+
+  npm install autoprefixer --save-dev
+
+```
+
+Update your `postcss.config.mjs` to include Autoprefixer:
+
+```js
+
+  /** @type {import('postcss-load-config').Config} */
+  const config = {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  };
+  export default config;
+
+```
+
+#### Why This Is Important
+
+While most modern browsers can handle CSS without prefixes, some older versions still require them. Autoprefixer ensures cross-browser reliability and helps avoid frustrating compatibility issues, especially when using newer CSS properties.
+
+<Callout> **Pro Tip**: While Autoprefixer can be very useful, **you don’t necessarily need a preprocessor** unless you plan to write a lot of custom CSS. </Callout>
+
+</InfoBlock>
+
+---
+
+### Importing TailwindCSS Directives
+
+Before we dive into the base styles, let's ensure that TailwindCSS is correctly set up by importing its core directives into your CSS file. These directives will inject Tailwind's default styles into your project.
+
+To import Tailwind into your main CSS file (typically `globals.css` or `styles.css`):
+
+```css  
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  ```
+
+#### What These Directives Do
+
+- **`@tailwind base`**: Injects Tailwind's Preflight base styles (which we'll cover in a moment).
+- **`@tailwind components`**: Loads Tailwind's component classes.
+- **`@tailwind utilities`**: Adds Tailwind's utility classes, which is the framework’s bread and butter for building responsive, utility-first UIs.
+
+---
+
+### Reset Styles with Preflight
+
+Once you’ve imported the base styles, Tailwind automatically applies its Preflight styles—a modernized reset based on Normalize.css—to address common cross-browser inconsistencies.
+
+Here’s what Preflight does to clean up the default browser styling:
+
+1. Removes default margins from elements like headings, paragraphs, and lists.
+2. Unstyles headings (h1, h2, etc.), so they have the same font size and weight as normal text.
+3. Removes decorations, margins, and paddings from ordered and unordered lists.
+4. Ensures elements like img, svg, video, canvas, etc. are block-level and fit within their parent containers.
+5. Makes images responsive by default, constraining their width to the parent while maintaining aspect ratio.
+6. Resets global border styles to ensure consistency.
+
+You can find more detailed info on Tailwind's Preflight here.
+
+---
+
+#### Disable Preflight (Optional)
+
+If you’d rather use your own base styles or a different reset strategy, you can easily disable Preflight. Add this configuration to your `tailwind.config.ts`:
+
+```ts
+  module.exports = {
+    corePlugins: {
+      preflight: false,
+    }
+  }
+  ```
+
+This will prevent Tailwind from injecting its base styles into your project, giving you complete control over the initial look of elements.
+
+---
+
+## Define Your Foundations
+
+Now that you've loaded either the default reset stylesheet Preflight or configured your own, it's time to define the base styles of your design system.
+
+The foundational elements of a design system tend to be composed of the following sections:
+
+1. Colors
+   - **Primary Colors**: Main colors representing the brand; typically one or two.
+   - **Secondary Colors**: Complementary colors meant to balance primary colors.
+   - **Tertiary/Accent Colors**: Supporting colors used for details like alerts or links.
+   - **Neutrals**: Grays, whites, and blacks used for backgrounds, borders, and text.
+   - **Status Colors**: Colors that indicate states like success (green), error (red), and warning (yellow).
+    ```ts
+
+    const colors = {
+      primary: '#1a73e8',
+      secondary: '#34a853',
+      error: '#d93025',
+      success: '#34a853',
+      warning: '#fbbc05',
+      neutral: {
+        light: '#f8f9fa',
+        medium: '#e0e0e0',
+        dark: '#3c4043',
+      },
+    };
+
+    ```
+2. Typography
+   - **Font Families**: Set of fonts approved for use within the application.
+   - **Font Weights**: Boldness variations (e.g. regular, bold, extra-bold).
+   - **Font Sizs**: Sizes for headings (`h1`-`h6`), body text, and captions.
+   - **Line Height**: Spacing between lines.
+   - **Letter Spacing** Adjustments to spacing between characters.
+    ```ts
+
+    const typography = {
+      fontFamily: `'Inter', sans-serif`,
+      fontSizes: {
+        h1: '48px',
+        body: '16px',
+      },
+      lineHeight: {
+        h1: '56px',
+        body: '24px',
+      },
+      letterSpacing: {
+        normal: '0.02em',
+        wide: '0.05em',
+      },
+    };
+
+    ```
+3. Spacing & Layout
+   - **Spacing Scale**: Defines the standard space between elements (e.g. `4px`, `8px`).
+   - **Grids**: Layout system for structuring content.
+   - **Breakpoints**: Media query breakpoints for responsive design.
+   - **Container Widths**: Define maximum widths for content areas.
+    ```ts
+
+    const spacing = {
+      small: '8px',
+      medium: '16px',
+      large: '32px',
+    };
+
+    const breakpoints = {
+      mobile: '640px',
+      tablet: '768px',
+      desktop: '1024px',
+    };
+
+    ```
+4. Elevation/Shadow
+   - **Shadow Depths**: Elevation levels for elements like cards, modals, etc.
+   - **Opacity**: Transparency values for overlays and disabled states.
+    ```ts
+
+    const shadow = {
+      small: '0px 1px 3px rgba(0, 0, 0, 0.1)',
+      medium: '0px 3px 6px rgba(0, 0, 0, 0.2)',
+      large: '0px 5px 15px rgba(0, 0, 0, 0.3)',
+    };
+
+    ```
+
+For the purposes of this blog post, I will be focusing mainly on colors and how I used them to solve my aforementioned problem involving defining primary and secondary colors per section to create a galaxy effect across my application.
+
+## Colors
+
+### Define Color Variables using SCSS
+
+For each section of my portfolio, I defined primary and secondary colors, along with their respective shades, by manually creating variables for each color. SCSS is ideal for this because variables are precompiled. This means that styles are baked into the final CSS before the browser loads it, thus reducing runtime overhead.
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Section</Th>
+      <Th>Primary Color</Th>
+      <Th>Secondary Color</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>Hero</Td>
+      <Td className="bg-gray-300 dark:bg-gray-950">Gray</Td>
+      <Td className="bg-sky-300 dark:bg-sky-950">Sky</Td>
+    </Tr>
+    <Tr>
+      <Td>About</Td>
+      <Td className="bg-sky-300 dark:bg-sky-950">Sky</Td>
+      <Td className="bg-blue-300 dark:bg-blue-950">Blue</Td>
+    </Tr>
+    <Tr>
+      <Td>Skills</Td>
+      <Td className="bg-blue-300 dark:bg-blue-950">Blue</Td>
+      <Td className="bg-indigo-300 dark:bg-indigo-950">Indigo</Td>
+    </Tr>
+    <Tr>
+      <Td>Experience</Td>
+      <Td className="bg-indigo-300 dark:bg-indigo-950">Indigo</Td>
+      <Td className="bg-violet-300 dark:bg-violet-950">Violet</Td>
+    </Tr>
+    <Tr>
+      <Td>Projects</Td>
+      <Td className="bg-violet-300 dark:bg-violet-950">Violet</Td>
+      <Td className="bg-purple-300 dark:bg-purple-950">Purple</Td>
+    </Tr>
+    <Tr>
+      <Td>Articles</Td>
+      <Td className="bg-purple-300 dark:bg-purple-950">Purple</Td>
+      <Td className="bg-fuchsia-300 dark:bg-fuchsia-950">Fuchsia</Td>
+    </Tr>
+    <Tr>
+      <Td>Education</Td>
+      <Td className="bg-fuchsia-300 dark:bg-fuchsia-950">Fuchsia</Td>
+      <Td className="bg-slate-300 dark:bg-slate-950">Slate</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+#### Why Use SCSS for Color Variables?
+
+Defining colors in SCSS gives me centralized control over the look and feel of the entire site. This is especially useful for handling dynamic theming (e.g., light/dark mode) and reusing the same color scheme across different components and sections.
+
+Here's why SCSS variables make a difference:
+
+1. **Consistency**: By using SCSS variables, I'm ensuring that color values remain consistent across my site.
+2. **Easy Maintenance**: When I want to tweak or update a color, I only need to modify the variable in one place and the entire site updates accordingly.
+3. **Dynamic Theming**: I can easily define variables for different themes (light/dark) and switch between them dynamically, without duplicating styles.
+
+<Callout>
+
+**Why SCSS for Dynamic Variables?**
+SCSS is perfect for managing dynamic variables like color themes and breakpoints. Unlike Tailwind's static utilities, SCSS variables are precomputed at build time, allowing for greater flexibility when adapting to different themes without bloating your CSS.
+
+</Callout>
+
+#### Example: Defining Section Colors
+
+Here's an example of how I’ve defined primary and secondary color schemes for each section using SCSS variables:
+
+<CodeFolding>
+
+```scss
+
+  // slate
+  $neutral: (
+    '#f9fafb',
+    '#f1f5f9',
+      ...
+    '#020617',
+  );
+
+  // gray
+  $hero: (
+    '#f9fafb',
+    '#f3f4f6',
+      ...
+    '#020617',
+  );
+
+  // sky
+  $about: (
+    '#f0f9ff',
+    '#e0f2fe',
+      ...
+    '#082f49',
+  );
+
+  ...
+
+  // fuschia
+  $education: (
+    '#fdf4ff',
+    '#fae8ff',
+      ...
+    '#4a044e',
+  );
+
+```
+
+</CodeFolding>
+
+Each color palette contains shades ranging from light to dark, which I can apply to various elements across the site for different purposes—whether it's background, text, or borders. I’ve gathered these colors from TailwindCSS’s predefined palettes, but I can easily add or adjust colors if needed to evolve the design.
+
+#### Breakdown
+
+**Array of Shades**: Each SCSS variable stores an array of shades, enabling me to pick the perfect tone for different elements. For instance, I might use a lighter shade for a background and a darker shade for text or borders.
+
+**Centralization**: This approach consolidates my color logic, making it far easier to manage. If I ever need to change a section’s color scheme, I can do it all in one place, without hunting through multiple files or components.
+
+---
+
+### Dynamically Generate CSS Variables Using SCSS Mixins
+
+Mixins allow you to write reusable chunks of CSS, making your code **DRY (Don't Repeat Yourself)** and scalable. In this case, you can use SCSS mixins to **dynamically apply colors** to different sections and components.
+
+#### Why Use Mixins for Colors?
+
+Mixins let you define reusable styles that can accept **parameters**. In this case, my mixins take in color variables for each section, allowing me to set both primary and secondary color schemes consistently across components.
+
+Here's why it's useful:
+
+1. **Reusability**: The mixin can be applied anywhere, so I don’t need to redefine color rules for each section.
+2. **Flexibility**: Mixins allow me to dynamically pass different values (in this case, color variables) when applying styles, making it easy to switch color schemes across multiple sections.
+
+**Example**: Below, I’ve created mixins that apply the color variables defined earlier as CSS variables to each section.
+
+<CodeFolding>
+
+```scss
+
+@mixin create-color-vars($section, $primary, $secondary) {
+  :root {
+    --#{$section}-50: #{list.nth($primary, 1)};
+    --#{$section}-100: #{list.nth($primary, 2)};
+      ...
+    --#{$section}-950: #{list.nth($primary, 11)};
+  }
+  [data-id='#{$section}'] {
+    // Primary Shades
+    --primary-50: #{list.nth($primary, 1)};
+    --primary-100: #{list.nth($primary, 2)};
+      ...
+    --primary-950: #{list.nth($primary, 11)};
+
+    // Secondary Shades
+    --secondary-50: #{list.nth($secondary, 1)};
+    --secondary-100: #{list.nth($secondary, 2)};
+      ...
+    --secondary-950: #{list.nth($secondary, 11)};
+  }
+}
+
+@mixin create-single-color-vars($section, $color) {
+  :root {
+    --#{$section}-50: #{list.nth($color, 1)};
+    --#{$section}-100: #{list.nth($color, 2)};
+      ...
+    --#{$section}-950: #{list.nth($color, 11)};
+  }
+}
+
+// Apply mixins to sections
+@include create-color-vars('hero', $hero, $about);
+@include create-color-vars('about', $about, $skills);
+@include create-color-vars('skills', $skills, $experience);
+  ...
+@include create-color-vars('education', $education, $neutral);
+@include create-single-color-vars('neutral', $neutral);
+
+```
+
+</CodeFolding>
+
+#### How It Works
+
+- **Mixin Structure**: The mixin accepts three parameters: `$section`, `$primary`, and `$secondary`.
+  - **`$section`**: Defines the section the color applies to.
+  - **`$primary`** and **`$secondary`**: Define the primary and secondary color schemes for that section.
+- **Root Variables**: Inside the mixin, SCSS’s `list.nth()` function is used to access specific shades from the color list and assign them as CSS variables.
+  - These variables can then be applied dynamically throughout the sections.
+- **Scoped Variables**: The `data-id` attribute scopes the color variables to a specific section, ensuring that every section gets its own unique primary and secondary color variables without overlap.
+
+#### Breakdown
+
+**Root-Level Variables**: Global variables are applied via `:root` to maintain consistency across the entire app.
+
+**Section-Specific Variables**: Variables are scoped to specific sections using the data-id attribute, which allows each section to have its own colors without conflicts or unintended overrides.
+
+**Dynamic Application**: The mixin dynamically generates CSS variables based on the parameters passed. This makes it easy to update the color scheme for any section simply by modifying the variable values.
+
+---
+
+### Apply CSS Variables to Tailwind Utilities
+
+Now that I’ve defined my SCSS variables and applied them using mixins, the next step is to integrate these custom CSS variables into Tailwind’s utility system. This allows me to apply the colors in my components as if they were built-in Tailwind utilities, avoiding the need for additional CSS Modules or Global CSS.
+
+#### Why Integrate CSS Variables with Tailwind Utilities?
+
+Tailwind’s utility classes are minimal, responsive, and efficient. By combining them with CSS variables, I can dynamically adjust colors across the project while keeping styles lightweight and reusable.
+
+Here's why it's beneficial:
+
+1. **Dynamic Colors**: Tailwind can reference CSS variables, which are redefined per section using the `data-id`. This allows components to **dynamically change colors** based on the current section.
+2. **Simplified Styling**: Using Tailwind, I can style components like buttons, borders, or backgrounds with utilities like `bg-primary-100`, `text-primary-100`, `border-primary-100`, etc., without needing to rewrite or override CSS classes manually.
+   - **Contrast with CSS**: In traditional CSS, this would involve creating separate classes for every variation, but with Tailwind, I can **easily swap between styles** using a single utility class, even across sections.
+
+**Example**: Here's how to configure Tailwind to reference my newly created custom CSS variables.
+
+```ts
+
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        // Define custom color utilities based on CSS variables
+        'primary-50': 'var(--primary-50)',
+        'primary-100': 'var(--primary-100)',
+        'primary-200': 'var(--primary-200)',
+        'primary-300': 'var(--primary-300)',
+        'primary-400': 'var(--primary-400)',
+        'primary-500': 'var(--primary-500)',
+        'primary-600': 'var(--primary-600)',
+        'primary-700': 'var(--primary-700)',
+        'primary-800': 'var(--primary-800)',
+        'primary-900': 'var(--primary-900)',
+        'secondary-50': 'var(--secondary-50)',
+        'secondary-100': 'var(--secondary-100)',
+        ...
+      },
+      backgroundImage: {
+        // Applying gradients with custom CSS variables
+        'primary-gradient': 'linear-gradient(to bottom, var(--primary-300), var(--secondary-300))',
+      },
+    },
+  },
+};
+
+```
+
+#### Application
+
+Here's how a simple `button` element will be rendered depending on the section:
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>Section</Th>
+      <Th>Light Mode</Th>
+      <Th>Dark Mode</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr id="hero">
+      <Td>Hero</Td>
+      <Td className="bg-primary-300">
+          <Button className="bg-primary-600 hover:bg-primary-500 active:bg-primary-700 text-white hover:border-primary-300">Light</Button>
+      </Td>
+      <Td className="bg-primary-900">
+          <Button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-400 text-primary-900 hover:border-primary-600">Dark</Button>
+      </Td>
+    </Tr>
+    <Tr id="about">
+      <Td>About</Td>
+      <Td className="bg-primary-300">
+          <Button className="bg-primary-600 hover:bg-primary-500 active:bg-primary-700 text-white hover:border-primary-300">Light</Button>
+      </Td>
+      <Td className="bg-primary-900">
+          <Button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-400 text-primary-900 hover:border-primary-600">Dark</Button>
+      </Td>
+    </Tr>
+    <Tr id="skills">
+      <Td>Skills</Td>
+      <Td className="bg-primary-300">
+          <Button className="bg-primary-600 hover:bg-primary-500 active:bg-primary-700 text-white hover:border-primary-300">Light</Button>
+      </Td>
+      <Td className="bg-primary-900">
+          <Button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-400 text-primary-900 hover:border-primary-600">Dark</Button>
+      </Td>
+    </Tr>
+    <Tr id="experience">
+      <Td>Experience</Td>
+      <Td className="bg-primary-300">
+          <Button className="bg-primary-600 hover:bg-primary-500 active:bg-primary-700 text-white hover:border-primary-300">Light</Button>
+      </Td>
+      <Td className="bg-primary-900">
+          <Button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-400 text-primary-900 hover:border-primary-600">Dark</Button>
+      </Td>
+    </Tr>
+    <Tr id="projects">
+      <Td>Projects</Td>
+      <Td className="bg-primary-300">
+          <Button className="bg-primary-600 hover:bg-primary-500 active:bg-primary-700 text-white hover:border-primary-300">Light</Button>
+      </Td>
+      <Td className="bg-primary-900">
+        <Button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-400 text-primary-900 hover:border-primary-600">Dark</Button>
+      </Td>
+    </Tr>
+    <Tr id="writing">
+      <Td>Articles</Td>
+      <Td className="bg-primary-300">
+          <Button className="bg-primary-600 hover:bg-primary-500 active:bg-primary-700 text-white hover:border-primary-300">Light</Button>
+      </Td>
+      <Td className="bg-primary-900">
+          <Button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-400 text-primary-900 hover:border-primary-600">Dark</Button>
+      </Td>
+    </Tr>
+    <Tr id="education">
+      <Td>Education</Td>
+      <Td className="bg-primary-300">
+          <Button className="bg-primary-600 hover:bg-primary-500 active:bg-primary-700 text-white hover:border-primary-300">Light</Button>
+      </Td>
+      <Td className="bg-primary-900">
+          <Button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-400 text-primary-900 hover:border-primary-600">Dark</Button>
+      </Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+#### How It Works
+
+- **Extended Colors**: By extending Tailwind’s color configuration to reference my CSS variables (e.g., `--primary-50`, `--secondary-100`), I can apply colors dynamically across my project just as easily as any other Tailwind utility class.
+- **Multiple Style Properties**: Using Tailwind utilities, I can control multiple CSS properties (e.g., `text`, `background`, `border`) with just a few class names. If I were using traditional CSS, this would require creating separate classes or manually overriding properties in each section.
+  - For instance, a `Button` component can adapt its `background`, `border`, and `text` color based on the section it’s in, just by calling `bg-primary-600`, `text-white`, `border-primary-300`—which is far simpler than custom CSS classes for each variation.
+- **Dynamic Gradients**: Similarly, my `backgroundImage` configuration uses  CSS variables to define gradients dynamically. Depending on the section, the correct color gradient will be applied seamlessly.
+
+<Callout>
+
+**Why Gradients Matter**:
+
+Using color gradients between sections isn't just a design choice—it's a usability feature that enhances the visual flow of the site, subtly guiding users through different sections without feeling jarring or disconnected.
+
+</Callout>
+
+#### Breakdown
+
+1. **Extend Theme**: I extended the Tailwind `theme` configuration to include the custom color variables, making them available in Tailwind’s utility classes.
+2. **Dynamic Styling**: Tailwind utilities combined with CSS variables allow dynamic style changes (`text`, `background`, `border`s) as the variables are updated.
+3. **Custom Gradients**: Defining custom gradients using the CSS variables allows backgrounds to adapt based on the current section.
+
+<CodeFolding>
+
+```ts
+  ...
+    theme: {
+      extend: {
+        colors: {
+          'primary-50': 'var(--primary-50)',
+        'primary-100': 'var(--primary-100)',
+        'primary-200': 'var(--primary-200)',
+          ...
+        'primary-950': 'var(--primary-950)',
+        'secondary-50': 'var(--secondary-50)',
+        'secondary-100': 'var(--secondary-100)',
+          ....
+        'secondary-950': 'var(--secondary-950)',
+        'accent-primary': colors.cyan,
+        'accent-secondary': colors.pink,
+      },
+      backgroundImage: {
+        'app-gradient-light':
+          'linear-gradient(to bottom, var(--hero-300), var(--about-300), var(--skills-300), var(--experience-300), var(--projects-300), var(--writing-300), var(--education-300), var(--neutral-300))',
+        'app-gradient-dark':
+          'linear-gradient(to bottom, var(--hero-950), var(--about-950), var(--skills-950), var(--experience-950), var(--projects-950), var(--writing-950), var(--education-950), var(--neutral-950))',
+
+        'hero-light': 'linear-gradient(to bottom, var(--hero-300), var(--about-300))',
+        'hero-dark': 'linear-gradient(to bottom, var(--hero-950), var(--about-950))',
+        'about-light': 'linear-gradient(to bottom, var(--about-300), var(--skills-300))',
+        'about-dark': 'linear-gradient(to bottom, var(--about-950), var(--skills-950))',
+            ...
+        'education-light': 'linear-gradient(to bottom, var(--education-300), var(--hero-300))',
+        'education-dark': 'linear-gradient(to bottom, var(--education-950), var(--hero-950))',
+      },
+```
+
+</CodeFolding>
+
+---
+
+## Leveraging Tailwind Plugins for Extended Functionality
+
+One of the reasons I kept falling back on custom CSS and SCSS was because I needed functionality that Tailwind didn’t offer out of the box. In the early stages, I’d completely overlooked Tailwind’s plugin system, and by the time I realized, I was already knee-deep in unnecessary custom styles.
+
+By integrating Tailwind's plugin system into my workflow, I’m now able to cut down on the amount of custom CSS needed while extending Tailwind’s capabilities, ensuring a more consistent and maintainable approach to styling across the site. Here’s a breakdown of the plugins I’m using to clean up my project.
+
+<Callout>
+
+**The Power of Tailwind Plugins**
+Tailwind’s plugin system is often overlooked. By leveraging plugins like Typography, Forms, and Aspect Ratio, you can extend Tailwind’s core functionality and reduce the need for custom CSS, keeping your styles lean and consistent.
+
+</Callout>
+
+### Plugins I’m Using
+
+#### 1. Typography
+
+The Typography plugin adds built-in typographic utilities, making it much easier to style text-heavy content like blog posts or case studies—without having to resort to custom CSS.
+
+I’m already using this plugin in key sections of my portfolio, such as /blog and /projects. However, as I move forward, my goal is to ensure the entire site follows a more consistent typographic style, reducing the scattered custom overrides that crept in during development.
+
+To install:
+
+```bash
+  npm install @tailwindcss/typography
+  ```
+Add it to your Tailwind config:
+
+```bash
+  module.exports = {
+    plugins: [require('@tailwindcss/typography')],  
+  }
+  ```
+
+#### 2. Forms
+
+Forms are notoriously tricky to standardize across a project, and I’ve noticed discrepancies in styling `button`s, `input`s, and `checkbox`es. Enter the Forms plugin, which simplifies and unifies the styling for all form-related elements. Instead of custom CSS overrides across different sections and type safety errors across use cases, this plugin ensures consistency across the board.
+
+To install:
+
+```bash
+  npm install @tailwindcss/forms
+  ```
+
+Add it to your Tailwind config:
+
+```bash
+module.exports = {
+    plugins: [require('@tailwindcss/forms')],
+  }
+  ```
+
+While I haven’t used this plugin extensively yet, I’m looking forward to seeing how it helps me **standardize form controls**, especially as I start refining interactive elements across the site.
+
+#### 3. Aspect Ratio
+
+This plugin is a great alternative to native aspect-ratio support, particularly for older browsers. It provides utility classes like `aspect-w-*` and `aspect-h-*`, allowing you to set fixed aspect ratios without having to manually calculate dimensions. Perfect for videos, images, or anything that needs to maintain a specific aspect ratio across different devices.
+
+For example, I can easily apply an aspect ratio to images like this:
+
+```tsx
+
+<div className="aspect-w-16 aspect-h-9">
+  <Image {...props} />
+</div>
+
+```
+
+This keeps the dimensions under control, regardless of the screen size.
+
+#### 4. Container Queries
+
+One of the more recent additions to the Tailwind plugins system is the **Container Queries** plugin. Instead of styling elements based solely on the viewport width (traditional media queries), container queries let you apply styles based on the size of the parent container. This gives you far more control, especially when building reusable components that might live in varying layouts.
+
+With this plugin, you can use variants like `@sm` and `@md` based on the container dimensions rather than the viewport:
+
+```tsx
+
+<div className="@container">
+  <div className="@lg:text-sky-400">{...}</div>
+</div>
+
+```
+
+This allows me to adapt content within dynamic layouts while keeping everything scalable and modular—especially useful for responsive components inside grids or flexible containers.
+
+---
+
+By using these plugins, I’m cutting down on the amount of custom CSS needed and reinforcing my **goal of building a scalable, reusable design system** without falling into the trap of scattered styles and inconsistencies.
+
+---
+
+## Conclusion
+
+Refactoring the styling of my portfolio has been about simplifying, consolidating, and refocusing. By committing to TailwindCSS as my primary styling tool, using SCSS only for dynamic variables, and ensuring proper semantic HTML, I've dramatically improved the consistency, maintainability, and performance of my codebase. With this setup, I can confidently update the site’s look and feel efficiently, while ensuring visual harmony and accessibility across all sections.
+
+### Key Takeaways
+
+1. **TailwindCSS for Consistency**: By centralizing the bulk of styling within TailwindCSS, I avoid the confusion and overhead of mixing multiple approaches, leading to a streamlined, scalable design.
+2. **SCSS for Variables**: SCSS comes in handy for handling dynamic CSS variables that Tailwind can’t manage natively. This ensures flexibility without sacrificing the core utility-first philosophy.
+3. **Semantic HTML**: Clean, semantic HTML not only improves accessibility but also maintains code clarity, making future updates far easier.
+4. **Tailwind Plugins**: The plugin system extends Tailwind’s capabilities, reducing the need for custom CSS and further consolidating styling across the site.
+
+### What’s Next?
+
+In my upcoming post, I’ll be diving into **Component-Driven Design (CDD)**—specifically how I’m organizing my components for **reusability** and **scalability**. I’ll also walk through how I’m documenting everything in **Storybook**, ensuring consistent design and functionality across the site as it continues to evolve.

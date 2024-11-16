@@ -1,0 +1,1825 @@
+## String
+
+Sequence of characters; represents text.
+
+- Allows for manipulation and processing of textual data in computer programs.
+- Can be used to store and process large amounts of textual data
+  - simple strings, complex sentences, paragraphs, books, etc.
+- Implemented as an array of characters, with each character having a unique index position within the array
+
+<Mermaid chart={`
+ graph LR
+    subgraph string["Input: 'Hello World'"]
+        AC[H]
+        BC[e]
+        CC[l]
+        DC[l]
+        EC[o]
+        FC["Empty"]
+        GC[W]
+        HC[o]
+        IC[r]
+        JC[l]
+        KC[d]
+    end
+
+    subgraph Memory
+        A[Address: 0x1000]
+        B[Address: 0x1001]
+        C[Address: 0x1002]
+        D[Address: 0x1003]
+        E[Address: 0x1004]
+        F[Address: 0x1005]
+        G[Address: 0x1006]
+        H[Address: 0x1007]
+        I[Address: 0x1008]
+        J[Address: 0x1009]
+        K[Address: 0x100A]
+    end
+    
+    AC --- |"string[0]"| A
+    BC --- |"string[1]"| B
+    CC --- |"string[2]"| C
+    DC --- |"string[3]"| D
+    EC --- |"string[4]"| E
+    FC --- |"string[5]"| F
+    GC --- |"string[6]"| G
+    HC --- |"string[7]"| H
+    IC --- |"string[8]"| I
+    JC --- |"string[9]"| J
+    KC --- |"string[10]"| K
+`}/>
+
+## Applications of String
+
+### Plagiarism Checker
+
+Strings can be used to find Plagiarism  in code and content
+
+- Can be very performant using string matching algorithms
+- Computers can indicate the percentage of code and text that match between two strings of text.
+
+### Encoding/Decoding (Cipher Text Generation)
+
+Can be used for encoding and decoding for the safe transfer of data from sender to receiver
+  
+- Ensure no one in the way of transmission can read data
+  - Both active and passive attacks
+- Text transferred as a message gets ciphered at the sender's end and decoded at the receiver's end
+
+### Information Retrieval
+
+Helps us to retrieve information from unknown data sources
+
+- Large datasets may be used as inpuy
+- String matching/retrieval modules helps us to retrieve important information
+
+### Improved Filters for the Appropriate Suffix/Prefix Overlap Problem
+
+Strings and its algorithms provide improved filters
+
+- Problem is to find all pairs of strings from a given set
+  - Prefix of one string is similar to a suffix of the other.
+
+### Network Communication
+
+Used to encode and decode sata sent over networks
+
+- HTTP requests and responses
+
+### File Handling
+
+Used to manipulate file paths and names
+
+- Can read and write files
+
+### Data Analysis
+
+Can be used to extract meaningful infghts from large amounys of text data
+
+- Natural language processing
+- Sentiment analysis
+
+## Real-Time Applications
+
+### Spam Detection
+
+Strings can be used to serve as a spam detections system
+
+- Concept of string matching algorithms are applied
+- Spam filters use string matching to identify and discard the spam
+
+### Bioinformatics
+
+Strings can be used in Bioinformatics (DNA Sequencing)
+
+- Can be used to solve issues or problems regarding genetic sequences
+- Can help find patterns in DNA
+
+### Intrusion Detection System
+
+Strings can be used in intrusion detection systems.
+
+- Packets with related keywords are found by applying string matching algorithms.
+
+### Search Engine
+
+Strings can be used in many search engine techniques
+
+- Can be difficult to search for a specific content
+  - Due to huge amount of uncategorized text data
+- Engines organize the data and categorize the data string matching algorithms are used
+
+## Advantages/Disadvantages of Strings
+
+<CodeFolding show="Show">
+<Table>
+  <Thead>
+    <Tr>
+      <Th></Th>
+      <Th>Name</Th>
+      <Th>Explanation</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Th isRowHeader rowSpan={5}>
+        Advantages
+      </Th>
+      <Td>Text Processing</Td>
+      <Td>
+      Used to represent text in programming language
+      - Can manipulate and process text in various ways
+      - Used for searching, replacing, parsing, and formatting data
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>Data Representation</Td>
+      <Td>
+      Used to represent other data types.
+      - Includes numbers, dates, and times.
+      - Represent a data in format `YYYY-MM-DD`
+      - Represent time in format `HH:MM:SS`
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>Ease of Use</Td>
+      <Td>
+      Easy to use and manipulate.
+      - Can be concatenated, sliced, reversed, etc.
+      - Simple and intuitive synax
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>Compatibility</Td>
+      <Td>
+      Widely used across programming language; universal data type.
+      - Can be easily transferred between different systems and platforms
+      - Reliable and efficient way to communicate and share data
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>Memory Efficiency</Td>
+      <Td>
+      Usually stored in a continguous block of memory
+      - Efficient to allocate and deallocate
+      - Used to represent large amoutn of data without taking too much memory
+      </Td>
+    </Tr>
+    <Tr>
+      <Th isRowHeader rowSpan={6}>
+        Disadvantages
+      </Th>
+      <Td>Memory Consumption</Td>
+      <Td>
+      Can consume a lot of memory
+      - Usually when working with large strings or many strings
+      - Problem in memory-constrained environments
+        - Embedded systems
+        - Mobile devices
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>Immutability</Td>
+      <Td>
+      In many languages, strings are immutable
+      - Cannot be changed once they are created
+      - Can be a disadvantage when working with large or complex strings that require frequent modifications
+      - Can lead to inefficiencies and memory overhead
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>Performance Overhead</Td>
+      <Td>
+      Operations can be slower than those on other data types
+      - Especially when working with large or complex strings
+      - Often involves copying and reallocating memory
+        - Can be time-consuming
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>Encoding and Decoding Overhead</Td>
+      <Td>
+      Can have different character encodings
+      - May lead to overhead when converting between them
+      - Can be a problem when working with data from different sources
+        - Or when communicating with systems that use different encodings
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>Security Vulnerabilities</Td>
+      <Td>
+      Can be vulnerable to security vulnerabilties if not handled properly
+      - Such as buffer overflows or injection attacks
+      - Can be manipulated by attackers and used to:
+        - Execute arbitrary code
+        - Access sensitive data
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>Slow Concatenation</Td>
+      <Td>
+      Can be a slow operation
+      - Involves creating a new string
+      - Then copying all characters from original string into the new string
+      </Td>
+    </Tr>
+  </Tbody>
+</Table>
+</CodeFolding>
+
+## Operations on String
+
+| Function | Definition |
+| -------- | ---------- |
+| `size()` | Used to find the length of the string. |
+| `substr()` | Used to find a substring of a particular length, startng from a specified index. |
+| `+` | Used to concatenate two strings. |
+| `s1.compare(s2)` | Used to compare strings `s1` and `s2` to find which is lexicographically greater and which one is smaller. |
+| `reverse()` | Used to reverse a given string. |
+| `sort()` | Used to sort the string in lexicographic order. |
+
+### Accessing Characters by Index
+
+**Input**:
+
+- Non-empty string
+- Position/index of Character
+
+```javascript
+// 1.
+const char = str[idx];
+// 2.
+const char = str.charAt(idx);
+```
+
+### Inserting Character/String
+
+**Input**:
+
+- Character/string to be inserted
+- Position/index
+
+```javascript
+function insert(str, char, idx) {
+  return str.slice(0, idx) + char + str.slice(idx);
+}
+```
+
+### Modifying Character
+
+**Input**:
+
+- Character to replace
+- Position/index
+
+```javascript
+function modify(str, char, idx) {
+  return str.substr(0, idx) + char + str.substr(idx + 1);
+}
+```
+
+### Deletion of Character
+
+**Input**:
+
+- Character to delete
+
+<CodeWithHighlights
+  language="javascript"
+>
+<CodeContainer language="javascript">
+
+  ```javascript
+    function removeChar(str, char) {
+      // highlight-1
+      let j = 0;
+      // highlight-2
+      for(let i = 0; i < str.length; i++) {
+        // highlight-3
+        if(str[i] !== char) {
+          // highlight-4
+          str[j++] = str[i];
+        }
+      }
+
+    // highlight-5
+      while(j < str.length) {
+        str[j++] = '\0';
+      }
+    }
+  ```
+
+</CodeContainer>
+<SidePanel>
+  <ExplanationItem dataId={1}>
+    <ItemHeader dataId={1}>Initialize pointer</ItemHeader>
+    <ItemContent>Use pointer `j` to keep track of the position where characters are being moved.</ItemContent>
+  </ExplanationItem>
+  <ExplanationItem dataId={2}>
+    <ItemHeader dataId={2}>Loop</ItemHeader>
+    <ItemContent>Loop through the character array, using `i` as pointer within `for` loop.</ItemContent>
+  </ExplanationItem>
+  <ExplanationItem dataId={3}>
+    <ItemHeader dataId={3}>Conditional</ItemHeader>
+    <ItemContent>Check if the current character is **not** the one to be removed.</ItemContent>
+  </ExplanationItem>
+  <ExplanationItem dataId={4}>
+    <ItemHeader dataId={4}>Move character</ItemHeader>
+    <ItemContent>If the current character is **not** the same, move it to the position indicated by pointer `j`</ItemContent>
+  </ExplanationItem>
+  <ExplanationItem dataId={5}>
+    <ItemHeader dataId={5}>Fill remaining</ItemHeader>
+    <ItemContent>Fill the remaining positions in the string with null characters</ItemContent>
+  </ExplanationItem>
+</SidePanel>
+</CodeWithHighlights>
+
+### Finding Length/Size
+
+**Input**:
+
+- String for which the length is to be determined
+
+```javascript
+let str = "Hello World"
+console.log(str.length) // 11
+```
+
+### Concatenation: Joining two strings together
+
+**Input**:
+
+- String to be appended to
+- String to append to first string
+
+```javascript
+const str1 = "Hello "
+const str2 = "World"
+const combined = str1 + str2
+console.log(combined) // "Hello World"
+
+const concatCombined = str1.concat(str2)
+console.log(concatCombined) // "Hello World"
+```
+
+### Comparison: Comparing two strings lexicographically
+
+```javascript
+function compareStrings(s1, s2) {
+    // comparing both using inbuilt comparison
+    if (s1 !== s2) {
+        console.log(`${s1} is not equal to ${s2}`);
+        if (s1 > s2) {
+            console.log(`${s1} is greater than ${s2}`);
+        } else {
+            console.log(`${s2} is greater than ${s1}`);
+        }
+    } else {
+        console.log(`${s1} is equal to ${s2}`);
+    }
+}
+
+compareStrings("hello", "world")
+compareStrings("hello", "Hello")
+```
+
+### Substring extraction: Extracting substring from a string
+
+### Search
+
+### Find a Character
+
+**Input**:
+
+- String
+- Character
+
+```javascript
+
+```
+
+### Find Substring
+
+### Modification: Changing or replacing characters within a string
+
+## Applications of String
+
+- Text processing
+- Pattern matching
+- Data validation
+- Database management
+
+## JavaScript Strings
+
+Used for storing and manipulating text content or sequences ofccharacters.
+
+- Can contain **zero or more characters within single or double quotes.**
+
+### Constructor
+
+Called when an object is created either using the `new` keyword or not.
+
+- When the constructor is used with `new`, it **creates and returns a new string object."
+  - **Syntax**
+    ```javascript
+    const str = new String("Hello World")
+    ```
+- If not, `String()` **returns a primitive string value** rather than a string object.
+  - converts values to its default primitive string value.
+    - **used to convert data types** to strings.
+  - **Empty string**
+    ```javascript
+    const str = String();
+    // ""
+    ```
+  - **`undefined` or `null`**
+    ```javascript
+    const undefinedStr = String(undefined);
+    // "undefined"
+    const nullStr = String(null);
+    // "null"
+    ```
+  - **Object literals**
+    ```javascript
+    const str = String({ key: 'value' })
+    // "[object Object]
+    ```
+  - **Date Object**
+    ```javascript
+    const currentDate = new Date()
+    const currentDateStr = String(currentDate)
+    // Tue Oct 8 2024 08:14:32 GMT+0000 (Coordinated Universal Time)
+    ```
+
+### Properties
+
+A JavaScript property is a **member of an object that associates a key with a value.**
+
+- There is no static proprty, only instance properties.
+- **Instance Property:** Property with a new copy for every new instance of the class.
+
+<Table>
+  <Thead>
+   <Tr>
+      <Th>
+        Properties
+      </Th>
+      <Th>
+        Description
+      </Th>
+      <Th>
+        Example
+      </Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>
+        `length`
+      </Td>
+      <Td>
+        Returns the length/size.
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = "Hello World".length
+// 10
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+        `constructor`
+      </Td>
+      <Td>
+        Returns the string constructor function for the object.
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+  let str = "Hello World";
+  let value = str.constructor;
+  console.log(value)
+  // function String() { [native code ]}
+  console.log(str.constructor)
+  // [Function: String]
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+### Methods
+
+Methods are actions that can be performed on objects. There are two types of String methods in JavaScript: **static methods** and **instance methods**.
+
+#### Static Methods
+
+<Table>
+  <Thead>
+    <Tr>
+      <Th>
+        Static Methods
+      </Th>
+      <Th>
+        Description
+      </Th>
+      <Th>
+        Example
+      </Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>
+        `fromCharCode()`
+      </Td>
+      <Td>
+        Create string from given sequence of UTF-16 code units (16-bit integers).
+        - converts one or more Unicode values passed as arguments into a string of characters.
+        - can also be used with ASCII values (0-127)
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+  let str = String.fromCharCode(0x12014);
+  console.log(str);
+  // -
+  let abc = String.fromCharCode(64, 66, 67);
+  console.log(abc)
+  // ABC
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+        `fromCodePoint()`
+      </Td>
+      <Td>
+        Returns string or element for given sequence of code point values (ASCII) (may be larger than 16 bits).
+        - handles multiple code points as arguments
+        - concatenates characters corresponding to each point into a single string.
+        - useful for applications requiring manipulation or generation of strings with non-ASCII characters, emoji, or characters from scripts outside basic Latin range.
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+  let a = String.fromCodePoint(42);
+  let b = String.fromCodePoint(65, 90);
+  let c = String.fromCodePoint(66, 65, 102);
+
+  console.log(a)
+  // *
+  console.log(b)
+  // AZ
+  console.log(c)
+  // BAf
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+#### Instance Methods
+
+<CodeFolding show="Reference">
+<Table>
+  <Thead>
+    <Tr>
+      <Th>
+        Method
+      </Th>
+      <Th>
+        Description
+      </Th>
+      <Th>
+        Inputs
+      </Th>
+      <Th>
+        Outputs
+      </Th>
+      <Th>
+        Example
+      </Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>
+      `at()`
+      </Td>
+      <Td>
+      Find the character at the specified index.
+      </Td>
+      <Td>
+      Index (integer)
+      </Td>
+      <Td>
+      Character at the specified index (string) or undefined if index is out of bounds
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'JavaScript';
+console.log(str.at(4)); // Output: S
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `anchor()`
+      </Td>
+      <Td>
+      Creates an anchor element that is used as a hypertext target.
+      </Td>
+      <Td>
+      Anchor name (string)
+      </Td>
+      <Td>
+      HTML anchor element (string)
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Google';
+console.log(str.anchor('googleLink')); 
+// Output: <a name="googleLink">Google</a>
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `big()`
+      </Td>
+      <Td>
+      Displays the string in a big font as HTML `<big>` element.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      HTML string wrapped in `<big>` tag
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello';
+console.log(str.big()); // Output: <big>Hello</big>
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `blink()`
+      </Td>
+      <Td>
+      Displays the string as blinking text.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      HTML string wrapped in `<blink>` tag
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello';
+console.log(str.blink()); // Output: <blink>Hello</blink>
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `bold()`
+      </Td>
+      <Td>
+      Displays the string in a bold font as HTML `<b>` element.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      HTML string wrapped in `<b>` tag
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello';
+console.log(str.bold()); // Output: <b>Hello</b>
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `charAt()`
+      </Td>
+      <Td>
+      Returns the character at the specified index in the string.
+      </Td>
+      <Td>
+      Index (integer)
+      </Td>
+      <Td>
+      Character at the specified index (string) or an empty string if index is out of bounds
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello World';
+console.log(str.charAt(6)); // Output: W
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `charCodeAt()`
+      </Td>
+      <Td>
+      Returns the Unicode value of the character at the specified index.
+      </Td>
+      <Td>
+      Index (integer)
+      </Td>
+      <Td>
+      Unicode value (number) or NaN if index is out of bounds
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello';
+console.log(str.charCodeAt(1)); // Output: 101
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `codePointAt()`
+      </Td>
+      <Td>
+      Returns a non-negative integer that is the Unicode code point value.
+      </Td>
+      <Td>
+      Index (integer)
+      </Td>
+      <Td>
+      Unicode code point value (number) or undefined if index is out of bounds
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = '𝌆';
+console.log(str.codePointAt(0)); // Output: 119558
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `concat()`
+      </Td>
+      <Td>
+      Join two or more strings together.
+      </Td>
+      <Td>
+      Strings to concatenate
+      </Td>
+      <Td>
+      Concatenated string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str1 = 'Hello';
+const str2 = 'World';
+console.log(str1.concat(' ', str2)); // Output: Hello World
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `endsWith()`
+      </Td>
+      <Td>
+      Whether the given string ends with the characters of the specified string or not.
+      </Td>
+      <Td>
+      Search string (string), length (optional, integer)
+      </Td>
+      <Td>
+      Boolean (true/false)
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'JavaScript is awesome';
+console.log(str.endsWith('awesome')); // Output: true
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `fixed()`
+      </Td>
+      <Td>
+      Displays the string in a fixed-pitch font as HTML `<tt>` element.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      HTML string wrapped in `<tt>` tag
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello';
+console.log(str.fixed()); // Output: <tt>Hello</tt>
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `fontcolor()`
+      </Td>
+      <Td>
+      Displays the string in the specified color as HTML `<font>` element.
+      </Td>
+      <Td>
+      Color (string)
+      </Td>
+      <Td>
+      HTML string wrapped in `<font>` tag with color attribute
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello';
+console.log(str.fontcolor('red')); // Output: <font color="red">Hello</font>
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `fontsize()`
+      </Td>
+      <Td>
+      Displays the string in the specified font size as HTML `<font>` element.
+      </Td>
+      <Td>
+      Size (string or number)
+      </Td>
+      <Td>
+      HTML string wrapped in `<font>` tag with size attribute
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello';
+console.log(str.fontsize(5)); // Output: <font size="5">Hello</font>
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `includes()`
+      </Td>
+      <Td>
+      Returns true if the string contains the specified characters; otherwise, it returns false.
+      </Td>
+      <Td>
+      Search string (string), start position (optional, integer)
+      </Td>
+      <Td>
+      Boolean (true/false)
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello JavaScript';
+console.log(str.includes('Java')); // Output: true
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `indexOf()`
+      </Td>
+      <Td>
+      Finds the index of the first occurrence of the specified string in the given string.
+      </Td>
+      <Td>
+      Search string (string), start position (optional, integer)
+      </Td>
+      <Td>
+      Index of first occurrence (integer) or -1 if not found
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello World';
+console.log(str.indexOf('World')); // Output: 6
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `italics()`
+      </Td>
+      <Td>
+      Displays the string in italics as HTML `<i>` element.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      HTML string wrapped in `<i>` tag
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello';
+console.log(str.italics()); // Output: <i>Hello</i>
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `lastIndexOf()`
+      </Td>
+      <Td>
+      Finds the index of the last occurrence of the specified string in the given string.
+      </Td>
+      <Td>
+      Search string (string), start position (optional, integer)
+      </Td>
+      <Td>
+      Index of last occurrence (integer) or -1 if not found
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello Hello World';
+console.log(str.lastIndexOf('Hello')); // Output: 6
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `link()`
+      </Td>
+      <Td>
+      Creates an HTML hypertext link that requests another URL.
+      </Td>
+      <Td>
+      URL (string)
+      </Td>
+      <Td>
+      HTML anchor element (string)
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Mozilla';
+console.log(str.link('https://www.mozilla.org')); // Output: <a href="https://www.mozilla.org">Mozilla</a>
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `localeCompare()`
+      </Td>
+      <Td>
+      Compares two strings in the current locale.
+      </Td>
+      <Td>
+      Compare string (string)
+      </Td>
+      <Td>
+      Number indicating sort order (-1, 0, 1)
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str1 = 'a';
+const str2 = 'b';
+console.log(str1.localeCompare(str2)); // Output: -1
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `match()`
+      </Td>
+      <Td>
+      Searches a string for a match against any regular expression.
+      </Td>
+      <Td>
+      Regular expression (RegExp)
+      </Td>
+      <Td>
+      Array of matches or null
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'The rain in Spain';
+console.log(str.match(/ain/g)); // Output: [ 'ain', 'ain' ]
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `matchAll()`
+      </Td>
+      <Td>
+      Returns an iterator of all results matching a string against a regular expression.
+      </Td>
+      <Td>
+      Regular expression (RegExp)
+      </Td>
+      <Td>
+      Iterator of matches
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'test1 test2 test3';
+const regex = /test\d/g;
+const matches = str.matchAll(regex);
+for (const match of matches) {
+  console.log(match[0]);
+}
+// Output: test1, test2, test3
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `normalize()`
+      </Td>
+      <Td>
+      Returns the Unicode Normalization Form of the calling string value.
+      </Td>
+      <Td>
+      Normalization form (string: 'NFC', 'NFD', 'NFKC', 'NFKD')
+      </Td>
+      <Td>
+      Normalized string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = '\u0041\u006d\u00e9';
+console.log(str.normalize('NFC')); // Output: Amé
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `padEnd()`
+      </Td>
+      <Td>
+      Pads the current string from the end with a given string until it reaches the specified length.
+      </Td>
+      <Td>
+      Target length (integer), pad string (optional)
+      </Td>
+      <Td>
+      Padded string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello';
+console.log(str.padEnd(10, '.')); // Output: Hello.....
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `padStart()`
+      </Td>
+      <Td>
+      Pads the current string from the start with a given string until it reaches the specified length.
+      </Td>
+      <Td>
+      Target length (integer), pad string (optional)
+      </Td>
+      <Td>
+      Padded string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Goodbye';
+console.log(str.start(10, '.')); // Output: ...Goodbye
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `repeat()`
+      </Td>
+      <Td>
+      Returns a new string with a specified number of copies of the string it was called on.
+      </Td>
+      <Td>
+      Count (integer)
+      </Td>
+      <Td>
+      Repeated string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello';
+console.log(str.repeat(3)); // Output: HelloHelloHello
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `replace()`
+      </Td>
+      <Td>
+      Returns a new string with some or all matches of a pattern replaced by a replacement.
+      </Td>
+      <Td>
+      Pattern (string or RegExp), replacement (string or function)
+      </Td>
+      <Td>
+      Updated string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello World';
+console.log(str.replace('World', 'JavaScript')); // Output: Hello JavaScript
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `replaceAll()`
+      </Td>
+      <Td>
+      Returns a new string with all matches of a pattern replaced by a replacement.
+      </Td>
+      <Td>
+      Pattern (string or RegExp), replacement (string or function)
+      </Td>
+      <Td>
+      Updated string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello Hello';
+console.log(str.replaceAll('Hello', 'Hi')); // Output: Hi Hi
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `search()`
+      </Td>
+      <Td>
+      Executes a search for a match between a regular expression and this String object.
+      </Td>
+      <Td>
+      Regular expression (RegExp)
+      </Td>
+      <Td>
+      Index of the match (integer) or -1 if not found
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'JavaScript is awesome';
+console.log(str.search(/awesome/)); // Output: 15
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `slice()`
+      </Td>
+      <Td>
+      Extracts a section of a string and returns it as a new string, without modifying the original string.
+      </Td>
+      <Td>
+      Start index (integer), end index (optional, integer)
+      </Td>
+      <Td>
+      Extracted section (string)
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello World';
+console.log(str.slice(0, 5)); // Output: Hello
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `split()`
+      </Td>
+      <Td>
+      Splits a string into an array of substrings.
+      </Td>
+      <Td>
+      Separator (string or RegExp), limit (optional, integer)
+      </Td>
+      <Td>
+      Array of substrings
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello World';
+console.log(str.split(' ')); // Output: [ 'Hello', 'World' ]
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `startsWith()`
+      </Td>
+      <Td>
+      Determines whether a string begins with the characters of a specified string.
+      </Td>
+      <Td>
+      Search string (string), start position (optional, integer)
+      </Td>
+      <Td>
+      Boolean (true/false)
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'JavaScript is awesome';
+console.log(str.startsWith('Java')); // Output: true
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `substring()`
+      </Td>
+      <Td>
+      Returns the part of the string between the start and end indexes.
+      </Td>
+      <Td>
+      Start index (integer), end index (optional, integer)
+      </Td>
+      <Td>
+      Substring (string)
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello World';
+console.log(str.substring(0, 5)); // Output: Hello
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `toLocaleLowerCase()`
+      </Td>
+      <Td>
+      Converts the characters in the string to lowercase, taking into account the host locale.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      Lowercase string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'HELLO WORLD';
+console.log(str.toLocaleLowerCase()); // Output: hello world
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `toLocaleUpperCase()`
+      </Td>
+      <Td>
+      Converts the characters in the string to uppercase, taking into account the host locale.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      Uppercase string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'hello world';
+console.log(str.toLocaleUpperCase()); // Output: HELLO WORLD
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `toLowerCase()`
+      </Td>
+      <Td>
+      Converts all the characters in the string to lowercase.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      Lowercase string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello World';
+console.log(str.toLowerCase()); // Output: hello world
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `toUpperCase()`
+      </Td>
+      <Td>
+      Converts all the characters in the string to uppercase.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      Uppercase string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = 'Hello World';
+console.log(str.toUpperCase()); // Output: HELLO WORLD
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `toString()`
+      </Td>
+      <Td>
+      Returns a string representing the specified object.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      String representation
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = new String('Hello World');
+console.log(str.toString()); // Output: Hello World
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `trim()`
+      </Td>
+      <Td>
+      Removes whitespace from both ends of a string.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      Trimmed string
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = '   Hello World   ';
+console.log(str.trim()); // Output: Hello World
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `trimEnd()`
+      </Td>
+      <Td>
+      Removes whitespace from the end of a string.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      Trimmed string (end)
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = '   Hello World   ';
+console.log(str.trimEnd()); // Output: '   Hello World'
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `trimStart()`
+      </Td>
+      <Td>
+      Removes whitespace from the beginning of a string.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      Trimmed string (start)
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = '   Hello World   ';
+console.log(str.trimStart()); // Output: 'Hello World   '
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>
+      `valueOf()`
+      </Td>
+      <Td>
+      Returns the primitive value of a String object.
+      </Td>
+      <Td>
+      None
+      </Td>
+      <Td>
+      Primitive string value
+      </Td>
+      <Td>
+<CodeFolding language="javascript">
+
+```javascript
+const str = new String('Hello World');
+console.log(str.valueOf()); // Output: Hello World
+```
+
+</CodeFolding>
+      </Td>
+    </Tr>
+  </Tbody>
+</Table>
+</CodeFolding>
+
+## Top 50 String Problems
+
+### Level 1
+
+#### Reverse Words
+
+
+
+#### Longest Common Prefix
+
+#### Roman Number to Integer
+
+#### Integer to Roman
+
+#### Closest Strings
+
+#### Divisible by 7
+
+#### Encrypt the String - II
+
+#### Equal Point in a String of Brackets
+
+#### Isomorphic Strings
+
+#### Check if Two Strings are k-Angagrams or Not
+
+#### Panagram Checking
+
+#### Minimum Deletions
+
+#### Number of Distinct Subsequences
+
+#### Check if String is Rotated by Two Places
+
+### Level 2
+
+#### Implement Atoi
+
+#### Validate an IP Address
+
+#### License Key Formatting
+
+#### Find the Largest Word in Dictionary
+
+#### Equal $0$, $1$, and $2$
+
+#### Find and Replace
+
+#### Add Binary Strings
+
+#### Sum Two Large Numbers
+
+#### Multiply Two Strings
+
+#### Look and Say Pattern
+
+#### Minimum times A has to be repeated to make B a Substring
+
+#### Excel Sheet – I
+
+#### Form a Palindrome
+
+#### Find the N-th character
+
+#### Next higher palindromic number using the same set of digits
+
+#### Length of longest prefix suffix
+
+#### Longest K unique characters substring
+
+#### Smallest window in string containing all characters
+
+#### Longest Palindromic Subsequence
+
+#### Longest substring without repeating characters
+
+#### Substrings of length k with k-1 distinct elements
+
+#### Count number of substrings
+
+#### Interleaved Strings
+
+#### Print Anagrams together
+
+#### Rank the permutation
+
+#### A Special Keyboard
+
+### Level 3
+
+#### Restrictive Candy Crush
+
+#### Edit Distance
+
+#### Search Pattern (KMP-Algorithm)
+
+#### Search Pattern (Rabin-Karp Algorithm)
+
+#### Search Pattern (Z-Algorithm)
+
+#### Number of Words with K Maximum Distinct Vowels
+
+#### Longest Substring to Form a Palindrome
+
+#### Longest Valid Parenthesis
+
+#### Distinct Palindromic Substrings
+
+## Practice Problems
+
+### Basic Operations
+
+#### Searching for Characters and Substring in a String
+
+#### Reverse a String (Iterative and Recursive)
+
+#### Rotation of a String
+
+#### Sort String of Characters
+
+#### Print Frequency of Each Character in Alphabetical Order
+
+#### Swap Characters in a String
+
+#### Insert Characters at a Specific Position
+
+#### Check if Two Strings are the Same or Not
+
+#### Concatenating Two Strings
+
+#### Remove All Occurrences of a Character
+
+### Binary String
+
+#### Check if all Bits can be made same via Single Flip
+
+#### Number of Flips to Alternate Bits
+
+#### Binary Representation of Next Number
+
+#### Minimum Flips of Continuous Characters to Make all same
+
+#### Generate All Binary Strings Without Consecutive `1`s
+
+#### Find `i`th Index Character Obtained After `n` Iterations
+
+#### Generate `n`-bit Gray Codes
+
+### Substring & Subsequence
+
+#### Print All Substrings
+
+#### Print All Subsequences
+
+#### Count Distinct Subsequences
+
+#### Count Distinct Occurrences As Subsequence
+
+#### Longest Common Subsequence
+
+#### Shortest Superstring
+
+#### Shortest Common Supersequence
+
+#### Longest Repeating Subsequence
+
+#### Longest Palindromic Subsequence
+
+#### Longest Palindromic Substring using Dynamic Programming
+
+## Algorithms
+
+### String Hashing using Polynomial Rolling Hash Function
+
+### Rabin-Karp Algorithm for Pattern Searching
+
+### KMP Algorithm for Pattern Searching
+
+### Z Algorithm (Linear Time Pattern Searching Algorithm)
+
+### Suffix Array Pattern Searching
+
+### Aho-Corasick Algorithm for Pattern Searching
+
+### Finite Automata Algorithm for Pattern Searching
+
+### Boyer Moore Algorithm for Pattern Searching
+
+### Manacher's Algorithm - Linear Time Longest Palindromic Substring

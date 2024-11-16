@@ -35,7 +35,7 @@ It integrates well with Next.js and TypeScript, so that you can build highly cus
 
 To get started, use the following command to initialize your project with `create-next-app`, which includes default configuration files and an optimized setup:
 
-```bash
+```md
 npx create-next-app@latest
 ```
 
@@ -43,7 +43,7 @@ You'll be prompted with a series of questions. Let’s break each one down:
 
 #### Project Name
 
-```bash
+```md
 What is your project name?
 ```
 
@@ -53,7 +53,7 @@ If you don't enter a name, it will be created using the default name `my-app`.
 
 #### TypeScript Setup
 
-```bash
+```md
 Would you like to use TypeScript? No / Yes
 ```
 
@@ -61,7 +61,7 @@ Would you like to use TypeScript? No / Yes
 
 #### ESLint Configuration
 
-```bash
+```md
 Would you like to use ESLint? No / Yes
 ```
 
@@ -69,7 +69,7 @@ Would you like to use ESLint? No / Yes
 
 #### TailwindCSS Setup
 
-```bash
+```md
 Would you like to use TailwindCSS? No / Yes
 ```
 
@@ -83,7 +83,7 @@ However, in this guide, we’ll use TailwindCSS because of its simplicity, flexi
 
 #### `src/` Directory
 
-```bash
+```md
 Would you like your code inside a `src/` directory? No / Yes
 ```
 
@@ -91,7 +91,7 @@ This question asks if you want your project files to be placed under a `src/` fo
 
 #### App Router
 
-```bash
+```md
 Would you like to use App Router? (recommended) No / Yes
 ```
 
@@ -99,7 +99,7 @@ With Next.js 14, the **App Router** simplifies routing and layouts with new feat
 
 #### Import Alias
 
-```bash
+```md
 Would you like to customize the import alias (`@/*` by default)? No / Yes
 ```
 
@@ -112,31 +112,31 @@ If you prefer more finegrained control over your setup or you’re upgrading an 
 To do this, follow these steps:
 
 1. Install Next.js:
-    ```bash
+    ```md
 
     npm install next react react-dom
 
     ```
 2. Install TypeScript and the required type definitions:
-    ```bash
+    ```md
 
     npm install typescript @types/react @types/node --save-dev
 
     ```
 3. Create a tsconfig.json file:
-    ```bash
+    ```md
 
     npx tsc --init
 
     ```
 4. Install TailwindCSS:
-    ```bash
+    ```md
 
     npm install tailwindcss postcss autoprefixer
 
     ```
 5. Initialize Tailwind:
-    ```bash
+    ```md
 
     npx tailwindcss init
 
@@ -171,7 +171,7 @@ Follow the official instructions in the [Next.js documentation](https://nextjs.o
 
 Awesome, now that you've created your new Next.js project, let’s take a look at the file structure generated. If you answered 'yes' to all the prompts, your project should look something like this:
 
-```bash
+```md
 
 .node_modules/
 src/
@@ -749,7 +749,7 @@ However, this approach became confusing as I found myself duplicating components
 
 <CodeFolding>
 
-```bash
+```md
 
   src/
     app/
@@ -780,7 +780,7 @@ Eventually, I tried colocating the `components` folders within each section unde
 
 <CodeFolding>
 
-```bash
+```md
 
   src/
     components/
@@ -826,7 +826,7 @@ After much trial and error, I refined the structure to balance component reuse w
 
 <CodeFolding>
 
-```bash
+```md
 
   src/
     app/
@@ -922,7 +922,7 @@ However, Next.js cannot safely cache assets within this folder in the event they
 
 I'm already planning to handle my fonts using Next.js's font system, which supports self-hosting, and using Vercel Blob to host my static assets, such as images and videos. While these optimizations definitely reduce the need for a `public/` folder, there are still a few potential use cases that make sense.
 
-```bash
+```md
 
   node_modules/
   public/
@@ -955,7 +955,7 @@ I'm already planning to handle my fonts using Next.js's font system, which suppo
       |-- apple-touch-icon.png
    ```
 2. **Static Downloads**
-   For files that you intended for users to be able to download directly, you can use this directory to host those files. This is especially useful if you need the file to be easily downloadable via a static URL (e.g. `/hanaa_sadoqi_resume.pdf`).
+   For files that you intend users to download directly, use this directory to host those files. This is especially useful if you need the file to be easily downloadable via a static URL (e.g. `/hanaa_sadoqi_resume.pdf`).
    - Other potential files include PDFs, terms of service, privacy policy documents, etc.
 3. **Custom Static Assets**
    Despite using Vercel Blob, there are cases in which static assets should be served directly and are therefore hosted within this folder.
@@ -977,7 +977,7 @@ I'm already planning to handle my fonts using Next.js's font system, which suppo
 
 ### `src/styles`
 
-```bash
+```md
 
   node_modules/
   public/
@@ -1055,7 +1055,7 @@ export default function RootLayout({
 
 ### **`src/app/`**
 
-```bash
+```md
 
   node_modules/
   public/
@@ -1094,7 +1094,7 @@ Each section will be colocated with their respective components (e.g. **SkillsCo
 
 <CodeFolding>
 
-```bash
+```md
 
   node_modules/
   public/
@@ -1190,7 +1190,7 @@ And finally, this folders will contain reusable, generic components shared acros
 
 <CodeFolding>
 
-```bash
+```md
 
 node_modules/
 public/
@@ -1243,7 +1243,7 @@ And finally, don't forget to update the paths within `tsconfig.json` to keep you
       "@/*": ["./src/*"],
       "@/sections/*": ["./src/app/sections/*"],
       "@/styles/*": ["./src/styles/*"],
-      "@/fonts/*": ["./src/styles/fonts/*"],
+      "@/font/*s": ["./src/styles/fonts/*"],
       "@/components/*": ["./src/components/*"],
   }
 

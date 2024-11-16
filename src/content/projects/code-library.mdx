@@ -1,10 +1,6 @@
-<TabList label="Select a Tab">
+## Project Scope
 
-<Tab id="project-scope" label="Project Scope">
-
-### Project Scope
-
-#### Inclusions
+### Inclusions
 
 - **User Authentication**: Secure login and registration system with password hashing.
 - **Snippet Management**: Full CRUD (Create, Read, Update, Delete) operations for code snippets.
@@ -14,15 +10,13 @@
 - **Sharing Capabilities**: Ability to set snippets as public or private and share them via unique URLs.
 - **Responsive Design**: A mobile-first design approach to ensure optimal user experience across all devices.
 
-#### Exclusions
+### Exclusions
 
 - **Real-time Collaboration**: No live multi-user editing or collaboration on snippets.
 - **Version Control**: No built-in versioning for code snippets.
 - **Third-Party Integrations**: Excludes integrations with external platforms such as GitHub or GitLab.
 
----
-
-### Goals and Objectives
+## Goals and Objectives
 
 - **Improve Code Reusability**: Centralize code snippets to enable easy storage, retrieval, and reuse.
 - **Enhance Organization**: Use tags and categories to keep code snippets organized.
@@ -30,11 +24,7 @@
 - **User-Friendly Interface**: Ensure the platform is intuitive and responsive for an excellent user experience.
 - **Scalability**: Architect the platform for future expansion to accommodate additional features and increased user load.
 
-</Tab>
-
-<Tab id="MVP" label="Minimum Viable Product (MVP)">
-
-### Minimum Viable Product (MVP)
+## Minimum Viable Product (MVP)
 
 The MVP aims to deliver core functionalities that provide immediate value to users:
 
@@ -45,9 +35,9 @@ The MVP aims to deliver core functionalities that provide immediate value to use
 - **Code Editor**: Basic code editor supporting syntax highlighting for multiple programming languages.
 - **Responsive Design**: Ensure a mobile-first approach for accessibility across devices.
 
-#### Features
+### Features
 
-##### Core Features
+#### Core Features
 
 1. **User Authentication**
    - Email and password-based authentication with bcrypt password hashing.
@@ -72,85 +62,73 @@ The MVP aims to deliver core functionalities that provide immediate value to use
 8. **Notifications (Post-MVP)**
    - Users receive email notifications when snippets are shared with them or updated.
 
-</Tab>
+## Technology Stack
 
-<Tab id="technologies" label="Technology Stack">
-
-### Technology Stack
-
-#### Frontend
+### Frontend
 
 - **Next.js**: For server-side rendering, static site generation, and dynamic routing.
 - **Tailwind CSS**: A utility-first CSS framework for building modern, responsive UIs quickly.
 - **React**: JavaScript library for creating interactive UIs.
 
-#### Backend
+### Backend
 
 - **Node.js**: Server-side JavaScript runtime.
 - **Next.js API Routes**: Serverless functions for handling API requests.
 - **MongoDB**: NoSQL database for storing user profiles, snippets, and metadata.
 - **Mongoose**: ODM for MongoDB, providing schema validation and database interaction.
 
-#### Authentication
+## Authentication
 
 - **NextAuth.js**: Authentication library for handling sessions, JWTs, and social logins.
 - **bcrypt**: Password hashing for securely storing user credentials.
 
-#### Additional Libraries
+### Additional Libraries
 
 - **react-codemirror2**: Code editor component with support for multiple languages and syntax highlighting.
 - **react-syntax-highlighter**: For rendering code blocks with syntax highlighting.
 - **Jest** and **React Testing Library**: Unit and integration testing libraries.
 
-</Tab>
+## Architecture Overview
 
-<Tab id="architecture" label="Architecture">
-
-### Architecture Overview
-
-#### Client-Server Architecture
+### Client-Server Architecture
 
 The platform follows a client-server architecture where:
 
 - **Client**: The frontend is a React-based Next.js application that handles user interactions and UI rendering.
 - **Server**: Next.js API routes handle server-side logic, including database operations and authentication.
 
-#### Data Flow
+### Data Flow
 
 1. **User Actions**: Triggered through the UI, such as creating a snippet.
 2. **API Requests**: Client sends requests to Next.js API routes.
 3. **Server Processing**: The server processes requests, interacts with MongoDB using Mongoose, and returns responses.
 4. **UI Update**: The client updates based on the server's response.
 
-#### Component Hierarchy
+### Component Hierarchy
 
 - **Layout Components**: Header, Footer, Sidebar.
 - **Pages**: Home, Dashboard, Snippet Detail, Add/Edit Snippet, Login, Signup.
 - **Reusable Components**: Code Editor, SnippetCard, TagInput, SearchBar.
 
-</Tab>
+## Database Design
 
-<Tab id="database-design" label="Database Design">
-
-### Database Design
-
-#### Overview
+### Overview
 
 The database is MongoDB, with two primary collections:
 
 1. **Users**: Stores user profile information and authentication data.
 2. **Snippets**: Stores code snippets, tags, and metadata.
 
-#### Schema Definitions
+### Schema Definitions
 
-##### User Schema
+#### User Schema
 
 - **username**: Unique string.
 - **email**: Unique, validated email.
 - **password**: Hashed password.
 - **createdAt**: Date the user was created.
 
-##### Snippet Schema
+#### Snippet Schema
 
 - **title**: Snippet title.
 - **content**: Snippet content (code).
@@ -162,36 +140,28 @@ The database is MongoDB, with two primary collections:
 - **createdAt**: Timestamp for creation.
 - **updatedAt**: Timestamp for the last update.
 
-</Tab>
-
-<Tab id="authentication" label="Authentication">
-
-### Authentication Implementation
+## Authentication Implementation
 
 Authentication is managed by **NextAuth.js** with the following strategies:
 
-#### Password Authentication
+### Password Authentication
 
 - **Registration**: Passwords hashed with bcrypt before storage.
 - **Login**: Credentials-based login with email and password.
 
-#### Social Authentication (Optional)
+### Social Authentication (Optional)
 
 - **Google** and **GitHub** logins via OAuth.
   
-#### Security
+### Security
 
 - **JWT Tokens**: Session management via JWT.
 - **Password Hashing**: Ensures no plain-text passwords.
 - **HTTPS**: Mandatory in production for secure communication.
 
-</Tab>
+## Frontend Development
 
-<Tab id="frontend" label="Frontend Development">
-
-### Frontend Development
-
-#### Key Components
+### Key Components
 
 - **Pages**:
   - **Home**: Displays a list of public snippets.
@@ -200,67 +170,53 @@ Authentication is managed by **NextAuth.js** with the following strategies:
   - **Add/Edit Snippet**: Snippet form with validation and syntax highlighting.
 - **Reusable Components**: CodeEditor, TagInput, SearchBar, SnippetCard.
 
-#### Styling
+### Styling
 
 - **Tailwind CSS**: Styled using utility classes for rapid development.
 - **Responsive Design**: Mobile-first approach with breakpoints for larger screens.
 
-#### API Integration
+### API Integration
 
 - **Fetch API**: To interact with Next.js API routes for CRUD operations.
 - **Error Handling**: Implemented using hooks and state management.
 
-</Tab>
+## Backend Development
 
-<Tab id="backend" label="Backend Development">
-
-### Backend Development
-
-#### API Routes
+### API Routes
 
 - **/api/auth/register**: For user registration.
 - **/api/snippets**: CRUD operations on snippets.
 - **Authentication**: Handled with NextAuth.js and custom API routes.
 
-#### Middleware
+### Middleware
 
 - **Database Connection Middleware**: Ensures MongoDB is connected.
 - **Authentication Middleware**: Protects routes from unauthorized access.
 
-</Tab>
+## Deployment Strategy
 
-<Tab id="deployment" label="Deployment Strategy">
-
-### Deployment Strategy
-
-#### Hosting Platform
+### Hosting Platform
 
 - **Vercel**: Preferred for automatic deployment of Next.js applications.
 
-#### Steps
+### Steps
 
 1. **Configure environment variables** in Vercel.
 1. **Automatic build and deployment** on each push to the main branch.
 
-</Tab>
+## Testing and Quality Assurance
 
-<Tab id="testing" label="Testing and Quality Assurance">
-
-### Testing and Quality Assurance
-
-#### Testing Frameworks
+### Testing Frameworks
 
 - **Jest**: Unit tests for JavaScript functions.
 - **React Testing Library**: For testing React components.
 - **Supertest**: For API route testing.
 
-#### CI/CD
+### CI/CD
 
 - **GitHub Actions**: Continuous integration pipeline to run tests on every push.
 
-</Tab>
-
-<Tab id="considerations" label="Other Considerations">
+## Other Considerations
 
 ### Performance Considerations
 
@@ -278,20 +234,15 @@ Authentication is managed by **NextAuth.js** with the following strategies:
 - **Horizontal Scaling**: Handled automatically by Vercel.
 - **MongoDB Atlas**: Offers scaling options for database growth.
 - **Load Balancing**: Vercel handles load balancing automatically.
+ix
 
-</Tab>
-
-<Tab id="appendix" label="Appendix">
-
-### Appendix
-
-#### Environment Variables
+### Environment Variables
 
 - **MONGODB_URI**: Connection string for MongoDB.
 - **NEXTAUTH_SECRET**: Secret for NextAuth.js.
 - **JWT_SECRET**: JWT session secret.
 
-#### Sample `.env.local`
+### Sample `.env.local`
 
 ```bash
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/code-library?retryWrites=true&w=majority
@@ -299,7 +250,7 @@ NEXTAUTH_SECRET=your-nextauth-secret
 JWT_SECRET=your-jwt-secret
 ```
 
-#### Helpful Commands
+### Helpful Commands
 
 - **Install dependencies**:
   ```bash
@@ -317,7 +268,3 @@ JWT_SECRET=your-jwt-secret
   ```bash
   npm run build
   ```
-
-</Tab>
-
-</TabList>
