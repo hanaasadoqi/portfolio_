@@ -18,16 +18,18 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, full }) => {
       <div className="md:w-1/3 w-full relative h-48 md:h-auto">
         {full ? (
           <>
-            <Image
-              src={article.image}
-              alt={article.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ objectFit: 'cover' }}
-              className="object-cover"
-              priority={false}
-              loading="lazy"
-            />
+            {article.image !== '' && (
+              <Image
+                src={article.image.trim()}
+                alt={article.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
+                className="object-cover"
+                priority={false}
+                loading="lazy"
+              />
+            )}
             {article.slug && (
               <ReadButton slug={article.slug} title={article.title} href="/blog/[slug]" as={`/blog`} />
             )}

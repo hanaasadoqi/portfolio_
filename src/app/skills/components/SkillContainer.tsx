@@ -5,7 +5,7 @@ import { LoadingOverlay } from '@/components/shared'
 
 const SkillsContainer: React.FC = () => {
   return (
-    <div className="w-full">
+    <>
       <div className="flex h-full w-full flex-col items-center justify-center">
         <div className="md:relative flex h-3/4 w-full items-center justify-between md:p-4 flex-col md:flex-row">
           <h3 className="mb-0 text-center md:text-left text-2xl md:text-3xl lg:text-4xl">Skills</h3>
@@ -17,7 +17,7 @@ const SkillsContainer: React.FC = () => {
           <SkillsList />
         </Suspense>
       </div>
-    </div>
+    </>
   )
 }
 

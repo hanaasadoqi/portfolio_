@@ -12,14 +12,13 @@ export default function SectionLayout({
     <section
       id={id}
       data-id={id}
-      className={clsx("flex min-h-screen w-screen flex-col items-center justify-center mb-48 pb-24", {
+      className={clsx("size-full flex flex-col items-center justify-center my-48 pb-24", {
         'py-24 mt-48': !full,
         'px-6 md:px-24': !screen,
+        'max-w-7xl': !full && !screen
       }, className)}
     >
-      <div className={clsx("w-full flex flex-col items-center justify-center", { 'max-w-7xl': !full && !screen })}>
-        {children}
-      </div>
+      {children}
     </section>
   )
 }

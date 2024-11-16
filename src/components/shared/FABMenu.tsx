@@ -11,26 +11,17 @@ import {
   FaTimes,
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useDarkMode } from '@/context/DarkModeContext';
+import { useDarkMode } from '@/context/styling/DarkModeContext';
 import { Tooltip as ReactTooltip } from 'react-tooltip';
 import { useRouter } from 'next/navigation';
 
 const FabMenu: React.FC = () => {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [isOpen, setIsOpen] = React.useState(false);
-  const router = useRouter();
 
   const toggleMenu = useCallback(() => {
     setIsOpen((prev) => !prev);
   }, []);
-
-  const navigateTo = useCallback(
-    (path: string) => {
-      router.replace(path);
-      setIsOpen(false);
-    },
-    [router]
-  );
 
   const items = useMemo(
     () => [
@@ -44,22 +35,22 @@ const FabMenu: React.FC = () => {
         id: 'projects',
         icon: <FaProjectDiagram size={20} />,
         label: 'Projects',
-        action: () => navigateTo('/projects'),
+        link: '/projects'
       },
       {
         id: 'articles',
         icon: <FaNewspaper size={20} />,
         label: 'Articles',
-        action: () => navigateTo('/blog'),
+        link: '/blog'
       },
       {
         id: 'portfolio',
         icon: <FaBriefcase size={20} />,
         label: 'Portfolio',
-        action: () => navigateTo('/'),
+        link: '/'
       },
     ],
-    [isDarkMode, toggleDarkMode, navigateTo]
+    [isDarkMode, toggleDarkMode]
   );
 
   return (
@@ -74,32 +65,32 @@ const FabMenu: React.FC = () => {
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.3, delay: 0.05 * index }}
             >
-              {item.action ? (
-                <motion.button
-                  onClick={item.action}
-                  data-tooltip-id={`${item.id}-tooltip`}
-                  data-tooltip-content={item.label}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="flex items-center justify-center rounded-full bg-primary-700 text-primary-100 dark:text-primary-900 dark:bg-primary-100 p-3 shadow-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 hover:bg-primary-800 dark:hover:bg-primary-200"
-                  aria-label={item.label}
-                >
-                  {item.icon}
-                </motion.button>
-              ) : (
+              {item.onClick ? (
                 <motion.button
                   onClick={item.onClick}
                   data-tooltip-id={`${item.id}-tooltip`}
                   data-tooltip-content={item.label}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="flex items-center justify-center rounded-full bg-primary-700 text-primary-100 dark:text-primary-900 dark:bg-primary-100 p-3 shadow-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 hover:bg-primary-800 dark:hover:bg-primary-200"
+                  className="flex z-[999px] pointer-events-auto items-center justify-center rounded-full bg-primary-700 text-primary-100 dark:text-primary-900 dark:bg-primary-100 p-3 shadow-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 hover:bg-primary-800 dark:hover:bg-primary-200"
                   aria-label={item.label}
                 >
                   {item.icon}
                 </motion.button>
+              ) : (
+                <motion.a
+                  href={item.link}
+                  data-tooltip-id={`${item.id}-tooltip`}
+                  data-tooltip-content={item.label}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="flex items-center justify-center rounded-full bg-primary-700 text-primary-100 dark:text-primary-900 dark:bg-primary-100 p-3 shadow-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 hover:bg-primary-800 dark:hover:bg-primary-200"
+                  aria-label={item.label}
+                >
+                  {item.icon}
+                </motion.a>
               )}
-              {item.action && (
+              {item && (
                 <ReactTooltip id={`${item.id}-tooltip`} place="left" />
               )}
             </motion.div>
@@ -110,7 +101,7 @@ const FabMenu: React.FC = () => {
         onClick={toggleMenu}
         data-tooltip-id="main-fab-tooltip"
         data-tooltip-content={isOpen ? 'Close Menu' : 'Open Menu'}
-        className="flex items-center justify-center rounded-full bg-primary-700 p-4 shadow-lg transition-colors duration-300 dark:bg-primary-100 dark:text-primary-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 hover:bg-primary-800 dark:hover:bg-primary-200"
+        className="z-[999px] pointer-events-auto inline-flex items-center justify-center rounded-full bg-primary-700 p-4 shadow-lg transition-colors duration-300 dark:bg-primary-100 text-white dark:text-primary-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 hover:bg-primary-800 dark:hover:bg-primary-200"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         aria-label={isOpen ? 'Close Menu' : 'Open Menu'}

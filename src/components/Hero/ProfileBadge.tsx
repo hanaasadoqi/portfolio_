@@ -4,7 +4,7 @@ import Image from 'next/image'
 const ProfileBadge: React.FC = () => (
   <div className="relative transform transition-transform hover:scale-105 md:mb-4">
     <Image
-      src="/images/profile_picture.png"
+      src={"/images/profile_picture.png"}
       alt="Profile Picture of Hanaa Sadoqi"
       width={192}
       height={192}

@@ -26,7 +26,7 @@ const SearchBar: React.FC<{
           ref={inputRef}
           type="text"
           value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
+          onChange={e => setSearchQuery(e.target.value.toLowerCase())}
           className={clsx(
             'w-full rounded-md p-2 shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-primary-700 text-primary-900 dark:text-primary-100 dark:placeholder-primary-500 dark:focus-within:bg-primary-600 dark:focus-within:placeholder-primary-700'
           )}

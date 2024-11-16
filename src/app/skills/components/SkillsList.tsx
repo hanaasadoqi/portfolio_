@@ -3,16 +3,20 @@
 import { memo, useEffect, useState, useCallback, Suspense } from 'react'
 import { LoadingOverlay, BaseButton } from '@/components'
 import SkeletonSkillCard from './SkillCard/SkeletonCard'
-import SkillCard from './SkillCard/SkillCard'
 import { Skill } from '../types'
 import { useSearchParams } from 'next/navigation'
-import Link from 'next/link'
+import dynamic from 'next/dynamic'
 
 const renderSkeletons = (count: number) => {
   return Array.from({ length: count }).map((_, index) => (
     <SkeletonSkillCard key={index} />
   ))
 }
+
+const SkillCard = dynamic(() => import('../components/SkillCard/SkillCard').then(mod => mod.default), {
+  loading: () => <SkeletonSkillCard />,
+  ssr: false,
+})
 
 
 const fetchSkillsFromAPI = async (queryParams: string) => {
@@ -24,7 +28,6 @@ const fetchSkillsFromAPI = async (queryParams: string) => {
   }
 
   const data = await response.json();
-  console.log('API Response:', data);
   return data;
 }
 
@@ -85,35 +88,27 @@ const SkillsList: React.FC = () => {
 
   return (
     <>
-      <div className="h-full w-full">
-        <div className="relative">
+      {isLoading && <LoadingOverlay />}
 
-          {isLoading && <LoadingOverlay />}
+      <div className="relative scrollbar-hide overflow-y-auto shadow-inner h-[500px] md:h-[700px] p-2 sm:p-4 md:p-8 grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 smooth-scroll bg-white/30 shadow-lg rounded-2xl backdrop-blur-lg hover:shadow-2xl transition-shadow duration-500">
+        {(skills.length == 0 && !isLoading) && (<p>No results found.</p>)}
 
-          <div className="scrollbar-hide overflow-auto shadow-inner h-[500px] md:h-[700px] p-4 md:p-8 grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-6 overflow-auto smooth-scroll bg-white/30 shadow-lg rounded-2xl backdrop-blur-lg hover:shadow-2xl transition-shadow duration-500">
-            {(skills.length == 0 && !isLoading) && (<p>No results found.</p>)}
+        {skills.map((skill, index) => (
+          <Suspense key={index} fallback={renderSkeletons(1)} >
+            <SkillCard skill={skill} />
+          </Suspense>
+        ))}
+      </div>
 
-            {skills.map((skill, index) => (
-              <Suspense key={index} fallback={renderSkeletons(1)} >
-                {/* <Link key={index} href={`/skills/[id]`} as={`/skills/${skill.id}`} scroll={false}> */}
-                <SkillCard skill={skill} />
-                {/* </Link> */}
-              </Suspense>
-            ))}
-          </div>
-        </div>
+      {error && <p className="text-red-500 mt-4">{error}</p>}
 
-        {error && <p className="text-red-500 mt-4">{error}</p>}
-
-        {/* Render the Load More button */}
-        <div className="mt-8 w-full mx-auto flex items-center justify-end md:justify-center">
-          {skills.length < totalCount && (
-            <BaseButton onClick={loadMore} disabled={isLoading} size="lg" className="z-10">
-              {isLoading ? 'Loading...' : 'Load More'}
-            </BaseButton>
-          )}
-        </div>
-      </div >
+      <div className="mt-8 w-full mx-auto flex items-center justify-end md:justify-center">
+        {skills.length < totalCount && (
+          <BaseButton onClick={loadMore} disabled={isLoading} size="lg" className="z-10">
+            {isLoading ? 'Loading...' : 'Load More'}
+          </BaseButton>
+        )}
+      </div>
     </>
   )
 }

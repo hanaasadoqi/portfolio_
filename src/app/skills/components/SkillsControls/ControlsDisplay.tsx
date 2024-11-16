@@ -12,7 +12,7 @@ const LazyFilter = React.lazy(() => import('./Filter'));
 
 const ControlsDisplay: React.FC = () => {
   const [activeControl, setActiveControl] = useState<ControlOption>(null);
-  const displayRef = useRef<HTMLDivElement>(null);  // Use ref for the control display only
+  const displayRef = useRef<HTMLDivElement>(null);
 
   // Toggles the control on and off
   const handleSetControl = (e: React.MouseEvent, control: ControlOption) => {

@@ -11,15 +11,15 @@ interface CardImageProps {
 const CardImage: React.FC<CardImageProps> = ({ image, slug, title }) => {
   return (
     <div className="relative flex-grow group transition-transform duration-300 ease">
-      <Image
-        src={image}
+      {image && <Image
+        src={image.trim() || '/images/data-structures.webp'}
         alt={`${title} image`}
         width={600}
         height={400}
         className="rounded-lg object-cover w-full h-full group-hover:scale-105"
         priority={false}
         loading="lazy"
-      />
+      />}
       {slug && (
         <ReadButton slug={slug} title={title} href="/blog/[slug]" as={`/blog`} />
       )}

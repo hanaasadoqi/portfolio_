@@ -14,7 +14,7 @@ const SkeletonSkillCard = () => {
     >
       <div className="flex h-full transform flex-col items-center md:items-start justify-end gap-2 rounded-lg bg-gradient-to-br from-gray-400 to-gray-500 p-3 shadow-md transition-transform md:gap-4 md:p-4">
         <div className="h-12 w-12 bg-gray-300 rounded-full" />
-        <div className="w-3/4 h-6 bg-gray-300 rounded mt-2" />
+        <div className="w-3/4 md:w-full h-6 bg-gray-300 rounded mt-2" />
       </div>
     </div>
   )
