@@ -1,14 +1,21 @@
-import React, { JSXElementConstructor, memo, ReactElement, Suspense } from 'react'
+import React, { memo, Suspense } from 'react'
 import { ProjectPage } from '@/types/project.types'
 import Image from 'next/image'
 import Link from 'next/link'
 import SkeletonSkillCard from '@/app/skills/components/SkillCard/SkeletonCard'
 import { Icon, IconLibrary } from '@/components/shared'
-import ReadButton from '@/components/ArticlesListContainer/PreviewArticleCard/ReadButton'
 import { SkillPreview } from '@/types'
 import { ProjectLinksBar } from './ProjectLinksBar'
-import type { SkillCard } from '@/types'
 import { toId } from '@/utils/toId'
+import ProjectInfo from './ProjectInfo'
+import clsx from 'clsx'
+import { FileLoader } from '../../blog/MDX/FileLoader'
+import { MDXRenderer, MDXSource } from '../../blog/MDX/MDXRenderer'
+
+const contentSource = '/src/content/projects';
+
+const dynamicParams = false;
+
 
 const ProjectSkillCard: React.FC<{ skill: SkillPreview }> = memo(({ skill }) => {
   const IconComponent =
@@ -47,12 +54,18 @@ interface ProjectContentProps {
   project: ProjectPage
   showSkills?: boolean
   handleSkills?: () => void
-  content?: ReactElement<any, string | JSXElementConstructor<any>>
+  content?: string
 }
 
-const ProjectContent: React.FC<ProjectContentProps> = ({ project, handleSkills, showSkills, content }) => {
+const ProjectContent: React.FC<ProjectContentProps> = async ({ project, handleSkills, showSkills }) => {
+
+
+  const source = await FileLoader({ slug: project.slug as string, contentSource }) as string
+
+  const { content } = await MDXRenderer({ source });
+
   return (
-    <div className="container mt-8 md:mt-16 lg:mt-24 w-full md:mx-auto py-4 px-2 lg:px-8 overflow-y-auto bg-white/50 dark:bg-black/50 flex flex-col items-center justify-between">
+    <div className={clsx("container w-full md:mx-auto py-4 px-2 lg:px-8  bg-white/50 dark:bg-black/50 flex flex-col items-center justify-between", { 'mt-8 md:mt-16 lg:mt-24 overflow-y-auto': content })}>
       <div className="flex flex-col items-center w-full h-full">
         <h2 className="text-center text-xl md:text-2xl lg:text-3xl font-semibold mb-4">{project.title}</h2>
         <div className="flex items-center md:justify-center flex-nowrap gap-2 mb-4 w-full overflow-x-auto scrollbar-hide">
@@ -82,11 +95,10 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ project, handleSkills, 
         </div>
       </div>
 
-      <div className="max-w-5xl md:max-w-6xl lg:max-w-7xl w-full mt-2 flex flex-col justify-center">
-        <div className="prose prose-2xl dark:prose-invert prose-a:no-underline hover:prose-a:underline prose-strong:text-primary-950 dark:prose-strong:text-primary-100 prose-pre:m-4 md:p-4 lg:p-12 prose-pre:relative">
-          {content}
-        </div>
-      </div>
+      {content && (
+        <div className="max-w-5xl md:max-w-6xl lg:max-w-7xl w-full mt-2 flex flex-col justify-center">
+          <ProjectInfo content={content} />
+        </div>)}
     </div>
   )
 }

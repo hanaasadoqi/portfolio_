@@ -19,7 +19,6 @@ const ProjectGalleryCard: React.FC<ProjectCardProps> = ({ project, size = 'small
       className={`relative group ${size === 'large' ? 'h-[500px]' : 'h-[250px]'
         } w-full rounded-md shadow-md group-hover:shadow-lg group-hover:scale-105 transition-transform`}
     >
-      {/* Aspect Ratio Wrapper for Consistent Image Display */}
       <div className="relative aspect-w-16 aspect-h-9 w-full h-full">
         <Image
           src={`/images/${toId(project.title)}.jpg`}

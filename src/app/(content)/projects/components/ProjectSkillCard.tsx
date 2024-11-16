@@ -1,7 +1,6 @@
 'use client'
 
-import { IconLibrary, Icon, LinkButton } from "@/components";
-import { SkillPreview } from "@/types";
+import { IconLibrary, LinkButton } from "@/components";
 import { toId } from "@/utils/toId";
 import clsx from "clsx";
 import Link from "next/link";
@@ -18,7 +17,6 @@ const ProjectSkillCard: React.FC<{
       ? IconLibrary[skill.icon as keyof typeof IconLibrary]
       : IconLibrary.Loading;
 
-  // Generate unique tooltipId only if tooltip is provided
   const tooltipId = tooltip ? `${skill.id}-${toId(tooltip)}-tooltip` : undefined;
 
   return (
@@ -32,12 +30,11 @@ const ProjectSkillCard: React.FC<{
         className
       )}
     >
-      {/* Skill name */}
+
       {skill.name && (
         <h6 className="mb-0 text-xs font-semibold text-center">{skill.name}</h6>
       )}
 
-      {/* LinkButton with Tooltip and Icon Color */}
       <LinkButton
         href={`/skills/${skill.id}`}
         scroll={false}
@@ -47,10 +44,9 @@ const ProjectSkillCard: React.FC<{
         tooltipPlace="bottom-start"
         variant="ghost"
         iconOnly
-        className={iconColorClass} // Pass the icon color class here
+        className={iconColorClass}
       />
 
-      {/* Documentation link */}
       {skill.documentation && (
         <Link
           href={skill.documentation}

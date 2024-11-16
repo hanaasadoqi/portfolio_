@@ -7,7 +7,6 @@ import { ProjectPreview } from '@/types';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { LinkButton } from '@/components';
-import clsx from 'clsx';
 import { toId } from '@/utils/toId';
 
 interface ProjectCardProps {
@@ -41,7 +40,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         {/* Description */}
         <p className="text-gray-600 dark:text-gray-300 flex-grow line-clamp-3">{project.description}</p>
 
-        {/* Action IconButtons */}
+        {/* Action IconButtons
         <div className="mt-4 flex space-x-3">
           {project.details?.demoUrl && (
             <LinkButton
@@ -69,7 +68,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               GitHub
             </LinkButton>
           )}
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );

@@ -81,7 +81,7 @@ const ProjectsClient: React.FC<ProjectsClientProps> = ({ initialProjects, projec
           </section>
         )}
       </div>
-    </main >
+    </main>
   );
 };
 

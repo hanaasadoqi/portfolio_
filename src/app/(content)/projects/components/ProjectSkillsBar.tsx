@@ -10,7 +10,7 @@ interface SkillsBarProps {
 
 function ProjectSkillsBar({ skills }: SkillsBarProps) {
   return (
-    <div className="skills-section mt-8 flex items-center justify-center w-full">
+    <div className="skills-section h-full flex items-center justify-center w-full">
       <ul className={clsx("hidden md:flex overflow-x-auto max-w-sm md:max-w-sm lg:max-w-2xl items-center justify-center md:gap-2 lg:gap-6 md:p-2 lg:p-4")}>
         {skills.map((skill: SkillCardType, index: number) => (
           <li key={index}>

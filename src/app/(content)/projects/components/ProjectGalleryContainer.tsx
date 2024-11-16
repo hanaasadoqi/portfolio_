@@ -1,6 +1,5 @@
 import React from 'react';
-import { ProjectPreview, Suggestion } from '@/types';
-import { fetchProjects, fetchProjectSuggestions } from '@/app/lib/actions/projects';
+import { fetchProjects } from '@/app/lib/actions/projects';
 import ProjectGallery from './ProjectGallery';
 
 const ProjectGalleryContainer: React.FC = async () => {
