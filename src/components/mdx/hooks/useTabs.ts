@@ -1,14 +1,19 @@
+"use client"
+
 import { useState } from 'react';
 
 interface UseTabsReturn {
   activeTab: number;
-  handleTab: (index: number) => void;
+  handleTab: (e: React.MouseEvent<any> | React.ChangeEvent<any>, index: number) => void;
 }
 
 export const useTabs = (initialTab = 0): UseTabsReturn => {
   const [activeTab, setActiveTab] = useState(initialTab);
 
-  const handleTab = (index: number) => {
+  const handleTab = (e: React.MouseEvent<any> | React.ChangeEvent<any>, index: number) => {
+    if (e) {
+      e.preventDefault();
+    }
     if (index === activeTab) {
       setActiveTab(-1);
     } else {

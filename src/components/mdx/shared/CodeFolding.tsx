@@ -1,7 +1,7 @@
 'use client'
 
-import { BaseButton } from "@/components/shared";
-import { useState } from "react";
+import { BaseButton, LoadingOverlay } from "@/components/shared";
+import { Suspense, useState } from "react";
 
 export const CodeFolding: React.FC<{ children: React.ReactNode; show?: string; hide?: string }> = ({ children, show = "Show", hide = "Hide", ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,13 @@ export const CodeFolding: React.FC<{ children: React.ReactNode; show?: string; h
         </BaseButton>
       </div>
 
-      {isOpen && children}
+      {isOpen && (
+        <div>
+          <Suspense fallback={<LoadingOverlay />}>
+            {children}
+          </Suspense>
+        </div>
+      )}
     </>
   );
 };

@@ -1,3 +1,6 @@
+import LoadingComponent from "@/app/@modal/(.)skills/[id]/loading";
+import { Suspense } from "react";
+
 export const InfoBlock = ({ children }: { children: React.ReactNode }) => {
   return <div data-id="info-block" className="mx-auto bg-gray-200 dark:bg-gray-800 rounded-lg px-8 py-4 shadow-md hover:shadow-lg border-gray-400 text-gray-800">{children}</div>
 }
@@ -12,7 +15,9 @@ export const Callout = ({ type = 'info', children }: { type?: 'info' | 'warning'
 
   return (
     <div className={`border-l-4  p-4 my-6 ${colors[type]} rounded-md`}>
-      {children}
+      <Suspense fallback={<LoadingComponent />}>
+        {children}
+      </Suspense>
     </div>
   )
 }

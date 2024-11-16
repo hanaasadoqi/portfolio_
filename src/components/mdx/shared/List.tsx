@@ -12,7 +12,9 @@ export const UL = ({ children, ...props }: React.HTMLProps<HTMLUListElement>) =>
       )}
       {...props}
     >
-      {children}
+      <span>
+        {children}
+      </span>
     </ul>
   )
 }
@@ -26,7 +28,9 @@ export const OL = ({ children, ...props }: HTMLProps<HTMLOListElement>) => {
         props.className)}
       {...(props as OlHTMLAttributes<HTMLOListElement>)}
     >
-      {children}
+      <span>
+        {children}
+      </span>
     </ol>
   )
 }
@@ -43,7 +47,9 @@ export const LI = ({ children, ...props }: React.HTMLProps<HTMLLIElement>) => {
       )}
       {...props}
     >
-      {children}
+      <span>
+        {children}
+      </span>
     </li>
   )
 }

@@ -59,11 +59,11 @@
 //   }, [node, activeHighlight, handleClick, highlightRefs]);
 // };
 
-// export default useProcessChildrenWithHighlights;
+// // export default useProcessChildrenWithHighlights;
 // 'use client'
 
 // import React, { ReactElement, ReactNode, useMemo } from 'react';
-// import { CodeHighlightButton as HighlightButton } from '../shared/CodeHighlightButton';
+// import { HighlightButton } from '../shared/CodeWithHighlights';
 
 // interface UseProcessChildrenWithHighlightsArgs {
 //   node: ReactNode;
@@ -72,7 +72,7 @@
 //   highlightRefs: React.MutableRefObject<{ [key: number]: HTMLSpanElement | undefined | null }>;
 // }
 
-// const useProcessChildrenWithHighlights = ({
+// const processChildrenWithHighlights = ({
 //   node,
 //   activeHighlight,
 //   handleClick,
@@ -94,11 +94,6 @@
 //           <HighlightButton
 //             key={highlightId}
 //             id={highlightId}
-//             active={highlightId === activeHighlight}
-//             handleClick={() => handleClick(highlightId)}
-//             highlightRef={(el: HTMLSpanElement | null) => {
-//               highlightRefs.current[highlightId] = el; // Just assign ref, don't return anything
-//             }}
 //           />
 //         );
 //         lastIndex = match.index + match[0].length;
@@ -114,7 +109,7 @@
 //     if (React.isValidElement(node)) {
 //       return React.cloneElement(node as ReactElement, {
 //         children: React.Children.map(node.props.children, (child) =>
-//           useProcessChildrenWithHighlights({ node: child, activeHighlight, handleClick, highlightRefs })
+//           processChildrenWithHighlights({ node: child, activeHighlight, handleClick, highlightRefs })
 //         ),
 //       });
 //     }
@@ -123,7 +118,7 @@
 //   }, [node, activeHighlight, handleClick, highlightRefs]);
 // };
 
-// // export default useProcessChildrenWithHighlights;
+// export default useProcessChildrenWithHighlights;
 // 'use client';
 
 // import React, { ReactElement, ReactNode } from 'react';
@@ -186,65 +181,65 @@
 // };
 
 // export default useProcessChildrenWithHighlights;
-'use client';
+// 'use client';
 
-import React, { ReactElement, ReactNode } from 'react';
-import { CodeHighlightButton } from '../shared/CodeHighlightButton';
+// import React, { ReactElement, ReactNode } from 'react';
+// import { CodeHighlightButton } from '../shared/CodeHighlightButton';
 
-interface UseProcessChildrenWithHighlightsArgs {
-  node: ReactNode;
-  activeHighlight: number | null;
-  handleClick: (highlightId: number | null) => void;
-  highlightRefs: React.MutableRefObject<{ [key: number]: HTMLSpanElement | undefined | null }>;
-}
+// interface UseProcessChildrenWithHighlightsArgs {
+//   node: ReactNode;
+//   activeHighlight: number | null;
+//   handleClick: (highlightId: number | null) => void;
+//   highlightRefs: React.MutableRefObject<{ [key: number]: HTMLSpanElement | undefined | null }>;
+// }
 
-const useProcessChildrenWithHighlights = ({
-  node,
-  activeHighlight,
-  handleClick,
-  highlightRefs,
-}: UseProcessChildrenWithHighlightsArgs): ReactNode => {
-  if (typeof node === 'string') {
-    const highlightPattern = /\[\[highlight-(\d+)\]\]/g;
-    const parts: ReactNode[] = [];
-    let match;
-    let lastIndex = 0;
+// const useProcessChildrenWithHighlights = ({
+//   node,
+//   activeHighlight,
+//   handleClick,
+//   highlightRefs,
+// }: UseProcessChildrenWithHighlightsArgs): ReactNode => {
+//   if (typeof node === 'string') {
+//     const highlightPattern = /\[\[highlight-(\d+)\]\]/g;
+//     const parts: ReactNode[] = [];
+//     let match;
+//     let lastIndex = 0;
 
-    while ((match = highlightPattern.exec(node)) !== null) {
-      const highlightId = parseInt(match[1], 10);
-      if (match.index > lastIndex) {
-        parts.push(node.slice(lastIndex, match.index));
-      }
-      parts.push(
-        <CodeHighlightButton
-          key={highlightId}
-          id={highlightId}
-          active={highlightId === activeHighlight}
-          handleClick={() => handleClick(highlightId)}
-          highlightRef={(el: HTMLSpanElement | null) => {
-            highlightRefs.current[highlightId] = el;
-          }}
-        />
-      );
-      lastIndex = match.index + match[0].length;
-    }
+//     while ((match = highlightPattern.exec(node)) !== null) {
+//       const highlightId = parseInt(match[1], 10);
+//       if (match.index > lastIndex) {
+//         parts.push(node.slice(lastIndex, match.index));
+//       }
+//       parts.push(
+//         <CodeHighlightButton
+//           key={highlightId}
+//           id={highlightId}
+//           active={highlightId === activeHighlight}
+//           handleClick={() => handleClick(highlightId)}
+//           highlightRef={(el: HTMLSpanElement | null) => {
+//             highlightRefs.current[highlightId] = el;
+//           }}
+//         />
+//       );
+//       lastIndex = match.index + match[0].length;
+//     }
 
-    if (lastIndex < node.length) {
-      parts.push(node.slice(lastIndex));
-    }
+//     if (lastIndex < node.length) {
+//       parts.push(node.slice(lastIndex));
+//     }
 
-    return parts;
-  }
+//     return parts;
+//   }
 
-  if (React.isValidElement(node)) {
-    return React.cloneElement(node as ReactElement, {
-      children: React.Children.map(node.props.children, (child) =>
-        useProcessChildrenWithHighlights({ node: child, activeHighlight, handleClick, highlightRefs })
-      ),
-    });
-  }
+//   if (React.isValidElement(node)) {
+//     return React.cloneElement(node as ReactElement, {
+//       children: React.Children.map(node.props.children, (child) =>
+//         useProcessChildrenWithHighlights({ node: child, activeHighlight, handleClick, highlightRefs })
+//       ),
+//     });
+//   }
 
-  return node;
-};
+//   return node;
+// };
 
-export default useProcessChildrenWithHighlights;
+// export default useProcessChildrenWithHighlights;

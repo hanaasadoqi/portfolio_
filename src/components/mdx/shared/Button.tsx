@@ -1,4 +1,3 @@
-import React from 'react';
 import clsx from 'clsx';
 
 export const Button = ({ children, className }: { children: React.ReactNode; className?: string }) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import clsx from 'clsx';
 
 export const Container = ({ children, id, className, vertical, horizontal }: { children: React.ReactNode, id?: string; className?: string; vertical?: boolean; horizontal?: boolean; }) => {

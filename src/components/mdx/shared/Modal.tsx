@@ -1,9 +1,10 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { IconButton } from '@/components'
 import { IoMdClose } from 'react-icons/io'
 import { FaPen } from 'react-icons/fa'
+import LoadingComponent from '@/app/@modal/(.)skills/[id]/loading'
 
 interface ModalProps {
   onClose?: () => void
@@ -36,19 +37,22 @@ const Modal = ({ onClose, children }: ModalProps) => {
   }
 
   return isOpen ? (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 h-full w-full">
-      <div className="relative rounded-lg p-6 max-w-7xl w-full max-h-[90%] overflow-hidden h-full bg-black">
-        <IconButton
-          className="fixed top-2 right-2"
-          onClick={handleClose}
-          icon={<IoMdClose />}
-          variant="ghost"
-        />
-        <div className="relative w-full h-full overflow-y-auto p-2">
-          {children}
+    <Suspense fallback={<LoadingComponent />}>
+
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 h-full w-full">
+        <div className="relative rounded-lg p-6 max-w-7xl w-full max-h-[90%] overflow-hidden h-full bg-black">
+          <IconButton
+            className="fixed top-2 right-2"
+            onClick={handleClose}
+            icon={<IoMdClose />}
+            variant="ghost"
+          />
+          <div className="relative w-full h-full overflow-y-auto p-2">
+            {children}
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
 
   ) :
     (

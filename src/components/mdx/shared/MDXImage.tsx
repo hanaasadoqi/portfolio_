@@ -1,4 +1,3 @@
-import React from 'react';
 import clsx from 'clsx';
 import Image from 'next/image';
 
@@ -8,7 +7,8 @@ export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
   width?: number | string;
   height?: number | string;
-  layout?: string;
+  fill?: boolean;
+  priority?: boolean;
 }
 
 export const MDXImage: React.FC<ImageProps> = ({
@@ -18,7 +18,8 @@ export const MDXImage: React.FC<ImageProps> = ({
   className,
   width = 600,
   height = 450,
-  layout = 'intrinsic',
+  fill = false,
+  priority = false,
   ...props
 }) => {
   if (!src) {
@@ -30,14 +31,18 @@ export const MDXImage: React.FC<ImageProps> = ({
 
   return (
     <figure className="my-6">
-      <div className={clsx("relative", className)}>
+      <div className={clsx('relative', className)} style={fill ? { position: 'relative', height: 'auto' } : {}}>
         <Image
-          src={src}
+          src={src.trim()}
           alt={alt}
-          width={layout === 'fill' ? undefined : numericWidth}
-          height={layout === 'fill' ? undefined : numericHeight}
-          layout={layout}
-          style={layout === 'fill' ? { objectFit: 'cover' } : {}}
+          width={fill ? undefined : numericWidth}
+          height={fill ? undefined : numericHeight}
+          fill={fill}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+          placeholder="blur"
+          blurDataURL="/path/to/small/placeholder-image.jpg" // Replace with an actual small version of the image
+          className={clsx({ 'object-cover': fill }, 'w-full h-auto')}
+          priority={priority}
           {...props}
         />
       </div>

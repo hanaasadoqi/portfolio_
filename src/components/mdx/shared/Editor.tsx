@@ -1,18 +1,14 @@
 "use client"
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { drawSelection, EditorView, highlightActiveLine, highlightSpecialChars, keymap, lineNumbers, rectangularSelection } from '@codemirror/view'
 import { EditorState } from '@codemirror/state'
 import { javascript } from '@codemirror/lang-javascript'
-import { autocompletion, closeBrackets, closeBracketsKeymap, completeFromList } from '@codemirror/autocomplete'
+import { autocompletion, closeBrackets, closeBracketsKeymap } from '@codemirror/autocomplete'
 import { useEffect, useRef } from 'react'
-import { indentUnit, indentService, getIndentation, indentOnInput, defaultHighlightStyle, syntaxHighlighting, foldKeymap, foldGutter, bracketMatching } from '@codemirror/language'
-import { indentWithTab, history, insertNewlineAndIndent, defaultKeymap, historyKeymap } from '@codemirror/commands'
+import { indentUnit, indentOnInput, foldKeymap, foldGutter, bracketMatching } from '@codemirror/language'
+import { indentWithTab, history, defaultKeymap, historyKeymap } from '@codemirror/commands'
 import { oneDark } from '@codemirror/theme-one-dark';
-import { commentKeymap } from '@codemirror/comment';
-import prettier from 'prettier'
-import parserBabel from 'prettier/parser-babel'
-
 
 import { highlightSelectionMatches, searchKeymap } from '@codemirror/search';
 interface EditorProps {
@@ -21,26 +17,9 @@ interface EditorProps {
   updateCode: (code: string) => void;
 }
 
-const Editor: React.FC<EditorProps> = ({ children, updateCode, initialCode = `console.log('Hello, World')` }) => {
+const Editor: React.FC<EditorProps> = ({ updateCode, initialCode = `console.log('Hello, World')` }) => {
   const editorRef = useRef<HTMLDivElement>(null)
-  const [code, setCode] = useState(initialCode)
-  const [result, setResult] = useState('')
-
-  const formatCode = async () => {
-    try {
-      const formattedCode = await prettier.format(code, {
-        parser: 'babel',
-        plugins: [parserBabel],
-        singleQuote: true,
-        semi: false,
-        tabWidth: 2,
-      })
-      setCode(formattedCode)
-    } catch (error: any) {
-      console.error('Formatting error:', error)
-      setResult('Formatting error: ' + error.message)
-    }
-  }
+  const [code, _] = useState(initialCode)
 
   useEffect(() => {
     editorRef.current?.focus()
@@ -60,16 +39,6 @@ const Editor: React.FC<EditorProps> = ({ children, updateCode, initialCode = `co
         }
       },
     ])
-
-    const keywords = [
-      { label: 'console', type: 'keyword' },
-      { label: 'document', type: 'keyword' },
-    ]
-
-    const autocompleteExtension = autocompletion({
-      override: [completeFromList(keywords)]
-    })
-
 
     const darkTheme = EditorView.theme({
       "&": {
@@ -136,7 +105,7 @@ const Editor: React.FC<EditorProps> = ({ children, updateCode, initialCode = `co
     return () => {
       view.destroy()
     }
-  }, [initialCode])
+  }, [initialCode, updateCode, code])
 
   return (
     <div className="h-full flex flex-col" ref={editorRef}>
