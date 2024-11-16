@@ -1,8 +1,6 @@
-import React from 'react';
-
-export default function BlogSlugLayout({ children }: { children: React.ReactNode }) {
+export default async function BlogLayout({ children }: { children: React.ReactNode; }) {
   return (
-    <div>
+    <div className="w-full min-h-full relative" data-id="writing">
       {children}
     </div>
   )

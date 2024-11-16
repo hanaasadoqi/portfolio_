@@ -4,7 +4,6 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { Suggestion } from '@/types';
 
-
 interface SideItemProps {
   item: Suggestion
   isActive?: boolean
@@ -27,7 +26,6 @@ const SideItem: React.FC<SideItemProps> = ({ item, isActive = false, external = 
           }
         )}
         scroll={false}
-      // target='_blank'
       >
         {item.title}
       </Link>
