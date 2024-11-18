@@ -21,7 +21,7 @@ export type TooltipPosition =
   | 'bottom-end'
 
 export interface IconButtonProps extends BaseButtonProps {
-  icon: React.ReactElement | React.ReactElement<SVGSVGElement>
+  icon: React.ReactElement | React.ReactElement<SVGSVGElement> | string;
   iconPosition?: 'left' | 'right'
   iconOnly?: boolean
   iconClassName?: string
@@ -53,9 +53,17 @@ const IconButton: React.FC<IconButtonProps> = ({
   tooltipId,
   ...rest
 }) => {
-  const IconComponent: React.FC = () => (
-    <Icon loading={loading} icon={icon} className={iconClassName} size={size} />
-  )
+  const IconComponent: React.FC = () => {
+    if (typeof icon === 'string') {
+      return (
+        <Icon name={icon} className={iconClassName} size={size} />
+      )
+    } else {
+      return (
+        icon
+      )
+    }
+  }
 
   return (
     <>

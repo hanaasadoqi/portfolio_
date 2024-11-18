@@ -80,7 +80,17 @@ const LinkButton: React.FC<LinkButtonProps> = ({
     },
     className
   )
-
+  const IconComponent: React.FC = () => {
+    if (typeof icon === 'string') {
+      return (
+        <Icon name={icon} className={className} size={size} />
+      )
+    } else {
+      return (
+        icon
+      )
+    }
+  }
   return (
     <>
       <Link
@@ -106,7 +116,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({
         } : {})}
         {...rest}
       >
-        {icon && <Icon icon={icon} size={size} className={className} />}
+        {icon && <IconComponent />}
         {!iconOnly && children}
       </Link>
       {tooltip && tooltipId && <Tooltip id={tooltipId} className="z-50" />}

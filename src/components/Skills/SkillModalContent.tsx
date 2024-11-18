@@ -1,17 +1,11 @@
 import React from 'react'
-import { IconLibrary, Icon } from '../shared'
 import { Skill } from '@/types/data'
+import IconComponent from '@/app/(content)/projects/components/IconComponent'
 
 const SkillModalContent: React.FC<{ skill: Skill }> = ({ skill }) => {
-  const IconComponent = IconLibrary[skill.icon as keyof typeof IconLibrary]
-
   return (
     <div className="flex flex-col items-center text-gray-900 dark:text-gray-200">
-      <Icon
-        icon={<IconComponent />}
-        ariaLabel={skill.name}
-        className="mb-4 text-6xl text-indigo-500"
-      />
+      <IconComponent icon={skill.icon} />
       <h2 className="mb-4 text-2xl font-bold">{skill.name}</h2>
       <div className="w-full text-left">
         <div className="mb-6">

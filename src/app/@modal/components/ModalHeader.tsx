@@ -2,9 +2,9 @@
 
 import React, { memo, useState } from 'react'
 import { Icon, IconButton, IconLibrary } from '@/components'
-import { Skill as SkillModalType } from '@/app/skills/types'
 import clsx from 'clsx'
 import { FaCog } from 'react-icons/fa'
+import IconComponent from '@/app/(content)/projects/components/IconComponent'
 
 interface ModalHeaderProps {
   icon?: React.ReactNode
@@ -16,11 +16,6 @@ interface ModalHeaderProps {
 }
 
 const ModalHeader: React.FC<ModalHeaderProps> = memo(({ icon, title, onClose, isProject = false, handleSkills, showSkills }) => {
-  const IconComponent = icon
-    ? IconLibrary[icon as keyof typeof IconLibrary]
-    : IconLibrary['Loading']
-
-
   return (
     <div className={clsx("flex items-center justify-center w-full border-b border-gray-200 relative z-50 bg-transparent", { "p-4": title })}>
       {/* <div className="flex items-center flex-1 justify-center space-x-4 text-primary w-full">
@@ -30,7 +25,7 @@ const ModalHeader: React.FC<ModalHeaderProps> = memo(({ icon, title, onClose, is
       </div> */}
 
       <IconButton
-        icon={<IconLibrary.close />}
+        icon={<IconComponent icon="close" />}
         ariaLabel="Close Modal"
         onClick={onClose}
         size="md"

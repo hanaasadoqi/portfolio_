@@ -1,9 +1,10 @@
 import { fetchProjectById } from "@/app/lib/actions/projects";
 import ProjectContent from "../components/ProjectContent";
-import { LoadingOverlay } from '@/components';
 import { Suspense } from 'react';
 import { Params } from '../../blog/[...slug]/types';
 import { notFound } from "next/navigation";
+
+import UniversalFallback from "@/context/UniversalFallbackContext";
 
 
 export default async function ProjectDocsPage({ params }: Params) {
@@ -16,8 +17,9 @@ export default async function ProjectDocsPage({ params }: Params) {
   }
 
   return (
-    <Suspense fallback={<LoadingOverlay />}>
+    <Suspense fallback={<UniversalFallback />}>
       <ProjectContent project={project} />
     </Suspense>
+
   )
 }

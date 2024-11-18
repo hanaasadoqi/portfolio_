@@ -1,23 +1,15 @@
-'use client';
-
-import { IconLibrary } from '@/components';
 import { toId } from '@/utils/toId';
 import clsx from 'clsx';
-import Link from 'next/link';
 import React, { memo, Suspense } from 'react';
+import DocumentationLink from './DocumentationLink';
+import IconComponent from './IconComponent';
 
 const ProjectSkillCard: React.FC<{
   skill: any;
   className?: string;
   tooltip?: string;
   iconColorClass?: string;
-}> = memo(({ skill, className, tooltip, iconColorClass }) => {
-  const IconComponent = React.lazy(
-    skill.icon && skill.icon in IconLibrary
-      ? IconLibrary[skill.icon as keyof typeof IconLibrary]
-      : IconLibrary.Loading
-  );
-
+}> = memo(async ({ skill, className, tooltip, iconColorClass }) => {
   const tooltipId = tooltip ? `${skill.id}-${toId(tooltip)}-tooltip` : undefined;
 
   return (
@@ -35,18 +27,10 @@ const ProjectSkillCard: React.FC<{
         <h6 className="mb-0 text-xs font-semibold text-center">{skill.name}</h6>
       )}
 
-      <Suspense fallback={<span>Loading...</span>}>
-        <IconComponent size={24} className={clsx('text-current', iconColorClass)} />
-      </Suspense>
+      <IconComponent icon={skill.icon} className={iconColorClass} />
 
       {skill.documentation && (
-        <Link
-          href={skill.documentation}
-          className="hidden md:block text-xs text-blue-500 underline hover:text-blue-600"
-          target="_blank"
-        >
-          Docs
-        </Link>
+        <DocumentationLink documentation={skill.documentation} />
       )}
     </div>
   );
