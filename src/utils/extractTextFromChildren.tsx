@@ -1,16 +1,9 @@
 import React from "react";
 
-// const createIdFromText = (text: string) =>
-//   (text || '').toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-
-// utils/extractTextFromChildren.ts
-
-
 function slugify(str: string) {
   str = str.replace(/^\s+|\s+$/g, ''); // trim
   str = str.toLowerCase();
 
-  // remove accents, swap ñ for n, etc
   var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
   var to = "aaaaaeeeeiiiioooouuuunc------";
 

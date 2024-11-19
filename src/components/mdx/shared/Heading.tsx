@@ -15,22 +15,19 @@ const Heading: React.FC<HeadingProps> = ({ id, depth, children, ...rest }) => {
   const headingRef = useRef<HTMLHeadingElement>(null)
   const [headingId, setHeadingId] = useState<string>('')
 
-  // Register the heading using its ref once on mount if not already registered
   useEffect(() => {
-    // Only register if the heading is not already registered
-    if (headingRef.current && !allRefs.has(headingRef.current) && headingId !== '') {
-      console.log('id', headingId)
-      registerHeading({ id: headingId, text, depth, ref: headingRef.current })
+    const current = headingRef.current
+    if (current && !allRefs.has(current) && headingId) {
+      registerHeading({ id: headingId, text, depth, ref: current })
     }
-  }, [registerHeading, headingId, text, depth, headings])
+  }, [registerHeading, headingId, text, depth])
+
 
   useEffect(() => {
     const headingId = createIdFromText(text)
-    console.log('created', headingId, 'text', text)
     setHeadingId(headingId)
   }, [])
 
-  // Keep the element rendering logic the way you originally wrote it
   switch (depth) {
     case 1:
       return (

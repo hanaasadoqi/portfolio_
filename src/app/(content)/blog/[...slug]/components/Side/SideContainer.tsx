@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import clsx from 'clsx';
 import { IconButton } from '@/components/shared';
 import { Suggestion } from '@/types';
@@ -24,10 +24,10 @@ interface SideContainerProps {
   setCurrentSide: (side: 'related' | 'search' | 'resources') => void;
   relatedPosts?: Suggestion[] | string[]
   resources?: Suggestion[] | string[];
+  ref?: RefObject<any>
 }
 
-const SideContainer: React.FC<SideContainerProps> = ({ showSide, toggleSide, children, currentSide, setCurrentSide, resources, relatedPosts }) => {
-
+const SideContainer: React.FC<SideContainerProps> = ({ ref, showSide, toggleSide, children, currentSide, setCurrentSide, resources, relatedPosts }) => {
   const handleSide = (side: "search" | "related" | "resources") => {
     if (!showSide || currentSide === side) {
       toggleSide()
@@ -42,12 +42,13 @@ const SideContainer: React.FC<SideContainerProps> = ({ showSide, toggleSide, chi
         "z-10 fixed top-0 left-0 h-screen bg-gray-100 dark:bg-gray-900 border-x border-gray-200 dark:border-gray-800 flex flex-col shadow-inner rounded-r-lg transition-width duration-300",
         { 'w-0': !showSide, 'w-64': showSide },
       )}
+      ref={ref}
     >
       <div className="absolute top-0 -right-12 z-[9999] gap-4 flex flex-col justify-center items-center h-full">
         <IconButton
           className="opacity-15 hover:opacity-85 hover:text-cyan-500"
           ariaLabel="Search Posts"
-          icon={<BiSearch />}
+          icon={<BiSearch size={24} />}
           onClick={() => handleSide('search')}
           tooltip="Search"
           tooltipId='search-tooltip'
@@ -57,7 +58,7 @@ const SideContainer: React.FC<SideContainerProps> = ({ showSide, toggleSide, chi
         {relatedPosts && <IconButton
           className="opacity-15 hover:opacity-85 hover:text-cyan-500"
           ariaLabel="Show Related"
-          icon={<BiNetworkChart />}
+          icon={<BiNetworkChart size={24} />}
           onClick={() => handleSide('related')}
           tooltip="Related"
           tooltipId='related-tooltip'
@@ -67,7 +68,7 @@ const SideContainer: React.FC<SideContainerProps> = ({ showSide, toggleSide, chi
         {resources && <IconButton
           className="opacity-15 hover:opacity-85 hover:text-cyan-500"
           ariaLabel="Show Related"
-          icon={<BiLink />}
+          icon={<BiLink size={24} />}
           onClick={() => handleSide('resources')}
           tooltip="Resources"
           tooltipId='resource-tooltip'

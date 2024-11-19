@@ -7,11 +7,21 @@
   z-index: 9999;
 }
 
-html, body {
-  overflow: auto;
-  overscroll-behavior: contain;
-  height: 100%;
+html {
+  overscroll-behavior: none;
+  margin: 0;
+  padding: 0;
 }
+
+body {
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  margin: 0;
+  padding:0;
+}
+
 
 *,
 *::before,
@@ -88,6 +98,10 @@ span.highlight .badge {
   background-color: #333;
 }
 
+.nodeLabel {
+  @apply text-white;
+}
+
 @layer base {
     :root {
       --primary: #bfdbfe;
@@ -127,6 +141,49 @@ span.highlight .badge {
       --flowchart-lineColor: #4d4d4d;
       --flowchart-mainBkg: #1a1a1a;
     }
+    /* SVG Node Styling for Mermaid */
+    svg .node rect,
+    svg .node circle,
+    svg .node ellipse,
+    svg .node polygon,
+    svg .node path {
+      fill: var(--flowchart-lineColor) !important; /* Fill node shapes */
+      stroke: var(--flowchart-border) !important; /* Border for node shapes */
+    }
+    
+    /* Edge Styling */
+    svg .edgePath path {
+      stroke: var(--primary-500) !important; /* Stroke color for edges */
+    }
+    
+    /* Cluster Styling */
+    svg .cluster rect {
+      fill: var(--flowchart-mainBkg) !important; /* Background color for clusters */
+      stroke: var(--flowchart-border) !important; /* Border color for clusters */
+    }
+    
+    /* Label and Text Styling */
+    svg .label text {
+      @apply text-gray-100;
+      /* fill: var(--flowchart-lineColor) !important; Text color */
+    }
+
+    svg g > foreignObject > div > span > p{
+        @apply text-gray-100;
+    }
+
+    aside a {
+      text-decoration: none;
+    }
+
+    aside ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    aside li {
+      margin-left: 0;
+    }
   }
   
   
@@ -144,34 +201,7 @@ span.highlight .badge {
           --flowchart-mainBkg: #f0f0f0;
         }
       } */
-    
 
-
-/* SVG Node Styling for Mermaid */
-svg .node rect,
-svg .node circle,
-svg .node ellipse,
-svg .node polygon,
-svg .node path {
-  fill: var(--flowchart-lineColor) !important; /* Fill node shapes */
-  stroke: var(--flowchart-border) !important; /* Border for node shapes */
-}
-
-/* Edge Styling */
-svg .edgePath path {
-  stroke: var(--primary-500) !important; /* Stroke color for edges */
-}
-
-/* Cluster Styling */
-svg .cluster rect {
-  fill: var(--flowchart-mainBkg) !important; /* Background color for clusters */
-  stroke: var(--flowchart-border) !important; /* Border color for clusters */
-}
-
-/* Label and Text Styling */
-svg .label text {
-  fill: var(--flowchart-lineColor) !important; /* Text color */
-}
 
 .katex span {
   white-space: nowrap;
@@ -197,18 +227,6 @@ svg .label text {
     transition:
     background-color 0.3s ease,
     color 0.3s ease;
-  }
-
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  li:not(.mermaid p){
-    color: var(--primary-950);
-    transition: color 0.3s ease;
   }
 }
 
@@ -268,7 +286,7 @@ ol {
 }
 
 li {
-  /* @apply mb-2 text-sm md:text-base lg:text-lg prose dark:prose-invert prose-x; */
+  @apply mb-2 text-sm md:text-base lg:text-lg prose dark:prose-invert prose-xl;
   @apply mb-2;
 }
 
@@ -277,6 +295,19 @@ li {
   html {
     @apply bg-app-gradient-light text-primary-950 dark:bg-app-gradient-dark text-primary-50;
   }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li:not(.mermaid p){
+    transition: color 0.3s ease;
+    @apply text-primary-950 dark:text-primary-50 dark:hover:text-primary-300 hover:text-primary-800;
+  }
+
   h1 {
     @apply text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
     @apply font-sans font-bold leading-tight text-accent-primary-950 dark:text-accent-primary-50;
@@ -345,8 +376,20 @@ li {
   }
 
 .tabs-container {
-  @apply bg-[#1e2530] rounded-lg shadow-lg overflow-hidden;
+  @apply dark:bg-primary-950 bg-primary-200 rounded-lg shadow-lg overflow-hidden;
   color: #c0c0c0;
+}
+
+.tabs-container h2 {
+  @apply text-xl md:text-2xl;
+}
+
+.tabs-container h3 {
+  @apply text-lg md:text-xl;
+}
+
+.tabs-container h4 {
+  @apply text-base md:text-lg;
 }
 
 .tab-list {
@@ -531,7 +574,10 @@ dialog:not([open]) {
   transform: scale(1.5);
 }
 
-
 .toolTip {
-  @apply text-sm rounded-md p-0;
+  @apply text-sm rounded-md p-0 flex-wrap;
+}
+
+.fixed {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }

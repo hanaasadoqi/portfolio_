@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import SideContainer from './SideContainer';
 import SideContent from './SideContent';
@@ -35,6 +35,23 @@ const Side: React.FC<SideProps> = ({ relatedPosts = [], resources, allPosts = []
   const [currentSide, setCurrentSide] = useState<'related' | 'search' | 'resources'>('related');
   const currentSlug = usePathname();
   const [fullRelatedPosts, setFullRelatedPosts] = useState<Suggestion[]>([]);
+  const sideRef = useRef(null)
+
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    if (sideRef.current && !(sideRef.current as Node).contains(event.target as Node)) {
+      setShowSide(false);
+    }
+  }, []);
+
+
+  useEffect(() => {
+    if (showSide) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [showSide, handleClickOutside]);
 
   const toggleSide = () => {
     setShowSide((prev) => !prev);
@@ -113,6 +130,7 @@ const Side: React.FC<SideProps> = ({ relatedPosts = [], resources, allPosts = []
       toggleSide={toggleSide}
       currentSide={currentSide}
       setCurrentSide={setCurrentSide}
+      ref={sideRef}
     >
       <SideContent
         allPosts={allPosts}

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { useTOC, Heading } from '@/context/TOCContext'
@@ -17,10 +17,34 @@ const TOCItem: React.FC<TOCItemProps> = React.memo(({ item }) => {
   const { activeRef, setActiveHeading } = useTOC()
   const [expanded, setExpanded] = useState(false)
 
-  const isActive = useMemo(() => activeRef === item.ref, [activeRef, item.ref])
   const hasChildren = useMemo(() => item.children && item.children.length > 0, [item.children])
+  const hasActiveChildren = useMemo(() => {
+    const isChildActive = (children: Heading[] | undefined): boolean => {
+      if (!children) return false;
+      return children.some((child) => {
+        if (child.ref?.id === activeRef?.id) {
+          return true;
+        }
+        return isChildActive(child.children);
+      });
+    };
 
-  const toggleExpanded = () => setExpanded((prev) => !prev)
+    return isChildActive(item.children);
+  }, [item.children, activeRef]);
+  const isActive = useMemo(() => activeRef?.id === item.ref?.id || hasActiveChildren, [activeRef, item.ref])
+
+  const toggleExpanded = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setExpanded((prev) => !prev)
+  }
+
+  useEffect(() => {
+    if (hasActiveChildren) {
+      setExpanded(true)
+    } else {
+      setExpanded(false)
+    }
+  }, [hasActiveChildren, isActive])
 
   return (
     <li className={clsx('py-2', `ml-${item.depth / 2}`)}>
@@ -28,28 +52,28 @@ const TOCItem: React.FC<TOCItemProps> = React.memo(({ item }) => {
         className={clsx(
           'w-full flex justify-between items-center px-2 py-1',
           {
-            'font-bold text-md dark:text-white': isActive,
-            'hover:dark:bg-primary-900 rounded-md': true
+            'font-bold text-base text-primary-600 dark:text-primary-200': isActive,
+            'hover:bg-primary-100 hover:dark:bg-primary-900 rounded-md': true
           }
         )}
       >
         <Link
           href={`#${item.id}`}
           onClick={(e) => setActiveHeading(item.ref as HTMLLIElement | HTMLHeadingElement)}
-          className="flex-1 text-left"
+          className={clsx("flex-1 text-left", {
+            'text-primary-800 dark:text-white': isActive
+          })}
         >
           {item.text}
         </Link>
         {hasChildren && (
           <button
-            onClick={(e) => {
-              e.preventDefault()
-              toggleExpanded()
-              setActiveHeading(item.ref as HTMLLIElement | HTMLHeadingElement)
-            }}
+            onClick={toggleExpanded}
             aria-expanded={expanded}
             aria-label={expanded ? 'Collapse' : 'Expand'}
-            className="h-6 w-6 flex items-center justify-center dark:hover:bg-primary-800 dark:hover:text-white dark:active:bg-primary-700 hover:shadow-md hover:scale-110"
+            className={clsx("h-6 w-6 flex items-center justify-center dark:hover:bg-primary-800 dark:hover:text-white dark:active:bg-primary-700 hover:shadow-md hover:scale-110", {
+              'text-primary-600 dark:text-primary-200': isActive
+            })}
           >
             {expanded ? <Minus /> : <Plus />}
           </button>
