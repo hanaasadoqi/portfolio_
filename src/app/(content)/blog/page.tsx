@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { fetchArticleInfo, fetchArticles } from '@/app/lib/actions/articles';
+import { fetchArticles } from '@/app/lib/actions/articles';
 import BlogsContainer from './components/BlogsContainer';
 
 export const dynamicParams = false;

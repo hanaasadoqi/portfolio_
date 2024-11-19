@@ -1,7 +1,6 @@
 "use client"
 
 import { ArticlePreviewType } from "@/app/lib/actions/articles";
-import { LoadingOverlay } from "@/components";
 import { useState, useEffect, useMemo, Suspense } from "react";
 import dynamic from "next/dynamic";
 

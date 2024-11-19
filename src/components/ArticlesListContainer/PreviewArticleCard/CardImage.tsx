@@ -1,6 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import ReadButton from './ReadButton'
+import dynamic from 'next/dynamic'
+
+const ReadButton = dynamic(() => import('./ReadButton'), { ssr: true })
 
 interface CardImageProps {
   image: string
