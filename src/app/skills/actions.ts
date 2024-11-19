@@ -32,79 +32,24 @@ export const fetchSkills = async (): Promise<{ skills: Skill[], totalCount: numb
 
 export type SkillWithoutCategoriesAndTags = Omit<Skill, 'categories' | 'tags' | '_count'>;
 
-export const fetchFilteredSkills = async (
-  searchQuery?: string,
-  filterByTag?: string,
-  filterByCategory?: string,
-  sortBy?: 'Years' | 'Projects' | 'Experience' | '',
-  page: number = 1,
-  pageSize: number = 10
-): Promise<{ skills: SkillWithoutCategoriesAndTags[], totalCount: number }> => {
+export const fetchFilteredSkills = async (): Promise<{ skills: Skill[], totalCount: number }> => {
+  const skills = await prisma.skill.findMany({
+    select: {
+      id: true,
+      name: true,
+      icon: true,
+      startYear: true,
+      tags: true,
+      categories: true,
+      projects: true,
+      experiences: true
+    },
+  })
 
-  const where: Prisma.SkillWhereInput = {
-    OR: [
-      {
-        name: {
-          contains: searchQuery,
-          mode: 'insensitive',
-        },
-      },
-      {
-        tags: {
-          hasSome: [searchQuery || ''],
-        },
-      },
-      {
-        categories: {
-          hasSome: [searchQuery || ''],
-        },
-      },
-    ],
-    ...(filterByCategory && {
-      categories: {
-        has: filterByCategory,
-      },
-    }),
-    ...(filterByTag && {
-      tags: {
-        has: filterByTag,
-      },
-    }),
-  };
+  const totalCount = skills.length
+  return { skills, totalCount }
+}
 
-
-  const orderBy: any[] = [];
-  if (sortBy === 'Years') {
-    orderBy.push({ startYear: 'desc' });
-  } else if (sortBy === 'Projects') {
-    orderBy.push({ projectCount: 'desc' });
-  } else if (sortBy === 'Experience') {
-    orderBy.push({ experienceLevel: 'desc' });
-  }
-
-  const [skills, totalCount] = await prisma.$transaction([
-    prisma.skill.findMany({
-      where,
-      orderBy: orderBy.length ? orderBy : undefined,
-      skip: (page - 1) * pageSize,
-      take: pageSize,
-      select: {
-        id: true,
-        name: true,
-        icon: true,
-        startYear: true,
-        _count: {
-          select: {
-            projects: true
-          }
-        }
-      },
-    }),
-    prisma.skill.count({ where }),
-  ]);
-
-  return { skills, totalCount };
-};
 
 export const searchSkills = async (query: string) => {
   const skills = await prisma.skill.findMany({

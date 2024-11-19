@@ -1,6 +1,6 @@
 import React from 'react'
-import { FaBriefcase, FaProjectDiagram, FaCalendarAlt, FaInfo } from 'react-icons/fa'
-import { IconButton } from '@/components/shared'
+import { icons } from './icons'
+import { SkillTooltip } from '@/components/shared/Tooltip'
 
 interface SkillIconsProps {
   id: string
@@ -20,53 +20,48 @@ const SkillIcons: React.FC<SkillIconsProps> = ({
     variant: 'icon' as const,
   }
 
+  const iconData = [
+    {
+      condition: true,
+      icon: icons.info,
+      tooltip: 'More Info',
+    },
+    {
+      condition: experienceCount && experienceCount > 0,
+      icon: icons.briefcase,
+      tooltip: `${experienceCount} Professional Experience${experienceCount && experienceCount > 1 ? 's' : ''}`,
+    },
+    {
+      condition: projectsCount && projectsCount > 0,
+      icon: icons.project,
+      tooltip: `${projectsCount} Project${projectsCount && projectsCount > 1 ? 's' : ''}`,
+    },
+    {
+      condition: yearsOfExperience && yearsOfExperience >= 0,
+      icon: icons.calendar,
+      tooltip: `${yearsOfExperience} Year${yearsOfExperience && yearsOfExperience > 1 ? 's' : ''}`,
+    },
+  ]
+
   return (
-    <div>
-      {/* Skill Icons that show additional info */}
-      <div className="absolute right-4 top-4 z-30 lg:flex space-x-3">
-        <IconButton
-          className="block lg:hidden opacity-75 hover:opacity-100 text-primary-900"
-          icon={<FaInfo size={24} />}
-          tooltipId={`info-tooltip-${id}`}
-          tooltip="More Info"
-          {...commonProps}
-        />
-
-        {experienceCount && experienceCount > 0 ? (
-          <IconButton
-            className="hidden lg:block text-primary-900 hover:text-white"
-            aria-label="Professional Experience"
-            icon={<FaBriefcase size={24} />}
-            tooltipId={`experience-tooltip-${id}`}
-            tooltip={`${experienceCount} Professional Experience${experienceCount > 1 ? 's' : ''}`}
-            {...commonProps}
-          />
-        ) : null}
-
-        {projectsCount && projectsCount > 0 ? (
-          <IconButton
-            aria-label="Number of Personal Projects"
-            className="hidden lg:block text-primary-900 hover:text-white"
-            icon={<FaProjectDiagram size={24} />}
-            tooltipId={`projects-tooltip-${id}`}
-            tooltip={`${projectsCount} Project${projectsCount > 1 ? 's' : ''}`}
-            {...commonProps}
-          />
-        ) : null}
-
-        {yearsOfExperience && yearsOfExperience >= 0 ? (
-          <IconButton
-            aria-label="Years of Knowledge"
-            className="hidden lg:block text-primary-900 hover:text-white"
-            icon={<FaCalendarAlt size={24} />}
-            tooltipId={`knowledge-tooltip-${id}`}
-            tooltip={`${yearsOfExperience} Year${yearsOfExperience > 1 ? 's' : ''}`}
-            {...commonProps}
-          />
-        ) : null}
-      </div>
+    <div className="absolute right-4 top-4 z-30 lg:flex space-x-3">
+      {iconData
+        .filter((data) => data.condition)
+        .map((data, index) => (
+          <button
+            key={`${id}-${index}`}
+            className="p-2 bg-primary-200 text-primary-800 hover:text-primary-950 hover:bg-primary-300 dark:bg-primary-800 dark:text-white rounded-full shadow-md dark:hover:bg-primary-950 hover:text-white"
+            aria-label={data.tooltip}
+            title={data.tooltip}
+            data-tooltip-id={`skill-tooltip-${id}`}
+            data-tooltip-content={data.tooltip}
+          >
+            {data.icon}
+          </button>
+        ))}
+      <SkillTooltip id={id} />
     </div>
-  );
+  )
 }
 
-export default React.memo(SkillIcons);
+export default React.memo(SkillIcons)

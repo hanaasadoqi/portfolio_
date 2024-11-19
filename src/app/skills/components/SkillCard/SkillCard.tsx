@@ -12,8 +12,7 @@ interface SkillCardProps {
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
-  const { id, name, icon } = skill;
-  const { projects, experiences } = skill._count || {};
+  const { id, name, icon, projects, experiences } = skill;
   const yearsOfExperience = "startYear" in skill ? new Date().getFullYear() - skill.startYear : undefined;
 
   return (
@@ -30,8 +29,8 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
     >
       <SkillIcons
         id={id}
-        experienceCount={experiences}
-        projectsCount={projects}
+        experienceCount={experiences.length || 0}
+        projectsCount={projects.length || 0}
         yearsOfExperience={yearsOfExperience}
       />
 
@@ -43,8 +42,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
             className="text-white transition-transform duration-300 group-hover:scale-110 text-3xl xl:text-4xl"
           />
         </React.Suspense>
-
-        <h3 className="mb-0 font-semibold text-white text-center md:text-left text-base lg:text-xl">
+        <h3 className="my-0 font-semibold text-white text-center md:text-left text-base lg:text-xl">
           {name}
         </h3>
       </div>
