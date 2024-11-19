@@ -3,6 +3,7 @@
 import React, { memo } from 'react';
 import { LinkButton } from '../shared';
 import dynamic from 'next/dynamic'
+import Link from 'next/link';
 
 const DynamicFaGithub = dynamic(
   () => import('react-icons/fa').then(mod => mod.FaGithub),
@@ -21,37 +22,34 @@ const DynamicFaTwitter = dynamic(
 
 const SocialMediaLinks: React.FC = () => {
   return (
-    <div className="flex md:mt-0">
-      <LinkButton
+    <div className="flex md:mt-0 gap-4">
+      <Link
         href="https://www.linkedin.com/in/hanaasadoqi"
-        ariaLabel="LinkedIn Profile"
-        variant="text"
-        tooltip="LinkedIn"
-        tooltipId="linkedin-tooltip"
-        size="md"
+        aria-label="LinkedIn Profile"
+        className='rounded-sm bg-transparent text-primary-800 hover:text-secondary-700 focus-visible:text-secondary-900 active:text-secondary-900 dark:hover:text-secondary-700 dark:focus-visible:text-secondary-900 dark:active:text-secondary-900'
+        data-tooltip-content="LinkedIn"
+        data-tooltip-id="linkedin-tooltip"
       >
         <DynamicFaLinkedin size={32} />
-      </LinkButton>
-      <LinkButton
+      </Link>
+      <Link
         href="https://www.github.com/hsadoqi"
-        ariaLabel="GitHub Profile"
-        variant="text"
-        tooltip="GitHub"
-        tooltipId="github-tooltip"
-        size="md"
+        aria-label="GitHub Profile"
+        className='rounded-sm bg-transparent text-primary-800 hover:text-secondary-700 focus-visible:text-secondary-900 active:text-secondary-900 dark:hover:text-secondary-700 dark:focus-visible:text-secondary-900 dark:active:text-secondary-900'
+        data-tooltip-content="GitHub"
+        data-tooltip-id="github-tooltip"
       >
         <DynamicFaGithub size={32} />
-      </LinkButton>
-      <LinkButton
+      </Link>
+      <Link
         href="https://www.twitter.com/hanaasadoqi"
-        ariaLabel="Twitter Profile"
-        variant="text"
-        tooltip="Twitter"
-        tooltipId="twitter-tooltip"
-        size="md"
+        aria-label="Twitter Profile"
+        className='rounded-sm bg-transparent text-primary-800 hover:text-secondary-700 focus-visible:text-secondary-900 active:text-secondary-900 dark:hover:text-secondary-700 dark:focus-visible:text-secondary-900 dark:active:text-secondary-900'
+        data-tooltip-content="Twitter"
+        data-tooltip-id="twitter-tooltip"
       >
         <DynamicFaTwitter size={32} />
-      </LinkButton>
+      </Link>
     </div>
   )
 }

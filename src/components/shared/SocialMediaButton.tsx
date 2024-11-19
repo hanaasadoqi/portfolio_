@@ -18,7 +18,7 @@ const SocialMediaButton: React.FC<{
       rel="noopener noreferrer"
       data-tooltip-content={tooltip}
       data-tooltip-id="social-media-tooltip"
-      data-tooltip-place="top-end"
+      data-tooltip-place="right"
     >
       {IconSvg}
     </Link>
