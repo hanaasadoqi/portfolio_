@@ -13,7 +13,7 @@ const CallToAction: React.FC = () => (
     <div className="flex flex-col items-center space-y-2 md:flex-row md:space-x-2 md:space-y-0">
       <LinkButton
         href="#projects"
-        variant="primary"
+        variant="ghost"
         ariaLabel="Explore my projects"
         size="lg"
         scroll={true}
@@ -26,7 +26,7 @@ const CallToAction: React.FC = () => (
         download
         size="lg"
         ariaLabel="Download my resume"
-        variant="link"
+        variant="text"
       >
         Download Resume
       </LinkButton>

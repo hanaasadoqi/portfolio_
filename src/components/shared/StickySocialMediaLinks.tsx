@@ -76,7 +76,7 @@ const StickySocialMediaLinks: React.FC = () => {
             tooltip='LinkedIn'
             tooltipId='social-media-tooltip'
             tooltipPlace='top-end'
-            variant="icon"
+            variant="text"
           >
             <DynamicFaLinkedin size={24} />
           </LinkButton>
@@ -90,7 +90,7 @@ const StickySocialMediaLinks: React.FC = () => {
             tooltip='GitHub'
             tooltipId='social-media-tooltip'
             tooltipPlace='top-end'
-            variant="icon"
+            variant="text"
           >
             <DynamicFaGithub size={24} />
           </LinkButton>
@@ -104,7 +104,7 @@ const StickySocialMediaLinks: React.FC = () => {
             tooltip='Twitter'
             tooltipId='social-media-tooltip'
             tooltipPlace='top-end'
-            variant="icon"
+            variant="text"
           >
             <DynamicFaTwitter size={24} />
           </LinkButton>

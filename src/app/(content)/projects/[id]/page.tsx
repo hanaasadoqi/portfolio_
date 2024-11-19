@@ -6,7 +6,6 @@ import { notFound } from "next/navigation";
 
 import UniversalFallback from "@/context/UniversalFallbackContext";
 
-
 export default async function ProjectDocsPage({ params }: Params) {
   const { id } = await params;
 

@@ -8,6 +8,7 @@ import clsx from 'clsx'
 import { FileLoader } from '../../blog/MDX/FileLoader'
 import { MDXRenderer, MDXSource } from '../../blog/MDX/MDXRenderer'
 import { default as ProjectSkill } from './ProjectSkill'
+// import ProjectInfo from './ProjectInfo'
 const contentSource = '/src/content/projects';
 
 const dynamicParams = false;
@@ -47,7 +48,7 @@ const ProjectContent: React.FC<ProjectContentProps> = async ({ project, handleSk
             className="rounded-lg shadow-lg"
             priority
           />
-          {/* <ProjectLinksBar title={project.title} details={project.details} /> */}
+          <ProjectLinksBar title={project.title} details={project.details} />
         </div>
         <div id="project-details" className="max-w-xl">
           <h5>Description</h5>

@@ -4,9 +4,7 @@
 import React, { memo } from 'react';
 import Image from 'next/image';
 import { ProjectPreview } from '@/types';
-import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import { LinkButton } from '@/components';
 import { toId } from '@/utils/toId';
 
 interface ProjectCardProps {

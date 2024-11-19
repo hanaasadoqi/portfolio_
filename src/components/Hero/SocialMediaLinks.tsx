@@ -25,7 +25,7 @@ const SocialMediaLinks: React.FC = () => {
       <LinkButton
         href="https://www.linkedin.com/in/hanaasadoqi"
         ariaLabel="LinkedIn Profile"
-        variant="icon"
+        variant="text"
         tooltip="LinkedIn"
         tooltipId="linkedin-tooltip"
         size="md"
@@ -35,7 +35,7 @@ const SocialMediaLinks: React.FC = () => {
       <LinkButton
         href="https://www.github.com/hsadoqi"
         ariaLabel="GitHub Profile"
-        variant="icon"
+        variant="text"
         tooltip="GitHub"
         tooltipId="github-tooltip"
         size="md"
@@ -45,7 +45,7 @@ const SocialMediaLinks: React.FC = () => {
       <LinkButton
         href="https://www.twitter.com/hanaasadoqi"
         ariaLabel="Twitter Profile"
-        variant="icon"
+        variant="text"
         tooltip="Twitter"
         tooltipId="twitter-tooltip"
         size="md"

@@ -45,3 +45,5 @@ settings.json
 extensions.json
 /src/lib/supabase/.temp
 /src/lib/supabase/.branches
+
+/__mocks__
