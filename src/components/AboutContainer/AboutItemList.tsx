@@ -1,26 +1,41 @@
 'use client'
 
-import { FC, Suspense, memo } from 'react'
+import { FC, memo } from 'react'
 import useScroll from '@/hooks/useScroll'
-import AboutItemCard from './AboutItemCard'
-import { AboutAsset } from '@/types/asset.types'
-import { LoadingOverlay } from '@/components/shared'
 
-const AboutItemList: FC<{ about: AboutAsset[] }> = ({ about }) => {
-  const { scrollRef } = useScroll()
+import dynamic from 'next/dynamic'
+
+const ScrollButton = dynamic(() => import('./ScrollButton'), {
+  ssr: false,
+})
+
+
+const scrollButtonStyles =
+  'dark:text-white bg-white text-secondary-900 dark:bg-secondary-200 dark:text-secondary-900 dark:hover:bg-secondary-700 dark:hover:text-secondary-100 hover:bg-secondary-700 hover:text-secondary-100 active:bg-secondary-900 focus-visible:bg-secondary-900 text-primary-100 dark:bg-secondary-900'
+
+const AboutItemList: FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { scrollRef, handleScroll, scrollPosition } = useScroll()
 
   return (
-    <div
-      ref={scrollRef}
-      className="scrollbar-hide snap-x snap-mandatory overflow-x-auto overflow-y-hidden whitespace-nowrap p-8 md:snap-none"
-    >
-      <div className="grid snap-x snap-mandatory auto-cols-max grid-flow-col items-center gap-4">
-        {about.map(item => (
-          <Suspense key={`${item.id}-${item.title}`} fallback={<LoadingOverlay />}>
-            <AboutItemCard item={item} className="snap-center" />
-          </Suspense>
-        ))}
+    <div className="relative">
+      <div
+        ref={scrollRef}
+        className="scrollbar-hide snap-x snap-mandatory overflow-x-auto overflow-y-hidden whitespace-nowrap p-8 md:snap-none"
+      >
+        {children}
       </div>
+      <ScrollButton
+        direction="left"
+        onClick={() => handleScroll('left')}
+        visible={scrollPosition.left}
+        className={scrollButtonStyles}
+      />
+      <ScrollButton
+        direction="right"
+        onClick={() => handleScroll('right')}
+        visible={scrollPosition.right}
+        className={scrollButtonStyles}
+      />
     </div>
   )
 }

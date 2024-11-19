@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import ScrollButtons from './ScrollButtons'
 import AboutItemList from './AboutItemList'
 import { fetchAboutAssets } from '@/app/lib/actions/assets'
+import AboutItemCard from './AboutItemCard'
 
 const AboutContainer: FC = async () => {
   const assets = await fetchAboutAssets()
@@ -15,10 +15,17 @@ const AboutContainer: FC = async () => {
         </h4>
       </div>
 
-      <ScrollButtons />
-      <AboutItemList about={assets} />
+      <AboutItemList>
+        <div className="grid snap-x snap-mandatory auto-cols-max grid-flow-col items-center gap-4">
+          {assets.map(item => (
+            <AboutItemCard key={`${item.id}-${item.title}`} item={item} className="snap-center" />
+          ))}
+        </div>
+      </AboutItemList>
     </div>
   )
 }
 
 export default AboutContainer;
+
+

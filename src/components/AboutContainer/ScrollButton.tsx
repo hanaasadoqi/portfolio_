@@ -1,9 +1,9 @@
 "use client"
 
 import React, { memo } from 'react'
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 import clsx from 'clsx'
 import { IconButton } from '../shared'
+import { ArrowLeftIcon, ArrowRightIcon } from './Arrow'
 
 const ScrollButton: React.FC<{
   direction: 'left' | 'right'
@@ -25,7 +25,7 @@ const ScrollButton: React.FC<{
         className
       )}
       aria-label={`Scroll ${direction}`}
-      icon={direction === 'left' ? <FaArrowLeft /> : <FaArrowRight />}
+      icon={direction === 'left' ? <ArrowLeftIcon /> : <ArrowRightIcon />}
       variant="secondary"
       iconOnly
     />
