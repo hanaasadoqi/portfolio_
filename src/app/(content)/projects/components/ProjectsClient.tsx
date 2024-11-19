@@ -1,10 +1,15 @@
-"use client"
+"use client";
 
-import { SearchBar } from "@/components";
+import dynamic from "next/dynamic";
 import { ProjectPreview, Suggestion } from "@/types";
 import Link from "next/link";
 import { useState, useEffect, useMemo } from "react";
 import ProjectCard from "./ProjectCard";
+
+const SearchBar = dynamic(() => import("@/components/shared/SearchBar"), {
+  ssr: false,
+  loading: () => <div>Loading search bar...</div>,
+});
 
 interface ProjectsClientProps {
   initialProjects: ProjectPreview[];
@@ -12,24 +17,23 @@ interface ProjectsClientProps {
 }
 
 const ProjectsClient: React.FC<ProjectsClientProps> = ({ initialProjects, projectTitles }) => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [projects, setProjects] = useState<ProjectPreview[]>();
   const [isLoading, setIsLoading] = useState(true);
-
 
   useEffect(() => {
     const loadProjects = async () => {
       try {
         setProjects(initialProjects);
       } catch (error) {
-        console.error('Error fetching projects', error);
+        console.error("Error fetching projects", error);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
     };
 
     loadProjects();
-  }, [searchQuery, projects, initialProjects]);
+  }, [initialProjects]);
 
   const filteredProjects = useMemo(() => {
     if (!searchQuery) return initialProjects;
@@ -42,13 +46,14 @@ const ProjectsClient: React.FC<ProjectsClientProps> = ({ initialProjects, projec
     );
   }, [searchQuery, initialProjects]);
 
-
   return (
     <main className="min-h-screen p-4 sm:p-6 md:p-8">
       <div className="max-w-7xl mx-auto bg-white/60 dark:bg-black/60 rounded-xl shadow-md p-8">
         {/* Header */}
         <header className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4 text-center md:text-left">Projects</h1>
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4 text-center md:text-left">
+            Projects
+          </h1>
           <p className="text-gray-600 dark:text-gray-300">
             Explore my collection of projects. Click on a project to learn more.
           </p>
@@ -70,7 +75,11 @@ const ProjectsClient: React.FC<ProjectsClientProps> = ({ initialProjects, projec
             {filteredProjects.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredProjects.map((project) => (
-                  <Link key={project.id} href={`/projects/${project.id}`} className="block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                  <Link
+                    key={project.id}
+                    href={`/projects/${project.id}`}
+                    className="block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                  >
                     <ProjectCard project={project} />
                   </Link>
                 ))}
@@ -85,4 +94,4 @@ const ProjectsClient: React.FC<ProjectsClientProps> = ({ initialProjects, projec
   );
 };
 
-export default ProjectsClient
+export default ProjectsClient;

@@ -24,7 +24,7 @@ const ProjectSkillCard: React.FC<{
       )}
     >
       {skill.name && (
-        <h6 className="mb-0 text-xs font-semibold text-center">{skill.name}</h6>
+        <h6 className="my-0 text-xs font-semibold text-center">{skill.name}</h6>
       )}
 
       <IconComponent icon={skill.icon} className={iconColorClass} />

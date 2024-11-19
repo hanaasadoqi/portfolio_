@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from "next/link";
-import { ProjectLinksBar } from './ProjectLinksBar';
+import ProjectLinksBar from './ProjectLinksBar';
 import ProjectSkillCard from './ProjectSkillCard';
 import { toId } from '@/utils/toId';
 import clsx from 'clsx';

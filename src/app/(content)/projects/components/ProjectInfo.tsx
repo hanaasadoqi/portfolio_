@@ -1,31 +1,32 @@
 import { serialize } from 'next-mdx-remote/serialize';
-import { MDXRemoteSerializeResult } from 'next-mdx-remote/rsc';
 import Tabs from './Tabs';
 import { extractSections } from '../utils/extractSections';
-import { TOCContextProvider } from '../../blog/[...slug]/components/TOC';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote/rsc';
+import { getMdxOptions } from '../../utils/getMdxOptions';
 
-type Section = {
-  title: string;
-  content: string;
-};
+export default async function ProjectInfo({ content }: { content: string }) {
+  const { sections } = extractSections(content);
+  const options = getMdxOptions();
 
-export default async function ProjectInfo({ content }: { content: MDXRemoteSerializeResult; }) {
-  const { sections, toc } = extractSections(content.compiledSource);
-
-  const sectionsObject: { [key: string]: { compiledSource: MDXRemoteSerializeResult } } = {};
+  const sectionsObject: {
+    [key: string]: { title: string; content: MDXRemoteSerializeResult };
+  } = {};
 
   await Promise.all(
     sections.map(async (section) => {
-      const compiledSource = await serialize(section.content);
-      sectionsObject[section.title] = { compiledSource };
+      const compiledSource = await serialize(section.content, {
+        ...options
+      });
+      sectionsObject[section.title] = {
+        title: section.title,
+        content: compiledSource,
+      };
     })
   );
 
   return (
-    <TOCContextProvider>
-      <div className="p-8">
-        <Tabs sections={sectionsObject} toc={toc} content={content} />
-      </div>
-    </TOCContextProvider>
+    <div className="sm:p-8 tabs-container">
+      <Tabs sections={sectionsObject} />
+    </div>
   );
 }

@@ -1,5 +1,4 @@
 import matter from 'gray-matter';
-import { Heading } from '@/context/TOCContext';
 
 type Section = {
   title: string;
@@ -8,13 +7,11 @@ type Section = {
 
 export function extractSections(mdxContent: string): {
   sections: Section[];
-  toc: Heading[];
 } {
   const { content } = matter(mdxContent);
   const lines = content.split('\n');
 
   const sections: Section[] = [];
-  const toc: Heading[] = [];
 
   let currentTitle: string | null = null;
   let currentContent: string[] = [];
@@ -40,13 +37,6 @@ export function extractSections(mdxContent: string): {
         currentTitle = text;
         currentContent = [];
       }
-
-      toc.push({
-        id,
-        text,
-        depth,
-        ref: null,
-      });
     }
 
     currentContent.push(line);
@@ -59,5 +49,5 @@ export function extractSections(mdxContent: string): {
     });
   }
 
-  return { sections, toc };
+  return { sections };
 }
