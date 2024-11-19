@@ -2,8 +2,6 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import dynamic from 'next/dynamic';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowButton } from './ArrowButton';
 import { WorkExperience } from '@/types';
 import { TimelineDataProps } from './Timeline';
 
@@ -15,6 +13,11 @@ const Timeline = dynamic(() => import('./Timeline'), {
   loading: () => <p>Loading timeline...</p>,
   ssr: false,
 });
+
+const ScrollButton = dynamic(() => import('../AboutContainer/ScrollButton'), {
+  ssr: false,
+  loading: () => <div>Loading...</div>
+})
 
 interface ExperienceCarouselProps {
   experiences: WorkExperience[];
@@ -44,7 +47,7 @@ const ExperienceCarousel: React.FC<ExperienceCarouselProps> = ({ experiences, ti
 
   return (
     <>
-      <div className="flex w-full  md:max-w-5xl flex-col items-center justify-center">
+      <div className="flex w-full flex-col items-center justify-center">
         <h3
           id="experience-heading"
           className="w-full text-center text-2xl font-semibold text-primary-900 dark:text-primary-100 md:text-left md:text-3xl lg:text-4xl"
@@ -52,36 +55,26 @@ const ExperienceCarousel: React.FC<ExperienceCarouselProps> = ({ experiences, ti
           Experience
         </h3>
         <div className="relative z-10 mt-6 w-full">
-          {/* Left Arrow Button */}
-          <ArrowButton
+          <ScrollButton
+            direction='left'
+            visible={currentIndex !== 0}
             onClick={prevSlide}
-            direction="left"
-            hidden={totalExperiences <= 1}
-            className="absolute left-0 -bottom-4 md:hidden"
-            ariaLabel="Previous Experience"
+          />
+          <ScrollButton
+            direction='right'
+            visible={currentIndex !== totalExperiences - 1}
+            onClick={nextSlide}
           />
 
           <div className="relative m-0 md:mx-auto h-full w-full">
-            <AnimatePresence initial={false}>
-              {experiences.map((experience, index) =>
-                index === currentIndex ? (
-                  <ExperienceCard key={index} {...experience} />
-                ) : null
-              )}
-            </AnimatePresence>
+            {experiences.map((experience, index) =>
+              index === currentIndex ? (
+                <ExperienceCard key={index} {...experience} />
+              ) : null
+            )}
           </div>
-
-          {/* Right Arrow Button */}
-          <ArrowButton
-            onClick={nextSlide}
-            direction="right"
-            hidden={totalExperiences <= 1}
-            className="absolute right-0 -bottom-4 md:hidden"
-            ariaLabel="Next Experience"
-          />
         </div>
       </div>
-      {/* Timeline Component */}
       <Timeline
         experiences={timelineData}
         currentIndex={currentIndex}

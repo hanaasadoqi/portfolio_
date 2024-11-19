@@ -18,7 +18,6 @@ const AboutItemCard = ({
   const [isTouchDevice, setIsTouchDevice] = useState(false)
 
   useEffect(() => {
-    // Detect touch devices
     const checkTouchDevice = () => {
       setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0)
     }
@@ -49,7 +48,7 @@ const AboutItemCard = ({
         <div className="relative h-full w-full rounded-xl shadow-xl ring-offset-secondary transition-all duration-1000 [transform-style:preserve-3d] group-hover:shadow-2xl group-hover:ring-2 group-hover:ring-offset-2 group-hover:[transform:rotateY(180deg)]">
           <div
             className={`relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] ${isFlipped
-              ? 'rotate-y-180' // Mobile flip logic
+              ? 'rotate-y-180'
               : isTouchDevice
                 ? ''
                 : 'group-hover:rotate-y-180'

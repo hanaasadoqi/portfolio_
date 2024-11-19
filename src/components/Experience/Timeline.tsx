@@ -49,13 +49,13 @@ const Timeline: React.FC<TimelineProps> = ({
         />
       </div>
 
-      <ul className="flex  justify-center items-center space-x-4 md:space-x-6">
+      <ul className="flex justify-center items-center space-x-4 md:space-x-6">
         {experiences.map((experience, index) => (
           <li key={index}>
             <motion.button
               type="button"
               className={clsx(
-                'flex flex-col items-center transition-transform duration-500 ease-in-out focus:outline-none',
+                'inline-flex flex-col items-center transition-transform duration-500 ease-in-out focus:outline-none  gap-2',
                 index === currentIndex
                   ? 'scale-125 opacity-100'
                   : 'scale-90 opacity-50'
@@ -82,7 +82,7 @@ const Timeline: React.FC<TimelineProps> = ({
                 )}
               </div>
               {index === currentIndex && (
-                <span className="mt-2 max-w-[50px] text-center text-sm font-bold text-primary-800 dark:text-primary-200">
+                <span className="mt-8 max-w-[50px] text-center text-sm font-bold text-primary-800 dark:text-primary-200">
                   {experience.company}
                 </span>
               )}

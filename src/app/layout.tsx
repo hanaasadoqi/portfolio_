@@ -89,9 +89,7 @@ export default async function RootLayout({
       >
         <ErrorBoundary>
           <Providers>
-            <Suspense fallback={<LoadingComponent />}>
-              {children}
-            </Suspense>
+            {children}
             {modal}
             <Analytics />
             <SpeedInsights />

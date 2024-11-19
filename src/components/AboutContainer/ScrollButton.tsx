@@ -19,8 +19,8 @@ const ScrollButton: React.FC<{
       className={clsx(
         'absolute -bottom-12 transform md:bottom-auto md:top-1/2 md:-translate-y-1/2',
         'z-20 rounded-xl px-2 py-3 shadow-lg transition duration-300 ease-in-out md:px-3 md:py-2', {
-        'left-0 md:left-8': direction === "left",
-        'right-0 md:right-8': direction === "right"
+        'left-0': direction === "left",
+        'right-0': direction === "right"
       },
         className
       )}
