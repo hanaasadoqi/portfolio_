@@ -78,6 +78,17 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
       },
     ],
+    
+  },
+  future: {
+    webpack5: true,
+  },
+  webpack: (config) => {
+    config.output = {
+      ...config.output,
+      chunkLoadTimeout: 30000,
+    };
+    return config;
   },
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx', 'md'],
 }
