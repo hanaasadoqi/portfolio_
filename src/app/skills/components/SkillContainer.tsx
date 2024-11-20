@@ -20,7 +20,7 @@ async function SkillsContainer({ searchParams }: { searchParams: Record<string, 
     <>
       <div className="flex h-full w-full flex-col items-center justify-center">
         <div className="md:relative flex h-3/4 w-full items-center justify-between md:p-4 flex-col md:flex-row">
-          <h3 className="mb-0 text-center md:text-left text-2xl md:text-3xl lg:text-4xl">Skills</h3>
+          <h3 className="text-center md:text-left text-2xl md:text-3xl lg:text-4xl">Skills</h3>
           {/* <SkillControlsDisplay /> */}
         </div>
       </div>

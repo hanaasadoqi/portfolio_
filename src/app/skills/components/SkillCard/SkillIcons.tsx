@@ -22,11 +22,6 @@ const SkillIcons: React.FC<SkillIconsProps> = ({
 
   const iconData = [
     {
-      condition: true,
-      icon: icons.info,
-      tooltip: 'More Info',
-    },
-    {
       condition: experienceCount && experienceCount > 0,
       icon: icons.briefcase,
       tooltip: `${experienceCount} Professional Experience${experienceCount && experienceCount > 1 ? 's' : ''}`,
@@ -44,7 +39,7 @@ const SkillIcons: React.FC<SkillIconsProps> = ({
   ]
 
   return (
-    <div className="absolute right-4 top-4 z-30 lg:flex space-x-3">
+    <div className="absolute md:right-4 md:top-4 h-full md:h-auto z-30 flex flex-col md:flex-row justify-center items-center gap-2">
       {iconData
         .filter((data) => data.condition)
         .map((data, index) => (

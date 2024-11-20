@@ -59,11 +59,13 @@ const ExperienceCarousel: React.FC<ExperienceCarouselProps> = ({ experiences, ti
             direction='left'
             visible={currentIndex !== 0}
             onClick={prevSlide}
+            className="md:hidden"
           />
           <ScrollButton
             direction='right'
             visible={currentIndex !== totalExperiences - 1}
             onClick={nextSlide}
+            className="md:hidden"
           />
 
           <div className="relative m-0 md:mx-auto h-full w-full">

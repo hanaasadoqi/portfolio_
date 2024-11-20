@@ -39,8 +39,8 @@ export default function SkillsList({
   }
 
   return (
-    <div className="w-full">
-      <div className="relative scrollbar-hide overflow-y-auto shadow-inner h-[500px] md:h-[700px] min-w-[750px] p-2 sm:p-4 md:p-8 grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 smooth-scroll bg-white/30 shadow-lg rounded-2xl backdrop-blur-lg hover:shadow-2xl transition-shadow duration-500">
+    <>
+      <div className="dark:bg-black/50 bg-white/30 relative scrollbar-hide overflow-y-auto shadow-inner h-[500px] md:h-[700px] max-w-7xl p-4 md:p-8 grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 smooth-scroll shadow-lg rounded-2xl backdrop-blur-lg hover:shadow-2xl transition-shadow duration-500">
         {skills.map((skill) => (
           <SkillCard key={skill.id} skill={skill} />
         ))}
@@ -65,6 +65,6 @@ export default function SkillsList({
           Showing {skills.length} of {totalCount} skills.
         </p>
       )}
-    </div>
+    </>
   )
 }
