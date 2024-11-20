@@ -1,7 +1,6 @@
 import React, { memo, Suspense } from 'react';
 import { ProjectPage } from '@/types/project.types';
 import Image from 'next/image';
-import SkeletonSkillCard from '@/app/skills/components/SkillCard/SkeletonCard';
 import { toId } from '@/utils/toId';
 import clsx from 'clsx';
 
@@ -28,13 +27,11 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ project, handleSkills, 
         <h2 className="text-center text-xl md:text-2xl lg:text-3xl font-semibold mb-4">{project.title}</h2>
 
         {project.skills && project.skills.length > 0 && (
-          <Suspense fallback={<SkeletonSkillCard />}>
-            <div className="flex items-center md:justify-center flex-nowrap gap-2 mb-4 w-full overflow-x-auto scrollbar-hide">
-              {project.skills.map((skill, index) => (
-                <ProjectSkill key={index} skill={skill} />
-              ))}
-            </div>
-          </Suspense>
+          <div className="flex items-center justify-center flex-nowrap gap-2 mb-4 w-full overflow-x-auto scrollbar-hide">
+            {project.skills.map((skill, index) => (
+              <ProjectSkill key={index} skill={skill} />
+            ))}
+          </div>
         )}
 
         <div className="flex flex-col justify-center items-center gap-4 mb-4 w-full">

@@ -2,7 +2,7 @@ import { toId } from '@/utils/toId';
 import clsx from 'clsx';
 import React, { memo, Suspense } from 'react';
 import DocumentationLink from './DocumentationLink';
-import IconComponent from './IconComponent';
+import SkillIcon from '@/app/skills/components/SkillIcon';
 
 const ProjectSkillCard: React.FC<{
   skill: any;
@@ -24,10 +24,10 @@ const ProjectSkillCard: React.FC<{
       )}
     >
       {skill.name && (
-        <h6 className="my-0 text-xs font-semibold text-center">{skill.name}</h6>
+        <h6 className="my-0 text-xs font-semibold text-center truncate line-clamp-2">{skill.name}</h6>
       )}
 
-      <IconComponent icon={skill.icon} className={iconColorClass} />
+      <SkillIcon skillName={skill.name} altText={`${skill.name} Logo`} className={iconColorClass} />
 
       {skill.documentation && (
         <DocumentationLink documentation={skill.documentation} />
