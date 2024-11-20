@@ -3,10 +3,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import { DarkModeProvider } from './DarkModeContext';
-
-import '@/styles/mixins.scss'
-import '@/styles/globals.css'
-
 type Theme = 'app-wide' | 'writing' | 'projects';
 
 interface ThemeContextProps {

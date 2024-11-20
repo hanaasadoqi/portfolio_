@@ -6,8 +6,9 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import clsx from 'clsx'
-import LoadingComponent from './@modal/(.)skills/[id]/loading'
-import { Suspense } from 'react'
+
+import '../styles/mixins.scss'
+import '@/styles/globals.css'
 
 const poppins = Poppins({
   subsets: ['latin'],
