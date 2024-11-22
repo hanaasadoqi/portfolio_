@@ -16,7 +16,7 @@ interface TileGridProps {
 }
 
 export const TileGrid: React.FC<TileGridProps> = ({ label, children }) => {
-  const { activeTab, handleTab } = useTabs(0);
+  const { activeTab, handleTab } = useTabs(-1);
 
   return (
     <>

@@ -88,7 +88,7 @@ import { Suspense } from 'react';
 import { LoadingOverlay } from '@/components';
 
 export const TabList: React.FC<DropdownTabsProps & { horizontal?: boolean }> = ({ label, children, horizontal = false }) => {
-  const { activeTab, handleTab } = useTabs(-1);
+  const { activeTab, handleTab } = useTabs(0);
 
   return (
     <>
@@ -161,7 +161,7 @@ export const TabList: React.FC<DropdownTabsProps & { horizontal?: boolean }> = (
         {activeTab !== -1 && (
           <div className="relative w-full max-w-full px-6 py-4 md:px-8 bg-white dark:bg-gray-900 rounded-lg shadow overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 dark:scrollbar-thumb-gray-700 dark:scrollbar-track-gray-800">
             <Suspense fallback={<LoadingOverlay />}>
-              {children[activeTab]}
+              {activeTab !== -1 && children[activeTab]}
             </Suspense>
           </div>
         )}
