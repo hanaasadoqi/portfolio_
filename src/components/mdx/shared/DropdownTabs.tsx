@@ -7,6 +7,7 @@ import { LoadingOverlay } from '@/components';
 
 export interface DropdownTabsProps extends TabsProps {
   label?: string;
+  horizontal?: boolean;
 }
 export const DropdownTabs: React.FC<DropdownTabsProps> = ({ label = "Select", children }) => {
   const { activeTab, handleTab } = useTabs(0);
@@ -15,13 +16,13 @@ export const DropdownTabs: React.FC<DropdownTabsProps> = ({ label = "Select", ch
     <div className="dropdown-tabs sm:hidden">
       <div className="sm:hidden">
         <label htmlFor="tabs" className="sr-only">
-          {label}
+          {label || children[activeTab].props.label}
         </label>
         <select
           id="tabs"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           value={activeTab}
-          onChange={(e) => handleTab(e, Number(e.target.value))}
+          onChange={(e) => handleTab(Number(e.target.value), e)}
         >
           {children.map((tab, index) => (
             <option key={index} value={index}>

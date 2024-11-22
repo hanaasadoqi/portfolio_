@@ -19,7 +19,7 @@ export const Tabs: React.FC<TabsProps> = ({ children, label }) => {
               className={clsx('whitespace-nowrap', {
                 'active': index === activeTab,
               })}
-              onClick={(e) => handleTab(e, index)}
+              onClick={(e) => handleTab(index, e)}
             >
               {tab.props.label}
             </button>
@@ -27,7 +27,7 @@ export const Tabs: React.FC<TabsProps> = ({ children, label }) => {
         ))}
       </ul>
       <div className="tab-content">
-        {activeTab !== -1 && children[activeTab]}
+        {activeTab !== -1 && activeTab && children[activeTab]}
       </div>
     </div>
   )
