@@ -7,17 +7,17 @@ export const InfoBlock = ({ children }: { children: React.ReactNode }) => {
 
 export const Callout = ({ type = 'info', children }: { type?: 'info' | 'warning' | 'success' | 'danger'; children: React.ReactNode }) => {
   const colors = {
-    info: 'bg-blue-50 dark:bg-blue-950 dark:text-blue-200 border-blue-400 text-blue-800',
-    warning: 'bg-yellow-50 border-yellow-400 text-yellow-800',
-    success: 'bg-green-50 border-green-400 text-green-800',
-    danger: 'bg-red-50 dark:bg-red-950 dark:text-red-200 border-red-400 text-red-800'
+    info: 'bg-blue-50 dark:bg-blue-950 border-blue-400 text-blue-800 dark:text-blue-200',
+    warning: 'bg-yellow-50 dark:bg-yellow-950 border-yellow-400 text-yellow-800 dark:text-yellow-200',
+    success: 'bg-green-50 dark:bg-green-950 border-green-400 text-green-800 dark:text-green-200',
+    danger: 'bg-red-50 dark:bg-red-950 dark:text-red-200 border-red-400 text-red-800 dark:text-red-200'
   }
 
   return (
-    <div className={`border-l-4  p-4 my-6 ${colors[type]} rounded-md`}>
-      <Suspense fallback={<LoadingComponent />}>
+    <Suspense fallback={<LoadingComponent />}>
+      <div className={`border-l-4  p-4 my-6 ${colors[type]} rounded-md`}>
         {children}
-      </Suspense>
-    </div>
+      </div>
+    </Suspense>
   )
 }

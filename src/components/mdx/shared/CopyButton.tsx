@@ -29,7 +29,7 @@ export const CopyButton = ({ ref }: { ref: RefObject<any> }) => {
   };
 
   return (
-    <div className="sticky top-9 md:top-12 z-20">
+    <div className="sticky top-9 z-20">
       <div className="absolute bottom-0 right-0 flex h-9 items-center">
         <div className="flex items-center rounded px-2 font-sans text-xs text-gray-100">
           <span>
@@ -37,7 +37,7 @@ export const CopyButton = ({ ref }: { ref: RefObject<any> }) => {
               onClick={handleCopy}
               size="xs"
               variant="ghost"
-              className="flex gap-1 items-center opacity-10 hover:opacity-100 bg-gray-700 hover:!bg-gray-600 text-white rounded-lg focus:outline-none shadow-md"
+              className="flex gap-1 items-center opacity-50 hover:opacity-100 bg-gray-50 hover:bg-gray-200 dark:bg-gray-700 dark:hover:!bg-gray-600 text-gray-500 dark:text-gray-900 rounded-lg focus:outline-none shadow-md"
               ariaLabel={'Copy Code Block'}>{copied ? (<><FaClipboardCheck size={16} />Copied</>) : (<><FaClipboard size={16} />Copy</>)}</BaseButton>
           </span>
         </div>

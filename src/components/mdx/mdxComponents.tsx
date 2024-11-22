@@ -33,7 +33,7 @@ const LoadingBody = () => (
   </tbody>
 );
 
-type AvailableComponents = 'Button' | 'Mermaid' | 'CodeBlock' | 'DiagramModal' | 'CodeWithHighlights' | 'SidePanel' | 'CodeContainer' | 'Modal' | 'Tabs' | 'DropdownTabs' | 'CodeProblem' | 'Editor' | 'EditorContainer' | 'Table' | 'ExplanationItem' | 'Callout' | 'CodeFolding' | 'InfoBlock' | 'ItemHeader' | 'ItemContent' | 'Tab' | 'TabList' | 'Tbody' | 'Thead' | 'Th' | 'Tr' | 'Td';
+type AvailableComponents = 'ModalTile' | 'ModalTileGrid' | 'Tile' | 'TileGrid' | 'Button' | 'Mermaid' | 'CodeBlock' | 'DiagramModal' | 'CodeWithHighlights' | 'SidePanel' | 'CodeContainer' | 'Modal' | 'Tabs' | 'DropdownTabs' | 'CodeProblem' | 'Editor' | 'EditorContainer' | 'Table' | 'ExplanationItem' | 'Callout' | 'CodeFolding' | 'InfoBlock' | 'ItemHeader' | 'ItemContent' | 'Tab' | 'TabList' | 'Tbody' | 'Thead' | 'Th' | 'Tr' | 'Td';
 
 const loadComponent = (name: AvailableComponents, parentType?: string) => {
   const componentMap: Record<AvailableComponents, () => Promise<{ default: React.ComponentType<any> }>> = {
@@ -63,7 +63,11 @@ const loadComponent = (name: AvailableComponents, parentType?: string) => {
     ItemContent: () => import('../mdx/shared/ExplanationItem').then(mod => ({ default: mod.ItemContent })),
     ItemHeader: () => import('../mdx/shared/ExplanationItem').then(mod => ({ default: mod.ItemHeader })),
     Tab: () => import('../mdx/shared/Tabs').then(mod => ({ default: mod.Tab })),
-    TabList: () => import('../mdx/shared/TabList').then(mod => ({ default: mod.TabList }))
+    TabList: () => import('../mdx/shared/TabList').then(mod => ({ default: mod.TabList })),
+    TileGrid: () => import('../mdx/shared/TileGrid').then(mod => ({ default: mod.TileGrid })),
+    Tile: () => import('../mdx/shared/Tile').then(mod => ({ default: mod.Tile })),
+    ModalTile: () => import('../mdx/shared/ModalTileGrid').then(mod => ({ default: mod.ModalTile })),
+    ModalTileGrid: () => import('../mdx/shared/ModalTileGrid').then(mod => ({ default: mod.ModalTileGrid })),
   };
   return dynamic(componentMap[name], { loading: () => <UniversalFallback parentType={parentType} /> });
 };
@@ -94,6 +98,10 @@ const Th = loadComponent('Th', 'th');
 const Td = loadComponent('Td', 'td');
 const Tr = loadComponent('Tr', 'tr');
 const Button = loadComponent('Button');
+const TileGrid = loadComponent('TileGrid');
+const Tile = loadComponent('Tile');
+const ModalTileGrid = loadComponent('ModalTileGrid');
+const ModalTile = loadComponent('ModalTile');
 
 type MdxComponentsType = {
   [key: string]: React.ComponentType<any>;
@@ -337,7 +345,11 @@ const rarelyUsedComponents: Partial<MdxComponentsType> = {
   Td,
   Tr,
   Th,
-  Button
+  Button,
+  TileGrid,
+  Tile,
+  ModalTileGrid,
+  ModalTile
 };
 
 const validRarelyUsedComponents = Object.fromEntries(
@@ -348,4 +360,5 @@ const mdxComponents: MDXComponents = {
   ...frequentlyUsedComponents,
   ...validRarelyUsedComponents,
 };
+
 export default mdxComponents;

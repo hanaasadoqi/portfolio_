@@ -26,5 +26,8 @@ export * from './DropdownTabs'
 export * from './DiagramModal'
 export * from './CodeWithHighlights'
 export * from './TabList'
+export * from './TileGrid'
+export * from './Tile'
+export * from './ModalTileGrid'
 
 export { default as Mermaid } from './Mermaid/CombinedMermaid'

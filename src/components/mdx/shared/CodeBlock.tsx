@@ -28,7 +28,7 @@ export const CodeBlock = ({ children, className }: { children?: React.ReactNode,
       </div>
       <CopyButton ref={codeRef} />
       <div className="relative w-full p-2 transition-transform transform-whitespace ease-in-out duration-300 overflow-contain overflow-y-auto">
-        <code ref={codeRef} className={`md:!whitespace-pre-wrap w-full language-${language} bg-gray-700 text-gray-200 rounded-lg overflow-x-scroll md:overflow-x-auto scrollbar-thin`} data-id="code-block">
+        <code ref={codeRef} className={`md:!whitespace-pre-wrap w-full language-${language} text-gray-200 rounded-lg overflow-x-scroll md:overflow-x-auto scrollbar-thin`} data-id="code-block">
           {children}
         </code>
       </div>
