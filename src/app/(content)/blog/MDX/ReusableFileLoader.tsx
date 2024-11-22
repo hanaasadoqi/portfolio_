@@ -167,6 +167,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { serialize } from 'next-mdx-remote/serialize';
 import { getMdxOptions } from '../../utils/getMdxOptions';
+import readingTime from 'reading-time';
 
 const toPascalCase = (str: string) =>
   str.replace(/(^\w|-\w)/g, match => match.replace('-', '').toUpperCase());
@@ -195,7 +196,7 @@ async function getFilesRecursively(dir: string): Promise<string[]> {
 
 export async function ReusableFileLoader() {
   const options = getMdxOptions();
-  const reusableContent: Record<string, MDXRemoteSerializeResult> = {};
+  const reusableContent: Record<string, MDXRemoteSerializeResult> = {}
 
   try {
     // Get all valid .mdx files recursively
@@ -210,10 +211,17 @@ export async function ReusableFileLoader() {
         );
 
         const reusableFileContent = await fs.readFile(file, 'utf-8');
+        const readingStats = readingTime(reusableFileContent);
+        const wordCount = reusableFileContent.split(/\s+/).length;
 
         const serializedContent = await serialize(reusableFileContent, {
           ...options
         });
+
+        // reusableContent[reusableKey] = {
+        //   content: serializedContent,
+        //   metadata: { wordCount, readingTime: readingStats.text },
+        // };
 
         reusableContent[reusableKey] = serializedContent;
       } catch (fileError) {

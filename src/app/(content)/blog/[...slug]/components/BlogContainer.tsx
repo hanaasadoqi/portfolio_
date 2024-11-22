@@ -1,6 +1,5 @@
 import { fetchArticleInfo } from "@/app/lib/actions/articles";
 import BlogHeader from "./BlogHeader";
-import MdxClientContainer from "./BlogSideContainer";
 import BlogSideContainer from "./BlogSideContainer";
 
 
@@ -21,6 +20,7 @@ export default async function MdxContainer({ children, frontmatter }: { children
         description={frontmatter?.description || ''}
         publishedDate={frontmatter?.publishedDate || ''}
         tags={frontmatter?.tags || []}
+        frontmatter={frontmatter}
       />
       <BlogSideContainer frontmatter={frontmatter} allArticles={allArticles}>
         {children}
