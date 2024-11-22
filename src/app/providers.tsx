@@ -1,7 +1,6 @@
 'use client'
 
 import FabMenu from '@/components/shared/FABMenu'
-import { ScrollProvider } from '@/context/ScrollContext'
 import { MermaidProvider } from '@/context/MermaidContext'
 import CombinedStarryBackground from '@/context/styling/StarryBackground'
 import { useState, useEffect } from 'react'
@@ -16,9 +15,7 @@ export default function Providers({
     <ThemeProvider>
       <ThemeWrapper>
         <MermaidProvider>
-          <ScrollProvider>
-            {children}
-          </ScrollProvider>
+          {children}
         </MermaidProvider>
       </ThemeWrapper>
       <FabMenu />
