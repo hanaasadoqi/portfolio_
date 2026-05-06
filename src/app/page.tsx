@@ -1,5 +1,6 @@
 import SectionLayout from '@/app/shared/SectionLayout'
 import Education from '@/components/Education/Education'
+import CurvedDivider from '@/components/CurvedDivider/CurvedDivider'
 import dynamic from 'next/dynamic';
 
 const ArticlesListContainer = dynamic(() => import("@/components/ArticlesListContainer/ArticlesListContainer"), {
@@ -41,21 +42,27 @@ export default async function Home({ searchParams }: { searchParams: Record<stri
       <StickySocialMediaLinks />
       <div className="flex w-full flex-col items-center bg-transparent z-20">
         <Hero />
+        <CurvedDivider height={100} />
         <SectionLayout id="about" screen>
           <About />
         </SectionLayout>
+        <CurvedDivider height={100} flip={true} />
         <SectionLayout id="skills">
           <SkillsContainer searchParams={searchParams} />
         </SectionLayout>
+        <CurvedDivider height={100} />
         <SectionLayout id="experience">
           <ExperienceContainer />
         </SectionLayout>
+        <CurvedDivider height={100} flip={true} />
         <SectionLayout id="projects">
           <ProjectGalleryContainer />
         </SectionLayout>
+        <CurvedDivider height={100} />
         <SectionLayout id="writing">
           <ArticlesListContainer />
         </SectionLayout>
+        <CurvedDivider height={100} flip={true} />
         <SectionLayout id="education">
           <Education />
         </SectionLayout>

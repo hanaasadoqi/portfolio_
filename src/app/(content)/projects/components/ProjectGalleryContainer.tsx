@@ -1,21 +1,21 @@
 import React from 'react';
 import { fetchProjects } from '@/app/lib/actions/projects';
-import ProjectGallery from './ProjectGallery';
+import ProjectsShowcase from './ProjectsShowcase';
 
 const ProjectGalleryContainer: React.FC = async () => {
   const allProjects = await fetchProjects()
-  const featuredProject = allProjects[0];
-  const rightGallery = allProjects.slice(1, 3);
-  const bottomGallery = allProjects.slice(3);
 
   return (
     <div className="w-full h-full">
       <div className="section-header mb-8 w-full text-center md:text-left lg:mb-12">
         <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-          <span className="gradient-text">Projects</span>
+          <span className="gradient-text">Featured Projects</span>
         </h2>
+        <p className="mt-3 text-base text-gray-400 md:text-lg">
+          A showcase of projects built with modern technologies
+        </p>
       </div>
-      <ProjectGallery featuredProject={featuredProject} rightProjects={rightGallery} bottomProjects={bottomGallery} />
+      <ProjectsShowcase projects={allProjects} />
     </div>
   )
 }
