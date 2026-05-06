@@ -94,10 +94,12 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ initialArticles }) => {
 
   return (
     <div className="flex flex-col justify-center items-center">
+      <div className="section-header mb-8 w-full text-center md:text-left lg:mb-12">
+        <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+          <span className="gradient-text">Articles & Writing</span>
+        </h2>
+      </div>
       <div className="my-2 md:mb-8 flex w-full flex-col items-center justify-between md:flex-row">
-        <h3 className="mb-4 text-center text-2xl text-primary-800 dark:text-primary-200 md:text-left md:text-3xl lg:text-4xl">
-          Articles
-        </h3>
         <div className="flex justify-center gap-2">
           {isSearchOpen && (
             <SearchBar

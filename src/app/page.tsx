@@ -39,7 +39,7 @@ export default async function Home({ searchParams }: { searchParams: Record<stri
   return (
     <>
       <StickySocialMediaLinks />
-      <div className="flex h-full w-full flex-col items-center overflow-y-auto overscroll-contain bg-transparent z-20">
+      <div className="flex w-full flex-col items-center bg-transparent z-20">
         <Hero />
         <SectionLayout id="about" screen>
           <About />

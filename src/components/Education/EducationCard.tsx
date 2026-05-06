@@ -13,29 +13,32 @@ const EducationCard: React.FC<Education> = ({
 
 }) => {
   return (
-    <div className="mb-8 flex h-full w-full flex-col justify-between rounded-lg bg-primary-200 p-6 shadow-lg dark:bg-primary-800">
+    <div className="glass-card group flex h-full w-full flex-col justify-between p-6 transition-all duration-300">
       <div className="flex items-center justify-between">
-        <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-          {school}
-        </h4>
+        <div className="flex-1">
+          <h4 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+            {school}
+          </h4>
+          <div className="mt-2 space-y-1">
+            <p className="text-base font-medium text-cyan-400">{degree}</p>
+            <p className="text-sm text-gray-400">{location}</p>
+          </div>
+        </div>
         <Link
           href={url || '#'}
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-2 text-gray-600 hover:text-blue-500 dark:text-gray-300"
+          className="ml-4 flex-shrink-0 text-gray-500 transition-colors hover:text-cyan-400"
         >
           <FaExternalLinkAlt
-            width={56}
-            height={56}
+            size={20}
             aria-label={`Visit ${school} website`}
           />
         </Link>
       </div>
-      <div className="-space-y-1">
-        <p className="text-lg text-gray-700 dark:text-gray-300">{degree}</p>
-        <p className="text-md text-gray-600 dark:text-gray-400">{location}</p>
-      </div>
-      <p className="text-sm text-gray-500 dark:text-gray-400">{new Date(startDate).toLocaleDateString()} - {new Date(endDate || '').toLocaleDateString()}</p>
+      <p className="mt-4 text-xs text-gray-500">
+        {new Date(startDate).toLocaleDateString()} — {new Date(endDate || '').toLocaleDateString()}
+      </p>
     </div>
   )
 }

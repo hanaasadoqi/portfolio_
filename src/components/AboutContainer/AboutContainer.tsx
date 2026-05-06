@@ -8,11 +8,13 @@ const AboutContainer: FC = async () => {
 
   return (
     <div className="relative mx-auto w-full text-left">
-      <div className="mb-4 space-y-2 px-4 text-center md:my-8 md:px-12 md:text-left lg:my-12">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl">A Little About Me</h2>
-        <h4 className="text-lg md:text-xl lg:text-2xl">
+      <div className="section-header mb-8 px-4 text-center md:mb-12 md:px-12 md:text-left lg:mb-16">
+        <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+          A Little About <span className="gradient-text">Me</span>
+        </h2>
+        <p className="mt-3 text-base text-gray-400 md:text-lg">
           Snapshots of things that interest me, inspire me, or bring me joy.
-        </h4>
+        </p>
       </div>
 
       <AboutItemList>

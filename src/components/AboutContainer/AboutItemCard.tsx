@@ -36,7 +36,7 @@ const AboutItemCard = ({
 
   return (
     <figure
-      className={`relative flex-shrink-0 rounded-xl p-2 transition-transform duration-1000 hover:z-10 hover:scale-105 ${className}`}
+      className={`relative flex-shrink-0 transition-transform duration-500 hover:z-10 hover:scale-105 ${className}`}
       style={{
         width: '100%',
         maxWidth: '400px',
@@ -44,8 +44,8 @@ const AboutItemCard = ({
       }}
       onClick={handleCardClick}
     >
-      <div className="group relative h-full w-full [perspective:1000px]">
-        <div className="relative h-full w-full rounded-xl shadow-xl ring-offset-secondary transition-all duration-1000 [transform-style:preserve-3d] group-hover:shadow-2xl group-hover:ring-2 group-hover:ring-offset-2 group-hover:[transform:rotateY(180deg)]">
+      <div className="group glass-card relative h-full w-full [perspective:1000px]">
+        <div className="relative h-full w-full rounded-2xl transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
           <div
             className={`relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] ${isFlipped
               ? 'rotate-y-180'

@@ -48,12 +48,14 @@ const ExperienceCarousel: React.FC<ExperienceCarouselProps> = ({ experiences, ti
   return (
     <>
       <div className="flex w-full flex-col items-center justify-center">
-        <h3
-          id="experience-heading"
-          className="w-full text-center text-2xl font-semibold text-primary-900 dark:text-primary-100 md:text-left md:text-3xl lg:text-4xl"
-        >
-          Experience
-        </h3>
+        <div className="section-header mb-8 w-full text-center md:text-left lg:mb-12">
+          <h2
+            id="experience-heading"
+            className="text-3xl font-bold text-white md:text-4xl lg:text-5xl"
+          >
+            <span className="gradient-text">Experience</span>
+          </h2>
+        </div>
         <div className="relative z-10 mt-6 w-full">
           <ScrollButton
             direction='left'

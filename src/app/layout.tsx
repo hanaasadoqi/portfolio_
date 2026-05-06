@@ -82,7 +82,7 @@ export default async function RootLayout({
       <body
         id="root"
         className={clsx(
-          'relative overscroll-contain',
+          'relative',
           poppins.variable,
           raleway.variable,
           merriweather.variable
