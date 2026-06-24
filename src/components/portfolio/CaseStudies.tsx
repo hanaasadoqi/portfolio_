@@ -79,25 +79,27 @@ export default function CaseStudies() {
   return (
     <section
       id="projects"
-      className="border-t py-24"
+      className="border-t py-32"
       style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg)' }}
       aria-labelledby="case-studies-heading"
     >
-      <div className="mx-auto max-w-3xl px-6">
-        <h2
-          id="case-studies-heading"
-          className="mb-1 text-2xl font-bold tracking-tight"
-          style={{ color: 'var(--fg)' }}
-        >
-          Projects
-        </h2>
-        <p className="mb-16 text-sm" style={{ color: 'var(--fg-muted)' }}>
-          Some in active development, some still being validated. None of these are inflated.
-        </p>
+      <div className="mx-auto max-w-5xl px-6">
+        <div className="mb-20">
+          <h2
+            id="case-studies-heading"
+            className="mb-3 text-3xl font-bold tracking-tight"
+            style={{ color: 'var(--fg)' }}
+          >
+            Projects
+          </h2>
+          <p className="text-sm" style={{ color: 'var(--fg-muted)' }}>
+            Some in active development, some still being validated. None of these are inflated.
+          </p>
+        </div>
 
         {/* Featured Project */}
         <article
-          className="mb-20 flex flex-col rounded-lg border p-8"
+          className="mb-32 flex flex-col rounded-lg border p-8 md:p-12"
           style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
         >
           <span
@@ -183,11 +185,93 @@ export default function CaseStudies() {
           </div>
         </article>
 
-        {/* Other Projects Grid */}
-        <h3 className="mb-6 text-lg font-bold" style={{ color: 'var(--fg)' }}>
-          Other projects
-        </h3>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {/* Other Projects */}
+        <div className="mb-8">
+          <h3 className="mb-6 text-lg font-bold" style={{ color: 'var(--fg)' }}>
+            Other projects
+          </h3>
+        </div>
+
+        {/* Mobile: Horizontal scroll, Desktop: Grid */}
+        <div className="md:hidden overflow-x-auto pb-4 -mx-6 px-6">
+          <div className="flex gap-6 min-w-min">
+            {studies.map((study, idx) => {
+              const style = statusStyles[study.statusVariant]
+              const isGenerafi = idx === 0
+              return (
+                <article
+                  key={study.title}
+                  className="flex flex-col rounded-lg border p-6 flex-shrink-0"
+                  style={{
+                    width: isGenerafi ? '320px' : '280px',
+                    backgroundColor: 'var(--bg-card)',
+                    borderColor: 'var(--border)',
+                  }}
+                >
+                <span
+                  className="mb-3 inline-flex w-fit rounded px-2 py-0.5 text-xs font-semibold"
+                  style={{ backgroundColor: style.bg, color: style.color }}
+                >
+                  {study.status}
+                </span>
+
+                <h4 className="mb-3 text-base font-semibold" style={{ color: 'var(--fg)' }}>
+                  {study.title}
+                </h4>
+
+                <div className="mb-3">
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--fg-subtle)' }}>
+                    Problem
+                  </p>
+                  <p className="text-xs leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
+                    {study.problem}
+                  </p>
+                </div>
+
+                <div className="mb-3">
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--fg-subtle)' }}>
+                    My role
+                  </p>
+                  <p className="text-xs leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
+                    {study.role}
+                  </p>
+                </div>
+
+                <div className="mb-4 flex flex-wrap gap-1.5">
+                  {study.focus.map(tag => (
+                    <span
+                      key={tag}
+                      className="rounded px-1.5 py-0.5 text-xs"
+                      style={{ backgroundColor: 'var(--badge-bg)', color: 'var(--badge-fg)' }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <p
+                  className="mb-5 border-l-2 pl-3 text-xs italic leading-relaxed"
+                  style={{ borderColor: 'var(--accent)', color: 'var(--fg-muted)' }}
+                >
+                  {study.proof}
+                </p>
+
+                <div className="mt-auto">
+                  <a
+                    href={study.ctaHref}
+                    className="text-xs font-semibold transition-opacity"
+                    style={{ color: 'var(--accent)' }}
+                  >
+                    {study.ctaLabel} &rarr;
+                </a>
+              </article>
+            )
+          })}
+          </div>
+        </div>
+
+        {/* Desktop: Grid layout */}
+        <div className="hidden md:grid gap-6 md:grid-cols-2">
           {studies.map(study => {
             const style = statusStyles[study.statusVariant]
             return (

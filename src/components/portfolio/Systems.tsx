@@ -53,15 +53,15 @@ export default function Systems() {
   return (
     <section
       id="systems"
-      className="border-t py-20"
+      className="border-t py-32"
       style={{ borderColor: 'var(--border)' }}
       aria-labelledby="systems-heading"
     >
       <div className="mx-auto max-w-5xl px-6">
-        <div className="mb-16 flex flex-col gap-2">
+        <div className="mb-20 flex flex-col gap-3">
           <h2
             id="systems-heading"
-            className="mb-1 text-3xl font-bold tracking-tight"
+            className="text-3xl font-bold tracking-tight"
             style={{ color: 'var(--fg)' }}
           >
             How I think about systems
@@ -75,7 +75,7 @@ export default function Systems() {
           {systemCards.map(card => (
             <article
               key={card.title}
-              className="border-b border-r p-6"
+              className="border-b border-r p-8"
               style={{ borderColor: 'var(--border)' }}
             >
               <h3

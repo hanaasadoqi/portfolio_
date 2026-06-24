@@ -6,20 +6,20 @@ export default function AboutContact() {
       {/* About */}
       <section
         id="about"
-        className="border-t py-24"
+        className="border-t py-32"
         style={{ borderColor: 'var(--border)' }}
         aria-labelledby="about-heading"
       >
-        <div className="mx-auto max-w-4xl px-6">
+        <div className="mx-auto max-w-5xl px-6">
           <h2
             id="about-heading"
-            className="text-3xl font-bold tracking-tight mb-12"
+            className="text-3xl font-bold tracking-tight mb-16"
             style={{ color: 'var(--fg)' }}
           >
             A bit about me
           </h2>
 
-          <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_300px]">
+          <div className="grid grid-cols-1 gap-20 md:grid-cols-[1fr_320px]">
             {/* Text content */}
             <div className="space-y-5 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
               <p>
@@ -50,12 +50,12 @@ export default function AboutContact() {
       {/* Contact */}
       <section
         id="contact"
-        className="border-t py-20"
+        className="border-t py-32"
         style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-subtle)' }}
         aria-labelledby="contact-heading"
       >
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[160px_1fr]">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-[200px_1fr]">
             <h2
               id="contact-heading"
               className="text-3xl font-bold tracking-tight"
@@ -66,14 +66,14 @@ export default function AboutContact() {
 
             <div>
               <p
-                className="mb-8 max-w-lg text-base leading-relaxed"
+                className="mb-10 max-w-lg text-base leading-relaxed"
                 style={{ color: 'var(--fg-muted)' }}
               >
                 If you&apos;re hiring for product engineering, full-stack, frontend, or project engineer
                 roles — or want to talk about workflow-heavy software — I&apos;d love to connect.
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4">
                 <a
                   href="/Hanaa_Sadoqi_Resume.pdf"
                   download

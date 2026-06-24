@@ -61,27 +61,29 @@ export default function Writing() {
   return (
     <section
       id="writing"
-      className="border-t py-20"
+      className="border-t py-32"
       style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-subtle)' }}
       aria-labelledby="writing-heading"
     >
-      <div className="mx-auto max-w-3xl px-6">
-        <h2
-          id="writing-heading"
-          className="mb-2 text-3xl font-bold tracking-tight"
-          style={{ color: 'var(--fg)' }}
-        >
-          Things I&apos;m writing about
-        </h2>
-        <p className="mb-16 text-base" style={{ color: 'var(--fg-muted)' }}>
-          Architecture decisions, trade-offs I had to think through, and things I wanted written down somewhere.
-        </p>
+      <div className="mx-auto max-w-5xl px-6">
+        <div className="mb-20">
+          <h2
+            id="writing-heading"
+            className="mb-3 text-3xl font-bold tracking-tight"
+            style={{ color: 'var(--fg)' }}
+          >
+            Things I&apos;m writing about
+          </h2>
+          <p className="text-base" style={{ color: 'var(--fg-muted)' }}>
+            Architecture decisions, trade-offs I had to think through, and things I wanted written down somewhere.
+          </p>
+        </div>
 
         <div className="space-y-0">
           {articles.map(article => (
             <article
               key={article.title}
-              className="group grid grid-cols-1 gap-4 border-t py-8 md:grid-cols-[120px_1fr]"
+              className="group grid grid-cols-1 gap-4 border-t py-10 md:grid-cols-[120px_1fr]"
               style={{ borderColor: 'var(--border)' }}
             >
               {/* Status */}

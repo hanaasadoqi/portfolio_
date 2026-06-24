@@ -49,25 +49,27 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="mx-auto max-w-3xl px-6 py-20"
+      className="border-t mx-auto max-w-5xl px-6 py-32"
       aria-labelledby="experience-heading"
     >
-      <h2
-        id="experience-heading"
-        className="mb-2 text-3xl font-bold tracking-tight"
-        style={{ color: 'var(--fg)' }}
-      >
-        Where I&apos;ve worked
-      </h2>
-      <p className="mb-16 text-base" style={{ color: 'var(--fg-muted)' }}>
-        In rough order of how much I learned.
-      </p>
+      <div className="mb-20">
+        <h2
+          id="experience-heading"
+          className="mb-3 text-3xl font-bold tracking-tight"
+          style={{ color: 'var(--fg)' }}
+        >
+          Where I&apos;ve worked
+        </h2>
+        <p className="text-base" style={{ color: 'var(--fg-muted)' }}>
+          In rough order of how much I learned.
+        </p>
+      </div>
 
       <div className="space-y-0">
         {roles.map((role, idx) => (
           <article
             key={role.company}
-            className="group grid grid-cols-1 gap-4 border-t py-10 md:grid-cols-[180px_1fr]"
+            className="group grid grid-cols-1 gap-4 border-t py-12 md:grid-cols-[180px_1fr]"
             style={{ borderColor: 'var(--border)' }}
           >
             {/* Left: meta */}
