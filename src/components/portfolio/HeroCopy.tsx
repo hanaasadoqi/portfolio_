@@ -1,22 +1,29 @@
 export function HeroCopy() {
   return (
-    <div className="max-w-3xl">
-      <span className="block font-medium text-lg text-muted-foreground sm:text-xl mb-4">
+    <div className="space-y-6">
+      {/* Greeting: small, secondary */}
+      <p className="text-sm font-medium text-muted-foreground sm:text-base">
         Hi, I&apos;m Hanaa 👋
-      </span>
-      <div className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-lg text-muted-foreground">
+      </p>
+
+      {/* Career timeline: smaller, tertiary level */}
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground sm:text-base">
         <span>Former mechanical engineer</span>
-        <span>•</span>
+        <span className="opacity-50">•</span>
         <span>Current software engineer</span>
-        <span>•</span>
+        <span className="opacity-50">•</span>
         <span>Future dystopian novelist</span>
       </div>
-      <span className="block font-medium text-lg text-muted-foreground sm:text-xl mb-4">
+
+      {/* Philosophy: secondary level, emphasis */}
+      <p className="text-base font-medium text-muted-foreground sm:text-lg">
         Mostly, I&apos;m just someone who likes figuring out how things fit together.
-      </span>
+      </p>
+
+      {/* Main headline: large, primary */}
       <h1
         id="hero-heading"
-        className="mb-6 max-w-xl text-balance text-4xl font-bold leading-[1.05] tracking-tight text-foreground flex flex-col gap-2"
+        className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-foreground"
       >
         I build software, ask too many questions, and occasionally turn the answers into products.
       </h1>
