@@ -8,7 +8,7 @@ import AboutContact from '@/components/portfolio/AboutContact'
 
 export default function Home() {
   return (
-    <div style={{ fontFamily: 'var(--font-inter)', backgroundColor: 'var(--bg)' }}>
+      <div>
       <Nav />
       <main id="main-content">
         <Hero />

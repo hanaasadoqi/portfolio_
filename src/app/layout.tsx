@@ -10,17 +10,17 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Hanaa El Habbal — Senior Software Engineer',
+  title: 'Hanaa El Habbal — Software Engineer',
   description:
-    'Senior Software Engineer building SaaS platforms, internal tools, and business-critical systems. Specializing in React, TypeScript, Rails, and multi-tenant architecture.',
+    'Software engineer building workflow-heavy products, internal tools, and operational systems. Open to Product Engineer, Full-Stack, Frontend, and Project Engineer roles.',
   authors: [{ name: 'Hanaa El Habbal' }],
-  keywords: ['senior software engineer', 'saas', 'react', 'typescript', 'rails', 'internal tools'],
+  keywords: ['software engineer', 'product engineer', 'full-stack', 'workflow systems', 'react', 'typescript', 'rails', 'internal tools'],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={inter.variable} style={{ backgroundColor: '#0d1117', color: '#e6edf3' }}>
+        <body className={inter.variable}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

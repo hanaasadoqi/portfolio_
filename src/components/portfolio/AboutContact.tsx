@@ -23,18 +23,18 @@ export default function AboutContact() {
             {/* Text content */}
             <div className="space-y-5 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
               <p>
-                I&apos;ve always been drawn to systems. As a kid, that meant fantasy worlds — characters,
-                histories, rules, governments, and the tiny details that made fictional places feel real.
-                In college, it became mechanical engineering and building systems: HVAC, plumbing,
-                coordination, constraints, and the physical infrastructure people depend on.
-              </p>
-              <p>
-                Eventually I learned to code and realized software was another version of the same thing.
+                I thought I wanted to be a fantasy author growing up. Looking back, I think what I really
+                loved was worldbuilding — characters, histories, rules, governments, and how everything fit
+                together. Later I studied mechanical engineering and designed building systems. Then I learned
+                to code and realized software scratched the same itch.
               </p>
               <p>
                 Now I&apos;m most interested in software where product and operations meet: workflows,
                 permissions, audit trails, internal tools, and the unglamorous details that make systems
-                reliable. Right now that means Generafi and Synapcity — and looking for product engineering,
+                reliable.
+              </p>
+              <p>
+                Right now that means Generafi and Synapcity. And I&apos;m looking for product engineering,
                 full-stack, frontend, and project engineer roles where that kind of thinking is useful.
               </p>
             </div>
