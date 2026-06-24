@@ -40,19 +40,6 @@ const featured = {
 
 const studies: CaseStudy[] = [
   {
-    title: 'Synapcity — Team Knowledge Platform',
-    status: 'Concept validation',
-    statusVariant: 'concept',
-    problem:
-      'Teams lose institutional memory across tools. Decisions, tasks, and context are scattered across Notion, Slack, Jira, and email with no unified structure.',
-    role:
-      'Product and engineering lead. Scoping the MVP, validating assumptions before building, and documenting architecture decisions.',
-    focus: ['Product architecture', 'Workflow design', 'Validation-first scope', 'Knowledge graph', 'Permission model'],
-    proof: 'Intentionally not production-ready. Focus is on product thinking, architecture decisions, and validation milestones.',
-    ctaLabel: 'View validation notes',
-    ctaHref: '#',
-  },
-  {
     title: 'Blog — Custom MDX Site',
     status: 'Live project',
     statusVariant: 'shipped',
@@ -64,6 +51,19 @@ const studies: CaseStudy[] = [
     proof: 'Demonstrates full-stack thinking: from content modeling to component design to deployment.',
     ctaLabel: 'View blog at blog.hanaasadoqi.dev',
     ctaHref: 'https://blog.hanaasadoqi.dev',
+  },
+  {
+    title: 'Synapcity — Team Knowledge Platform',
+    status: 'Concept validation',
+    statusVariant: 'concept',
+    problem:
+      'Teams lose institutional memory across tools. Decisions, tasks, and context are scattered across Notion, Slack, Jira, and email with no unified structure.',
+    role:
+      'Product and engineering lead. Scoping the MVP, validating assumptions before building, and documenting architecture decisions.',
+    focus: ['Product architecture', 'Workflow design', 'Validation-first scope', 'Knowledge graph', 'Permission model'],
+    proof: 'Intentionally not production-ready. Focus is on product thinking, architecture decisions, and validation milestones.',
+    ctaLabel: 'View validation notes',
+    ctaHref: '#',
   },
 ]
 
