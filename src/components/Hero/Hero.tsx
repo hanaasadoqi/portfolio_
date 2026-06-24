@@ -1,30 +1,37 @@
 import React, { memo } from 'react'
 import ProfileBadge from '@/components/Hero/ProfileBadge'
 import CallToAction from '@/components/Hero/CallToAction'
+import HeroImage from '@/components/Hero/HeroImage'
 
 const Hero: React.FC = () => {
   return (
     <section
       id="hero"
       data-id="hero"
-      className="flex min-h-screen w-full flex-col items-center justify-center py-12 md:px-12 lg:flex-row lg:justify-between"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-12 sm:px-6 md:px-8 lg:flex-row lg:justify-between lg:gap-12"
       aria-labelledby="hero-heading"
     >
-      <div className="flex flex-col items-center space-y-6 lg:items-start">
+      {/* Left Content */}
+      <div className="flex w-full flex-col items-center justify-center space-y-6 lg:w-1/2 lg:items-start">
         <ProfileBadge />
 
-        <div className="flex flex-col space-y-4 md:space-y-8 lg:space-y-12">
+        <div className="flex w-full flex-col space-y-4 md:space-y-8 lg:space-y-12">
           <header className="text-center lg:text-left" id="hero-heading">
-            <h1 className="mb-2 text-2xl text-accent-primary-950 dark:text-accent-primary-50 font-bold transition-all duration-300 md:text-3xl lg:text-4xl">
-              {"Hi, I'm Hanaa Sadoqi"}
+            <h1 className="mb-4 text-4xl font-bold text-secondary-900 dark:text-secondary-50 transition-colors duration-300 sm:text-5xl lg:text-6xl leading-tight">
+              Building scalable solutions that make an impact.
             </h1>
-            <h2 className="my-0 text-xl font-medium text-gray-700 dark:text-gray-300 md:text-xl lg:text-2xl">
-              Full-stack Web Developer | Software Engineer | UI/UX Enthusiast
-            </h2>
+            <p className="text-lg font-medium text-secondary-700 dark:text-secondary-300 transition-colors duration-300 sm:text-xl leading-relaxed">
+              Senior software engineer with 5+ years building web applications and scalable systems with a focus on performance, maintainability, and exceptional user experiences.
+            </p>
           </header>
 
           <CallToAction />
         </div>
+      </div>
+
+      {/* Right Image */}
+      <div className="mt-8 w-full lg:mt-0 lg:w-1/2 flex justify-center">
+        <HeroImage />
       </div>
     </section>
   )

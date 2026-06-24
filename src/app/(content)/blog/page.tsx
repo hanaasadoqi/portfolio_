@@ -3,11 +3,7 @@ import React from 'react';
 import { fetchArticles } from '@/app/lib/actions/articles';
 import BlogsContainer from './components/BlogsContainer';
 
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  return await generateStaticParams();
-}
+export const dynamic = 'force-dynamic';
 
 export default async function BlogsPage() {
   const articles = await fetchArticles()

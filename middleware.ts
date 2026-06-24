@@ -4,9 +4,10 @@ import { updateSession } from './src/app/lib/supabase/middleware'
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
+  // CSP relaxed to allow Next.js font optimization and inline styles
   response.headers.set(
     'Content-Security-Policy',
-    `default-src 'self'; style-src 'self' 'unsafe-inline'`
+    `default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; img-src 'self' data: blob: https:;`
   );
 
   return response;

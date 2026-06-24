@@ -18,62 +18,62 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   return (
     <motion.article
       id={`experience-${id}`}
-      className="m-0 md:mx-auto w-full md:max-w-5xl rounded-lg border border-primary-300 bg-gradient-to-r from-primary-100 to-primary-200 p-8 text-left shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl dark:border-primary-800 dark:from-primary-900 dark:to-secondary-900 dark:text-white"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      className="relative m-0 md:mx-auto w-full md:max-w-4xl rounded-xl border-2 border-secondary-200 dark:border-accent-one/30 bg-white dark:bg-secondary-900/50 p-6 md:p-8 text-left shadow-md hover:shadow-xl hover:border-accent-one/50 transition-all duration-300 ease-in-out"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
       tabIndex={0}
       aria-labelledby={`experience-title-${id}`}
     >
-      <header className="mb-6 flex items-center space-x-4">
-        <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-white shadow-md">
+      {/* Timeline dot - optional visual */}
+      <div className="absolute -left-4 md:-left-6 top-8 w-3 h-3 md:w-4 md:h-4 rounded-full bg-gradient-to-r from-accent-one to-accent-two shadow-lg hidden md:block"></div>
+      
+      <header className="mb-6 flex items-start space-x-4">
+        <div className="relative flex h-16 w-16 md:h-20 md:w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-secondary-100 dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700 shadow-md">
           {logo ? (
             <Image
               src={logo}
               alt={`${company} logo`}
               fill
-              sizes="56px"
-              className="object-contain shadow-inner"
+              sizes="80px"
+              className="object-contain p-2"
               priority
             />
           ) : (
-            <div className="h-14 w-14 rounded-full bg-gray-200" />
+            <div className="h-full w-full bg-gradient-to-br from-accent-one/20 to-accent-two/20" />
           )}
         </div>
-        <div className="prose-2xl">
+        <div className="flex-1">
           <h3
             id={`experience-title-${id}`}
-            className="text-lg font-bold text-primary-800 dark:text-primary-100 md:text-xl lg:text-2xl mb-0"
+            className="text-xl md:text-2xl font-bold text-secondary-900 dark:text-secondary-50 mb-1"
           >
             {company}
           </h3>
-          <p className="text-sm text-secondary-800 dark:text-secondary-300 md:text-base lg:text-lg">
+          <p className="text-base md:text-lg font-semibold text-accent-one">
             {role}
+          </p>
+          <p className="text-sm md:text-base text-secondary-600 dark:text-secondary-400 mt-1">
+            {location} • {new Date(startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - {endDate ? new Date(endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Present'}
           </p>
         </div>
       </header>
-      <div className="space-y-4 text-sm text-primary-600 dark:text-white md:text-base lg:text-lg">
-        <p>
-          <strong>Location:</strong> {location}
-        </p>
-        <p>
-          <strong>Dates:</strong> {new Date(startDate).toLocaleDateString()} - {new Date(endDate || '').toLocaleDateString()}
-        </p>
-        <ul className="list-disc space-y-2 pl-5 prose-lg md:prose-xl">
-          {description.map((desc: string, index: number) => (
-            <motion.li
-              key={index}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="text-primary-800 dark:text-white"
-            >
-              {desc}
-            </motion.li>
-          ))}
-        </ul>
-      </div>
+
+      <ul className="space-y-3 text-sm md:text-base text-secondary-700 dark:text-secondary-300">
+        {description.map((desc: string, index: number) => (
+          <motion.li
+            key={index}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+            className="flex gap-3"
+          >
+            <span className="text-accent-one flex-shrink-0 mt-1">▸</span>
+            <span>{desc}</span>
+          </motion.li>
+        ))}
+      </ul>
     </motion.article>
   );
 };

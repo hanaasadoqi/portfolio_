@@ -1,8 +1,8 @@
 import SkillControlsDisplay from './SkillsControls/ControlsDisplay'
 import { memo } from 'react'
 import SkillsList from './SkillsList'
-import { fetchFilteredSkills } from '../actions'
 import { filterSkills } from './filterSkills'
+import skillsData from '@/app/lib/data/skillsData.json'
 
 const pageSize = 15
 
@@ -10,7 +10,8 @@ async function SkillsContainer({ searchParams }: { searchParams: Record<string, 
   const { q = '', filterByTag = '', filterByCategory = '', sortBy = '', size = '15' } = await searchParams || {}
   const currentPageSize = parseInt(size, 10)
 
-  const { skills, totalCount } = await fetchFilteredSkills()
+  const skills = skillsData as any[]
+  const totalCount = skills.length
 
   const filteredSkills = filterSkills(skills, q, filterByTag, filterByCategory, sortBy)
 
