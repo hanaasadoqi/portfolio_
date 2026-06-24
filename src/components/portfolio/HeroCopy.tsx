@@ -20,10 +20,10 @@ export function HeroCopy() {
         Mostly, I&apos;m just someone who likes figuring out how things fit together.
       </p>
 
-      {/* Main headline: large, primary */}
+      {/* Main headline: h1 semantic tag, fits typographic hierarchy */}
       <h1
         id="hero-heading"
-        className="text-2xl sm:text-3xl md:text-4xl font-bold leading-[1.2] tracking-tight text-foreground"
+        className="text-lg sm:text-xl md:text-2xl font-bold leading-[1.3] tracking-tight text-foreground"
       >
         I build software, ask too many questions, and occasionally turn the answers into products.
       </h1>
