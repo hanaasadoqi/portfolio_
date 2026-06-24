@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import AboutItemList from './AboutItemList'
-import { fetchAboutAssets } from '@/app/lib/actions/assets'
 import AboutItemCard from './AboutItemCard'
+import aboutData from '@/app/lib/data/aboutData.json'
 
 const AboutContainer: FC = async () => {
-  const assets = await fetchAboutAssets()
+  const assets = aboutData
 
   return (
     <div className="relative mx-auto w-full text-left space-y-8">

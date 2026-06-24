@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
-import { fetchProjects } from '@/app/lib/actions/projects';
+import projectsData from '@/app/lib/data/projectsData.json';
 import ProjectGallery from './ProjectGallery';
 
 const ProjectGalleryContainer: React.FC = async () => {
-  const allProjects = await fetchProjects()
+  const allProjects = projectsData as any[];
   const featuredProject = allProjects[0];
   const rightGallery = allProjects.slice(1, 3);
   const bottomGallery = allProjects.slice(3);
