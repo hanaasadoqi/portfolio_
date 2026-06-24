@@ -1,3 +1,5 @@
+import PhotoCarousel from './PhotoCarousel'
+
 export default function AboutContact() {
   return (
     <>
@@ -9,7 +11,7 @@ export default function AboutContact() {
         aria-labelledby="about-heading"
       >
           <div className="mx-auto max-w-3xl px-6">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_260px]">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_280px]">
             <div>
               <h2
                 id="about-heading"
@@ -21,40 +23,24 @@ export default function AboutContact() {
 
               <div className="space-y-4 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
               <p>
-                I&apos;m based in Brooklyn. I got into engineering because I liked making things work —
-                diagnosing issues, fixing problems, building systems that people depend on. Most of my career
-                has been in the unglamorous parts of software: internal platforms, operational tooling, the
-                systems that keep businesses running.
+                I&apos;m based in Brooklyn. I got into engineering because I genuinely enjoy making things work.
+                There&apos;s something satisfying about diagnosing a production issue and shipping the fix. I obsess
+                over how systems actually work, not just the theory.
               </p>
               <p>
-                At Stitch Fix I worked on the systems merchandising teams relied on — data pipeline issues,
-                production bugs, workflow improvements. At SiriusXM I shipped consumer features in a massive
-                React codebase. At Flatiron and WeWork I learned that teaching is just as hard as building.
-              </p>
-              <p>
-                All of that was my education in how organizations actually function: permissions, workflows,
-                reliability, auditability. That knowledge is what I&apos;m now applying to build Generafi
-                (payroll &amp; accounting) and Synapcity (team knowledge management).
+                I think about permissions, workflows, reliability. I like building software that people depend on,
+                even if nobody outside the company hears about it. Right now I&apos;m building Generafi (payroll
+                for SMBs) and Synapcity, applying everything I learned from internal systems into products.
               </p>
               <p style={{ color: 'var(--fg)' }}>
-                I&apos;m open to product engineering, full-stack, and frontend-heavy roles. I care deeply about
-                solving real problems. React, TypeScript, Rails, and SQL are my defaults.
+                Outside of work: coffee, reading about systems design, hanging with my dog Bowie, exploring Brooklyn.
               </p>
               </div>
             </div>
 
-            {/* Bowie photo */}
+            {/* Photo carousel */}
             <div className="flex justify-center md:justify-end">
-              <div
-                className="w-full max-w-xs rounded-lg overflow-hidden border"
-                style={{ borderColor: 'var(--border)' }}
-              >
-                <img
-                  src="/images/about/bowie.png"
-                  alt="Bowie"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <PhotoCarousel />
             </div>
           </div>
         </div>
