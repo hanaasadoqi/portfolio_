@@ -270,7 +270,6 @@ export default function CaseStudies() {
             })}
             </div>
           </div>
-        </div>
 
         {/* Desktop: Grid layout */}
         <div className="hidden md:grid gap-6 md:grid-cols-2">
