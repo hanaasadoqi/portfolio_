@@ -22,20 +22,20 @@ export default function Hero() {
 
           <h1
             id="hero-heading"
-            className="mb-8 text-4xl font-bold leading-tight tracking-tight sm:text-5xl"
+            className="mb-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl"
             style={{ color: 'var(--fg)' }}
           >
-            Product engineer building software that works.
+            I build software.
           </h1>
 
           <p
-            className="mb-6 text-base leading-relaxed"
+            className="mb-8 text-base leading-relaxed"
             style={{ color: 'var(--fg-muted)' }}
           >
-            I work on products around workflow, reliability, and operational clarity.
+            Full-stack engineer focused on workflow, reliability, and systems that make sense.
           </p>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-3">
             {/* Primary CTA */}
             <a
               href="/Hanaa_Sadoqi_Resume.pdf"
@@ -46,45 +46,44 @@ export default function Hero() {
               Download Resume
             </a>
 
-            {/* Secondary actions */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+            <span
+              className="hidden h-4 w-px sm:block"
+              style={{ backgroundColor: 'var(--border)' }}
+              aria-hidden="true"
+            />
+
+            {/* Social links */}
+            <div className="flex gap-4 justify-center sm:justify-start">
               <a
-                href="#projects"
-                className="inline-flex items-center justify-center sm:justify-start gap-1.5 text-sm font-medium transition-opacity hover:opacity-80"
+                href="https://github.com/hanaasadoqi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm transition-opacity hover:opacity-80"
                 style={{ color: 'var(--fg-muted)' }}
               >
-                What I&apos;m building
-                <span aria-hidden="true">&darr;</span>
+                GitHub
               </a>
-              
-              <span
-                className="hidden h-4 w-px sm:block"
-                style={{ backgroundColor: 'var(--border)' }}
-                aria-hidden="true"
-              />
-
-              <div className="flex gap-3 justify-center sm:justify-start">
-                <a
-                  href="https://github.com/hanaasadoqi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm transition-opacity hover:opacity-80"
-                  style={{ color: 'var(--fg-muted)' }}
-                >
-                  GitHub
-                </a>
-                <a
-                  href="https://linkedin.com/in/hanaa-el-habbal"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm transition-opacity hover:opacity-80"
-                  style={{ color: 'var(--fg-muted)' }}
-                >
-                  LinkedIn
-                </a>
-              </div>
+              <a
+                href="https://linkedin.com/in/hanaa-el-habbal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm transition-opacity hover:opacity-80"
+                style={{ color: 'var(--fg-muted)' }}
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
+
+          {/* Scroll to projects */}
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-1.5 mt-8 text-sm font-medium transition-opacity hover:opacity-80"
+            style={{ color: 'var(--fg-muted)' }}
+          >
+            See what I&apos;m building
+            <span aria-hidden="true">&darr;</span>
+          </a>
         </div>
 
         {/* Headshot */}
