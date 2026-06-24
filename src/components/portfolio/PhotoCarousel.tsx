@@ -12,12 +12,6 @@ interface Photo {
 // Curated selection of photos for the carousel
 const photos: Photo[] = [
   {
-    src: '/images/profile_picture.png',
-    alt: 'Hanaa',
-    title: 'That\'s me',
-    description: 'Brooklyn-based, coffee-fueled.',
-  },
-  {
     src: '/images/about/bowie.png',
     alt: 'Bowie',
     title: 'Bowie',
@@ -51,7 +45,7 @@ export default function PhotoCarousel() {
     if (photos.length <= 1) return
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % photos.length)
-    }, 5000)
+    }, 7000)
     return () => clearInterval(interval)
   }, [])
 
@@ -89,14 +83,14 @@ export default function PhotoCarousel() {
 
       {/* Dots indicator */}
       {photos.length > 1 && (
-        <div className="flex gap-2 justify-center">
+        <div className="flex gap-2 justify-center items-center">
           {photos.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrent(idx)}
-              className="rounded-full transition-all duration-300 hover:scale-125"
+              className="rounded-full transition-all duration-300 hover:scale-110"
               style={{
-                width: idx === current ? '24px' : '8px',
+                width: idx === current ? '20px' : '8px',
                 height: '8px',
                 backgroundColor:
                   idx === current ? 'var(--accent)' : 'var(--border)',

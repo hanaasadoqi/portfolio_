@@ -85,7 +85,7 @@ export default function Hero() {
             style={{ borderColor: 'var(--border)' }}
           >
             <img
-              src="/Hanaa_Sadoqi_headshot.jpg"
+              src="/images/profile_picture.png"
               alt="Hanaa Sadoqi"
               className="w-full h-full object-cover"
             />
