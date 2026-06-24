@@ -1,6 +1,7 @@
 'use client'
 
 import ImpactBand from './ImpactBand'
+import { HeroCopy } from './HeroCopy'
 
 const DownloadIcon = () => (
   <svg aria-hidden="true" width="15" height="15" viewBox="0 0 15 15" fill="currentColor">
@@ -51,34 +52,10 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Eyebrow */}
-            <p className="mb-1 text-sm font-medium" style={{ color: 'var(--fg-muted)' }}>
-              Hi, I&apos;m Hanaa.
-            </p>
-            <span
-              className="mb-5 inline-block w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold"
-              style={{ backgroundColor: 'var(--accent-muted)', color: 'var(--accent)' }}
-            >
-              Brooklyn, NY
-            </span>
-
-            {/* Headline */}
-            <h1
-              id="hero-heading"
-              className="mb-4 text-[2rem] font-bold leading-tight tracking-tight text-balance"
-              style={{ color: 'var(--fg)' }}
-            >
-              I build systems that make messy work easier.
-            </h1>
-
-            {/* Sub-copy */}
-            <p className="mb-3 text-sm leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
-              Software engineer working on workflow-heavy products, internal tools, and operational
-              systems — the kind where people, rules, data, and edge cases all have to fit together.
-            </p>
-            <p className="mb-8 text-xs leading-relaxed" style={{ color: 'var(--fg-subtle)' }}>
-              Open to Product Engineer, Full-Stack, Frontend, and Project Engineer roles.
-            </p>
+            {/* Copy */}
+            <div className="mb-8">
+              <HeroCopy />
+            </div>
 
             {/* Primary CTA — full width */}
             <a
@@ -125,34 +102,8 @@ export default function Hero() {
 
           {/* ── Desktop: text left / photo right ── */}
           <div className="hidden md:grid grid-cols-[1fr_240px] gap-16 items-center">
-            <div>
-              <div className="mb-5 flex flex-col gap-2">
-                <p className="text-sm font-medium" style={{ color: 'var(--fg-muted)' }}>
-                  Hi, I&apos;m Hanaa.
-                </p>
-                <span
-                  className="w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold"
-                  style={{ backgroundColor: 'var(--accent-muted)', color: 'var(--accent)' }}
-                >
-                  Brooklyn, NY
-                </span>
-              </div>
-
-              <h1
-                id="hero-heading"
-                className="mb-6 text-5xl font-bold leading-tight tracking-tight text-balance"
-                style={{ color: 'var(--fg)' }}
-              >
-                I build systems that make messy work easier.
-              </h1>
-
-              <p className="mb-3 max-w-xl text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
-                Software engineer working on workflow-heavy products, internal tools, and operational
-                systems — the kind where people, rules, data, and edge cases all have to fit together.
-              </p>
-              <p className="mb-10 max-w-xl text-sm leading-relaxed" style={{ color: 'var(--fg-subtle)' }}>
-                Open to Product Engineer, Full-Stack, Frontend, and Project Engineer roles.
-              </p>
+            <div className="mb-10">
+              <HeroCopy />
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
