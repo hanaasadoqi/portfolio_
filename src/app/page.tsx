@@ -14,9 +14,9 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <ImpactBand />
-        <Experience />
         <CaseStudies />
         <Systems />
+        <Experience />
         <Writing />
         <AboutContact />
       </main>

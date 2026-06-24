@@ -5,10 +5,10 @@ const roles = [
     period: '2021 — 2023',
     tags: ['Rails', 'React', 'TypeScript', 'SQL', 'Internal Tools'],
     bullets: [
-      'Built and maintained full-stack internal tooling that reduced merchandising workflow effort by 300+ hours/month.',
-      'Owned features end-to-end: scoping, implementation, QA, and documentation across multiple product areas.',
-      'Collaborated cross-functionally with Product, Merchandising, and IT to define requirements and ship at pace.',
-      'Improved maintainability through refactoring legacy code and writing engineering documentation.',
+      'Worked on internal systems that merchandising and operations teams relied on daily. Diagnosed data issues, fixed production bugs, and improved critical workflows.',
+      'Owned features end-to-end: scoping, implementation, QA, and documentation. Learned how to ship at pace while maintaining system reliability.',
+      'Collaborated with Product, Merchandising, and IT teams to understand their workflows and translate them into technical solutions.',
+      'Maintained and refactored legacy systems. Wrote documentation and built tooling that made the codebase easier for future engineers.',
     ],
   },
   {

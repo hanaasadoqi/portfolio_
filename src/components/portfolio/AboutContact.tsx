@@ -20,25 +20,24 @@ export default function AboutContact() {
 
             <div className="space-y-4 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
               <p>
-                I&apos;m a software engineer based in Morocco. I got into this because I liked making
-                things work — and I still do. Most of my career has been building the software that
-                companies run on internally: the tools that nobody tweets about but everybody uses
-                every day.
+                I&apos;m based in Brooklyn. I got into engineering because I liked making things work —
+                diagnosing issues, fixing problems, building systems that people depend on. Most of my career
+                has been in the unglamorous parts of software: internal platforms, operational tooling, the
+                systems that keep businesses running.
               </p>
               <p>
-                At Stitch Fix I spent two years building and maintaining internal tooling for
-                merchandising teams. Before that I helped a lot of people learn to code at Flatiron
-                and WeWork, which taught me that explaining things clearly is just as hard as
-                building them.
+                At Stitch Fix I worked on the systems merchandising teams relied on — data pipeline issues,
+                production bugs, workflow improvements. At SiriusXM I shipped consumer features in a massive
+                React codebase. At Flatiron and WeWork I learned that teaching is just as hard as building.
               </p>
               <p>
-                Right now I&apos;m working on a payroll and accounting platform for Moroccan
-                businesses — partly because it&apos;s a real problem worth solving, partly because
-                I want to see if I can design a multi-tenant SaaS system end-to-end on my own.
+                All of that was my education in how organizations actually function: permissions, workflows,
+                reliability, auditability. That knowledge is what I&apos;m now applying to build Generafi
+                (payroll &amp; accounting) and Synapcity (team knowledge management).
               </p>
               <p style={{ color: 'var(--fg)' }}>
-                I&apos;m open to senior full-stack roles. I care more about the problem than the
-                stack, but I&apos;m fastest in React, TypeScript, and Rails.
+                I&apos;m open to product engineering, full-stack, and frontend-heavy roles. I care deeply about
+                solving real problems. React, TypeScript, Rails, and SQL are my defaults.
               </p>
             </div>
           </div>
@@ -118,7 +117,7 @@ export default function AboutContact() {
       >
         <div className="mx-auto flex max-w-5xl items-center justify-between">
           <span className="text-xs" style={{ color: 'var(--fg-subtle)' }}>
-            Hanaa El Habbal &mdash; Senior Software Engineer
+            Hanaa Sadoqi &mdash; Product Engineer
           </span>
           <span className="text-xs" style={{ color: 'var(--fg-subtle)' }}>
             {new Date().getFullYear()}

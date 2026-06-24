@@ -14,7 +14,7 @@ export default function Hero() {
           className="ml-2 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold"
           style={{ backgroundColor: 'var(--accent-muted)', color: 'var(--accent)' }}
         >
-          open to work
+          Brooklyn, NY
         </span>
       </p>
 
@@ -23,26 +23,25 @@ export default function Hero() {
         className="mb-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
         style={{ color: 'var(--fg)' }}
       >
-        I build software that gets out of people&apos;s way.
+        Product engineer building software for how organizations actually work.
       </h1>
 
       <p
         className="mb-4 max-w-xl text-lg leading-relaxed"
         style={{ color: 'var(--fg-muted)' }}
       >
-        Full-stack engineer with 5+ years shipping production software. At Stitch Fix I built
-        internal tooling that saved merchandising teams{' '}
-        <span className="font-semibold" style={{ color: 'var(--fg)' }}>300+ hours a month</span>
-        {' '}— the kind of work that nobody outside the company sees, but everybody inside depends on.
+        I spent years working on internal systems at Stitch Fix and SiriusXM — diagnosing data issues,
+        fixing production bugs, improving workflows. That taught me how real business processes operate.
       </p>
 
       <p
         className="mb-10 max-w-xl text-base leading-relaxed"
         style={{ color: 'var(--fg-muted)' }}
       >
-        I&apos;m most at home building SaaS platforms, internal tools, and the systems that keep
-        companies running. React, TypeScript, Rails, SQL — whatever it takes to ship something
-        that actually works.
+        Now I&apos;m building products around workflow, reliability, and operational clarity:
+        <span className="block mt-2" style={{ color: 'var(--fg)' }}>
+          Generafi (payroll &amp; accounting for SMBs), Synapcity (team knowledge management).
+        </span>
       </p>
 
       <div className="flex flex-wrap items-center gap-4">
@@ -59,7 +58,7 @@ export default function Hero() {
           className="inline-flex items-center gap-1.5 text-sm font-medium transition-opacity hover:opacity-80"
           style={{ color: 'var(--fg-muted)' }}
         >
-          See my work
+          What I&apos;m building
           <span aria-hidden="true">&darr;</span>
         </a>
         <span

@@ -1,8 +1,8 @@
 const facts = [
-  { value: '3', label: 'production teams supported with internal tooling at Stitch Fix' },
-  { value: '1000+', label: 'daily active users across internal systems I maintained' },
-  { value: '40+', label: 'engineers mentored through full-stack curriculum' },
-  { value: '2', label: 'SaaS platforms designed and built end-to-end (Synapcity, Generafi)' },
+  { value: '5+', label: 'years shipping production software across internal systems and consumer platforms' },
+  { value: '40+', label: 'engineers mentored through full-stack curriculum at Flatiron School' },
+  { value: '2', label: 'SaaS products designed and architected end-to-end from scratch' },
+  { value: 'Multi-tenant', label: 'permissions, workflows, and operational reliability' },
 ]
 
 export default function ImpactBand() {
