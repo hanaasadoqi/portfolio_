@@ -1,44 +1,32 @@
-const metrics = [
-  {
-    stat: '300+ hrs/mo',
-    description: 'Merchandising workflow effort reduced at Stitch Fix',
-  },
-  {
-    stat: '4 teams',
-    description: 'Cross-functional delivery across Product, Merchandising, IT, and Engineering',
-  },
-  {
-    stat: '40+ engineers',
-    description: 'Mentored through full-stack projects as Cohort Lead at Flatiron School',
-  },
-  {
-    stat: 'Rails + React',
-    description: 'Full-stack internal tooling shipped end-to-end in production',
-  },
+const facts = [
+  { value: '5+', label: 'years writing production software' },
+  { value: '300 hrs', label: 'saved per month with one internal tool at Stitch Fix' },
+  { value: '40+', label: 'engineers mentored through full-stack curriculum' },
+  { value: 'Rails + React', label: 'primary stack, comfortable with whatever fits the problem' },
 ]
 
 export default function ImpactBand() {
   return (
     <section
-      aria-label="Impact metrics"
+      aria-label="Quick facts"
       className="border-y"
       style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-subtle)' }}
     >
-      <div className="mx-auto max-w-5xl px-6 py-12">
-        <dl className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {metrics.map(item => (
-            <div key={item.stat}>
+      <div className="mx-auto max-w-3xl px-6 py-10">
+        <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {facts.map(item => (
+            <div key={item.value}>
               <dt
-                className="text-2xl font-bold tracking-tight"
-                style={{ color: 'var(--fg)', fontFamily: 'var(--font-inter)' }}
+                className="text-xl font-bold tracking-tight"
+                style={{ color: 'var(--fg)' }}
               >
-                {item.stat}
+                {item.value}
               </dt>
               <dd
                 className="mt-1 text-sm leading-relaxed"
                 style={{ color: 'var(--fg-muted)' }}
               >
-                {item.description}
+                {item.label}
               </dd>
             </div>
           ))}

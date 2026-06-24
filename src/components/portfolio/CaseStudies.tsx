@@ -63,7 +63,7 @@ const statusStyles: Record<StatusVariant, { bg: string; color: string }> = {
 export default function CaseStudies() {
   return (
     <section
-      id="case-studies"
+      id="projects"
       className="border-t py-20"
       style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-subtle)' }}
       aria-labelledby="case-studies-heading"
@@ -71,11 +71,14 @@ export default function CaseStudies() {
       <div className="mx-auto max-w-5xl px-6">
         <h2
           id="case-studies-heading"
-          className="mb-12 text-sm font-semibold uppercase tracking-widest"
-          style={{ color: 'var(--fg-subtle)' }}
+          className="mb-1 text-2xl font-bold tracking-tight"
+          style={{ color: 'var(--fg)' }}
         >
-          Featured Case Studies
+          Projects
         </h2>
+        <p className="mb-12 text-sm" style={{ color: 'var(--fg-muted)' }}>
+          Some shipped, some in progress, some still just a good idea.
+        </p>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {studies.map(study => {

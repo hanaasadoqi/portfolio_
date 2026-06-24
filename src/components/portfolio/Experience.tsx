@@ -49,16 +49,19 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="mx-auto max-w-5xl px-6 py-20"
+      className="mx-auto max-w-3xl px-6 py-20"
       aria-labelledby="experience-heading"
     >
       <h2
         id="experience-heading"
-        className="mb-12 text-sm font-semibold uppercase tracking-widest"
-        style={{ color: 'var(--fg-subtle)' }}
+        className="mb-1 text-2xl font-bold tracking-tight"
+        style={{ color: 'var(--fg)' }}
       >
-        Professional Experience
+        Where I&apos;ve worked
       </h2>
+      <p className="mb-12 text-sm" style={{ color: 'var(--fg-muted)' }}>
+        In rough order of how much I learned.
+      </p>
 
       <div className="space-y-0">
         {roles.map((role, idx) => (

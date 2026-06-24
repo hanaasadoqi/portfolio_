@@ -8,35 +8,37 @@ export default function AboutContact() {
         style={{ borderColor: 'var(--border)' }}
         aria-labelledby="about-heading"
       >
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-[180px_1fr]">
+          <div className="mx-auto max-w-3xl px-6">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-[160px_1fr]">
             <h2
               id="about-heading"
-              className="text-sm font-semibold uppercase tracking-widest"
-              style={{ color: 'var(--fg-subtle)' }}
+              className="text-2xl font-bold tracking-tight"
+              style={{ color: 'var(--fg)' }}
             >
-              Working Style
+              A bit about me
             </h2>
 
-            <div className="space-y-4 text-sm leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
+            <div className="space-y-4 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
               <p>
-                I approach engineering as a product discipline. Good software is not just technically
-                correct — it solves the right problem, is maintainable by a team, and ships at a pace
-                the business can depend on.
+                I&apos;m a software engineer based in Morocco. I got into this because I liked making
+                things work — and I still do. Most of my career has been building the software that
+                companies run on internally: the tools that nobody tweets about but everybody uses
+                every day.
               </p>
               <p>
-                I communicate clearly across functions. I&apos;ve worked directly with Product,
-                Merchandising, and IT teams to translate business problems into scoped technical
-                solutions. I write documentation as part of the work, not after it.
+                At Stitch Fix I spent two years building and maintaining internal tooling for
+                merchandising teams. Before that I helped a lot of people learn to code at Flatiron
+                and WeWork, which taught me that explaining things clearly is just as hard as
+                building them.
               </p>
               <p>
-                I bias toward shipping useful milestones over perfect architecture. I use validation
-                to decide what not to build, and I treat premature optimization as a form of waste.
+                Right now I&apos;m working on a payroll and accounting platform for Moroccan
+                businesses — partly because it&apos;s a real problem worth solving, partly because
+                I want to see if I can design a multi-tenant SaaS system end-to-end on my own.
               </p>
-              <p>
-                I am currently seeking senior full-stack engineering roles at companies building
-                SaaS platforms, internal tools, or business-critical systems where engineering
-                judgment and cross-functional delivery matter.
+              <p style={{ color: 'var(--fg)' }}>
+                I&apos;m open to senior full-stack roles. I care more about the problem than the
+                stack, but I&apos;m fastest in React, TypeScript, and Rails.
               </p>
             </div>
           </div>
@@ -50,23 +52,23 @@ export default function AboutContact() {
         style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-subtle)' }}
         aria-labelledby="contact-heading"
       >
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[180px_1fr]">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-[160px_1fr]">
             <h2
               id="contact-heading"
-              className="text-sm font-semibold uppercase tracking-widest"
-              style={{ color: 'var(--fg-subtle)' }}
+              className="text-2xl font-bold tracking-tight"
+              style={{ color: 'var(--fg)' }}
             >
-              Contact
+              Get in touch
             </h2>
 
             <div>
               <p
-                className="mb-8 max-w-xl text-base leading-relaxed"
+                className="mb-8 max-w-lg text-base leading-relaxed"
                 style={{ color: 'var(--fg-muted)' }}
               >
-                Looking for Senior Software Engineering roles focused on SaaS, internal tools,
-                business systems, and product engineering.
+                If you&apos;re hiring or just want to talk about a project, my inbox is open.
+                The best way to reach me is LinkedIn or email.
               </p>
 
               <div className="flex flex-wrap gap-3">

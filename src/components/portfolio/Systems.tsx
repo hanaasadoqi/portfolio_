@@ -61,13 +61,13 @@ export default function Systems() {
         <div className="mb-12 flex flex-col gap-2">
           <h2
             id="systems-heading"
-            className="text-sm font-semibold uppercase tracking-widest"
-            style={{ color: 'var(--fg-subtle)' }}
+            className="text-2xl font-bold tracking-tight"
+            style={{ color: 'var(--fg)' }}
           >
-            Architecture & Systems Thinking
+            How I think about systems
           </h2>
           <p className="max-w-xl text-sm leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
-            How I connect technical decisions to the business problems they solve.
+            The patterns I reach for and why — not as doctrine, but as a starting point.
           </p>
         </div>
 

@@ -3,9 +3,8 @@
 import { useTheme } from './ThemeProvider'
 
 const links = [
-  { href: '#experience', label: 'Experience' },
-  { href: '#case-studies', label: 'Case Studies' },
-  { href: '#systems', label: 'Systems' },
+  { href: '#experience', label: 'Work' },
+  { href: '#projects', label: 'Projects' },
   { href: '#writing', label: 'Writing' },
   { href: '#about', label: 'About' },
   { href: '#contact', label: 'Contact' },
@@ -28,7 +27,7 @@ export default function Nav() {
           className="text-sm font-semibold tracking-tight"
           style={{ color: 'var(--fg)' }}
         >
-          Hanaa El Habbal
+          hanaa<span style={{ color: 'var(--accent)' }}>.</span>
         </a>
 
         <ul className="hidden items-center gap-6 md:flex" role="list">

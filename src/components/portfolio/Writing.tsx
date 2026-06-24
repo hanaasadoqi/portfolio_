@@ -65,14 +65,17 @@ export default function Writing() {
       style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-subtle)' }}
       aria-labelledby="writing-heading"
     >
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-3xl px-6">
         <h2
           id="writing-heading"
-          className="mb-12 text-sm font-semibold uppercase tracking-widest"
-          style={{ color: 'var(--fg-subtle)' }}
+          className="mb-1 text-2xl font-bold tracking-tight"
+          style={{ color: 'var(--fg)' }}
         >
-          Technical Writing
+          Things I&apos;m writing about
         </h2>
+        <p className="mb-12 text-sm" style={{ color: 'var(--fg-muted)' }}>
+          Mostly architecture decisions, hard lessons, and stuff I couldn&apos;t find written down anywhere else.
+        </p>
 
         <div className="space-y-0">
           {articles.map(article => (
