@@ -1,51 +1,51 @@
 const systemCards = [
   {
-    title: 'Data isolation at scale',
+    title: 'Model the real workflow first',
     description:
-      'When one codebase serves many customers, data safety is foundational. Schema design, row-level filtering, and tenant context matter.',
-    businessContext: 'Trust breaks if data bleeds between customers.',
+      'Before writing code, understand the actual process — who does what, in what order, under what conditions. Software that ignores real workflow creates workarounds.',
+    businessContext: 'The most common reason internal tools fail is that they model the ideal, not the real.',
   },
   {
-    title: 'Permissions as architecture',
+    title: 'Permissions are product decisions',
     description:
-      'Who can see and do what should be clear in your data model, not bolted on later. Permissions shape how users think about data.',
-    businessContext: 'Bad permission design leads to security incidents and customer frustration.',
+      'Who can see and do what is not a security checkbox — it shapes how users understand the system. Design it early, in the data model, not the UI layer.',
+    businessContext: 'Retrofitting permissions onto existing data is expensive and brittle.',
   },
   {
-    title: 'Traceability by design',
+    title: 'Reliability is a user experience',
     description:
-      'Audit logs aren\'t compliance theater. They answer: who changed this, when, and why? Build them in from the start.',
-    businessContext: 'Saves debugging, answers customer questions, and satisfies audits.',
+      'A system that is technically correct but unreliable erodes trust fast. Consistency, predictable behavior, and graceful failure are features, not extras.',
+    businessContext: 'Users stop using tools they can\'t trust, even if the alternative is worse.',
   },
   {
-    title: 'Rules that change',
+    title: 'Edge cases reveal the system',
     description:
-      'Business rules evolve: tax rates, payroll regulations, compliance requirements. Your system needs to remember which rules applied when.',
-    businessContext: 'Retroactive corrections should be possible, not a disaster.',
+      'The weird cases — partial failures, concurrent edits, retroactive corrections — tell you whether your model is actually right. Don\'t defer them.',
+    businessContext: 'Edge cases in production are expensive. Edge cases in design are just thinking.',
   },
   {
-    title: 'Operational leverage',
+    title: 'Internal tools deserve care',
     description:
-      'Internal tools that save teams hours every day compound. They\'re not "tech debt" — they\'re revenue multipliers.',
-    businessContext: 'A well-built internal tool is arguably more valuable than a product.',
+      'Internal tools that save hours every day have compounding value. They don\'t need a beautiful interface, but they need to be trustworthy and maintainable.',
+    businessContext: 'The line between "internal tool" and "core product" is thinner than people admit.',
   },
   {
-    title: 'Automation, not magic',
+    title: 'Auditability creates trust',
     description:
-      'Workflows and background jobs should be understandable. State machines and event logs make complex processes inspectable.',
-    businessContext: 'When things go wrong, you need to know why. Invisible automation is a liability.',
+      'Knowing who changed what, when, and why is useful for debugging, compliance, and customer conversations. Build it in from the start.',
+    businessContext: 'You will always need this eventually. Adding it retroactively is much harder.',
   },
   {
-    title: 'Write once, read always',
+    title: 'Documentation is part of the product',
     description:
-      'Architecture decisions and trade-offs should be written down. New engineers, future you, and customers all benefit.',
-    businessContext: 'Institutional knowledge shouldn\'t depend on who\'s in the Slack.',
+      'Decision records, API docs, and runbooks are not optional polish. They reduce onboarding time, prevent mistakes, and keep context alive as teams grow.',
+    businessContext: 'Institutional knowledge that lives only in people\'s heads is a liability.',
   },
   {
-    title: 'Ship > perfect',
+    title: 'Ship useful before perfect',
     description:
-      'Fast iteration beats extensive planning. User feedback changes everything. But don\'t skip the thinking.',
-    businessContext: 'Knowing when to say no is as important as knowing what to build.',
+      'A working system that solves the real problem is more valuable than an elegant system that solves a theoretical one. Iterate on real feedback.',
+    businessContext: 'Knowing when to stop building is as important as knowing what to build.',
   },
 ]
 
@@ -67,7 +67,7 @@ export default function Systems() {
             How I think about systems
           </h2>
           <p className="max-w-xl text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
-            The patterns I reach for and why — not as doctrine, but as a starting point.
+            Things I keep coming back to — not rules, just patterns that tend to matter.
           </p>
         </div>
 

@@ -21,19 +21,21 @@ export default function AboutContact() {
 
           <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_300px]">
             {/* Text content */}
-            <div className="space-y-6 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
+            <div className="space-y-5 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
               <p>
-                I got into engineering because I genuinely enjoy making things work. There&apos;s something
-                satisfying about diagnosing a production issue and shipping the fix. I obsess over how systems
-                actually work, not just the theory.
+                I&apos;ve always been drawn to systems. As a kid, that meant fantasy worlds — characters,
+                histories, rules, governments, and the tiny details that made fictional places feel real.
+                In college, it became mechanical engineering and building systems: HVAC, plumbing,
+                coordination, constraints, and the physical infrastructure people depend on.
               </p>
               <p>
-                I think about permissions, workflows, reliability. I like building software that people depend on,
-                even if nobody outside the company hears about it. Right now I&apos;m building Generafi and
-                Synapcity, applying everything I learned from internal systems into products.
+                Eventually I learned to code and realized software was another version of the same thing.
               </p>
-              <p style={{ color: 'var(--fg)' }}>
-                Outside of work: coffee, systems thinking, my dog Bowie, exploring Brooklyn.
+              <p>
+                Now I&apos;m most interested in software where product and operations meet: workflows,
+                permissions, audit trails, internal tools, and the unglamorous details that make systems
+                reliable. Right now that means Generafi and Synapcity — and looking for product engineering,
+                full-stack, frontend, and project engineer roles where that kind of thinking is useful.
               </p>
             </div>
 
@@ -67,8 +69,8 @@ export default function AboutContact() {
                 className="mb-8 max-w-lg text-base leading-relaxed"
                 style={{ color: 'var(--fg-muted)' }}
               >
-                If you&apos;re hiring or just want to talk about a project, my inbox is open.
-                The best way to reach me is LinkedIn or email.
+                If you&apos;re hiring for product engineering, full-stack, frontend, or project engineer
+                roles — or want to talk about workflow-heavy software — I&apos;d love to connect.
               </p>
 
               <div className="flex flex-wrap gap-3">

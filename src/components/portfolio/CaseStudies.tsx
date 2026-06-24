@@ -13,57 +13,57 @@ interface CaseStudy {
 }
 
 const featured = {
-  title: 'Generafi — Rebuilding Accounting & Payroll for Modern SaaS',
-  subtitle: 'Multi-tenant platform for Moroccan SMB payroll, accounting, and compliance',
-  status: 'Architecture demo in progress',
+  title: 'Generafi — Rebuilding accounting & payroll for modern Moroccan businesses',
+  subtitle: 'A rebuild of a legacy product into a multi-tenant SaaS with a compliance-first architecture',
+  status: 'Active rebuild — architecture in progress',
   statusVariant: 'in-progress' as StatusVariant,
   problem:
-    'Moroccan SMBs rely on spreadsheets and legacy DOS software for payroll and accounting. They need modern, compliant SaaS that understands local tax regulations (CNSS, withholding, social contributions) without requiring an accountant.',
+    'The existing product is a legacy DOS-era system that Moroccan SMBs still rely on for payroll and accounting. It works, but it\'s brittle, hard to maintain, and difficult to extend. There\'s no multi-tenancy, no audit trail, no real permissions model, and no path to compliance with evolving Moroccan tax and social contribution requirements (CNSS, IR, IS).',
   solution:
-    'Rebuilding a legacy accounting system as a modern multi-tenant SaaS platform. Focus on compliance-first architecture, user-friendly workflows, audit trails, and PDF reporting that actually works for how Moroccan businesses operate.',
+    'Rebuilding the system from scratch as a modern multi-tenant SaaS. The goal is not to add features — it\'s to get the foundations right: data isolation, versioned payroll rules, a permissions model that reflects real org structures, audit logs that are useful rather than decorative, and PDF exports that match what Moroccan accountants actually need.',
   role:
-    'Solo product architect and engineer. Responsible for all technical decisions: data modeling, RBAC design, compliance workflows, UI/UX, and infrastructure.',
+    'Solo product architect and engineer. Responsible for all decisions: data modeling, RBAC design, payroll rule engine, compliance workflows, UI, and infrastructure.',
   challenges: [
-    'Multi-tenant data isolation with strict compliance requirements',
-    'Payroll rule versioning and recalculation engine for retroactive changes',
-    'CNSS/tax compliance workflows embedded in product UX',
-    'Audit logs as a first-class architectural concern',
-    'Building for regulations that are still evolving',
+    'Multi-tenant data isolation with per-tenant configuration and compliance boundaries',
+    'Payroll rule versioning — rules change, but past calculations need to stay correct',
+    'CNSS, IR, and IS compliance workflows that are part of the product, not bolted on',
+    'Audit logs as a first-class concern, not an afterthought',
+    'Designing for regulations that are still evolving',
   ],
-  techStack: ['Rails', 'React + TypeScript', 'PostgreSQL', 'Multi-tenancy patterns', 'Stripe billing'],
+  techStack: ['Rails API', 'React + TypeScript', 'PostgreSQL', 'Multi-tenancy', 'RBAC', 'PDF generation'],
   learnings: [
-    'Regulated industries require compliance to be baked into architecture, not bolted on',
-    'Good audit logs save debugging, compliance audits, and customer disputes',
-    'Permission models drive how users think about data safety',
+    'Compliance has to be in the data model, not the UI layer',
+    'Audit logs earn trust — they also make debugging and disputes much easier',
+    'Permissions shape how users think about data. Getting them wrong early is expensive to fix',
   ],
 }
 
 const studies: CaseStudy[] = [
   {
-    title: 'Blog — Custom MDX Site',
-    status: 'Live project',
-    statusVariant: 'shipped',
-    problem:
-      'My original portfolio had a blog, but it was tangled with the site. I wanted to build a separate blog experience with custom MDX components and better content ergonomics.',
-    role:
-      'Full-stack engineer. Designed the content model, built custom MDX components, and implemented a clean separation between the portfolio and blog.',
-    focus: ['Next.js 16', 'MDX', 'TypeScript', 'Custom components', 'Content strategy'],
-    proof: 'Demonstrates full-stack thinking: from content modeling to component design to deployment.',
-    ctaLabel: 'View blog at blog.hanaasadoqi.dev',
-    ctaHref: 'https://blog.hanaasadoqi.dev',
-  },
-  {
-    title: 'Synapcity — Team Knowledge Platform',
-    status: 'Concept validation',
+    title: 'Synapcity — Team knowledge & workflow platform',
+    status: 'Early validation',
     statusVariant: 'concept',
     problem:
-      'Teams lose institutional memory across tools. Decisions, tasks, and context are scattered across Notion, Slack, Jira, and email with no unified structure.',
+      'Teams accumulate knowledge but lose access to it. Decisions get buried in Slack, context lives in people\'s heads, and new contributors spend weeks reconstructing what already exists. The tools teams use don\'t talk to each other in any meaningful way.',
     role:
-      'Product and engineering lead. Scoping the MVP, validating assumptions before building, and documenting architecture decisions.',
-    focus: ['Product architecture', 'Workflow design', 'Validation-first scope', 'Knowledge graph', 'Permission model'],
-    proof: 'Intentionally not production-ready. Focus is on product thinking, architecture decisions, and validation milestones.',
-    ctaLabel: 'View validation notes',
+      'Product and engineering lead. Focused on scoping the core knowledge model, validating the problem before building, and thinking through permissions, search, and collaboration architecture.',
+    focus: ['Knowledge structure', 'Collaboration', 'Permissions', 'Search & discovery', 'Team workflows', 'Reducing information sprawl'],
+    proof: 'Not launched. The current focus is on product thinking, architecture decisions, and validating whether the core problem is worth solving.',
+    ctaLabel: 'View notes',
     ctaHref: '#',
+  },
+  {
+    title: 'Blog — Custom MDX publishing site',
+    status: 'Live',
+    statusVariant: 'shipped',
+    problem:
+      'The original portfolio had a blog section, but it was tightly coupled to the site. I wanted a dedicated writing space with more control over how content is presented — custom components, interactive elements, annotated code, and flashcard-style learning blocks.',
+    role:
+      'Full-stack. Designed the content model, built custom MDX components, and separated the blog into its own deployable at blog.hanaasadoqi.dev.',
+    focus: ['Next.js 16', 'MDX', 'Custom components', 'Content modeling', 'TypeScript'],
+    proof: 'The blog itself is the artifact — a system that gives me full control over how I write and teach.',
+    ctaLabel: 'blog.hanaasadoqi.dev',
+    ctaHref: 'https://blog.hanaasadoqi.dev',
   },
 ]
 
@@ -92,7 +92,7 @@ export default function CaseStudies() {
           Projects
         </h2>
         <p className="mb-16 text-sm" style={{ color: 'var(--fg-muted)' }}>
-          Some shipped, some in progress, some still just a good idea.
+          Some in active development, some still being validated. None of these are inflated.
         </p>
 
         {/* Featured Project */}

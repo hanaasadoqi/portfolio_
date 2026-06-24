@@ -42,10 +42,10 @@ const articles: Article[] = [
     href: '#',
   },
   {
-    title: 'Lessons from Repositioning a Developer Portfolio for Senior Roles',
+    title: 'What I changed about this portfolio and why',
     summary:
-      'What changes when you stop optimizing for "showing everything" and start optimizing for credibility, clarity, and hiring signal.',
-    tags: ['Career', 'Portfolio', 'Senior SWE'],
+      'Rebuilding a portfolio from scratch forces some honest questions: what am I actually good at, what am I trying to say, and what should I leave out.',
+    tags: ['Career', 'Portfolio', 'Writing'],
     status: 'Planned',
     href: '#',
   },
@@ -74,7 +74,7 @@ export default function Writing() {
           Things I&apos;m writing about
         </h2>
         <p className="mb-16 text-base" style={{ color: 'var(--fg-muted)' }}>
-          Mostly architecture decisions, hard lessons, and stuff I couldn&apos;t find written down anywhere else.
+          Architecture decisions, trade-offs I had to think through, and things I wanted written down somewhere.
         </p>
 
         <div className="space-y-0">

@@ -2,18 +2,19 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="mx-auto max-w-5xl px-6 pb-24 pt-32"
+      className="mx-auto max-w-5xl px-6 pt-32 pb-28"
       aria-labelledby="hero-heading"
     >
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_280px] items-start">
+      <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_260px] items-center">
+        {/* Text */}
         <div>
           <p
-            className="mb-4 text-sm font-medium"
+            className="mb-5 text-sm font-medium"
             style={{ color: 'var(--fg-muted)' }}
           >
-            Hi, I&apos;m Hanaa
+            Hi, I&apos;m Hanaa&nbsp;
             <span
-              className="ml-2 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold"
+              className="inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold"
               style={{ backgroundColor: 'var(--accent-muted)', color: 'var(--accent)' }}
             >
               Brooklyn, NY
@@ -22,74 +23,75 @@ export default function Hero() {
 
           <h1
             id="hero-heading"
-            className="mb-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl"
+            className="mb-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl text-balance"
             style={{ color: 'var(--fg)' }}
           >
-            I build software.
+            I build systems that make messy work easier.
           </h1>
 
           <p
-            className="mb-8 text-base leading-relaxed"
+            className="mb-4 max-w-xl text-base leading-relaxed"
             style={{ color: 'var(--fg-muted)' }}
           >
-            Full-stack engineer focused on workflow, reliability, and systems that make sense.
+            I&apos;m a software engineer drawn to workflow-heavy products, internal tools, and operational
+            systems — the kind where people, rules, data, and edge cases all have to fit together.
           </p>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-3">
-            {/* Primary CTA */}
+          <p
+            className="mb-10 max-w-xl text-sm leading-relaxed"
+            style={{ color: 'var(--fg-subtle)' }}
+          >
+            Before software, I designed building systems. Before that, I built fictional worlds.
+            The medium changed, but the obsession stayed the same: how complex things work.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="#projects"
+              className="inline-flex items-center rounded-md px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              style={{ backgroundColor: 'var(--accent)' }}
+            >
+              View Projects
+            </a>
             <a
               href="/Hanaa_Sadoqi_Resume.pdf"
               download
-              className="inline-flex items-center justify-center sm:justify-start rounded-md px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-              style={{ backgroundColor: 'var(--accent)' }}
+              className="inline-flex items-center rounded-md border px-5 py-2.5 text-sm font-semibold transition-opacity hover:opacity-80"
+              style={{ borderColor: 'var(--border)', color: 'var(--fg)', backgroundColor: 'var(--bg-card)' }}
             >
               Download Resume
             </a>
-
             <span
               className="hidden h-4 w-px sm:block"
               style={{ backgroundColor: 'var(--border)' }}
               aria-hidden="true"
             />
-
-            {/* Social links */}
-            <div className="flex gap-4 justify-center sm:justify-start">
-              <a
-                href="https://github.com/hanaasadoqi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm transition-opacity hover:opacity-80"
-                style={{ color: 'var(--fg-muted)' }}
-              >
-                GitHub
-              </a>
-              <a
-                href="https://linkedin.com/in/hanaa-el-habbal"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm transition-opacity hover:opacity-80"
-                style={{ color: 'var(--fg-muted)' }}
-              >
-                LinkedIn
-              </a>
-            </div>
+            <a
+              href="https://github.com/hanaasadoqi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm transition-opacity hover:opacity-80"
+              style={{ color: 'var(--fg-muted)' }}
+            >
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/hanaa-el-habbal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm transition-opacity hover:opacity-80"
+              style={{ color: 'var(--fg-muted)' }}
+            >
+              LinkedIn
+            </a>
           </div>
-
-          {/* Scroll to projects */}
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-1.5 mt-8 text-sm font-medium transition-opacity hover:opacity-80"
-            style={{ color: 'var(--fg-muted)' }}
-          >
-            See what I&apos;m building
-            <span aria-hidden="true">&darr;</span>
-          </a>
         </div>
 
         {/* Headshot */}
-        <div className="flex justify-center md:justify-end">
+        <div className="flex justify-center md:justify-end order-first md:order-last">
           <div
-            className="w-64 h-64 rounded-lg overflow-hidden border"
+            className="w-52 h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden border"
             style={{ borderColor: 'var(--border)' }}
           >
             <img

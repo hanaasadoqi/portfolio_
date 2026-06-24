@@ -5,10 +5,10 @@ const roles = [
     period: '2021 — 2023',
     tags: ['Rails', 'React', 'TypeScript', 'SQL', 'Internal Tools'],
     bullets: [
-      'Worked on internal systems that merchandising and operations teams relied on daily. Diagnosed data issues, fixed production bugs, and improved critical workflows.',
-      'Owned features end-to-end: scoping, implementation, QA, and documentation. Learned how to ship at pace while maintaining system reliability.',
-      'Collaborated with Product, Merchandising, and IT teams to understand their workflows and translate them into technical solutions.',
-      'Maintained and refactored legacy systems. Wrote documentation and built tooling that made the codebase easier for future engineers.',
+      'Worked on internal systems used by merchandising and business teams — production support, bug fixes, data quality issues, workflow improvements, SQL debugging, and performance bottlenecks.',
+      'Investigated and resolved production issues across internal merchandising workflows, including broken records, data inconsistencies, and query errors with real business impact.',
+      'Improved reliability and usability of internal tools through targeted bug fixes, flow improvements, and performance tuning.',
+      'Collaborated with cross-functional partners in Merchandising, Product, and IT to understand business context and translate it into technical remediation.',
     ],
   },
   {
