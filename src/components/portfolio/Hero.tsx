@@ -95,18 +95,12 @@ export default function Hero() {
 
           {/* Description */}
           <p
-            className="mb-2 text-sm leading-relaxed"
+            className="mb-8 text-sm leading-relaxed"
             style={{ color: 'var(--fg-muted)' }}
           >
             Software engineer working on workflow-heavy products, internal tools, and
             operational systems — the kind where people, rules, data, and edge cases all
             have to fit together.
-          </p>
-          <p
-            className="mb-8 text-xs leading-relaxed"
-            style={{ color: 'var(--fg-subtle)' }}
-          >
-            Open to Product Engineer, Full-Stack, Frontend, and Project Engineer roles.
           </p>
 
           {/* CTAs */}
@@ -211,18 +205,12 @@ export default function Hero() {
 
             {/* Description */}
             <p
-              className="mb-2 max-w-lg text-base leading-relaxed"
+              className="mb-10 max-w-lg text-base leading-relaxed"
               style={{ color: 'var(--fg-muted)' }}
             >
               Software engineer working on workflow-heavy products, internal tools, and
               operational systems — the kind where people, rules, data, and edge cases
               all have to fit together.
-            </p>
-            <p
-              className="mb-10 max-w-lg text-sm leading-relaxed"
-              style={{ color: 'var(--fg-subtle)' }}
-            >
-              Open to Product Engineer, Full-Stack, Frontend, and Project Engineer roles.
             </p>
 
             {/* Actions */}
