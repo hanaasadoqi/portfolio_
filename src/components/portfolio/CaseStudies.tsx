@@ -263,10 +263,12 @@ export default function CaseStudies() {
                     style={{ color: 'var(--accent)' }}
                   >
                     {study.ctaLabel} &rarr;
-                </a>
-              </article>
-            )
-          })}
+                  </a>
+                </div>
+                </article>
+              )
+            })}
+            </div>
           </div>
         </div>
 
