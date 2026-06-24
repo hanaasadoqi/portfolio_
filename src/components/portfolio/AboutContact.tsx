@@ -6,40 +6,39 @@ export default function AboutContact() {
       {/* About */}
       <section
         id="about"
-        className="border-t py-20"
+        className="border-t py-24"
         style={{ borderColor: 'var(--border)' }}
         aria-labelledby="about-heading"
       >
-          <div className="mx-auto max-w-3xl px-6">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_280px]">
-            <div>
-              <h2
-                id="about-heading"
-                className="text-3xl font-bold tracking-tight mb-6"
-                style={{ color: 'var(--fg)' }}
-              >
-                A bit about me
-              </h2>
+        <div className="mx-auto max-w-4xl px-6">
+          <h2
+            id="about-heading"
+            className="text-3xl font-bold tracking-tight mb-12"
+            style={{ color: 'var(--fg)' }}
+          >
+            A bit about me
+          </h2>
 
-              <div className="space-y-4 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
+          <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_300px]">
+            {/* Text content */}
+            <div className="space-y-6 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
               <p>
-                I&apos;m based in Brooklyn. I got into engineering because I genuinely enjoy making things work.
-                There&apos;s something satisfying about diagnosing a production issue and shipping the fix. I obsess
-                over how systems actually work, not just the theory.
+                I got into engineering because I genuinely enjoy making things work. There&apos;s something
+                satisfying about diagnosing a production issue and shipping the fix. I obsess over how systems
+                actually work, not just the theory.
               </p>
               <p>
                 I think about permissions, workflows, reliability. I like building software that people depend on,
-                even if nobody outside the company hears about it. Right now I&apos;m building Generafi (payroll
-                for SMBs) and Synapcity, applying everything I learned from internal systems into products.
+                even if nobody outside the company hears about it. Right now I&apos;m building Generafi and
+                Synapcity, applying everything I learned from internal systems into products.
               </p>
               <p style={{ color: 'var(--fg)' }}>
-                Outside of work: coffee, reading about systems design, hanging with my dog Bowie, exploring Brooklyn.
+                Outside of work: coffee, systems thinking, my dog Bowie, exploring Brooklyn.
               </p>
-              </div>
             </div>
 
             {/* Photo carousel */}
-            <div className="flex justify-center md:justify-end">
+            <div className="flex justify-center md:sticky md:top-32">
               <PhotoCarousel />
             </div>
           </div>

@@ -12,34 +12,34 @@ interface Photo {
 // Curated selection of photos for the carousel
 const photos: Photo[] = [
   {
+    src: '/images/profile_picture.png',
+    alt: 'Hanaa',
+    title: 'That\'s me',
+    description: 'Brooklyn-based, coffee-fueled.',
+  },
+  {
     src: '/images/about/bowie.png',
     alt: 'Bowie',
     title: 'Bowie',
-    description: 'My dog. Unconditionally supportive of all my decisions.',
+    description: 'Best decision maker I know.',
   },
   {
     src: '/images/about/brooklyn_bridge.png',
     alt: 'Brooklyn Bridge',
     title: 'Brooklyn',
-    description: 'Where I live. Great coffee, great people, great energy.',
+    description: 'Home. I live here.',
   },
   {
     src: '/images/about/morocco.webp',
     alt: 'Morocco',
     title: 'Morocco',
-    description: 'Where I\'m from. Always on my mind.',
-  },
-  {
-    src: '/images/about/marrakech.jpg',
-    alt: 'Marrakech',
-    title: 'Marrakech',
-    description: 'The medina. Organized chaos.',
+    description: 'Where I\'m from.',
   },
   {
     src: '/images/about/mechanical_plans.png',
     alt: 'Mechanical Engineering',
     title: 'Before Code',
-    description: 'Used to work in mechanical engineering. Still love systems thinking.',
+    description: 'Systems thinking started here.',
   },
 ]
 
@@ -89,13 +89,15 @@ export default function PhotoCarousel() {
 
       {/* Dots indicator */}
       {photos.length > 1 && (
-        <div className="flex gap-1.5 justify-center">
+        <div className="flex gap-2 justify-center">
           {photos.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrent(idx)}
-              className="w-1.5 h-1.5 rounded-full transition-all duration-300"
+              className="rounded-full transition-all duration-300 hover:scale-125"
               style={{
+                width: idx === current ? '24px' : '8px',
+                height: '8px',
                 backgroundColor:
                   idx === current ? 'var(--accent)' : 'var(--border)',
               }}
