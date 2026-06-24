@@ -1,10 +1,16 @@
-import { FC } from 'react'
 import AboutItemList from './AboutItemList'
 import AboutItemCard from './AboutItemCard'
 import aboutData from '@/app/lib/data/aboutData.json'
 
-const AboutContainer: FC = async () => {
-  const assets = aboutData
+export default async function AboutContainer() {
+  const assets = aboutData.map(asset => ({
+    alt: null,
+    srcSet: "",
+    aspectRatio: "1/1",
+    sizes: "",
+    poster: "Hanaa",
+    ...asset,
+  }))
 
   return (
     <div className="relative mx-auto w-full text-left space-y-8">
@@ -51,7 +57,5 @@ const AboutContainer: FC = async () => {
     </div>
   )
 }
-
-export default AboutContainer;
 
 

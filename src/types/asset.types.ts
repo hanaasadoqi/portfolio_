@@ -100,8 +100,9 @@ export type ImageAsset = Pick<Asset, "id" | "title" | "description" | "src" | "a
 };
 
 // VideoAsset Type
-export type VideoAsset = Omit<Asset, "alt" | "path" | "aspectRatio" | "category" | "srcSet"> & {
+export type VideoAsset = Omit<Asset, "alt" | "path" | "aspectRatio" | "category" | "srcSet" | "id"> & {
   type: string | null;
+  id: string | number;
 };
 
 // AboutAsset Type
