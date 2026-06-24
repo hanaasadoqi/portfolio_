@@ -54,12 +54,12 @@ export default function Experience() {
     >
       <h2
         id="experience-heading"
-        className="mb-1 text-2xl font-bold tracking-tight"
+        className="mb-2 text-3xl font-bold tracking-tight"
         style={{ color: 'var(--fg)' }}
       >
         Where I&apos;ve worked
       </h2>
-      <p className="mb-12 text-sm" style={{ color: 'var(--fg-muted)' }}>
+      <p className="mb-16 text-base" style={{ color: 'var(--fg-muted)' }}>
         In rough order of how much I learned.
       </p>
 

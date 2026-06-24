@@ -12,7 +12,7 @@ export default function AboutContact() {
           <div className="grid grid-cols-1 gap-12 md:grid-cols-[160px_1fr]">
             <h2
               id="about-heading"
-              className="text-2xl font-bold tracking-tight"
+              className="text-3xl font-bold tracking-tight"
               style={{ color: 'var(--fg)' }}
             >
               A bit about me
@@ -56,7 +56,7 @@ export default function AboutContact() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[160px_1fr]">
             <h2
               id="contact-heading"
-              className="text-2xl font-bold tracking-tight"
+              className="text-3xl font-bold tracking-tight"
               style={{ color: 'var(--fg)' }}
             >
               Get in touch

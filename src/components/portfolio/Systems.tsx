@@ -58,15 +58,15 @@ export default function Systems() {
       aria-labelledby="systems-heading"
     >
       <div className="mx-auto max-w-5xl px-6">
-        <div className="mb-12 flex flex-col gap-2">
+        <div className="mb-16 flex flex-col gap-2">
           <h2
             id="systems-heading"
-            className="text-2xl font-bold tracking-tight"
+            className="mb-1 text-3xl font-bold tracking-tight"
             style={{ color: 'var(--fg)' }}
           >
             How I think about systems
           </h2>
-          <p className="max-w-xl text-sm leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
+          <p className="max-w-xl text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
             The patterns I reach for and why — not as doctrine, but as a starting point.
           </p>
         </div>

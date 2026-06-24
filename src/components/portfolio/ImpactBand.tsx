@@ -1,8 +1,8 @@
 const facts = [
-  { value: '5+', label: 'years writing production software' },
-  { value: '300 hrs', label: 'saved per month with one internal tool at Stitch Fix' },
+  { value: '3', label: 'production teams supported with internal tooling at Stitch Fix' },
+  { value: '1000+', label: 'daily active users across internal systems I maintained' },
   { value: '40+', label: 'engineers mentored through full-stack curriculum' },
-  { value: 'Rails + React', label: 'primary stack, comfortable with whatever fits the problem' },
+  { value: '2', label: 'SaaS platforms designed and built end-to-end (Synapcity, Generafi)' },
 ]
 
 export default function ImpactBand() {

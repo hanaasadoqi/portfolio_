@@ -12,6 +12,32 @@ interface CaseStudy {
   ctaHref: string
 }
 
+const featured = {
+  title: 'Generafi — Moroccan Accounting & Payroll Platform',
+  subtitle: 'Multi-tenant SaaS for SMB payroll, accounting, and compliance',
+  status: 'Architecture demo in progress',
+  statusVariant: 'in-progress' as StatusVariant,
+  problem:
+    'Moroccan SMBs lack affordable, modern payroll and accounting software. Most rely on spreadsheets or legacy tools not designed for local regulations (CNSS, tax withholding, social contributions).',
+  solution:
+    'Building a multi-tenant SaaS platform that handles payroll calculations, compliance workflows, audit trails, and PDF reporting for Moroccan businesses.',
+  role:
+    'Solo product architect and engineer. Designing the entire system from data model to UI, with emphasis on RBAC, auditability, and compliance.',
+  challenges: [
+    'Multi-tenant data isolation and RBAC',
+    'Payroll rule versioning and calculation engine',
+    'CNSS/tax compliance workflows',
+    'PDF generation and audit logs',
+    'Timezone and currency handling',
+  ],
+  techStack: ['Rails', 'React + TypeScript', 'PostgreSQL', 'Multi-tenancy patterns', 'Stripe billing'],
+  learnings: [
+    'Building systems for regulated industries requires compliance-first architecture',
+    'Audit logs are not an afterthought — they should be central to data design',
+    'Proper permission models prevent 90% of security issues',
+  ],
+}
+
 const studies: CaseStudy[] = [
   {
     title: 'Stitch Fix — Internal Merchandising Tooling',
@@ -24,19 +50,6 @@ const studies: CaseStudy[] = [
     focus: ['Rails API', 'React + TypeScript', 'SQL queries', 'Cross-functional delivery', 'Documentation'],
     proof: 'Reduced workflow effort by 300+ hours/month across merchandising operations.',
     ctaLabel: 'View case study',
-    ctaHref: '#',
-  },
-  {
-    title: 'Moroccan Accounting & Payroll Platform',
-    status: 'Architecture demo in progress',
-    statusVariant: 'in-progress',
-    problem:
-      'Moroccan SMBs lack affordable, compliant payroll and accounting software. Most rely on spreadsheets or expensive legacy tools not built for local regulations.',
-    role:
-      'Solo architect and engineer. Designing the full system: multi-tenant data model, RBAC, payroll calculation engine, compliance workflows, and audit logs.',
-    focus: ['Multi-tenant SaaS', 'RBAC', 'Payroll rule versioning', 'PDF generation', 'Audit logs', 'Compliance'],
-    proof: 'Not production-ready. Requires domain and compliance validation. Designed as a portfolio architecture demo.',
-    ctaLabel: 'View architecture notes',
     ctaHref: '#',
   },
   {
@@ -61,14 +74,16 @@ const statusStyles: Record<StatusVariant, { bg: string; color: string }> = {
 }
 
 export default function CaseStudies() {
+  const featuredStyle = statusStyles[featured.statusVariant]
+  
   return (
     <section
       id="projects"
-      className="border-t py-20"
-      style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-subtle)' }}
+      className="border-t py-24"
+      style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg)' }}
       aria-labelledby="case-studies-heading"
     >
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-3xl px-6">
         <h2
           id="case-studies-heading"
           className="mb-1 text-2xl font-bold tracking-tight"
@@ -76,11 +91,103 @@ export default function CaseStudies() {
         >
           Projects
         </h2>
-        <p className="mb-12 text-sm" style={{ color: 'var(--fg-muted)' }}>
+        <p className="mb-16 text-sm" style={{ color: 'var(--fg-muted)' }}>
           Some shipped, some in progress, some still just a good idea.
         </p>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {/* Featured Project */}
+        <article
+          className="mb-20 flex flex-col rounded-lg border p-8"
+          style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
+        >
+          <span
+            className="mb-4 inline-flex w-fit rounded px-2 py-0.5 text-xs font-semibold"
+            style={{ backgroundColor: featuredStyle.bg, color: featuredStyle.color }}
+          >
+            {featured.status}
+          </span>
+
+          <h3
+            className="mb-1 text-2xl font-bold leading-tight"
+            style={{ color: 'var(--fg)' }}
+          >
+            {featured.title}
+          </h3>
+          <p className="mb-6 text-sm" style={{ color: 'var(--fg-muted)' }}>
+            {featured.subtitle}
+          </p>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div>
+              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--fg-subtle)' }}>
+                The problem
+              </h4>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--fg-muted)' }}>
+                {featured.problem}
+              </p>
+
+              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--fg-subtle)' }}>
+                The solution
+              </h4>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
+                {featured.solution}
+              </p>
+            </div>
+
+            <div>
+              <h4 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--fg-subtle)' }}>
+                Key challenges
+              </h4>
+              <ul className="mb-6 space-y-1.5 text-sm" style={{ color: 'var(--fg-muted)' }}>
+                {featured.challenges.map(challenge => (
+                  <li key={challenge} className="flex items-start gap-2">
+                    <span style={{ color: 'var(--accent)' }} className="mt-1 font-bold">
+                      •
+                    </span>
+                    <span>{challenge}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--fg-subtle)' }}>
+                Tech stack
+              </h4>
+              <div className="flex flex-wrap gap-1.5">
+                {featured.techStack.map(tech => (
+                  <span
+                    key={tech}
+                    className="rounded px-2 py-0.5 text-xs"
+                    style={{ backgroundColor: 'var(--badge-bg)', color: 'var(--badge-fg)' }}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t mt-6 pt-6" style={{ borderColor: 'var(--border)' }}>
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--fg-subtle)' }}>
+              Key learnings
+            </h4>
+            <ul className="space-y-2 text-sm" style={{ color: 'var(--fg-muted)' }}>
+              {featured.learnings.map(learning => (
+                <li key={learning} className="flex items-start gap-2">
+                  <span style={{ color: 'var(--accent)' }} className="mt-1 font-bold">
+                    →
+                  </span>
+                  <span>{learning}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+
+        {/* Other Projects Grid */}
+        <h3 className="mb-6 text-lg font-bold" style={{ color: 'var(--fg)' }}>
+          Other projects
+        </h3>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {studies.map(study => {
             const style = statusStyles[study.statusVariant]
             return (
@@ -89,26 +196,19 @@ export default function CaseStudies() {
                 className="flex flex-col rounded-lg border p-6"
                 style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
               >
-                {/* Status badge */}
                 <span
-                  className="mb-4 inline-flex w-fit rounded px-2 py-0.5 text-xs font-semibold"
+                  className="mb-3 inline-flex w-fit rounded px-2 py-0.5 text-xs font-semibold"
                   style={{ backgroundColor: style.bg, color: style.color }}
                 >
                   {study.status}
                 </span>
 
-                <h3
-                  className="mb-3 text-sm font-semibold leading-snug"
-                  style={{ color: 'var(--fg)' }}
-                >
+                <h4 className="mb-3 text-base font-semibold" style={{ color: 'var(--fg)' }}>
                   {study.title}
-                </h3>
+                </h4>
 
                 <div className="mb-3">
-                  <p
-                    className="mb-1 text-xs font-semibold uppercase tracking-wide"
-                    style={{ color: 'var(--fg-subtle)' }}
-                  >
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--fg-subtle)' }}>
                     Problem
                   </p>
                   <p className="text-xs leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
@@ -117,10 +217,7 @@ export default function CaseStudies() {
                 </div>
 
                 <div className="mb-3">
-                  <p
-                    className="mb-1 text-xs font-semibold uppercase tracking-wide"
-                    style={{ color: 'var(--fg-subtle)' }}
-                  >
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--fg-subtle)' }}>
                     My role
                   </p>
                   <p className="text-xs leading-relaxed" style={{ color: 'var(--fg-muted)' }}>

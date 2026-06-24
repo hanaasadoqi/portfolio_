@@ -68,12 +68,12 @@ export default function Writing() {
       <div className="mx-auto max-w-3xl px-6">
         <h2
           id="writing-heading"
-          className="mb-1 text-2xl font-bold tracking-tight"
+          className="mb-2 text-3xl font-bold tracking-tight"
           style={{ color: 'var(--fg)' }}
         >
           Things I&apos;m writing about
         </h2>
-        <p className="mb-12 text-sm" style={{ color: 'var(--fg-muted)' }}>
+        <p className="mb-16 text-base" style={{ color: 'var(--fg-muted)' }}>
           Mostly architecture decisions, hard lessons, and stuff I couldn&apos;t find written down anywhere else.
         </p>
 
