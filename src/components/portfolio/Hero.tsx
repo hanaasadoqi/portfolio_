@@ -13,18 +13,20 @@ export default function Hero() {
           <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_260px] items-center">
         {/* Text */}
         <div>
-          <p
-            className="mb-5 text-sm font-medium"
-            style={{ color: 'var(--fg-muted)' }}
-          >
-            Hi, I&apos;m Hanaa&nbsp;
+          <div className="mb-5 flex flex-col gap-2">
+            <p
+              className="text-sm font-medium"
+              style={{ color: 'var(--fg-muted)' }}
+            >
+              Hi, I&apos;m Hanaa.
+            </p>
             <span
-              className="inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold"
+              className="w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold"
               style={{ backgroundColor: 'var(--accent-muted)', color: 'var(--accent)' }}
             >
               Brooklyn, NY
             </span>
-          </p>
+          </div>
 
           <h1
             id="hero-heading"
