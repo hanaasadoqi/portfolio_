@@ -55,13 +55,13 @@ const ProjectGalleryCard: React.FC<ProjectCardProps> = ({ project, size = 'small
           </p>
 
           {/* Links Section */}
-          <div className="overflow-x-auto scrollbar-hide flex items-center gap-2">
+          {/* <div className="overflow-x-auto scrollbar-hide flex items-center gap-2">
             <ProjectLinksBar
               title={project.title}
               details={project.details}
               iconOnly
             />
-          </div>
+          </div> */}
         </div>
 
         {/* Accent border glow on hover */}
