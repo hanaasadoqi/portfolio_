@@ -66,23 +66,12 @@ export default function Hero() {
           </div>
 
           {/* Eyebrow */}
-          <div className="mb-4 flex items-center gap-2.5">
-            <span
-              className="text-sm font-medium"
-              style={{ color: 'var(--fg-muted)' }}
-            >
-              Hi, I&apos;m Hanaa.
-            </span>
-            <span
-              className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium"
-              style={{
-                backgroundColor: 'var(--accent-muted)',
-                color: 'var(--accent)',
-              }}
-            >
-              Brooklyn, NY
-            </span>
-          </div>
+          <p
+            className="mb-6 text-base font-medium"
+            style={{ color: 'var(--fg-muted)' }}
+          >
+            Hi, I&apos;m Hanaa.
+          </p>
 
           {/* Headline */}
           <h1
@@ -174,23 +163,12 @@ export default function Hero() {
           {/* Left: copy + actions */}
           <div>
             {/* Eyebrow */}
-            <div className="mb-5 flex items-center gap-3">
-              <span
-                className="text-sm font-medium"
-                style={{ color: 'var(--fg-muted)' }}
-              >
-                Hi, I&apos;m Hanaa.
-              </span>
-              <span
-                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium"
-                style={{
-                  backgroundColor: 'var(--accent-muted)',
-                  color: 'var(--accent)',
-                }}
-              >
-                Brooklyn, NY
-              </span>
-            </div>
+            <p
+              className="mb-6 text-lg font-medium"
+              style={{ color: 'var(--fg-muted)' }}
+            >
+              Hi, I&apos;m Hanaa.
+            </p>
 
             {/* Headline */}
             <h1
