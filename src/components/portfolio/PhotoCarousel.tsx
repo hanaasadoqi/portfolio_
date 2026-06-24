@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface Photo {
   src: string
@@ -40,19 +40,57 @@ const photos: Photo[] = [
 export default function PhotoCarousel() {
   const [current, setCurrent] = useState(0)
   const [showCaption, setShowCaption] = useState(false)
+  const [isInView, setIsInView] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
+  // Intersection observer to detect when carousel is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting)
+      },
+      { threshold: 0.5 }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current)
+      }
+    }
+  }, [])
+
+  // Auto-rotate only when in view
   useEffect(() => {
     if (photos.length <= 1) return
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % photos.length)
-    }, 7000)
-    return () => clearInterval(interval)
-  }, [])
+
+    if (isInView) {
+      intervalRef.current = setInterval(() => {
+        setCurrent((prev) => (prev + 1) % photos.length)
+      }, 7000)
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+      // Reset to first photo when out of view
+      setCurrent(0)
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [isInView])
 
   const photo = photos[current]
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3" ref={containerRef}>
       {/* Image with hover caption overlay */}
       <div
         className="relative w-full rounded-lg overflow-hidden border aspect-square group cursor-pointer"

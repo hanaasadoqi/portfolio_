@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 const techs = [
   { name: 'React', icon: 'react.svg' },
@@ -13,17 +13,38 @@ const techs = [
   { name: 'Tailwind CSS', icon: 'tailwindcss.svg' },
   { name: 'Docker', icon: 'docker.svg' },
   { name: 'Git', icon: 'git.svg' },
+  { name: 'Stripe', icon: 'stripe.svg' },
+  { name: 'Supabase', icon: 'supabase.svg' },
+  { name: 'Redis', icon: 'redis.svg' },
+  { name: 'AWS', icon: 'aws.svg' },
+  { name: 'MongoDB', icon: 'mongodb.svg' },
 ]
 
 export default function ImpactBand() {
-  const [rotatedTechs, setRotatedTechs] = useState(techs)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setRotatedTechs(prev => [...prev.slice(1), prev[0]])
-    }, 4000)
-    return () => clearInterval(interval)
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    let animationFrameId: number
+    let scrollAmount = 0
+
+    const animate = () => {
+      scrollAmount += 1
+      if (scrollAmount >= container.scrollWidth / 2) {
+        scrollAmount = 0
+      }
+      container.scrollLeft = scrollAmount
+      animationFrameId = requestAnimationFrame(animate)
+    }
+
+    animationFrameId = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animationFrameId)
   }, [])
+
+  // Duplicate techs for seamless loop
+  const loopedTechs = [...techs, ...techs]
 
   return (
     <section
@@ -31,27 +52,25 @@ export default function ImpactBand() {
       className="border-y"
       style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-subtle)' }}
     >
-      <div className="mx-auto max-w-3xl px-6 py-12">
-        <p
-          className="mb-6 text-center text-sm font-medium"
-          style={{ color: 'var(--fg-muted)' }}
+      <div className="py-8 overflow-hidden">
+        <div
+          ref={scrollContainerRef}
+          className="flex gap-8 px-6 overflow-x-hidden scroll-smooth"
+          style={{ scrollBehavior: 'auto' }}
         >
-          I work with
-        </p>
-        <div className="flex gap-6 justify-center items-center overflow-x-auto pb-2">
-          {rotatedTechs.slice(0, 6).map(tech => (
+          {loopedTechs.map((tech, idx) => (
             <div
-              key={tech.name}
+              key={`${tech.name}-${idx}`}
               className="flex flex-col items-center gap-2 min-w-fit opacity-75 hover:opacity-100 transition-opacity"
               title={tech.name}
             >
               <img
                 src={`/icons/${tech.icon}`}
                 alt={tech.name}
-                className="h-8 w-8 object-contain"
+                className="h-10 w-10 object-contain"
               />
               <span
-                className="text-xs font-medium text-center"
+                className="text-xs font-medium text-center whitespace-nowrap"
                 style={{ color: 'var(--fg-muted)' }}
               >
                 {tech.name}
