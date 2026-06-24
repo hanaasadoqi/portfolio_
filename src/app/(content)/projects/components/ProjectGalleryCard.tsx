@@ -12,42 +12,50 @@ interface ProjectCardProps {
 
 const ProjectGalleryCard: React.FC<ProjectCardProps> = ({ project, size = 'small' }) => {
   return (
-    <div
-      className={`relative group ${size === 'large' ? 'h-[500px]' : 'h-[250px]'
-        } w-full rounded-md shadow-md group-hover:shadow-lg group-hover:scale-105 transition-transform`}
-    >
-      <div className="relative aspect-w-16 aspect-h-9 w-full h-full">
-        <Image
-          src={`/images/${toId(project.title)}.jpg`}
-          alt={`Image for ${project.title}`}
-          fill
-          className="object-cover rounded-md"
-          sizes={
-            size === 'large'
-              ? "(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 800px"
-              : "(max-width: 768px) 100vw, (max-width: 1024px) 30vw, 400px"
-          }
-        />
-      </div>
+    <Link href={`/projects/${project.id}`}>
+      <div
+        className={`relative group cursor-pointer ${size === 'large' ? 'h-[400px] md:h-[500px]' : 'h-[250px] md:h-[300px]'
+          } w-full rounded-xl overflow-hidden transition-all duration-300 border-2 border-accent-one/20 hover:border-accent-one/50 shadow-lg hover:shadow-2xl hover:shadow-accent-one/20`}
+      >
+        {/* Background Image */}
+        <div className="relative w-full h-full">
+          <Image
+            src={`/images/${toId(project.title)}.jpg`}
+            alt={`Image for ${project.title}`}
+            fill
+            className="object-cover group-hover:scale-110 transition-transform duration-300"
+            sizes={
+              size === 'large'
+                ? "(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 800px"
+                : "(max-width: 768px) 100vw, (max-width: 1024px) 30vw, 400px"
+            }
+          />
+          
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
 
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-white/80 dark:bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center shadow-lg rounded-md group-hover:shadow-xl p-4 overflow-hidden">
-        <div className="flex flex-col justify-center items-center max-w-full max-h-full space-y-2">
+        {/* Content - positioned at bottom */}
+        <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6">
+          {/* Featured badge */}
+          {size === 'large' && (
+            <div className="mb-3 inline-flex w-fit">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-accent-one to-accent-two text-white">
+                Featured
+              </span>
+            </div>
+          )}
 
           {/* Title and Description */}
-          <Link href="/projects/[id]" as={`/projects/${project.id}`}>
-            <h2 className={clsx("mb-2 text-base md:text-lg lg:text-2xl font-bold line-clamp-2", {
-              // Additional conditional classes if needed
-            })}>
-              {project.title}
-            </h2>
-            <p className="text-sm md:text-base line-clamp-3">
-              {project.description}
-            </p>
-          </Link>
+          <h2 className="mb-2 text-lg md:text-xl lg:text-2xl font-bold text-white line-clamp-2">
+            {project.title}
+          </h2>
+          <p className="text-sm md:text-base text-gray-100 line-clamp-2 mb-3">
+            {project.description}
+          </p>
 
           {/* Links Section */}
-          <div className={clsx("overflow-x-auto max-w-full scrollbar-hide flex items-center justify-center mt-2")}>
+          <div className="overflow-x-auto scrollbar-hide flex items-center gap-2">
             <ProjectLinksBar
               title={project.title}
               details={project.details}
@@ -55,8 +63,11 @@ const ProjectGalleryCard: React.FC<ProjectCardProps> = ({ project, size = 'small
             />
           </div>
         </div>
+
+        {/* Accent border glow on hover */}
+        <div className="absolute -inset-1 bg-gradient-to-r from-accent-one to-accent-two rounded-xl opacity-0 group-hover:opacity-30 blur transition-all duration-300 -z-10 group-hover:-z-20"></div>
       </div>
-    </div>
+    </Link>
   );
 }
 
