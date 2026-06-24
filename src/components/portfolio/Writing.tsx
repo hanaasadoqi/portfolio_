@@ -1,7 +1,3 @@
-'use client'
-
-import { useState } from 'react'
-
 type ArticleStatus = 'Published' | 'Draft' | 'Planned'
 
 interface Article {
@@ -14,26 +10,26 @@ interface Article {
 
 const articles: Article[] = [
   {
-    title: 'Why I Removed Real-Time Collaboration From Synapcity',
+    title: 'Designing Multi-Tenant SaaS for Moroccan Payroll',
     summary:
-      'A case for constraint-driven product thinking: why we deliberately excluded real-time features and what that decision unlocks for early validation.',
-    tags: ['Product Thinking', 'Architecture', 'Scoping'],
+      'How I approached data isolation, per-tenant configuration, and compliance boundaries for a payroll system operating under Moroccan labor law.',
+    tags: ['Architecture', 'Multi-tenancy', 'Payroll', 'SaaS'],
     status: 'Draft',
     href: '#',
   },
   {
-    title: 'Accountants Don\'t Think About Permissions the Way Developers Do',
+    title: 'Why Real-Time Collaboration Is Not the MVP for Synapcity',
     summary:
-      'Building Generafi forced me to rethink permissions from first principles. Turns out, the RBAC mental models we inherit from software don\'t map to how businesses actually work.',
-    tags: ['Design', 'Permissions', 'User Research'],
+      'A case for constraint-driven product thinking: why we deliberately excluded real-time features and what that decision unlocks for early validation.',
+    tags: ['Product Thinking', 'Architecture', 'Scoping'],
     status: 'Planned',
     href: '#',
   },
   {
-    title: 'What Designing Building Systems Taught Me About Software',
+    title: 'Building Internal Tools That Save Operational Time',
     summary:
-      'Three principles from mechanical engineering that made me a better software engineer: constraints drive clarity, invisible systems are better than visible ones, and the edge cases always matter.',
-    tags: ['Architecture', 'Lessons Learned', 'Design'],
+      'Lessons from shipping full-stack internal tooling at Stitch Fix — what makes internal tools succeed and what kills them.',
+    tags: ['Internal Tools', 'Rails', 'React', 'Lessons Learned'],
     status: 'Draft',
     href: '#',
   },
@@ -46,18 +42,10 @@ const articles: Article[] = [
     href: '#',
   },
   {
-    title: 'Why Every Workflow Eventually Turns Into a State Machine',
+    title: 'What I changed about this portfolio and why',
     summary:
-      'Once you see it, you can\'t unsee it. Workflows, approval processes, and order management systems are all just state machines in disguise. Understanding that shapes how you build them.',
-    tags: ['Architecture', 'Systems Thinking', 'Workflows'],
-    status: 'Planned',
-    href: '#',
-  },
-  {
-    title: 'The Problem With Generic SaaS Permissions Models',
-    summary:
-      'Why RBAC is almost always wrong for real operations. What works instead, how to think about permissions as part of your domain model, and why this matters for compliance.',
-    tags: ['Permissions', 'SaaS', 'Architecture'],
+      'Rebuilding a portfolio from scratch forces some honest questions: what am I actually good at, what am I trying to say, and what should I leave out.',
+    tags: ['Career', 'Portfolio', 'Writing'],
     status: 'Planned',
     href: '#',
   },
@@ -69,22 +57,16 @@ const statusColor: Record<ArticleStatus, string> = {
   Planned: '#a8a29e',
 }
 
-const INITIAL_DISPLAY = 3
-
 export default function Writing() {
-  const [showAll, setShowAll] = useState(false)
-  const displayedArticles = showAll ? articles : articles.slice(0, INITIAL_DISPLAY)
-  const hasMore = articles.length > INITIAL_DISPLAY
-
   return (
     <section
       id="writing"
-      className="border-t py-24 md:py-32"
+      className="border-t py-32"
       style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-subtle)' }}
       aria-labelledby="writing-heading"
     >
       <div className="mx-auto max-w-5xl px-6">
-        <div className="mb-16 md:mb-20">
+        <div className="mb-20">
           <h2
             id="writing-heading"
             className="mb-3 text-3xl font-bold tracking-tight"
@@ -93,12 +75,12 @@ export default function Writing() {
             Things I&apos;m writing about
           </h2>
           <p className="text-base" style={{ color: 'var(--fg-muted)' }}>
-            Mostly about workflows, systems thinking, permissions, and the details that make software reliable.
+            Architecture decisions, trade-offs I had to think through, and things I wanted written down somewhere.
           </p>
         </div>
 
         <div className="space-y-0">
-          {displayedArticles.map(article => (
+          {articles.map(article => (
             <article
               key={article.title}
               className="group grid grid-cols-1 gap-4 border-t py-10 md:grid-cols-[120px_1fr]"
@@ -143,19 +125,6 @@ export default function Writing() {
             </article>
           ))}
         </div>
-
-        {/* Show more button */}
-        {hasMore && !showAll && (
-          <div className="flex justify-center pt-8 md:pt-12">
-            <button
-              onClick={() => setShowAll(true)}
-              className="inline-flex items-center rounded-md border px-4 py-2 text-sm font-semibold transition-colors"
-              style={{ borderColor: 'var(--border)', color: 'var(--fg)', backgroundColor: 'var(--bg-card)' }}
-            >
-              Show {articles.length - INITIAL_DISPLAY} more
-            </button>
-          </div>
-        )}
       </div>
     </section>
   )
