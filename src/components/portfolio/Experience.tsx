@@ -5,10 +5,10 @@ const roles = [
     period: '2021 — 2023',
     tags: ['Rails', 'React', 'TypeScript', 'SQL', 'Internal Tools'],
     bullets: [
-      'Worked on internal systems used by merchandising and business teams. Focused on production support: diagnosing data issues, fixing bugs, improving workflows.',
-      'Debugged data inconsistencies, broken records, and query errors. Investigated production issues and collaborated with teams to understand business impact.',
-      'Improved reliability and usability of internal tools through bug fixes, performance tuning, and workflow improvements.',
-      'Learned how real business processes operate and how to translate operational needs into technical solutions.',
+      'Worked on internal systems that merchandising and operations teams relied on daily. Diagnosed data issues, fixed production bugs, and improved critical workflows.',
+      'Owned features end-to-end: scoping, implementation, QA, and documentation. Learned how to ship at pace while maintaining system reliability.',
+      'Collaborated with Product, Merchandising, and IT teams to understand their workflows and translate them into technical solutions.',
+      'Maintained and refactored legacy systems. Wrote documentation and built tooling that made the codebase easier for future engineers.',
     ],
   },
   {
@@ -49,8 +49,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="border-t mx-auto max-w-3xl px-6 py-24"
-      style={{ borderColor: 'var(--border)' }}
+      className="mx-auto max-w-3xl px-6 py-20"
       aria-labelledby="experience-heading"
     >
       <h2
@@ -61,7 +60,7 @@ export default function Experience() {
         Where I&apos;ve worked
       </h2>
       <p className="mb-16 text-base" style={{ color: 'var(--fg-muted)' }}>
-        I&apos;ve always learned more from shipping than from planning. These roles taught me how systems work at different scales.
+        In rough order of how much I learned.
       </p>
 
       <div className="space-y-0">

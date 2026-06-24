@@ -52,15 +52,7 @@ export default function ImpactBand() {
       className="border-y"
       style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-subtle)' }}
     >
-      <div className="mx-auto max-w-6xl px-6 py-6">
-        <p
-          className="text-sm font-medium text-center"
-          style={{ color: 'var(--fg-muted)' }}
-        >
-          Tools I&apos;ve worked with
-        </p>
-      </div>
-      <div className="py-6 overflow-hidden">
+      <div className="py-8 overflow-hidden">
         <div
           ref={scrollContainerRef}
           className="flex gap-8 px-6 overflow-x-hidden scroll-smooth"
