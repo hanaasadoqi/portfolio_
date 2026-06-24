@@ -1,6 +1,5 @@
 import Nav from '@/components/portfolio/Nav'
 import Hero from '@/components/portfolio/Hero'
-import ImpactBand from '@/components/portfolio/ImpactBand'
 import Experience from '@/components/portfolio/Experience'
 import CaseStudies from '@/components/portfolio/CaseStudies'
 import Systems from '@/components/portfolio/Systems'
@@ -13,7 +12,6 @@ export default function Home() {
       <Nav />
       <main id="main-content">
         <Hero />
-        <ImpactBand />
         <CaseStudies />
         <Systems />
         <Experience />

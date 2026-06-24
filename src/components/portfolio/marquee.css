@@ -1,5 +1,5 @@
 .marquee-container {
-  --marquee-duration: 30s;
+  --marquee-duration: 35s;
   position: relative;
 }
 
@@ -10,25 +10,26 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 80px;
+  width: 100px;
   z-index: 2;
   pointer-events: none;
 }
 
 .marquee-container::before {
   left: 0;
-  background: linear-gradient(to right, var(--bg-subtle), transparent);
+  background: linear-gradient(to right, var(--bg), transparent);
 }
 
 .marquee-container::after {
   right: 0;
-  background: linear-gradient(to left, var(--bg-subtle), transparent);
+  background: linear-gradient(to left, var(--bg), transparent);
 }
 
 .marquee-track {
   display: flex;
   width: max-content;
   animation: marquee-scroll var(--marquee-duration) linear infinite;
+  padding: 0 20px;
 }
 
 .marquee-track:hover {

@@ -1,11 +1,16 @@
+import ImpactBand from './ImpactBand'
+
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="mx-auto max-w-5xl px-6 pt-32 pb-28"
+      className="relative min-h-screen flex flex-col"
       aria-labelledby="hero-heading"
     >
-      <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_260px] items-center">
+      {/* Main content — centered vertically on larger screens */}
+      <div className="flex-1 flex items-center">
+        <div className="mx-auto max-w-5xl w-full px-6 py-20">
+          <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_260px] items-center">
         {/* Text */}
         <div>
           <p
@@ -101,6 +106,13 @@ export default function Hero() {
             />
           </div>
         </div>
+      </div>
+        </div>
+      </div>
+
+      {/* Marquee at bottom — desktop only */}
+      <div className="hidden md:block border-t" style={{ borderColor: 'var(--border)' }}>
+        <ImpactBand showMarqueeOnly />
       </div>
     </section>
   )
