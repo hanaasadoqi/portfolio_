@@ -19,23 +19,20 @@ export default function AboutContact() {
             A bit about me
           </h2>
 
-          <div className="grid grid-cols-1 gap-20 md:grid-cols-[1fr_320px]">
+          <div className="grid grid-cols-1 gap-20 md:grid-cols-[1fr_300px]">
             {/* Text content */}
             <div className="space-y-5 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
               <p>
-                I&apos;ve always been drawn to systems. As a kid, that meant fantasy worlds — characters,
-                histories, rules, governments, and the tiny details that made fictional places feel real.
-                In college, it became mechanical engineering and building systems: HVAC, plumbing,
-                coordination, constraints, and the physical infrastructure people depend on.
+                I thought I wanted to be a fantasy author growing up. Looking back, I think what I really loved was worldbuilding — characters, histories, rules, governments, the way everything fit together. Later I studied mechanical engineering and designed building systems. Then I learned to code and realized software scratched the same itch.
               </p>
               <p>
-                Eventually I learned to code and realized software was another version of the same thing.
+                The obsession stayed the same across all three: how complex things work. How to make systems that are both reliable and understandable. How to build something where people actually understand why the rules exist.
               </p>
               <p>
-                Now I&apos;m most interested in software where product and operations meet: workflows,
-                permissions, audit trails, internal tools, and the unglamorous details that make systems
-                reliable. Right now that means Generafi and Synapcity — and looking for product engineering,
-                full-stack, frontend, and project engineer roles where that kind of thinking is useful.
+                Now I&apos;m most interested in software where product and operations meet: workflows, permissions, audit trails, internal tools, and the unglamorous details that make systems work. The kind of software that gives people visibility into how things actually work, not just what to do.
+              </p>
+              <p>
+                That&apos;s why Generafi and Synapcity feel right. Both are about giving people the information and tools they need to understand their own systems and make good decisions.
               </p>
             </div>
 

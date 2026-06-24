@@ -13,14 +13,14 @@ interface CaseStudy {
 }
 
 const featured = {
-  title: 'Generafi — Rebuilding accounting & payroll for modern Moroccan businesses',
-  subtitle: 'A rebuild of a legacy product into a multi-tenant SaaS with a compliance-first architecture',
-  status: 'Active rebuild — architecture in progress',
+  title: 'Generafi — Rebuilding Moroccan payroll & accounting',
+  subtitle: 'A rebuild of a legacy product into a modern multi-tenant SaaS',
+  status: 'Architecture in progress',
   statusVariant: 'in-progress' as StatusVariant,
   problem:
-    'The existing product is a legacy DOS-era system that Moroccan SMBs still rely on for payroll and accounting. It works, but it\'s brittle, hard to maintain, and difficult to extend. There\'s no multi-tenancy, no audit trail, no real permissions model, and no path to compliance with evolving Moroccan tax and social contribution requirements (CNSS, IR, IS).',
+    'The existing product is a 30-year-old system that Moroccan SMBs rely on for payroll and accounting. It works, but it\'s brittle, impossible to extend, and has no compliance path for evolving tax and social contribution requirements (CNSS, IR, IS). There\'s no multi-tenancy, no audit trail, and no permissions model.',
   solution:
-    'Rebuilding the system from scratch as a modern multi-tenant SaaS. The goal is not to add features — it\'s to get the foundations right: data isolation, versioned payroll rules, a permissions model that reflects real org structures, audit logs that are useful rather than decorative, and PDF exports that match what Moroccan accountants actually need.',
+    'Rebuilding from scratch as a modern multi-tenant SaaS. The goal is getting the foundations right: data isolation, versioned payroll rules, a permissions model that reflects actual org structures, audit logs that are useful, and PDF exports that match how Moroccan accountants actually work.',
   role:
     'Solo product architect and engineer. Responsible for all decisions: data modeling, RBAC design, payroll rule engine, compliance workflows, UI, and infrastructure.',
   challenges: [
@@ -41,15 +41,15 @@ const featured = {
 const studies: CaseStudy[] = [
   {
     title: 'Synapcity — Team knowledge & workflow platform',
-    status: 'Early validation',
+    status: 'Validating the problem',
     statusVariant: 'concept',
     problem:
-      'Teams accumulate knowledge but lose access to it. Decisions get buried in Slack, context lives in people\'s heads, and new contributors spend weeks reconstructing what already exists. The tools teams use don\'t talk to each other in any meaningful way.',
+      'Teams lose access to their own knowledge. Context lives in Slack threads and people\'s heads. New hires spend weeks reconstructing decisions that already happened. There\'s no canonical source for how things work, why they work that way, or what the actual process is versus what\'s documented.',
     role:
-      'Product and engineering lead. Focused on scoping the core knowledge model, validating the problem before building, and thinking through permissions, search, and collaboration architecture.',
-    focus: ['Knowledge structure', 'Collaboration', 'Permissions', 'Search & discovery', 'Team workflows', 'Reducing information sprawl'],
-    proof: 'Not launched. The current focus is on product thinking, architecture decisions, and validating whether the core problem is worth solving.',
-    ctaLabel: 'View notes',
+      'Building the problem validation and architecture. Focused on understanding whether this is worth solving, sketching the data model, and thinking through permissions, collaboration, and how teams actually use knowledge.',
+    focus: ['Knowledge modeling', 'Collaboration design', 'Permissions', 'Search architecture', 'Team workflows'],
+    proof: 'Early stage. Currently exploring the problem space and validating assumptions through conversations and prototyping.',
+    ctaLabel: 'Thinking notes',
     ctaHref: '#',
   },
   {

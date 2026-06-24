@@ -5,10 +5,10 @@ const roles = [
     period: '2021 — 2023',
     tags: ['Rails', 'React', 'TypeScript', 'SQL', 'Internal Tools'],
     bullets: [
-      'Worked on internal systems used by merchandising and business teams — production support, bug fixes, data quality issues, workflow improvements, SQL debugging, and performance bottlenecks.',
-      'Investigated and resolved production issues across internal merchandising workflows, including broken records, data inconsistencies, and query errors with real business impact.',
-      'Improved reliability and usability of internal tools through targeted bug fixes, flow improvements, and performance tuning.',
-      'Collaborated with cross-functional partners in Merchandising, Product, and IT to understand business context and translate it into technical remediation.',
+      'Internal systems work: production support, bug fixes, data quality issues, workflow improvements, SQL debugging, and performance bottlenecks for merchandising and operations teams.',
+      'Investigated and fixed production issues in internal merchandising workflows — broken records, data inconsistencies, query errors, and operational blockers.',
+      'Built internal tooling improvements: better error messages, flow improvements, faster queries, and features that gave non-technical teams visibility into system behavior.',
+      'Worked cross-functionally with Merchandising and Operations to understand their actual workflows and translate that into technical fixes.',
     ],
   },
   {
@@ -28,9 +28,9 @@ const roles = [
     period: '2019 — 2020',
     tags: ['Technical Leadership', 'Mentorship', 'Ruby on Rails', 'JavaScript'],
     bullets: [
-      'Led a cohort of 40+ engineering students through full-stack curriculum covering Rails, JavaScript, and React.',
-      'Provided 1:1 debugging support, code reviews, and technical guidance across projects.',
-      'Maintained high student retention and project completion rates through structured accountability.',
+      'Led a cohort of 40+ students through full-stack curriculum covering Rails, JavaScript, and React.',
+      'Provided debugging support, code reviews, and technical guidance. Helped students debug their own problems instead of handing them solutions.',
+      'Maintained accountability and project completion through structured check-ins and clear expectations.',
     ],
   },
   {
@@ -39,8 +39,8 @@ const roles = [
     period: '2018 — 2019',
     tags: ['Coaching', 'Full-Stack', 'Curriculum'],
     bullets: [
-      'Coached early-career engineers through full-stack projects and professional development milestones.',
-      'Designed and delivered technical workshops on software fundamentals and architecture.',
+      'Coached engineers through full-stack projects and technical problem-solving.',
+      'Designed technical workshops and helped coaches think through teaching strategies.',
     ],
   },
 ]
