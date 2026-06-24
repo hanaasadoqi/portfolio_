@@ -66,9 +66,10 @@ const config: Config = {
           '0 4px 6px -1px rgba(51, 65, 85, 0.1), 0 2px 4px -1px rgba(51, 65, 85, 0.06)',
       },
       fontFamily: {
-        sans: ['var(--font-poppins)', 'sans-serif'],
+        sans: ['var(--font-inter)', 'var(--font-poppins)', 'system-ui', 'sans-serif'],
         serif: ['var(--font-merriweather)', 'serif'],
         raleway: ['var(--font-raleway)', 'sans-serif'],
+        inter: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       keyframes: {
         orbit: {
