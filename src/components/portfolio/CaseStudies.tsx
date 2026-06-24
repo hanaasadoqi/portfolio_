@@ -13,28 +13,28 @@ interface CaseStudy {
 }
 
 const featured = {
-  title: 'Generafi — Rebuilding Accounting & Payroll for Modern SaaS',
-  subtitle: 'Multi-tenant platform for Moroccan SMB payroll, accounting, and compliance',
-  status: 'Architecture demo in progress',
+  title: 'Generafi — Rebuilding Accounting & Payroll for Modern Moroccan Businesses',
+  subtitle: 'A rebuild of a legacy Moroccan accounting/payroll product into a modern multi-tenant SaaS',
+  status: 'Rebuild in progress',
   statusVariant: 'in-progress' as StatusVariant,
   problem:
-    'Moroccan SMBs rely on spreadsheets and legacy DOS software for payroll and accounting. They need modern, compliant SaaS that understands local tax regulations (CNSS, withholding, social contributions) without requiring an accountant.',
+    'Moroccan SMBs are trapped between legacy DOS software and spreadsheets. They lack a modern SaaS platform that understands local payroll rules (CNSS, social contributions, tax withholding), requires no accounting background, and can audit every change.',
   solution:
-    'Rebuilding a legacy accounting system as a modern multi-tenant SaaS platform. Focus on compliance-first architecture, user-friendly workflows, audit trails, and PDF reporting that actually works for how Moroccan businesses operate.',
+    'A complete rebuild of the legacy system as modern, multi-tenant SaaS. Focus: payroll rules engine, audit trails, permissions that enforce policy, PDF exports that work, and operational workflows that match how businesses actually operate.',
   role:
-    'Solo product architect and engineer. Responsible for all technical decisions: data modeling, RBAC design, compliance workflows, UI/UX, and infrastructure.',
+    'Solo product architect and engineer. Responsible for all technical decisions: data model, multi-tenancy, RBAC, compliance workflows, rule versioning, audit design, and infrastructure.',
   challenges: [
-    'Multi-tenant data isolation with strict compliance requirements',
-    'Payroll rule versioning and recalculation engine for retroactive changes',
-    'CNSS/tax compliance workflows embedded in product UX',
-    'Audit logs as a first-class architectural concern',
-    'Building for regulations that are still evolving',
+    'Multi-tenant architecture with per-tenant data isolation and strict compliance requirements',
+    'Payroll rule versioning and retroactive recalculation engine for legal corrections',
+    'Embedding CNSS/tax compliance workflows into product UX, not as an afterthought',
+    'Audit trails as a first-class architectural concern, not a feature add-on',
+    'Designing for regulations that evolve—systems must handle retroactive changes',
   ],
-  techStack: ['Rails', 'React + TypeScript', 'PostgreSQL', 'Multi-tenancy patterns', 'Stripe billing'],
+  techStack: ['Rails', 'React + TypeScript', 'PostgreSQL', 'Multi-tenancy', 'Audit patterns'],
   learnings: [
-    'Regulated industries require compliance to be baked into architecture, not bolted on',
-    'Good audit logs save debugging, compliance audits, and customer disputes',
-    'Permission models drive how users think about data safety',
+    'Regulated industries need compliance baked into architecture, not bolted on later',
+    'Good audit logs save debugging, compliance work, and customer disputes—they pay for themselves',
+    'Permissions are product decisions: they shape how users think about data safety',
   ],
 }
 

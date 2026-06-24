@@ -2,46 +2,49 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="mx-auto max-w-5xl px-6 pb-24 pt-32"
+      className="mx-auto max-w-6xl px-6 py-32"
       aria-labelledby="hero-heading"
     >
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_280px] items-start">
+      <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_360px] items-start">
+        {/* Left: headline + copy + CTAs */}
         <div>
-          <p
-            className="mb-4 text-sm font-medium"
-            style={{ color: 'var(--fg-muted)' }}
-          >
-            Hi, I&apos;m Hanaa
-            <span
-              className="ml-2 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold"
-              style={{ backgroundColor: 'var(--accent-muted)', color: 'var(--accent)' }}
-            >
-              Brooklyn, NY
-            </span>
-          </p>
-
           <h1
             id="hero-heading"
-            className="mb-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl"
+            className="mb-8 text-5xl font-bold leading-tight tracking-tight sm:text-6xl"
             style={{ color: 'var(--fg)' }}
           >
-            I build software.
+            I build systems that make messy work easier.
           </h1>
 
-          <p
-            className="mb-8 text-base leading-relaxed"
-            style={{ color: 'var(--fg-muted)' }}
-          >
-            Full-stack engineer focused on workflow, reliability, and systems that make sense.
-          </p>
+          <div className="mb-12 space-y-5 max-w-xl">
+            <p
+              className="text-lg leading-relaxed"
+              style={{ color: 'var(--fg-muted)' }}
+            >
+              I&apos;m a software engineer drawn to workflow-heavy products, internal tools, and operational systems — the kind where people, rules, data, and edge cases all have to fit together.
+            </p>
+            <p
+              className="text-base leading-relaxed"
+              style={{ color: 'var(--fg-muted)' }}
+            >
+              Before software, I designed building systems. Before that, I built fictional worlds. The medium changed, but the obsession stayed the same: how complex things work.
+            </p>
+          </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-3">
-            {/* Primary CTA */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-2">
+            <a
+              href="#projects"
+              className="inline-flex items-center justify-center sm:justify-start rounded-md px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              style={{ backgroundColor: 'var(--accent)' }}
+            >
+              View Projects
+            </a>
+
             <a
               href="/Hanaa_Sadoqi_Resume.pdf"
               download
-              className="inline-flex items-center justify-center sm:justify-start rounded-md px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-              style={{ backgroundColor: 'var(--accent)' }}
+              className="inline-flex items-center justify-center sm:justify-start rounded-md px-5 py-2.5 text-sm font-semibold transition-colors border"
+              style={{ borderColor: 'var(--border)', color: 'var(--fg)', backgroundColor: 'var(--bg-card)' }}
             >
               Download Resume
             </a>
@@ -52,7 +55,6 @@ export default function Hero() {
               aria-hidden="true"
             />
 
-            {/* Social links */}
             <div className="flex gap-4 justify-center sm:justify-start">
               <a
                 href="https://github.com/hanaasadoqi"
@@ -74,22 +76,12 @@ export default function Hero() {
               </a>
             </div>
           </div>
-
-          {/* Scroll to projects */}
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-1.5 mt-8 text-sm font-medium transition-opacity hover:opacity-80"
-            style={{ color: 'var(--fg-muted)' }}
-          >
-            See what I&apos;m building
-            <span aria-hidden="true">&darr;</span>
-          </a>
         </div>
 
-        {/* Headshot */}
-        <div className="flex justify-center md:justify-end">
+        {/* Right: Headshot with label */}
+        <div className="flex flex-col items-center gap-4">
           <div
-            className="w-64 h-64 rounded-lg overflow-hidden border"
+            className="w-full rounded-lg overflow-hidden border aspect-square"
             style={{ borderColor: 'var(--border)' }}
           >
             <img
@@ -98,6 +90,12 @@ export default function Hero() {
               className="w-full h-full object-cover"
             />
           </div>
+          <p
+            className="text-sm text-center"
+            style={{ color: 'var(--fg-muted)' }}
+          >
+            Brooklyn, NY
+          </p>
         </div>
       </div>
     </section>
