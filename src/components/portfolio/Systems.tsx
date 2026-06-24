@@ -1,51 +1,51 @@
 const systemCards = [
   {
-    title: 'Multi-Tenancy',
+    title: 'Data isolation at scale',
     description:
-      'Row-level isolation strategies, per-tenant configuration, and shared schema vs. schema-per-tenant tradeoffs for SaaS data models.',
-    businessContext: 'Enables one codebase to serve many customers with clean data separation.',
+      'When one codebase serves many customers, data safety is foundational. Schema design, row-level filtering, and tenant context matter.',
+    businessContext: 'Trust breaks if data bleeds between customers.',
   },
   {
-    title: 'RBAC & Authorization',
+    title: 'Permissions as architecture',
     description:
-      'Role-based access control with policy layers, permission inheritance, and audit-safe enforcement across API boundaries.',
-    businessContext: 'Reduces security risk and lets teams control who can see and do what.',
+      'Who can see and do what should be clear in your data model, not bolted on later. Permissions shape how users think about data.',
+    businessContext: 'Bad permission design leads to security incidents and customer frustration.',
   },
   {
-    title: 'Audit Logs',
+    title: 'Traceability by design',
     description:
-      'Immutable event logs capturing who changed what and when, designed for compliance, debugging, and operational transparency.',
-    businessContext: 'Critical for regulated industries and internal accountability.',
+      'Audit logs aren\'t compliance theater. They answer: who changed this, when, and why? Build them in from the start.',
+    businessContext: 'Saves debugging, answers customer questions, and satisfies audits.',
   },
   {
-    title: 'Payroll Rule Versioning',
+    title: 'Rules that change',
     description:
-      'Versioned business rules for payroll calculations, allowing retroactive corrections and regulatory changes without breaking existing records.',
-    businessContext: 'Payroll rules change — the system needs to track which rules applied to which period.',
+      'Business rules evolve: tax rates, payroll regulations, compliance requirements. Your system needs to remember which rules applied when.',
+    businessContext: 'Retroactive corrections should be possible, not a disaster.',
   },
   {
-    title: 'Internal Tooling',
+    title: 'Operational leverage',
     description:
-      'Scoped, maintainable admin interfaces and operational tools that reduce manual work without the overhead of a product-grade UX.',
-    businessContext: 'Internal tools that save hundreds of hours/month have compounding ROI.',
+      'Internal tools that save teams hours every day compound. They\'re not "tech debt" — they\'re revenue multipliers.',
+    businessContext: 'A well-built internal tool is arguably more valuable than a product.',
   },
   {
-    title: 'Workflow Automation',
+    title: 'Automation, not magic',
     description:
-      'Event-driven workflows, background job patterns, and state machines for complex multi-step business processes.',
-    businessContext: 'Automates repetitive coordination work that otherwise falls on humans.',
+      'Workflows and background jobs should be understandable. State machines and event logs make complex processes inspectable.',
+    businessContext: 'When things go wrong, you need to know why. Invisible automation is a liability.',
   },
   {
-    title: 'Documentation-Driven Development',
+    title: 'Write once, read always',
     description:
-      'Writing decision records, runbooks, and API documentation as part of the development process — not as an afterthought.',
-    businessContext: 'Reduces onboarding time and preserves institutional knowledge as teams grow.',
+      'Architecture decisions and trade-offs should be written down. New engineers, future you, and customers all benefit.',
+    businessContext: 'Institutional knowledge shouldn\'t depend on who\'s in the Slack.',
   },
   {
-    title: 'Product Tradeoffs',
+    title: 'Ship > perfect',
     description:
-      'Framing technical decisions in terms of business risk, delivery speed, and maintainability. Knowing when not to build is as important as knowing how.',
-    businessContext: 'Senior engineers help teams avoid over-engineering and premature optimization.',
+      'Fast iteration beats extensive planning. User feedback changes everything. But don\'t skip the thinking.',
+    businessContext: 'Knowing when to say no is as important as knowing what to build.',
   },
 ]
 

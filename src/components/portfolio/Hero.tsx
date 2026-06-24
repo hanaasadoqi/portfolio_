@@ -25,7 +25,7 @@ export default function Hero() {
             className="mb-8 text-4xl font-bold leading-tight tracking-tight sm:text-5xl"
             style={{ color: 'var(--fg)' }}
           >
-            Product engineer building software for organizations.
+            Product engineer building software that works.
           </h1>
 
           <p
@@ -85,7 +85,7 @@ export default function Hero() {
             style={{ borderColor: 'var(--border)' }}
           >
             <img
-              src="/headshot.jpg"
+              src="/Hanaa_Sadoqi_headshot.jpg"
               alt="Hanaa Sadoqi"
               className="w-full h-full object-cover"
             />

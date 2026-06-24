@@ -52,6 +52,19 @@ const studies: CaseStudy[] = [
     ctaLabel: 'View validation notes',
     ctaHref: '#',
   },
+  {
+    title: 'Blog — Custom MDX Site',
+    status: 'Live project',
+    statusVariant: 'shipped',
+    problem:
+      'My original portfolio had a blog, but it was tangled with the site. I wanted to build a separate blog experience with custom MDX components and better content ergonomics.',
+    role:
+      'Full-stack engineer. Designed the content model, built custom MDX components, and implemented a clean separation between the portfolio and blog.',
+    focus: ['Next.js 16', 'MDX', 'TypeScript', 'Custom components', 'Content strategy'],
+    proof: 'Demonstrates full-stack thinking: from content modeling to component design to deployment.',
+    ctaLabel: 'View blog at blog.hanaasadoqi.dev',
+    ctaHref: 'https://blog.hanaasadoqi.dev',
+  },
 ]
 
 const statusStyles: Record<StatusVariant, { bg: string; color: string }> = {

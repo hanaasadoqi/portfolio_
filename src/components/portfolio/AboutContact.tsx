@@ -9,16 +9,17 @@ export default function AboutContact() {
         aria-labelledby="about-heading"
       >
           <div className="mx-auto max-w-3xl px-6">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-[160px_1fr]">
-            <h2
-              id="about-heading"
-              className="text-3xl font-bold tracking-tight"
-              style={{ color: 'var(--fg)' }}
-            >
-              A bit about me
-            </h2>
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_260px]">
+            <div>
+              <h2
+                id="about-heading"
+                className="text-3xl font-bold tracking-tight mb-6"
+                style={{ color: 'var(--fg)' }}
+              >
+                A bit about me
+              </h2>
 
-            <div className="space-y-4 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
+              <div className="space-y-4 text-base leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
               <p>
                 I&apos;m based in Brooklyn. I got into engineering because I liked making things work —
                 diagnosing issues, fixing problems, building systems that people depend on. Most of my career
@@ -39,6 +40,21 @@ export default function AboutContact() {
                 I&apos;m open to product engineering, full-stack, and frontend-heavy roles. I care deeply about
                 solving real problems. React, TypeScript, Rails, and SQL are my defaults.
               </p>
+              </div>
+            </div>
+
+            {/* Bowie photo */}
+            <div className="flex justify-center md:justify-end">
+              <div
+                className="w-full max-w-xs rounded-lg overflow-hidden border"
+                style={{ borderColor: 'var(--border)' }}
+              >
+                <img
+                  src="/images/about/bowie.png"
+                  alt="Bowie"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>

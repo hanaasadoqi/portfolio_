@@ -1,8 +1,8 @@
 const facts = [
-  { value: '5+', label: 'years shipping production software across internal systems and consumer platforms' },
-  { value: '40+', label: 'engineers mentored through full-stack curriculum at Flatiron School' },
-  { value: '2', label: 'SaaS products designed and architected end-to-end from scratch' },
-  { value: 'Multi-tenant', label: 'permissions, workflows, and operational reliability' },
+  { value: '5+', label: 'years building products that people actually use' },
+  { value: '40+', label: 'engineers I\'ve taught to ship full-stack code' },
+  { value: '2', label: 'SaaS platforms architected end-to-end' },
+  { value: 'React to SQL', label: 'I own the entire stack' },
 ]
 
 export default function ImpactBand() {
