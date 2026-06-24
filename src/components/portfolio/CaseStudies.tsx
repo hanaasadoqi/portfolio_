@@ -40,19 +40,6 @@ const featured = {
 
 const studies: CaseStudy[] = [
   {
-    title: 'Stitch Fix — Internal Merchandising Tooling',
-    status: 'Shipped professional work',
-    statusVariant: 'shipped',
-    problem:
-      'Merchandising teams relied on manual, error-prone workflows for inventory and product operations. Each task took hours of repetitive effort with no audit trail.',
-    role:
-      'Full-stack engineer owning feature design, implementation, testing, and documentation across multiple internal tools.',
-    focus: ['Rails API', 'React + TypeScript', 'SQL queries', 'Cross-functional delivery', 'Documentation'],
-    proof: 'Reduced workflow effort by 300+ hours/month across merchandising operations.',
-    ctaLabel: 'View case study',
-    ctaHref: '#',
-  },
-  {
     title: 'Synapcity — Team Knowledge Platform',
     status: 'Concept validation',
     statusVariant: 'concept',
