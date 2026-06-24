@@ -53,7 +53,7 @@ export default function Hero() {
             </div>
 
             {/* Copy */}
-            <div className="mb-8">
+            <div className="mb-12">
               <HeroCopy />
             </div>
 
@@ -102,10 +102,10 @@ export default function Hero() {
 
           {/* ── Desktop: text left / photo right ── */}
           <div className="hidden md:grid grid-cols-[1fr_240px] gap-16 items-center">
-            <div className="mb-10">
+            <div>
               <HeroCopy />
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="mt-10 flex flex-wrap items-center gap-3">
                 <a
                   href="#projects"
                   className="inline-flex items-center rounded-md px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"

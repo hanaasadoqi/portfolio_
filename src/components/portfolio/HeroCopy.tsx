@@ -23,7 +23,7 @@ export function HeroCopy() {
       {/* Main headline: large, primary */}
       <h1
         id="hero-heading"
-        className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-foreground"
+        className="text-2xl sm:text-3xl md:text-4xl font-bold leading-[1.2] tracking-tight text-foreground"
       >
         I build software, ask too many questions, and occasionally turn the answers into products.
       </h1>
