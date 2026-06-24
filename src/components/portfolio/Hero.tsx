@@ -90,7 +90,7 @@ export default function Hero() {
             className="mb-4 text-[2rem] font-bold leading-tight tracking-tight text-balance"
             style={{ color: 'var(--fg)' }}
           >
-            I build systems that make messy work easier.
+            I build software, ask too many questions about how things work, and occasionally turn those answers into products.
           </h1>
 
           {/* Description */}
@@ -98,9 +98,7 @@ export default function Hero() {
             className="mb-8 text-sm leading-relaxed"
             style={{ color: 'var(--fg-muted)' }}
           >
-            Software engineer working on workflow-heavy products, internal tools, and
-            operational systems — the kind where people, rules, data, and edge cases all
-            have to fit together.
+            Former mechanical engineer. Current software engineer. Perpetual systems nerd. Currently rebuilding Generafi and exploring Synapcity.
           </p>
 
           {/* CTAs */}
@@ -200,7 +198,7 @@ export default function Hero() {
               className="mb-5 text-5xl font-bold leading-[1.1] tracking-tight text-balance lg:text-6xl"
               style={{ color: 'var(--fg)' }}
             >
-              I build systems that make messy work easier.
+              I build software, ask too many questions about how things work, and occasionally turn those answers into products.
             </h1>
 
             {/* Description */}
@@ -208,9 +206,7 @@ export default function Hero() {
               className="mb-10 max-w-lg text-base leading-relaxed"
               style={{ color: 'var(--fg-muted)' }}
             >
-              Software engineer working on workflow-heavy products, internal tools, and
-              operational systems — the kind where people, rules, data, and edge cases
-              all have to fit together.
+              Former mechanical engineer. Current software engineer. Perpetual systems nerd. Currently rebuilding Generafi and exploring Synapcity.
             </p>
 
             {/* Actions */}
