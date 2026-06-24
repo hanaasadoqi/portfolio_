@@ -35,46 +35,55 @@ export default function Hero() {
             I work on products around workflow, reliability, and operational clarity.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            {/* Primary CTA */}
             <a
               href="/Hanaa_Sadoqi_Resume.pdf"
               download
-              className="inline-flex items-center rounded-md px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              className="inline-flex items-center justify-center sm:justify-start rounded-md px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
               style={{ backgroundColor: 'var(--accent)' }}
             >
               Download Resume
             </a>
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-1.5 text-sm font-medium transition-opacity hover:opacity-80"
-              style={{ color: 'var(--fg-muted)' }}
-            >
-              What I&apos;m building
-              <span aria-hidden="true">&darr;</span>
-            </a>
-            <span
-              className="hidden h-4 w-px sm:block"
-              style={{ backgroundColor: 'var(--border)' }}
-              aria-hidden="true"
-            />
-            <a
-              href="https://github.com/hanaasadoqi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm transition-opacity hover:opacity-80"
-              style={{ color: 'var(--fg-muted)' }}
-            >
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/hanaa-el-habbal"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm transition-opacity hover:opacity-80"
-              style={{ color: 'var(--fg-muted)' }}
-            >
-              LinkedIn
-            </a>
+
+            {/* Secondary actions */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+              <a
+                href="#projects"
+                className="inline-flex items-center justify-center sm:justify-start gap-1.5 text-sm font-medium transition-opacity hover:opacity-80"
+                style={{ color: 'var(--fg-muted)' }}
+              >
+                What I&apos;m building
+                <span aria-hidden="true">&darr;</span>
+              </a>
+              
+              <span
+                className="hidden h-4 w-px sm:block"
+                style={{ backgroundColor: 'var(--border)' }}
+                aria-hidden="true"
+              />
+
+              <div className="flex gap-3 justify-center sm:justify-start">
+                <a
+                  href="https://github.com/hanaasadoqi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm transition-opacity hover:opacity-80"
+                  style={{ color: 'var(--fg-muted)' }}
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://linkedin.com/in/hanaa-el-habbal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm transition-opacity hover:opacity-80"
+                  style={{ color: 'var(--fg-muted)' }}
+                >
+                  LinkedIn
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
