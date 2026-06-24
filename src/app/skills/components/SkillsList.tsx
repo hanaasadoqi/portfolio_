@@ -45,7 +45,7 @@ export default function SkillsList({
           <SkillCard key={skill.id} skill={skill} />
         ))}
 
-        {loading && Array.from({ length: pageSize }).map((_, idx) => <SkeletonSkillCard key={idx} />)}
+        {loading && Array.from({ length: pageSize }).map((_, idx) => <SkeletonSkillCard key={`skeleton-${idx}-${Date.now()}`} />)}
       </div>
 
       {skills.length < totalCount && (

@@ -28,8 +28,8 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
     >
       <SkillIcons
         id={id}
-        experienceCount={experiences.length || 0}
-        projectsCount={projects.length || 0}
+        experienceCount={Array.isArray(experiences) ? experiences.length : 0}
+        projectsCount={Array.isArray(projects) ? projects.length : 0}
         yearsOfExperience={yearsOfExperience}
       />
 

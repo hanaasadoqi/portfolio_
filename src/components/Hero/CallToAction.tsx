@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { LinkButton } from '@/components/shared'
 import SocialMediaLinks from './SocialMediaLinks'
 import Link from 'next/link'
 

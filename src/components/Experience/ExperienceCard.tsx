@@ -18,7 +18,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   return (
     <motion.article
       id={`experience-${id}`}
-      className="m-0 md:mx-auto w-full md:max-w-4xl rounded-xl border-2 border-secondary-200 dark:border-accent-one/30 bg-white dark:bg-secondary-900/50 p-6 md:p-8 text-left shadow-md hover:shadow-xl hover:border-accent-one/50 transition-all duration-300 ease-in-out"
+      className="relative m-0 md:mx-auto w-full md:max-w-4xl rounded-xl border-2 border-secondary-200 dark:border-accent-one/30 bg-white dark:bg-secondary-900/50 p-6 md:p-8 text-left shadow-md hover:shadow-xl hover:border-accent-one/50 transition-all duration-300 ease-in-out"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}

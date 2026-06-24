@@ -1,12 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const HeroImage: React.FC = () => {
-  const [imageLoaded, setImageLoaded] = useState(false)
-
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -19,8 +17,8 @@ const HeroImage: React.FC = () => {
       
       {/* Image container with refined border */}
       <div className="relative h-full w-full rounded-2xl overflow-hidden border-2 border-accent-one/20 dark:border-accent-one/30 shadow-2xl bg-gradient-to-br from-accent-one/10 to-accent-two/10">
-        {/* Fallback gradient if image doesn't load */}
-        <div className={`absolute inset-0 bg-gradient-to-br from-accent-one/20 to-accent-two/20 ${imageLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}></div>
+        {/* Fallback gradient behind image */}
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-one/20 to-accent-two/20"></div>
         
         <Image
           src="/api/placeholder"
@@ -29,10 +27,6 @@ const HeroImage: React.FC = () => {
           className="object-cover"
           priority
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          onLoadingComplete={() => setImageLoaded(true)}
-          onError={() => {
-            setImageLoaded(false)
-          }}
         />
         
         {/* Subtle overlay gradient */}
